@@ -182,8 +182,8 @@ extension TournamentSearchVC: UISearchBarDelegate {
             recentSearches.remove(at: index)
             recentSearches.insert(text, at: 0)
         } else {
-            // Assert a maximum of 5 saved search terms
-            if recentSearches.count >= 5 {
+            // Assert a maximum of 10 saved search terms
+            if recentSearches.count >= 10 {
                 recentSearches.removeLast()
             }
             recentSearches.insert(text, at: 0)

@@ -39,15 +39,10 @@ final class TournamentSearchResultsVC: TournamentListVC {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("TournamentSearchResultsVC deinit")
-    }
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loadTournaments()
     }
     
@@ -106,5 +101,9 @@ final class TournamentSearchResultsVC: TournamentListVC {
                 self.noMoreTournaments = true
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Search Results"
     }
 }

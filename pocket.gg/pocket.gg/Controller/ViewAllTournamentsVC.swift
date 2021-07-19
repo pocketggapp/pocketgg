@@ -33,10 +33,6 @@ final class ViewAllTournamentsVC: TournamentListVC {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("ViewAllTournamentsVC deinit")
-    }
-    
     // MARK: - Additional Tournament Loading
     
     override func loadTournaments() {

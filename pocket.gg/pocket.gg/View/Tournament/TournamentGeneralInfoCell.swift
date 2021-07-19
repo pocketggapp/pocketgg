@@ -14,8 +14,8 @@ final class TournamentGeneralInfoCell: UITableViewCell {
     let cacheForLogo: Cache
     
     let logoImageView = UIImageView(image: UIImage(named: "placeholder"))
-    let dateIconView = UIImageView(image: UIImage(named: "calendar"))
-    let locationIconView = UIImageView(image: UIImage(named: "location"))
+    let dateIconView = UIImageView(image: UIImage(systemName: "calendar"))
+    let locationIconView = UIImageView(image: UIImage(systemName: "mappin.and.ellipse"))
     let nameLabel = UILabel()
     let dateLabel = UILabel()
     let locationLabel = UILabel()
@@ -30,6 +30,10 @@ final class TournamentGeneralInfoCell: UITableViewCell {
     init(_ tournament: Tournament, cacheForLogo: Cache) {
         self.tournament = tournament
         self.cacheForLogo = cacheForLogo
+        
+        dateIconView.tintColor = .label
+        locationIconView.tintColor = .label
+        
         super.init(style: .default, reuseIdentifier: nil)
         
         selectionStyle = .none

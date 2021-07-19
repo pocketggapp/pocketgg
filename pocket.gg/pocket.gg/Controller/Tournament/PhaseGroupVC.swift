@@ -48,8 +48,6 @@ final class PhaseGroupVC: UIViewController {
         tableView.refreshControl = refreshControl
         
         bracketScrollView.delegate = self
-        bracketScrollView.maximumZoomScale = 2
-        bracketScrollView.minimumZoomScale = 0.5
         
         refreshPhaseGroupView.refreshButton.addTarget(self, action: #selector(refreshData), for: .touchUpInside)
         
@@ -278,6 +276,8 @@ final class PhaseGroupVC: UIViewController {
             if bracketView.isValid {
                 bracketViewSpinner.isHidden = true
                 bracketScrollView.contentSize = bracketView.bounds.size
+                bracketScrollView.maximumZoomScale = 2
+                bracketScrollView.minimumZoomScale = 0.5
                 bracketScrollView.addSubview(bracketView)
             } else {
                 showInvalidBracketView(cause: bracketView.invalidationCause ?? .bracketLayoutError)
@@ -330,12 +330,14 @@ final class PhaseGroupVC: UIViewController {
     
     private func showInvalidBracketView(cause: InvalidBracketViewCause, bracketType: String? = nil) {
         if cause == .bracketLayoutError {
-            AnalyticsService.reportPhaseGroup(phaseID != nil ? phaseID : phaseGroup?.id)
+            FirebaseService.reportPhaseGroup(phaseID != nil ? phaseID : phaseGroup?.id)
         }
         bracketViewSpinner.isHidden = true
         invalidBracketView = InvalidBracketView(cause: cause, bracketType: bracketType)
         guard let invalidBracketView = invalidBracketView else { return }
         bracketScrollView.addSubview(invalidBracketView)
+        bracketScrollView.maximumZoomScale = 1
+        bracketScrollView.minimumZoomScale = 1
         invalidBracketView.setEdgeConstraints(top: bracketScrollView.safeAreaLayoutGuide.topAnchor,
                                               bottom: bracketScrollView.safeAreaLayoutGuide.bottomAnchor,
                                               leading: bracketScrollView.safeAreaLayoutGuide.leadingAnchor,

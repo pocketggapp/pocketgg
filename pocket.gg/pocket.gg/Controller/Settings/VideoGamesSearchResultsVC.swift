@@ -82,7 +82,7 @@ final class VideoGamesSearchResultsVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard doneLoading else { return LoadingCell() } // TODO: check background color of this cell
+        guard doneLoading else { return LoadingCell() }
         guard !searchResults.isEmpty else { return UITableViewCell().setupDisabled("No search results") }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: k.Identifiers.videoGameCell, for: indexPath)

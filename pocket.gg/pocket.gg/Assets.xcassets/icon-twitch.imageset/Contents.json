@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "calendar.png",
+      "filename" : "icon-twitch.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "calendar-1.png",
+      "filename" : "icon-twitch-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -23,7 +23,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "calendar-dark.png",
+      "filename" : "icon-twitch-dark.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

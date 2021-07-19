@@ -17,7 +17,7 @@ final class TournamentVC: UITableViewController {
     var locationCell: TournamentLocationCell?
     
     var tournament: Tournament
-    var doneRequest = false // TODO: Add pull-to-refresh control, setting this back to false when data is refreshed (for all applicable screens)
+    var doneRequest = false
     var requestSuccessful = true
     var tournamentIsOnline: Bool {
         return tournament.isOnline ?? true
@@ -270,7 +270,7 @@ final class TournamentVC: UITableViewController {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: k.Identifiers.streamCell) as? SubtitleCell {
                 cell.accessoryType = .disclosureIndicator
-                cell.imageView?.image = UIImage(named: "placeholder")
+                cell.imageView?.image = UIImage(named: "icon-twitch")
                 cell.updateView(text: stream.name, imageInfo: (stream.logoUrl, nil), detailText: nil)
                 return cell
             }
@@ -322,7 +322,6 @@ final class TournamentVC: UITableViewController {
         guard let contactInfo = tournament.contact?.info else { return UITableViewCell().setupDisabled(k.Message.noContactInfo) }
         
         let cell = UITableViewCell()
-        cell.textLabel?.textColor = .systemRed
         cell.textLabel?.text = contactInfo
         cell.accessoryType = .disclosureIndicator
         
@@ -330,8 +329,9 @@ final class TournamentVC: UITableViewController {
             var image: UIImage?
             if type == "email" {
                 image = UIImage(systemName: "envelope.fill")
+                cell.imageView?.tintColor = .label
             } else if type == "discord" {
-                image = UIImage(named: "icon-discord")?.withRenderingMode(.alwaysTemplate)
+                image = UIImage(named: "icon-discord")
             }
             cell.imageView?.image = image
         }

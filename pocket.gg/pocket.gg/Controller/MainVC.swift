@@ -33,6 +33,8 @@ final class MainVC: UITableViewController {
     /// - Once the view appears again, if this variable is true, the list of tournaments is reloaded and this variable is set back to false
     var shouldReloadTournaments: Bool
     
+    var lastRefreshTime: Date?
+    
     // MARK: - Initialization
     
     override init(style: UITableView.Style) {
@@ -68,7 +70,7 @@ final class MainVC: UITableViewController {
                                                name: Notification.Name(k.Notification.settingsChanged), object: nil)
         
         refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(reloadTournamentList), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         preferredGames = PreferredGamesService.getEnabledGames()
         doneRequest = [Bool](repeating: false, count: numSections)
@@ -86,9 +88,29 @@ final class MainVC: UITableViewController {
             shouldReloadTournaments = false
             reloadTournamentList()
         }
+        
+        if !UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
+            UserDefaults.standard.set(true, forKey: k.UserDefaults.returningUser)
+            let alert = UIAlertController(title: k.UserDefaults.returningUserTitle, message: k.UserDefaults.returningUserMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
     // MARK: - Actions
+    
+    @objc private func refreshData() {
+        if let lastRefreshTime = lastRefreshTime {
+            // Don't allow refreshing more than once every 5 seconds
+            guard Date().timeIntervalSince(lastRefreshTime) > 5 else {
+                refreshControl?.endRefreshing()
+                return
+            }
+        }
+        
+        lastRefreshTime = Date()
+        reloadTournamentList()
+    }
     
     @objc private func reloadTournamentList() {
         showPinned = UserDefaults.standard.bool(forKey: k.UserDefaults.showPinnedTournaments)
@@ -274,7 +296,7 @@ final class MainVC: UITableViewController {
             return UITableViewCell()
         }
         
-        guard doneRequest[indexPath.section] else { return LoadingCell(color: .secondarySystemBackground) }
+        guard doneRequest[indexPath.section] else { return LoadingCell(color: .systemGroupedBackground) }
         guard requestSuccessful[indexPath.section] else {
             let cell = UITableViewCell().setupDisabled(k.Message.errorLoadingTournaments)
             cell.textLabel?.numberOfLines = 0

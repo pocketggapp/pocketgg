@@ -47,10 +47,6 @@ final class AuthTokenVC: UIViewController {
         })
     }
     
-    deinit {
-        print("AuthTokenVC deinit")
-    }
-    
     // MARK: - Setup
     
     private func setupViews() {
@@ -93,8 +89,8 @@ final class AuthTokenVC: UIViewController {
         bottomStackView.setup(subviews: [authTokenField, authTokenStepsButton, submitButton], axis: .vertical, alignment: .fill, spacing: 5)
         view.addSubview(bottomStackView)
         bottomStackView.setEdgeConstraints(top: titleStackView.bottomAnchor,
-                                           leading: view.leadingAnchor,
-                                           trailing: view.trailingAnchor,
+                                           leading: view.safeAreaLayoutGuide.leadingAnchor,
+                                           trailing: view.safeAreaLayoutGuide.trailingAnchor,
                                            padding: UIEdgeInsets(top: 50, left: 16, bottom: 0, right: 16))
         
         var bottomStackViewHeight: CGFloat = 0
@@ -145,7 +141,7 @@ final class AuthTokenVC: UIViewController {
                 
                 let tabBarItems = [UITabBarItem(title: "Tournaments", image: UIImage(named: "tournament"), tag: 0),
                                    UITabBarItem(tabBarSystemItem: .search, tag: 1),
-                                   UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)]
+                                   UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)]
                 let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
                                  UINavigationController(rootViewController: TournamentSearchVC()),
                                  UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]

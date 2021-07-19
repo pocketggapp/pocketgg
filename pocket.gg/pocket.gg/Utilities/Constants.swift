@@ -79,6 +79,9 @@ struct Constants {
     
     struct UserDefaults {
         static let returningUser = "returningUser"
+        static let returningUserTitle = "Welcome to pocket.gg!"
+        static let returningUserMessage = "To get started, go to Settings → Video Game Selection and select your favourite video games"
+        
         static let authToken = "authToken"
         static let authTokenDate = "authTokenDate"
         static let firebaseEnabled = "firebaseEnabled"
@@ -120,7 +123,6 @@ struct Constants {
         
         static let apolloFetch = "Error fetching GraphQL query: "
         
-        // TODO: Finalize wording
         static let pinnedTournamentLimit = "You can only have up to 10 pinned tournaments"
     }
     
@@ -131,7 +133,7 @@ struct Constants {
         static let errorLoadingTournaments = "Unable to load tournaments"
         static let noTournaments = "No tournaments found for this category"
         static let noPinnedTournaments = "You don't have any pinned tournaments"
-        static let noPreferredGames = "You haven't enabled any video games. Add your favorite video games to see tournaments that feature those games."
+        static let noPreferredGames = "You haven't enabled any video games. Select your favorite video games to see tournaments that feature those games."
         
         // MARK: TournamentVC
         static let errorLoadingEvents = "Unable to load events"

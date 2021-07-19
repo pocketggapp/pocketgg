@@ -24,7 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         PinnedTournamentsService.initPinnedTournaments()
         
         if !UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
-            UserDefaults.standard.set(true, forKey: k.UserDefaults.returningUser)
             UserDefaults.standard.set(true, forKey: k.UserDefaults.showPinnedTournaments)
             UserDefaults.standard.set(true, forKey: k.UserDefaults.featuredTournaments)
             UserDefaults.standard.set(true, forKey: k.UserDefaults.upcomingTournaments)
@@ -39,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarItems = [UITabBarItem(title: "Tournaments", image: UIImage(named: "tournament"), tag: 0),
                            UITabBarItem(tabBarSystemItem: .search, tag: 1),
-                           UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 2)]
+                           UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)]
         let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
                          UINavigationController(rootViewController: TournamentSearchVC()),
                          UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]

@@ -11,7 +11,7 @@ import UIKit
 final class AboutInfoCell: UITableViewCell {
     
     let appNameLabel = UILabel()
-    let authorLabel = UILabel()
+    let appVersionLabel = UILabel()
     let labelStackView = UIStackView()
     
     var iconImageView: UIImageView?
@@ -36,12 +36,15 @@ final class AboutInfoCell: UITableViewCell {
     // MARK: - UI Setup
     
     private func setupViews() {
-        appNameLabel.text = "pocket.gg"
+        appNameLabel.text = "pocket.gg Beta"
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         
-        authorLabel.text = "Created by Gabriel Siu"
+        if let versionNum = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+           let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            appVersionLabel.text = "Version \(versionNum) (\(buildNum))"
+        }
         
-        labelStackView.setup(subviews: [appNameLabel, authorLabel], axis: .vertical, spacing: 10)
+        labelStackView.setup(subviews: [appNameLabel, appVersionLabel], axis: .vertical, spacing: 10)
         
         if let appIcon = appIcon {
             labelStackView.alignment = .leading
