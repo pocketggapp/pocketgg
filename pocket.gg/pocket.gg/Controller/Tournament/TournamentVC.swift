@@ -414,7 +414,6 @@ final class TournamentVC: UITableViewController {
             guard let slug = tournament.slug else { return }
             guard let url = URL(string: "https://smash.gg/\(slug)/register") else {
                 tableView.deselectRow(at: indexPath, animated: true)
-                debugPrint(k.Error.urlGeneration, "https://smash.gg/\(slug)/register")
                 return
             }
             present(SFSafariViewController(url: url), animated: true)

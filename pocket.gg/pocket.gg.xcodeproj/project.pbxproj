@@ -37,8 +37,12 @@
 		DA2D5F31256B678300C44EEC /* ApolloService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D5F30256B678300C44EEC /* ApolloService.swift */; };
 		DA2E80A52659A91500B876F1 /* ViewAllTournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E80A42659A91500B876F1 /* ViewAllTournamentsVC.swift */; };
 		DA2E80A92659A95900B876F1 /* TournamentSearchResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E80A82659A95900B876F1 /* TournamentSearchResultsVC.swift */; };
+		DA33C2EE26AE275E00363E70 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33C2ED26AE275E00363E70 /* ProfileCell.swift */; };
+		DA33C2F026AE576B00363E70 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33C2EF26AE576B00363E70 /* ProfileService.swift */; };
+		DA33C2F226AE58D100363E70 /* ProfileTournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33C2F126AE58D100363E70 /* ProfileTournamentsVC.swift */; };
 		DA395A4B265ABE43008086EB /* TournamentSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA395A4A265ABE43008086EB /* TournamentSearchVC.swift */; };
 		DA3FE2C2263DFBC000593504 /* ScrollableRowItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FE2C1263DFBC000593504 /* ScrollableRowItemCell.swift */; };
+		DA4055BF26A8784800A465FE /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4055BE26A8784800A465FE /* ProfileVC.swift */; };
 		DA4A1C5B2679A4F800736D8F /* EditPinnedTournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A1C5A2679A4F800736D8F /* EditPinnedTournamentsVC.swift */; };
 		DA4B496024FCC6ED00BE7E0E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4B495F24FCC6ED00BE7E0E /* Event.swift */; };
 		DA4B496224FCC6FC00BE7E0E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4B496124FCC6FC00BE7E0E /* Location.swift */; };
@@ -145,8 +149,12 @@
 		DA2D5F30256B678300C44EEC /* ApolloService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloService.swift; sourceTree = "<group>"; };
 		DA2E80A42659A91500B876F1 /* ViewAllTournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllTournamentsVC.swift; sourceTree = "<group>"; };
 		DA2E80A82659A95900B876F1 /* TournamentSearchResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchResultsVC.swift; sourceTree = "<group>"; };
+		DA33C2ED26AE275E00363E70 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		DA33C2EF26AE576B00363E70 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		DA33C2F126AE58D100363E70 /* ProfileTournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTournamentsVC.swift; sourceTree = "<group>"; };
 		DA395A4A265ABE43008086EB /* TournamentSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchVC.swift; sourceTree = "<group>"; };
 		DA3FE2C1263DFBC000593504 /* ScrollableRowItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableRowItemCell.swift; sourceTree = "<group>"; };
+		DA4055BE26A8784800A465FE /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		DA4A1C5A2679A4F800736D8F /* EditPinnedTournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPinnedTournamentsVC.swift; sourceTree = "<group>"; };
 		DA4B495F24FCC6ED00BE7E0E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DA4B496124FCC6FC00BE7E0E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -299,6 +307,7 @@
 			children = (
 				DA2D5F30256B678300C44EEC /* ApolloService.swift */,
 				DA2939D123E7D1D800E5DB3A /* NetworkService.swift */,
+				DA33C2EF26AE576B00363E70 /* ProfileService.swift */,
 				DAF0BE50266C03FD000F7506 /* EntrantService.swift */,
 				DA83B1DD23F7B372002D06C1 /* ImageCacheService.swift */,
 				DAECFB642647436000661EDA /* PreferredGamesService.swift */,
@@ -315,6 +324,15 @@
 				DA2939DF23E7E35B00E5DB3A /* Info.plist */,
 			);
 			path = pocket.ggTests;
+			sourceTree = "<group>";
+		};
+		DA4055BC26A877FF00A465FE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DA4055BE26A8784800A465FE /* ProfileVC.swift */,
+				DA33C2F126AE58D100363E70 /* ProfileTournamentsVC.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		DA56559223E50C3E003FEF20 /* Utilities */ = {
@@ -377,6 +395,7 @@
 				DA1DD9C7263C479800A1B4A9 /* ScrollableRowCell.swift */,
 				DA3FE2C1263DFBC000593504 /* ScrollableRowItemCell.swift */,
 				DA86242526630A8E00FD0A9C /* TournamentListCell.swift */,
+				DA33C2ED26AE275E00363E70 /* ProfileCell.swift */,
 				DA1C92862413780200E5BA96 /* Tournament */,
 				DA7AF02324F6EC74009A00E2 /* Reusable Cells */,
 			);
@@ -447,6 +466,7 @@
 				DA395A4A265ABE43008086EB /* TournamentSearchVC.swift */,
 				DA2E80A82659A95900B876F1 /* TournamentSearchResultsVC.swift */,
 				DA64A2F9241DF04E00481280 /* Tournament */,
+				DA4055BC26A877FF00A465FE /* Profile */,
 				DA637A8923F500EF00268A85 /* Settings */,
 			);
 			path = Controller;
@@ -667,6 +687,7 @@
 				DADBE41924074BB7005B707F /* VideoGame.swift in Sources */,
 				DA4B496224FCC6FC00BE7E0E /* Location.swift in Sources */,
 				DA4CE1FC23EF9CDA00BDE107 /* Collection+Safe.swift in Sources */,
+				DA33C2EE26AE275E00363E70 /* ProfileCell.swift in Sources */,
 				DA0E5D55255773B600FF6E42 /* SetView.swift in Sources */,
 				DAF0BE412665BAB8000F7506 /* AppIconVC.swift in Sources */,
 				DAC4257A26503C0600F523CC /* TournamentListVC.swift in Sources */,
@@ -681,6 +702,7 @@
 				DADBE41524074A38005B707F /* AboutVC.swift in Sources */,
 				DA68B6B5257EB3BE00A010F3 /* RoundRobinBracketView.swift in Sources */,
 				DAC290F2251B854F003D05B9 /* AuthTokenVC.swift in Sources */,
+				DA33C2F226AE58D100363E70 /* ProfileTournamentsVC.swift in Sources */,
 				DA770573268656C300BBD8CA /* SetUtilities.swift in Sources */,
 				DA0C4CEC26818C1B004831EC /* SetVC.swift in Sources */,
 				DA7AF01824F5E53C009A00E2 /* PhaseGroupListVC.swift in Sources */,
@@ -689,6 +711,7 @@
 				DAEACF8F250AF53E002F0674 /* EliminationBracketView.swift in Sources */,
 				DA2939CA23E7CAF400E5DB3A /* Tournament.swift in Sources */,
 				DAF39622265F4D5C00FA9778 /* VideoGamesSearchResultsVC.swift in Sources */,
+				DA4055BF26A8784800A465FE /* ProfileVC.swift in Sources */,
 				DA68B684257C9A6B00A010F3 /* SetPathView.swift in Sources */,
 				DADBE41724074AC5005B707F /* AboutInfoCell.swift in Sources */,
 				DA637A8D23F5012B00268A85 /* VideoGamesVC.swift in Sources */,
@@ -722,6 +745,7 @@
 				DA6CBE6524300B0A006DB38F /* LoadingCell.swift in Sources */,
 				DA637A8B23F5010D00268A85 /* SettingsVC.swift in Sources */,
 				DA2E80A52659A91500B876F1 /* ViewAllTournamentsVC.swift in Sources */,
+				DA33C2F026AE576B00363E70 /* ProfileService.swift in Sources */,
 				DA81E8B2269415F200C256D2 /* RefreshPhaseGroupView.swift in Sources */,
 				DAF0BE51266C03FD000F7506 /* EntrantService.swift in Sources */,
 				DA56559423E50C51003FEF20 /* Constants.swift in Sources */,

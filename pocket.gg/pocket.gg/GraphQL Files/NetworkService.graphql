@@ -97,6 +97,9 @@ query TournamentDetails($id: ID) {
         primaryContact
         primaryContactType
         slug
+        owner {
+            id
+        }
     }
 }
 
@@ -256,6 +259,61 @@ query PhaseGroupSetGames($id: ID!) {
             winnerId
             stage {
                 name
+            }
+        }
+    }
+}
+
+query CurrentUser($perPage: Int) {
+    currentUser {
+        bio
+        player {
+            prefix
+            gamerTag
+        }
+        images {
+            type
+            url
+        }
+        tournaments(query: {
+            page: 1
+            perPage: $perPage
+        }) {
+            nodes {
+                id
+                name
+                startAt
+                endAt
+                venueAddress
+                isOnline
+                images {
+                    url
+                    type
+                    ratio
+                }
+            }
+        }
+    }
+}
+
+query CurrentUserTournaments($page: Int, $perPage: Int) {
+    currentUser {
+        tournaments(query: {
+            page: $page
+            perPage: $perPage
+        }) {
+            nodes {
+                id
+                name
+                startAt
+                endAt
+                venueAddress
+                isOnline
+                images {
+                    url
+                    type
+                    ratio
+                }
             }
         }
     }

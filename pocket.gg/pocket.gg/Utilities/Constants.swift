@@ -112,17 +112,8 @@ struct Constants {
     
     struct Error {
         static let title = "Error"
-        
         static let invalidAuthToken = "Invalid auth token"
-        
-        static let emptyUrl = "ERROR: No URL provided."
-        static let urlGeneration = "Error generating URL from provided string: "
-        static let networkRequest = "Network request failed with error: "
-        static let missingData = "ERROR: Missing data from network request."
-        static let imageFromData = "ERROR: Could not create image from given data."
-        
         static let apolloFetch = "Error fetching GraphQL query: "
-        
         static let pinnedTournamentLimit = "You can only have up to 10 pinned tournaments"
     }
     
@@ -165,6 +156,10 @@ struct Constants {
         // MARK: SetVC
         static let errorLoadingGames = "Unable to load games"
         static let noGames = "No games reported"
+        
+        // MARK: ProfileVC
+        static let errorLoadingProfile = "Unable to load profile"
+        static let noProfileTournaments = "No tournaments found"
     }
 }
 

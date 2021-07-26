@@ -141,9 +141,11 @@ final class AuthTokenVC: UIViewController {
                 
                 let tabBarItems = [UITabBarItem(title: "Tournaments", image: UIImage(named: "tournament"), tag: 0),
                                    UITabBarItem(tabBarSystemItem: .search, tag: 1),
-                                   UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)]
+                                   UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 2),
+                                   UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 3)]
                 let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
                                  UINavigationController(rootViewController: TournamentSearchVC()),
+                                 UINavigationController(rootViewController: ProfileVC()),
                                  UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]
                 let tabBarController = UITabBarController()
                 tabBarController.viewControllers = tabBarVCs.enumerated().map({ (index, navController) -> UINavigationController in

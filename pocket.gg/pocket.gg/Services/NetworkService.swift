@@ -43,6 +43,7 @@ final class NetworkService {
                         let end = DateFormatter.shared.dateFromTimestamp($0?.endAt)
                         let date = start == end ? start : "\(start) - \(end)"
                         
+                        // TODO: Refactor this and all similar logic to use "type" propert instead to distinguish between profile and banner images
                         let logo = $0?.images?.reduce(("", 10), { (smallestImage, image) -> (String, Double) in
                             guard let url = image?.url else { return smallestImage }
                             guard let ratio = image?.ratio else { return smallestImage }
@@ -169,9 +170,7 @@ final class NetworkService {
                               "streams": streams,
                               "registration": (tournament.isRegistrationOpen, tournament.registrationClosesAt),
                               "contact": (tournament.primaryContact, tournament.primaryContactType),
-                              "slug": tournament.slug
-                    
-                    ])
+                              "slug": tournament.slug])
                 }
             }
         }
@@ -399,28 +398,23 @@ final class NetworkService {
             return
         } else {
             guard !imageUrl.isEmpty else {
-                debugPrint(k.Error.emptyUrl)
                 complete(nil)
                 return
             }
             guard let url = URL(string: imageUrl) else {
-                debugPrint(k.Error.urlGeneration, imageUrl)
                 complete(nil)
                 return
             }
             URLSession.shared.dataTask(with: url) { (data, _, error) in
                 guard error == nil else {
-                    debugPrint(k.Error.networkRequest, error as Any)
                     complete(nil)
                     return
                 }
                 guard let data = data else {
-                    debugPrint(k.Error.missingData)
                     complete(nil)
                     return
                 }
                 guard let image = UIImage(data: data) else {
-                    debugPrint(k.Error.imageFromData)
                     complete(nil)
                     return
                 }
