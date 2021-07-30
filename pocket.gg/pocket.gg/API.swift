@@ -886,6 +886,11 @@ public final class TournamentDetailsQuery: GraphQLQuery {
         owner {
           __typename
           id
+          player {
+            __typename
+            prefix
+            gamerTag
+          }
         }
       }
     }
@@ -1511,6 +1516,7 @@ public final class TournamentDetailsQuery: GraphQLQuery {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
             GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("player", type: .object(Player.selections)),
           ]
         }
 
@@ -1520,8 +1526,8 @@ public final class TournamentDetailsQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(id: GraphQLID? = nil) {
-          self.init(unsafeResultMap: ["__typename": "User", "id": id])
+        public init(id: GraphQLID? = nil, player: Player? = nil) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "player": player.flatMap { (value: Player) -> ResultMap in value.resultMap }])
         }
 
         public var __typename: String {
@@ -1539,6 +1545,65 @@ public final class TournamentDetailsQuery: GraphQLQuery {
           }
           set {
             resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// player for user
+        public var player: Player? {
+          get {
+            return (resultMap["player"] as? ResultMap).flatMap { Player(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "player")
+          }
+        }
+
+        public struct Player: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Player"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("prefix", type: .scalar(String.self)),
+              GraphQLField("gamerTag", type: .scalar(String.self)),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(`prefix`: String? = nil, gamerTag: String? = nil) {
+            self.init(unsafeResultMap: ["__typename": "Player", "prefix": `prefix`, "gamerTag": gamerTag])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var `prefix`: String? {
+            get {
+              return resultMap["prefix"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "prefix")
+            }
+          }
+
+          public var gamerTag: String? {
+            get {
+              return resultMap["gamerTag"] as? String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "gamerTag")
+            }
           }
         }
       }

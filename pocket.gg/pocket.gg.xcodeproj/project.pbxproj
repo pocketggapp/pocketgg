@@ -89,6 +89,7 @@
 		DA86242626630A8E00FD0A9C /* TournamentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA86242526630A8E00FD0A9C /* TournamentListCell.swift */; };
 		DA9429AA24F1CF19002595AF /* videoGame.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DA9429A924F1CF19002595AF /* videoGame.sqlite */; };
 		DAA59C192676DC3000A27B43 /* PinnedTournamentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA59C182676DC3000A27B43 /* PinnedTournamentsService.swift */; };
+		DAADCDB026B37C0E009B46B3 /* TournamentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */; };
 		DAAF59152413FC18008F79DA /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAF59142413FC18008F79DA /* UIImage+Helpers.swift */; };
 		DAC290F2251B854F003D05B9 /* AuthTokenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */; };
 		DAC4257A26503C0600F523CC /* TournamentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4257926503C0600F523CC /* TournamentListVC.swift */; };
@@ -201,6 +202,7 @@
 		DA92DF1623E812350084FEB1 /* NetworkService.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NetworkService.graphql; sourceTree = "<group>"; };
 		DA9429A924F1CF19002595AF /* videoGame.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoGame.sqlite; sourceTree = "<group>"; };
 		DAA59C182676DC3000A27B43 /* PinnedTournamentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedTournamentsService.swift; sourceTree = "<group>"; };
+		DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentOptionsVC.swift; sourceTree = "<group>"; };
 		DAAF59142413FC18008F79DA /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 		DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenVC.swift; sourceTree = "<group>"; };
 		DAC4257926503C0600F523CC /* TournamentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentListVC.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				DA637A9023F7A6FE00268A85 /* TournamentVC.swift */,
+				DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */,
 				DA64A2FC241DF1AA00481280 /* EventVC.swift */,
 				DA5121AB26921A190086CBED /* StandingsVC.swift */,
 				DA7AF01724F5E53C009A00E2 /* PhaseGroupListVC.swift */,
@@ -750,6 +753,7 @@
 				DAF0BE51266C03FD000F7506 /* EntrantService.swift in Sources */,
 				DA56559423E50C51003FEF20 /* Constants.swift in Sources */,
 				DA7AF02B24F71A83009A00E2 /* PhaseGroupVC.swift in Sources */,
+				DAADCDB026B37C0E009B46B3 /* TournamentOptionsVC.swift in Sources */,
 				DA637A9123F7A6FE00268A85 /* TournamentVC.swift in Sources */,
 				DA83B1DE23F7B372002D06C1 /* ImageCacheService.swift in Sources */,
 			);
@@ -940,7 +944,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				INFOPLIST_FILE = pocket.gg/Info.plist;
@@ -962,7 +966,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				INFOPLIST_FILE = pocket.gg/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -170,7 +170,10 @@ final class NetworkService {
                               "streams": streams,
                               "registration": (tournament.isRegistrationOpen, tournament.registrationClosesAt),
                               "contact": (tournament.primaryContact, tournament.primaryContactType),
-                              "slug": tournament.slug])
+                              "slug": tournament.slug,
+                              "ownerID": Int(tournament.owner?.id ?? "nil"),
+                              "ownerName": tournament.owner?.player?.gamerTag,
+                              "ownerPrefix": tournament.owner?.player?.prefix])
                 }
             }
         }

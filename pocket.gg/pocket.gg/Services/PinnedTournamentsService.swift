@@ -30,8 +30,8 @@ final class PinnedTournamentsService {
         }) {
             pinnedTournaments.remove(at: index)
         } else {
-            // Don't allow more than 10 pinned tournaments
-            guard numPinnedTournaments < 10 else { return false }
+            // Don't allow more than 30 pinned tournaments
+            guard numPinnedTournaments < 30 else { return false }
             pinnedTournaments.append(SavedTournament(id: tournament.id,
                                                           name: tournament.name,
                                                           date: tournament.date,

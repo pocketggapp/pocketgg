@@ -114,7 +114,7 @@ struct Constants {
         static let title = "Error"
         static let invalidAuthToken = "Invalid auth token"
         static let apolloFetch = "Error fetching GraphQL query: "
-        static let pinnedTournamentLimit = "You can only have up to 10 pinned tournaments"
+        static let pinnedTournamentLimit = "You can only have up to 30 pinned tournaments"
     }
     
     // MARK: - Messages

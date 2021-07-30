@@ -49,9 +49,8 @@ final class TournamentVC: UITableViewController {
         super.viewDidLoad()
         
         title = tournament.name
-        let imageName = tournamentIsPinned ? "pin.slash.fill" : "pin.fill"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: imageName), style: .plain,
-                                                            target: self, action: #selector(togglePinnedTournament))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain,
+                                                            target: self, action: #selector(displayTournamentOptions))
         
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: k.Identifiers.eventCell)
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: k.Identifiers.streamCell)
@@ -127,6 +126,9 @@ final class TournamentVC: UITableViewController {
             self?.tournament.registration = result["registration"] as? (Bool, String)
             self?.tournament.slug = result["slug"] as? String
             self?.tournament.contact = result["contact"] as? (String, String)
+            self?.tournament.ownerID = result["ownerID"] as? Int
+            self?.tournament.ownerName = result["ownerName"] as? String
+            self?.tournament.ownerPrefix = result["ownerPrefix"] as? String
             
             self?.doneRequest = true
             self?.requestSuccessful = true
@@ -150,6 +152,15 @@ final class TournamentVC: UITableViewController {
         loadTournamentDetails()
     }
     
+    @objc private func displayTournamentOptions() {
+        let vc = TournamentOptionsVC(pinned: tournamentIsPinned, pinnedLimitReached: PinnedTournamentsService.numPinnedTournaments >= 10,
+                                     name: tournament.ownerName, prefix: tournament.ownerPrefix)
+        vc.tournamentWasPinned = { [weak self] in
+            self?.togglePinnedTournament()
+        }
+        present(UINavigationController(rootViewController: vc), animated: true)
+    }
+    
     @objc private func togglePinnedTournament() {
         guard PinnedTournamentsService.togglePinnedTournament(tournament) else {
             let alert = UIAlertController(title: k.Error.title, message: k.Error.pinnedTournamentLimit, preferredStyle: .alert)
@@ -159,7 +170,6 @@ final class TournamentVC: UITableViewController {
         }
         tournamentIsPinned.toggle()
         pinnedStatusChanged.toggle()
-        navigationItem.rightBarButtonItem?.image = tournamentIsPinned ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
     }
     
     // MARK: - Table View Data Source

@@ -286,7 +286,6 @@ final class MainVC: UITableViewController {
         if showPinned, indexPath.section == 0 {
             guard PinnedTournamentsService.numPinnedTournaments != 0 else {
                 let cell = UITableViewCell().setupDisabled(k.Message.noPinnedTournaments)
-                cell.textLabel?.numberOfLines = 0
                 cell.backgroundColor = .systemGroupedBackground
                 return cell
             }
@@ -299,19 +298,16 @@ final class MainVC: UITableViewController {
         guard doneRequest[indexPath.section] else { return LoadingCell(color: .systemGroupedBackground) }
         guard requestSuccessful[indexPath.section] else {
             let cell = UITableViewCell().setupDisabled(k.Message.errorLoadingTournaments)
-            cell.textLabel?.numberOfLines = 0
             cell.backgroundColor = .systemGroupedBackground
             return cell
         }
         guard !preferredGames.isEmpty else {
             let cell = UITableViewCell().setupDisabled(k.Message.noPreferredGames)
-            cell.textLabel?.numberOfLines = 0
             cell.backgroundColor = .systemGroupedBackground
             return cell
         }
         guard !tournaments[indexPath.section].isEmpty else {
             let cell = UITableViewCell().setupDisabled(k.Message.noTournaments)
-            cell.textLabel?.numberOfLines = 0
             cell.backgroundColor = .systemGroupedBackground
             return cell
         }

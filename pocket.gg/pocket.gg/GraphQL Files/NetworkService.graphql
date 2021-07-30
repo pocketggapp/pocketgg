@@ -99,6 +99,10 @@ query TournamentDetails($id: ID) {
         slug
         owner {
             id
+            player {
+                prefix
+                gamerTag
+            }
         }
     }
 }

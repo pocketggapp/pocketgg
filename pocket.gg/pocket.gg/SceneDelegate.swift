@@ -37,10 +37,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let tabBarItems = [UITabBarItem(title: "Tournaments", image: UIImage(named: "tournament"), tag: 0),
-                           UITabBarItem(tabBarSystemItem: .search, tag: 1),
-                           UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 2),
-                           UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 3)]
+                           UITabBarItem(title: "Following", image: UIImage(systemName: "person.3.fill"), tag: 1),
+                           UITabBarItem(tabBarSystemItem: .search, tag: 2),
+                           UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3),
+                           UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 4)]
         let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
+                         UINavigationController(rootViewController: ProfileVC()),
                          UINavigationController(rootViewController: TournamentSearchVC()),
                          UINavigationController(rootViewController: ProfileVC()),
                          UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]

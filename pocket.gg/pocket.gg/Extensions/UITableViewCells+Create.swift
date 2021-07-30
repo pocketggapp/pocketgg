@@ -21,6 +21,7 @@ extension UITableViewCell {
     func setupDisabled(_ text: String?) -> UITableViewCell {
         isUserInteractionEnabled = false
         textLabel?.text = text
+        textLabel?.numberOfLines = 0
         return self
     }
 }

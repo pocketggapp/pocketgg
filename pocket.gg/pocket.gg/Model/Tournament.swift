@@ -29,6 +29,9 @@ struct Tournament {
     var registration: (isOpen: Bool?, closeDate: String?)?
     var contact: (info: String?, type: String?)?
     var slug: String?
+    var ownerID: Int?
+    var ownerName: String?
+    var ownerPrefix: String?
 }
 
 extension Tournament {
