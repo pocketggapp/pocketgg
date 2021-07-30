@@ -41,6 +41,7 @@ struct Constants {
         static let tournamentSetCell = "tournamentSetCell"
         static let tournamentSetGameCell = "tournamentSetGameCell"
         static let videoGameCell = "videoGameCell"
+        static let tournamentOrganizerCell = "tournamentOrganizerCell"
         static let eventCell = "eventCell"
         static let streamCell = "streamCell"
         static let value1Cell = "value1Cell"
@@ -92,6 +93,8 @@ struct Constants {
         static let upcomingTournaments = "upcomingTournaments"
         static let preferredVideoGames = "preferredVideoGames"
         
+        static let tournamentOrganizersFollowed = "tournamentOrganizersFollowed"
+        
         static let onlySearchFeatured = "onlySearchFeatured"
         static let showOlderTournamentsFirst = "showOlderTournamentsFirst"
         static let searchUsingEnabledGames = "searchUsingEnabledGames"
@@ -104,6 +107,7 @@ struct Constants {
     
     struct Notification {
         static let tournamentPinToggled = "tournamentPinToggled"
+        static let followedTournamentOrganizer = "followedTournamentOrganizer"
         static let settingsChanged = "settingsChanged"
         static let didTapSet = "didTapSet"
     }

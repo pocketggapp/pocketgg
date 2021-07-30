@@ -22,6 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.tintColor = .systemRed
         
         PinnedTournamentsService.initPinnedTournaments()
+        TOFollowedService.initFollowedTOs()
         
         if !UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
             UserDefaults.standard.set(true, forKey: k.UserDefaults.showPinnedTournaments)
@@ -42,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                            UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3),
                            UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 4)]
         let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
-                         UINavigationController(rootViewController: ProfileVC()),
+                         UINavigationController(rootViewController: FollowingVC()),
                          UINavigationController(rootViewController: TournamentSearchVC()),
                          UINavigationController(rootViewController: ProfileVC()),
                          UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]

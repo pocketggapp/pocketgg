@@ -322,3 +322,30 @@ query CurrentUserTournaments($page: Int, $perPage: Int) {
         }
     }
 }
+
+query UserTournaments($id: ID, $page: Int, $perPage: Int) {
+    user(id: $id) {
+    name
+        tournaments(query: {
+            page: $page
+            perPage: $perPage
+            filter: {
+                tournamentView: "organizing"
+            }
+        }) {
+            nodes {
+                id
+                name
+                startAt
+                endAt
+                venueAddress
+                isOnline
+                images {
+                    url
+                    type
+                    ratio
+                }
+            }
+        }
+    }
+}

@@ -16,6 +16,7 @@ final class TournamentOptionsVC: UITableViewController {
     let tournamentOrganizerPrefix: String?
     
     var tournamentWasPinned: (() -> Void)?
+    var moreTournamentsByTO: (() -> Void)?
     
     // MARK: - Initialization
     
@@ -52,7 +53,8 @@ final class TournamentOptionsVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 { return 1 }
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -82,15 +84,23 @@ final class TournamentOptionsVC: UITableViewController {
             
             return cell
         case 1:
-            let cell = UITableViewCell()
-            cell.selectionStyle = .none
-            cell.imageView?.image = UIImage(systemName: "person.fill")
-            cell.imageView?.tintColor = .label
-            let entrant = Entrant(id: nil, name: tournamentOrganizerName, teamName: tournamentOrganizerPrefix)
-            cell.textLabel?.attributedText = SetUtilities.getAttributedEntrantText(entrant, bold: false,
-                                                                                   size: cell.textLabel?.font.pointSize ?? 10,
-                                                                                   teamNameLength: tournamentOrganizerPrefix?.count)
-            return cell
+            switch indexPath.row {
+            case 0:
+                let cell = UITableViewCell()
+                cell.selectionStyle = .none
+                cell.imageView?.image = UIImage(systemName: "person.fill")
+                cell.imageView?.tintColor = .label
+                let entrant = Entrant(id: nil, name: tournamentOrganizerName, teamName: tournamentOrganizerPrefix)
+                cell.textLabel?.attributedText = SetUtilities.getAttributedEntrantText(entrant, bold: false,
+                                                                                       size: cell.textLabel?.font.pointSize ?? 10,
+                                                                                       teamNameLength: tournamentOrganizerPrefix?.count)
+                return cell
+            case 1:
+                let cell = UITableViewCell().setupActive(textColor: .systemRed, text: "More tournaments by this tournament organizer")
+                cell.textLabel?.numberOfLines = 0
+                return cell
+            default: break
+            }
         default: break
         }
         return UITableViewCell()
@@ -102,6 +112,10 @@ final class TournamentOptionsVC: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0, let tournamentWasPinned = tournamentWasPinned {
             dismiss(animated: true) { tournamentWasPinned() }
+            return
+        }
+        if indexPath.section == 1, indexPath.row == 1, let moreTournamentsByTO = moreTournamentsByTO {
+            dismiss(animated: true) { moreTournamentsByTO() }
             return
         }
     }

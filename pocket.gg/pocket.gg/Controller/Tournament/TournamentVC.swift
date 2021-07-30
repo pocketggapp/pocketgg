@@ -158,6 +158,17 @@ final class TournamentVC: UITableViewController {
         vc.tournamentWasPinned = { [weak self] in
             self?.togglePinnedTournament()
         }
+        vc.moreTournamentsByTO = { [weak self] in
+            var title = ""
+            if let ownerPrefix = self?.tournament.ownerPrefix {
+                title = ownerPrefix + " "
+            }
+            if let ownerName = self?.tournament.ownerName {
+                title += ownerName
+            }
+            let vc = TournamentsByTOVC(id: self?.tournament.ownerID, name: self?.tournament.ownerName, prefix: self?.tournament.ownerPrefix)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
         present(UINavigationController(rootViewController: vc), animated: true)
     }
     
