@@ -11,9 +11,10 @@ import UIKit
 extension UITableViewCell {
     
     func setupActive(textColor: UIColor, text: String?, detailText: String? = nil) -> UITableViewCell {
-        textLabel?.textColor = textColor
         accessoryType = .disclosureIndicator
+        textLabel?.textColor = textColor
         textLabel?.text = text
+        textLabel?.numberOfLines = 0
         detailTextLabel?.text = detailText
         return self
     }

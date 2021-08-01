@@ -30,6 +30,7 @@ struct Constants {
         static let twitch = "https://www.twitch.tv/"
         
         static let twitter = "https://twitter.com/gabrielsiu_dev"
+        static let privacyPolicy = "https://gabrielsiu.com/pocketgg"
     }
     
     // MARK: - UI/Structure Constants
@@ -110,6 +111,17 @@ struct Constants {
         static let followedTournamentOrganizer = "followedTournamentOrganizer"
         static let settingsChanged = "settingsChanged"
         static let didTapSet = "didTapSet"
+    }
+    
+    // MARK: - Alerts
+    
+    struct Alert {
+        static let videoGameSelection = """
+        Unfortunately, due to limitations with the smash.gg API, it is currently not possible to obtain a consistently \
+        updated list of video games registered on smash.gg. Thus, if newer video games are released, they may not appear in pocket.gg as \
+        search results. If you can't find the video game that you're looking for, use the button below to send a video game update request, and \
+        it may be added in a future update.
+        """
     }
     
     // MARK: - Errors

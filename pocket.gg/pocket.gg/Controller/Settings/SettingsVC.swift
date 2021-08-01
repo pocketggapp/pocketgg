@@ -106,6 +106,11 @@ final class SettingsVC: UITableViewController {
         UserDefaults.standard.set(sender.isOn, forKey: k.UserDefaults.firebaseEnabled)
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(sender.isOn)
         Analytics.setAnalyticsCollectionEnabled(sender.isOn)
+        
+        let title = "Crash Reporting & Analytics " + (sender.isOn ? "Enabled" : "Disabled")
+        let alert = UIAlertController(title: title, message: "Please restart the app for your changes to take effect", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     private func requestTournamentsReload() {

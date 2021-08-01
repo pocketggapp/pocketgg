@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 final class VideoGamesVC: UITableViewController {
     
@@ -41,6 +42,7 @@ final class VideoGamesVC: UITableViewController {
         title = "Video Game Selection"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: k.Identifiers.videoGameCell)
         tableView.keyboardDismissMode = .onDrag
+        tableView.allowsSelectionDuringEditing = true
         navigationItem.rightBarButtonItem = enabledGames.isEmpty ? nil : editButtonItem
         setupHeaderView()
     }
@@ -75,11 +77,20 @@ final class VideoGamesVC: UITableViewController {
     
     // MARK: - Table View Data Source
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 { return 1 }
         return enabledGames.isEmpty ? 1 : enabledGames.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            return UITableViewCell().setupActive(textColor: .systemRed, text: "Can't find the video game that you're looking for?")
+        }
+        
         guard !enabledGames.isEmpty else { return UITableViewCell().setupDisabled("No enabled games") }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: k.Identifiers.videoGameCell, for: indexPath)
@@ -89,22 +100,26 @@ final class VideoGamesVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 0 else { return nil }
         return headerView
     }
     
     // TODO: Figure out why footer is slidable when only 1 game is added
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard section == 0 else { return nil }
         return """
-        Use the search bar to find video games you are interested in. Tournaments that feature at least 1 of the games added here \
+        Use the search bar to find video games that you're interested in. Tournaments that feature at least 1 of the games added here \
         will show up on the main screen.
         """
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard indexPath.section == 0 else { return false }
         return !enabledGames.isEmpty
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        guard indexPath.section == 0 else { return false }
         return !enabledGames.isEmpty
     }
     
@@ -125,6 +140,46 @@ final class VideoGamesVC: UITableViewController {
             PreferredGamesService.updateEnabledGames(enabledGames)
             requestTournamentsReload()
         }
+    }
+    
+    // MARK: - Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 1 else { return }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let alert = UIAlertController(title: "", message: k.Alert.videoGameSelection, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Send video game update request", style: .default, handler: { [weak self] _ in
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["pocketggapp@gmail.com"])
+                mail.setSubject("pocket.gg Video Game Update Request")
+                let message = """
+                Please enter the required info between the lines:
+                ---------------------------------------
+                
+                Name of video game (Required):
+                
+                Name and/or URL of tournament on smash.gg that features the missing video game (Required):
+
+                ---------------------------------------
+                """
+                mail.setMessageBody(message, isHTML: false)
+                self?.present(mail, animated: true)
+            } else {
+                let message = """
+                Please send an email to pocketggapp@gmail.com and include the following details:
+                Name of the video game
+                Name and/or URL of tournament on smash.gg that features the missing video game
+                """
+                let alert = UIAlertController(title: "Video Game Update Request", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self?.present(alert, animated: true)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     // MARK: - Actions
@@ -168,5 +223,11 @@ extension VideoGamesVC: UISearchBarDelegate {
             }
         }
         navigationController?.pushViewController(videoGamesSearchResultsVC, animated: true)
+    }
+}
+
+extension VideoGamesVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }

@@ -38,13 +38,12 @@ final class AboutVC: UITableViewController {
     // MARK: - Table View Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
-        case 1: return 1
+        case 0, 1, 4: return 1
         case 2: return 2
         case 3: return 3
         default: return 0
@@ -93,6 +92,11 @@ final class AboutVC: UITableViewController {
                 return cell
             default: break
             }
+        case 4:
+            let cell = UITableViewCell()
+            cell.accessoryType = .disclosureIndicator
+            cell.textLabel?.text = "Privacy Policy"
+            return cell
         default: break
         }
         return UITableViewCell()
@@ -101,7 +105,11 @@ final class AboutVC: UITableViewController {
     // MARK: - Table View Delegate
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 3 ? "Libraries Used" : nil
+        switch section {
+        case 2: return "Contact"
+        case 3: return "Libraries Used"
+        default: return nil
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -155,6 +163,9 @@ final class AboutVC: UITableViewController {
                 present(SFSafariViewController(url: url), animated: true)
             default: break
             }
+        case 4:
+            guard let url = URL(string: k.URL.privacyPolicy) else { break }
+            present(SFSafariViewController(url: url), animated: true)
         default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)

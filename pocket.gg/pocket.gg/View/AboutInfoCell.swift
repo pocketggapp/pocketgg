@@ -36,12 +36,11 @@ final class AboutInfoCell: UITableViewCell {
     // MARK: - UI Setup
     
     private func setupViews() {
-        appNameLabel.text = "pocket.gg Beta"
+        appNameLabel.text = "pocket.gg"
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         
-        if let versionNum = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
-           let buildNum = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-            appVersionLabel.text = "Version \(versionNum) (\(buildNum))"
+        if let versionNum = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            appVersionLabel.text = "Version \(versionNum)"
         }
         
         labelStackView.setup(subviews: [appNameLabel, appVersionLabel], axis: .vertical, spacing: 10)
