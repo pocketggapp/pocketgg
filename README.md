@@ -12,7 +12,6 @@ An iOS mobile client for the [smash.gg](https://smash.gg/) website, written in S
 * Profile page where you can view tournaments that you're organizing or competing in
 * Pin your favourite tournaments for easy access
 
-## Screenshots
 [<img src="images/banner.png">](images/banner.png)
 
 [<img src="images/appstore_download_button.png">](https://apps.apple.com/us/app/pocket-gg/id1576064097)
