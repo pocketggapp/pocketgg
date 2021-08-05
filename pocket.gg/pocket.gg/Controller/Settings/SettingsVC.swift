@@ -113,7 +113,7 @@ final class SettingsVC: UITableViewController {
         
         let title = "Crash Reporting & Analytics " + (sender.isOn ? "Enabled" : "Disabled")
         let alert = UIAlertController(title: title, message: "Please restart the app for your changes to take effect", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
         present(alert, animated: true)
     }
     

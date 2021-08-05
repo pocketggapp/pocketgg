@@ -93,14 +93,14 @@ final class TournamentSearchVC: UITableViewController {
     // MARK: - Table View Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return recentSearches.isEmpty ? 2 : 3
+        return recentSearches.isEmpty ? 3 : 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 3
         case 1: return recentSearches.isEmpty ? 1 : recentSearches.count
-        case 2: return 1
+        case 2, 3: return 1
         default: return 0
         }
     }
@@ -120,10 +120,13 @@ final class TournamentSearchVC: UITableViewController {
             }
             return UITableViewCell().setupActive(textColor: .label, text: recentSearches[indexPath.row])
         case 2:
+            if recentSearches.isEmpty { fallthrough }
             let cell = UITableViewCell()
             cell.textLabel?.textColor = .systemRed
             cell.textLabel?.text = "Clear recent searches"
             return cell
+        case 3:
+            return UITableViewCell().setupActive(textColor: .systemRed, text: "Not getting the search results that you're expecting?")
         default: return UITableViewCell()
         }
     }
@@ -148,9 +151,15 @@ final class TournamentSearchVC: UITableViewController {
             let preferredGameIDs = searchUsingEnabledGamesSwitch.isOn ? PreferredGamesService.getEnabledGames().map { $0.id } : []
             navigationController?.pushViewController(TournamentSearchResultsVC(searchTerm: text, preferredGameIDs: preferredGameIDs), animated: true)
         case 2:
+            if recentSearches.isEmpty { fallthrough }
             recentSearches.removeAll()
             tableView.reloadData()
             UserDefaults.standard.setValue([], forKey: k.UserDefaults.recentSearches)
+        case 3:
+            tableView.deselectRow(at: indexPath, animated: true)
+            let alert = UIAlertController(title: "", message: k.Alert.searchResults, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            present(alert, animated: true)
         default:
             tableView.deselectRow(at: indexPath, animated: true)
         }

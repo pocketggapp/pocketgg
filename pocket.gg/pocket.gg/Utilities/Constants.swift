@@ -127,6 +127,11 @@ struct Constants {
         search results. If you can't find the video game that you're looking for, use the button below to send a video game update request, and \
         it may be added in a future update.
         """
+        static let searchResults = """
+        Unfortunately, the search function provided by the smash.gg API treats each individual word in the search term as a separate search term. \
+        For example, if you search for "On The Grind", the smash.gg API will return all tournaments whose names contain "On", "The", or "Grind". \
+        To mitigate this, try using fewer, more unique terms when searching.
+        """
     }
     
     // MARK: - Errors

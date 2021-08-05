@@ -47,12 +47,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let bundleDatabasePath = Bundle.main.path(forResource: "videoGame", ofType: "sqlite") {
                 try FileManager.default.copyItem(atPath: bundleDatabasePath, toPath: finalDatabasePath)
             } else {
+                dbQueue = try VideoGameDatabase.openDatabase(atPath: finalDatabasePath)
                 throw VideoGameDatabaseError.dbNotInAppBundle
             }
         } else {
             print("DB already exists at path: \(finalDatabasePath)")
+            guard let bundleDatabasePath = Bundle.main.path(forResource: "videoGame", ofType: "sqlite") else {
+                dbQueue = try VideoGameDatabase.openDatabase(atPath: finalDatabasePath)
+                throw VideoGameDatabaseError.dbNotInAppBundle
+            }
+            // If the database file was updated, remove the existing one and copy the new one from the app bundle to the app support directory
+            if !FileManager.default.contentsEqual(atPath: bundleDatabasePath, andPath: finalDatabasePath) {
+                print("Detected changes in DB; replacing now")
+                try FileManager.default.removeItem(atPath: finalDatabasePath)
+                try FileManager.default.copyItem(atPath: bundleDatabasePath, toPath: finalDatabasePath)
+            }
         }
         dbQueue = try VideoGameDatabase.openDatabase(atPath: finalDatabasePath)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let sendingAppID = options[.sourceApplication]
+        print("source application = \(sendingAppID ?? "Unknown")")
+        
+        // Process the URL.
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+            let albumPath = components.path,
+            let params = components.queryItems else {
+                print("Invalid URL or album path missing")
+                return false
+        }
+        
+        return true
     }
 
     // MARK: UISceneSession Lifecycle
