@@ -54,7 +54,7 @@ final class SubtitleCell: UITableViewCell {
         
         imageView?.layer.cornerRadius = k.Sizes.cornerRadius
         imageView?.layer.masksToBounds = true
-        NetworkService.getImage(imageUrl: imageInfo?.url) { [weak self] (image) in
+        ImageService.getImage(imageUrl: imageInfo?.url) { [weak self] (image) in
             guard let image = image else { return }
             var finalImage: UIImage?
             if let newRatio = newRatio, let prevRatio = imageInfo?.ratio {

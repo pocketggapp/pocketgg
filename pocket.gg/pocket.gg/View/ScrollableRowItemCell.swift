@@ -63,7 +63,7 @@ final class ScrollableRowItemCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         guard let imageURL = imageURL else { return }
         let newSize = CGSize(width: k.Sizes.tournamentListCellHeight, height: k.Sizes.tournamentListCellHeight)
-        NetworkService.getImage(imageUrl: imageURL, cache: .viewAllTournaments, newSize: newSize) { [weak self] (image) in
+        ImageService.getImage(imageUrl: imageURL, cache: .viewAllTournaments, newSize: newSize) { [weak self] (image) in
             let image = image ?? UIImage(named: "placeholder")
             DispatchQueue.main.async {
                 guard let imageView = self?.imageView else { return }

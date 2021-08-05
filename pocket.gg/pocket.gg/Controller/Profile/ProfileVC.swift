@@ -54,7 +54,7 @@ final class ProfileVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ImageCacheService.clearCache(.profileTournaments)
+        ImageService.clearCache(.profileTournaments)
         guard !initialDataLoaded else { return }
         loadProfileData()
     }
@@ -192,7 +192,7 @@ final class ProfileVC: UITableViewController {
             cell.imageView?.layer.cornerRadius = k.Sizes.cornerRadius
             cell.imageView?.layer.masksToBounds = true
             let newSize = CGSize(width: k.Sizes.tournamentListCellHeight, height: k.Sizes.tournamentListCellHeight)
-            NetworkService.getImage(imageUrl: tournament.logoUrl, cache: .profileTournaments, newSize: newSize) { image in
+            ImageService.getImage(imageUrl: tournament.logoUrl, cache: .profileTournaments, newSize: newSize) { image in
                 guard let image = image else { return }
                 DispatchQueue.main.async {
                     if cell.tag == indexPath.row {

@@ -166,10 +166,10 @@ final class PhaseGroupVC: UIViewController {
                 return
             }
             
-            // If 100 sets were returned, there may be more sets in total, so load the next page of sets
-            if standings.count == 65 || matches.count == 100 {
+            // If 90 sets were returned, there may be more sets in total, so load the next page of sets
+            if standings.count == 65 || matches.count == 90 {
                 let nextStandingsPage: Int? = standings.count == 65 ? 2 : nil
-                let nextSetsPage: Int? = matches.count == 100 ? 2 : nil
+                let nextSetsPage: Int? = matches.count == 90 ? 2 : nil
                 self?.loadRemainingPhaseGroupData(id: id, standingsPage: nextStandingsPage, setsPage: nextSetsPage)
             } else {
                 self?.doneRequest = true
@@ -240,7 +240,7 @@ final class PhaseGroupVC: UIViewController {
                     nextStandingsPage = standingsPage + 1
                 }
             }
-            if let numSetsReturned = numSetsReturned, numSetsReturned == 100 {
+            if let numSetsReturned = numSetsReturned, numSetsReturned == 90 {
                 if let setsPage = setsPage {
                     nextSetsPage = setsPage + 1
                 }

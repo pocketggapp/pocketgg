@@ -73,7 +73,7 @@ final class TournamentSearchVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ImageCacheService.clearCache(.tournamentSearchResults)
+        ImageService.clearCache(.tournamentSearchResults)
     }
     
     // MARK: - Actions

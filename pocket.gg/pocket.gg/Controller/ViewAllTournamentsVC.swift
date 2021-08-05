@@ -8,21 +8,23 @@
 
 import UIKit
 
-struct GetTournamentsByVideogamesInfo {
+final class ViewAllTournamentsVC: TournamentListVC {
+    
+    var currentTournamentsPage: Int
     let perPage: Int
     let featured: Bool
     let gameIDs: [Int]
-}
-
-final class ViewAllTournamentsVC: TournamentListVC {
-    
-    let info: GetTournamentsByVideogamesInfo
-    var currentTournamentsPage: Int
+    let countryCode: String
+    let addrState: String
     
     // MARK: - Initialization
     
-    init(_ tournaments: [Tournament], info: GetTournamentsByVideogamesInfo, title: String?) {
-        self.info = info
+    init(_ tournaments: [Tournament], perPage: Int, featured: Bool, gameIDs: [Int], title: String?, countryCode: String, addrState: String) {
+        self.perPage = perPage
+        self.featured = featured
+        self.gameIDs = gameIDs
+        self.countryCode = countryCode
+        self.addrState = addrState
         currentTournamentsPage = 1
         
         super.init(tournaments, title: title)
@@ -41,12 +43,14 @@ final class ViewAllTournamentsVC: TournamentListVC {
         
         currentTournamentsPage += 1
         doneRequest = false
-        
-        NetworkService.getTournamentsByVideogames(perPage: info.perPage,
+        let info = GetTournamentsByVideogamesInfo(perPage: perPage,
                                                   pageNum: currentTournamentsPage,
-                                                  featured: info.featured,
+                                                  gameIDs: gameIDs,
+                                                  featured: featured,
                                                   upcoming: true,
-                                                  gameIDs: info.gameIDs) { [weak self] (tournaments) in
+                                                  countryCode: countryCode,
+                                                  addrState: addrState)
+        NetworkService.getTournamentsByVideogames(info) { [weak self] (tournaments) in
             guard let tournaments = tournaments else {
                 self?.doneRequest = true
                 self?.tableView.reloadData()
@@ -75,7 +79,7 @@ final class ViewAllTournamentsVC: TournamentListVC {
             
             // If less tournaments than expected were returned, then there are no more tournaments to load
             guard let self = self else { return }
-            if tournaments.count < self.info.perPage {
+            if tournaments.count < self.perPage {
                 self.noMoreTournaments = true
             }
         }

@@ -69,7 +69,7 @@ final class ProfileCell: UITableViewCell {
     
     func setImage(_ URL: String?) {
         let newSize = CGSize(width: k.Sizes.tournamentListCellHeight, height: .zero)
-        NetworkService.getImage(imageUrl: URL, newSize: newSize) { image in
+        ImageService.getImage(imageUrl: URL, newSize: newSize) { image in
             guard let image = image else { return }
             DispatchQueue.main.async { [weak self] in
                 self?.imageView?.image = image

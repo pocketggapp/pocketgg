@@ -9,6 +9,16 @@
 import UIKit
 import Apollo
 
+struct GetTournamentsByVideogamesInfo {
+    let perPage: Int
+    let pageNum: Int
+    let gameIDs: [Int]
+    let featured: Bool
+    let upcoming: Bool
+    let countryCode: String
+    let addrState: String
+}
+
 final class NetworkService {
     static func isAuthTokenValid(complete: @escaping (_ valid: Bool) -> Void) {
         ApolloService.shared.client.fetch(query: AuthTokenTestQuery(), cachePolicy: .fetchIgnoringCacheCompletely, queue: .global(qos: .utility)) { result in
@@ -21,12 +31,14 @@ final class NetworkService {
         }
     }
     
-    static func getTournamentsByVideogames(perPage: Int, pageNum: Int, featured: Bool = true, upcoming: Bool = true, gameIDs: [Int], complete: @escaping (_ tournaments: [Tournament]?) -> Void) {
-        ApolloService.shared.client.fetch(query: TournamentsByVideogamesQuery(perPage: perPage,
-                                                                              pageNum: pageNum,
-                                                                              videogameIds: gameIDs.map { String($0) },
-                                                                              featured: featured,
-                                                                              upcoming: upcoming),
+    static func getTournamentsByVideogames(_ info: GetTournamentsByVideogamesInfo, complete: @escaping (_ tournaments: [Tournament]?) -> Void) {
+        ApolloService.shared.client.fetch(query: TournamentsByVideogamesQuery(perPage: info.perPage,
+                                                                              pageNum: info.pageNum,
+                                                                              videogameIds: info.gameIDs.map { String($0) },
+                                                                              featured: info.featured,
+                                                                              upcoming: info.upcoming,
+                                                                              countryCode: info.countryCode,
+                                                                              addrState: info.addrState),
                                           cachePolicy: .fetchIgnoringCacheCompletely,
                                           queue: .global(qos: .utility)) { result in
             switch result {
@@ -427,59 +439,6 @@ final class NetworkService {
                 }
                 DispatchQueue.main.async { complete(tournaments) }
             }
-        }
-    }
-    
-    // MARK: - Image Fetching
-    
-    static func getImage(imageUrl: String?, cache: Cache = .regular, newSize: CGSize? = nil, complete: @escaping (_ image: UIImage?) -> Void) {
-        guard let imageUrl = imageUrl else {
-            complete(nil)
-            return
-        }
-        if let cachedImage = ImageCacheService.getCachedImage(with: imageUrl, cache: cache) {
-            complete(cachedImage)
-            return
-        } else {
-            guard !imageUrl.isEmpty else {
-                complete(nil)
-                return
-            }
-            guard let url = URL(string: imageUrl) else {
-                complete(nil)
-                return
-            }
-            URLSession.shared.dataTask(with: url) { (data, _, error) in
-                guard error == nil else {
-                    complete(nil)
-                    return
-                }
-                guard let data = data else {
-                    complete(nil)
-                    return
-                }
-                guard let image = UIImage(data: data) else {
-                    complete(nil)
-                    return
-                }
-                
-                let finalImage: UIImage
-                if let newSize = newSize {
-                    if newSize.width.isZero && newSize.height.isZero {
-                        finalImage = image
-                    } else if newSize.width.isZero {
-                        finalImage = image.resize(toHeight: newSize.height)
-                    } else if newSize.height.isZero {
-                        finalImage = image.resize(toWidth: newSize.width)
-                    } else {
-                        finalImage = image.resize(toSize: newSize)
-                    }
-                } else {
-                    finalImage = image
-                }
-                ImageCacheService.saveImageToCache(image: finalImage, with: imageUrl, cache: cache)
-                complete(finalImage)
-            }.resume()
         }
     }
 }

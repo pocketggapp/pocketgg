@@ -51,7 +51,7 @@ final class TournamentGeneralInfoCell: UITableViewCell {
     private func setupViews() {
         logoImageView.layer.cornerRadius = k.Sizes.cornerRadius
         logoImageView.layer.masksToBounds = true
-        NetworkService.getImage(imageUrl: tournament.logoUrl, cache: cacheForLogo) { [weak self] (logo) in
+        ImageService.getImage(imageUrl: tournament.logoUrl, cache: cacheForLogo) { [weak self] (logo) in
             guard let logo = logo else { return }
             DispatchQueue.main.async {
                 self?.logoImageView.image = logo

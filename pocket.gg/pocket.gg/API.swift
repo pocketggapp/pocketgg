@@ -299,8 +299,8 @@ public final class TournamentsByVideogamesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID], $featured: Boolean, $upcoming: Boolean) {
-      tournaments(query: {perPage: $perPage, page: $pageNum, sortBy: "startAt asc", filter: {upcoming: $upcoming, videogameIds: $videogameIds, isFeatured: $featured}}) {
+    query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID], $featured: Boolean, $upcoming: Boolean, $countryCode: String, $addrState: String) {
+      tournaments(query: {perPage: $perPage, page: $pageNum, sortBy: "startAt asc", filter: {upcoming: $upcoming, videogameIds: $videogameIds, isFeatured: $featured, countryCode: $countryCode, addrState: $addrState}}) {
         __typename
         nodes {
           __typename
@@ -327,17 +327,21 @@ public final class TournamentsByVideogamesQuery: GraphQLQuery {
   public var videogameIds: [GraphQLID?]?
   public var featured: Bool?
   public var upcoming: Bool?
+  public var countryCode: String?
+  public var addrState: String?
 
-  public init(perPage: Int? = nil, pageNum: Int? = nil, videogameIds: [GraphQLID?]? = nil, featured: Bool? = nil, upcoming: Bool? = nil) {
+  public init(perPage: Int? = nil, pageNum: Int? = nil, videogameIds: [GraphQLID?]? = nil, featured: Bool? = nil, upcoming: Bool? = nil, countryCode: String? = nil, addrState: String? = nil) {
     self.perPage = perPage
     self.pageNum = pageNum
     self.videogameIds = videogameIds
     self.featured = featured
     self.upcoming = upcoming
+    self.countryCode = countryCode
+    self.addrState = addrState
   }
 
   public var variables: GraphQLMap? {
-    return ["perPage": perPage, "pageNum": pageNum, "videogameIds": videogameIds, "featured": featured, "upcoming": upcoming]
+    return ["perPage": perPage, "pageNum": pageNum, "videogameIds": videogameIds, "featured": featured, "upcoming": upcoming, "countryCode": countryCode, "addrState": addrState]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -345,7 +349,7 @@ public final class TournamentsByVideogamesQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("tournaments", arguments: ["query": ["perPage": GraphQLVariable("perPage"), "page": GraphQLVariable("pageNum"), "sortBy": "startAt asc", "filter": ["upcoming": GraphQLVariable("upcoming"), "videogameIds": GraphQLVariable("videogameIds"), "isFeatured": GraphQLVariable("featured")]]], type: .object(Tournament.selections)),
+        GraphQLField("tournaments", arguments: ["query": ["perPage": GraphQLVariable("perPage"), "page": GraphQLVariable("pageNum"), "sortBy": "startAt asc", "filter": ["upcoming": GraphQLVariable("upcoming"), "videogameIds": GraphQLVariable("videogameIds"), "isFeatured": GraphQLVariable("featured"), "countryCode": GraphQLVariable("countryCode"), "addrState": GraphQLVariable("addrState")]]], type: .object(Tournament.selections)),
       ]
     }
 
@@ -566,8 +570,8 @@ public final class SearchForTournamentsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query SearchForTournaments($search: String, $videogameIds: [ID], $featured: Boolean, $sortBy: String, $perPage: Int, $page: Int) {
-      tournaments(query: {perPage: $perPage, page: $page, sortBy: $sortBy, filter: {name: $search, videogameIds: $videogameIds, isFeatured: $featured}}) {
+    query SearchForTournaments($search: String, $videogameIds: [ID], $featured: Boolean, $sortBy: String, $perPage: Int, $page: Int, $countryCode: String) {
+      tournaments(query: {perPage: $perPage, page: $page, sortBy: $sortBy, filter: {name: $search, videogameIds: $videogameIds, isFeatured: $featured, countryCode: $countryCode}}) {
         __typename
         nodes {
           __typename
@@ -595,18 +599,20 @@ public final class SearchForTournamentsQuery: GraphQLQuery {
   public var sortBy: String?
   public var perPage: Int?
   public var page: Int?
+  public var countryCode: String?
 
-  public init(search: String? = nil, videogameIds: [GraphQLID?]? = nil, featured: Bool? = nil, sortBy: String? = nil, perPage: Int? = nil, page: Int? = nil) {
+  public init(search: String? = nil, videogameIds: [GraphQLID?]? = nil, featured: Bool? = nil, sortBy: String? = nil, perPage: Int? = nil, page: Int? = nil, countryCode: String? = nil) {
     self.search = search
     self.videogameIds = videogameIds
     self.featured = featured
     self.sortBy = sortBy
     self.perPage = perPage
     self.page = page
+    self.countryCode = countryCode
   }
 
   public var variables: GraphQLMap? {
-    return ["search": search, "videogameIds": videogameIds, "featured": featured, "sortBy": sortBy, "perPage": perPage, "page": page]
+    return ["search": search, "videogameIds": videogameIds, "featured": featured, "sortBy": sortBy, "perPage": perPage, "page": page, "countryCode": countryCode]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -614,7 +620,7 @@ public final class SearchForTournamentsQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("tournaments", arguments: ["query": ["perPage": GraphQLVariable("perPage"), "page": GraphQLVariable("page"), "sortBy": GraphQLVariable("sortBy"), "filter": ["name": GraphQLVariable("search"), "videogameIds": GraphQLVariable("videogameIds"), "isFeatured": GraphQLVariable("featured")]]], type: .object(Tournament.selections)),
+        GraphQLField("tournaments", arguments: ["query": ["perPage": GraphQLVariable("perPage"), "page": GraphQLVariable("page"), "sortBy": GraphQLVariable("sortBy"), "filter": ["name": GraphQLVariable("search"), "videogameIds": GraphQLVariable("videogameIds"), "isFeatured": GraphQLVariable("featured"), "countryCode": GraphQLVariable("countryCode")]]], type: .object(Tournament.selections)),
       ]
     }
 
@@ -2535,7 +2541,7 @@ public final class PhaseGroupQuery: GraphQLQuery {
             }
           }
         }
-        sets(page: 1, perPage: 100) {
+        sets(page: 1, perPage: 90) {
           __typename
           nodes {
             __typename
@@ -2615,7 +2621,7 @@ public final class PhaseGroupQuery: GraphQLQuery {
           GraphQLField("bracketType", type: .scalar(BracketType.self)),
           GraphQLField("progressionsOut", type: .list(.object(ProgressionsOut.selections))),
           GraphQLField("standings", arguments: ["query": ["page": 1, "perPage": 65]], type: .object(Standing.selections)),
-          GraphQLField("sets", arguments: ["page": 1, "perPage": 100], type: .object(Set.selections)),
+          GraphQLField("sets", arguments: ["page": 1, "perPage": 90], type: .object(Set.selections)),
         ]
       }
 
@@ -3519,7 +3525,7 @@ public final class PhaseGroupSetsPageQuery: GraphQLQuery {
     query PhaseGroupSetsPage($id: ID, $page: Int) {
       phaseGroup(id: $id) {
         __typename
-        sets(page: $page, perPage: 100) {
+        sets(page: $page, perPage: 90) {
           __typename
           nodes {
             __typename
@@ -3598,7 +3604,7 @@ public final class PhaseGroupSetsPageQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("sets", arguments: ["page": GraphQLVariable("page"), "perPage": 100], type: .object(Set.selections)),
+          GraphQLField("sets", arguments: ["page": GraphQLVariable("page"), "perPage": 90], type: .object(Set.selections)),
         ]
       }
 

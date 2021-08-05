@@ -1,5 +1,5 @@
 //
-//  ImageCacheService.swift
+//  ImageService.swift
 //  pocket.gg
 //
 //  Created by Gabriel Siu on 2020-02-15.
@@ -16,12 +16,63 @@ enum Cache {
     case tournamentsByTO
 }
 
-final class ImageCacheService {
+final class ImageService {
     private static let cache = NSCache<NSString, UIImage>()
     private static let viewAllTournamentsCache = NSCache<NSString, UIImage>()
     private static let tournamentSearchResultsCache = NSCache<NSString, UIImage>()
     private static let profileTournamentsCache = NSCache<NSString, UIImage>()
     private static let tournamentsByTOCache = NSCache<NSString, UIImage>()
+    
+    static func getImage(imageUrl: String?, cache: Cache = .regular, newSize: CGSize? = nil, complete: @escaping (_ image: UIImage?) -> Void) {
+        guard let imageUrl = imageUrl else {
+            complete(nil)
+            return
+        }
+        if let cachedImage = getCachedImage(with: imageUrl, cache: cache) {
+            complete(cachedImage)
+            return
+        } else {
+            guard !imageUrl.isEmpty else {
+                complete(nil)
+                return
+            }
+            guard let url = URL(string: imageUrl) else {
+                complete(nil)
+                return
+            }
+            URLSession.shared.dataTask(with: url) { (data, _, error) in
+                guard error == nil else {
+                    complete(nil)
+                    return
+                }
+                guard let data = data else {
+                    complete(nil)
+                    return
+                }
+                guard let image = UIImage(data: data) else {
+                    complete(nil)
+                    return
+                }
+                
+                let finalImage: UIImage
+                if let newSize = newSize {
+                    if newSize.width.isZero && newSize.height.isZero {
+                        finalImage = image
+                    } else if newSize.width.isZero {
+                        finalImage = image.resize(toHeight: newSize.height)
+                    } else if newSize.height.isZero {
+                        finalImage = image.resize(toWidth: newSize.width)
+                    } else {
+                        finalImage = image.resize(toSize: newSize)
+                    }
+                } else {
+                    finalImage = image
+                }
+                saveImageToCache(image: finalImage, with: imageUrl, cache: cache)
+                complete(finalImage)
+            }.resume()
+        }
+    }
     
     static func getCachedImage(with key: String, cache: Cache = .regular) -> UIImage? {
         switch cache {

@@ -26,6 +26,8 @@ final class MainVC: UITableViewController {
     var numSections: Int {
         return numTopSections + preferredGames.count
     }
+    var countryCode: String
+    var addrState: String
     
     /// Determines whether the VC should reload the list of tournaments to reflect a settings change
     /// - Initialized to false
@@ -47,8 +49,21 @@ final class MainVC: UITableViewController {
         showPinned = UserDefaults.standard.bool(forKey: k.UserDefaults.showPinnedTournaments)
         showFeatured = UserDefaults.standard.bool(forKey: k.UserDefaults.featuredTournaments)
         showUpcoming = UserDefaults.standard.bool(forKey: k.UserDefaults.upcomingTournaments)
+        if UserDefaults.standard.bool(forKey: k.UserDefaults.useSpecificCountry),
+           let country = UserDefaults.standard.string(forKey: k.UserDefaults.selectedCountry), !country.isEmpty,
+           let code = country.components(separatedBy: ["(", ")"])[safe: 1] {
+            countryCode = code
+        } else {
+            countryCode = ""
+        }
+        if UserDefaults.standard.bool(forKey: k.UserDefaults.useSpecificState),
+           let state = UserDefaults.standard.string(forKey: k.UserDefaults.selectedState), !state.isEmpty,
+           let code = state.components(separatedBy: ["(", ")"])[safe: 1] {
+            addrState = code
+        } else {
+            addrState = ""
+        }
         shouldReloadTournaments = false
-        
         super.init(style: .grouped)
     }
     
@@ -82,7 +97,7 @@ final class MainVC: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ImageCacheService.clearCache(.viewAllTournaments)
+        ImageService.clearCache(.viewAllTournaments)
         
         if shouldReloadTournaments {
             shouldReloadTournaments = false
@@ -116,6 +131,20 @@ final class MainVC: UITableViewController {
         showPinned = UserDefaults.standard.bool(forKey: k.UserDefaults.showPinnedTournaments)
         showFeatured = UserDefaults.standard.bool(forKey: k.UserDefaults.featuredTournaments)
         showUpcoming = UserDefaults.standard.bool(forKey: k.UserDefaults.upcomingTournaments)
+        if UserDefaults.standard.bool(forKey: k.UserDefaults.useSpecificCountry),
+           let country = UserDefaults.standard.string(forKey: k.UserDefaults.selectedCountry), !country.isEmpty,
+           let code = country.components(separatedBy: ["(", ")"])[safe: 1] {
+            countryCode = code
+        } else {
+            countryCode = ""
+        }
+        if UserDefaults.standard.bool(forKey: k.UserDefaults.useSpecificState),
+           let state = UserDefaults.standard.string(forKey: k.UserDefaults.selectedState), !state.isEmpty,
+           let code = state.components(separatedBy: ["(", ")"])[safe: 1] {
+            addrState = code
+        } else {
+            addrState = ""
+        }
         
         preferredGames = PreferredGamesService.getEnabledGames()
         doneRequest = [Bool](repeating: false, count: numSections)
@@ -146,11 +175,15 @@ final class MainVC: UITableViewController {
         for i in startSectionIndex..<numSections {
             let featured = showFeatured && i == startSectionIndex
             let gameIDs = i < topSectionsEndIndex ? gameIDs : [gameIDs[i - topSectionsEndIndex]]
-            NetworkService.getTournamentsByVideogames(perPage: numTournamentsToLoad,
+            
+            let info = GetTournamentsByVideogamesInfo(perPage: numTournamentsToLoad,
                                                       pageNum: 1,
+                                                      gameIDs: gameIDs,
                                                       featured: featured,
                                                       upcoming: true,
-                                                      gameIDs: gameIDs) { [weak self] (tournaments) in
+                                                      countryCode: featured ? "" : countryCode,
+                                                      addrState: featured ? "" : addrState)
+            NetworkService.getTournamentsByVideogames(info) { [weak self] (tournaments) in
                 guard let tournaments = tournaments else {
                     self?.doneRequest[i] = true
                     self?.requestSuccessful[i] = false
@@ -205,6 +238,10 @@ final class MainVC: UITableViewController {
     
     @objc private func scheduleTournamentsReload() {
         shouldReloadTournaments = true
+    }
+    
+    @objc private func editPinnedTournaments() {
+        present(UINavigationController(rootViewController: EditPinnedTournamentsVC()), animated: true, completion: nil)
     }
     
     // MARK: - Table View Data Source
@@ -402,16 +439,9 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     @objc private func viewAllTournaments(sender: UIButton) {
         let section = sender.tag
         let gameIDs = section < numTopSections ? preferredGames.map { $0.id } : [preferredGames.map({ $0.id })[section - numTopSections]]
-        let info = GetTournamentsByVideogamesInfo(perPage: numTournamentsToLoad,
-                                                  featured: section == 0,
-                                                  gameIDs: gameIDs)
-        navigationController?.pushViewController(ViewAllTournamentsVC(tournaments[section],
-                                                                      info: info,
-                                                                      title: sectionHeaderTitle(for: section)), animated: true)
-    }
-    
-    @objc private func editPinnedTournaments() {
-        let editPinnedTournamentsVC = EditPinnedTournamentsVC()
-        present(UINavigationController(rootViewController: editPinnedTournamentsVC), animated: true, completion: nil)
+        navigationController?.pushViewController(ViewAllTournamentsVC(tournaments[section], perPage: numTournamentsToLoad,
+                                                                      featured: section == 0, gameIDs: gameIDs,
+                                                                      title: sectionHeaderTitle(for: section),
+                                                                      countryCode: countryCode, addrState: addrState), animated: true)
     }
 }

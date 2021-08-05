@@ -34,7 +34,7 @@ final class TournamentLocationCell: UITableViewCell {
         setupCell()
         
         let imageKey = isPortrait ? imageKeyPortrait : imageKeyLandscape
-        if let image = ImageCacheService.getCachedImage(with: imageKey) {
+        if let image = ImageService.getCachedImage(with: imageKey) {
             mapPreviewImageView.image = image
         } else {
             getMapPreviews()
@@ -81,9 +81,9 @@ final class TournamentLocationCell: UITableViewCell {
             let image = self.addPinToImage(size: options.size, snapshot: snapshot, coordinates: coordinates)
             
             if self.isPortrait {
-                ImageCacheService.saveImageToCache(image: image, with: self.imageKeyPortrait)
+                ImageService.saveImageToCache(image: image, with: self.imageKeyPortrait)
             } else {
-                ImageCacheService.saveImageToCache(image: image, with: self.imageKeyLandscape)
+                ImageService.saveImageToCache(image: image, with: self.imageKeyLandscape)
             }
 
             self.mapPreviewImageView.image = image
@@ -103,9 +103,9 @@ final class TournamentLocationCell: UITableViewCell {
             let image = self.addPinToImage(size: options2.size, snapshot: snapshot, coordinates: coordinates)
             
             if self.isPortrait {
-                ImageCacheService.saveImageToCache(image: image, with: self.imageKeyLandscape)
+                ImageService.saveImageToCache(image: image, with: self.imageKeyLandscape)
             } else {
-                ImageCacheService.saveImageToCache(image: image, with: self.imageKeyPortrait)
+                ImageService.saveImageToCache(image: image, with: self.imageKeyPortrait)
             }
         }
     }
@@ -131,7 +131,7 @@ final class TournamentLocationCell: UITableViewCell {
     
     func updateImageForOrientation() {
         let imageKey = isPortrait ? imageKeyLandscape : imageKeyPortrait
-        if let image = ImageCacheService.getCachedImage(with: imageKey) {
+        if let image = ImageService.getCachedImage(with: imageKey) {
             mapPreviewImageView.image = image
         }
     }

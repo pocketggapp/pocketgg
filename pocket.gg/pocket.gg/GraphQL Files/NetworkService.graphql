@@ -4,7 +4,7 @@ query AuthTokenTest {
     }
 }
 
-query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID], $featured: Boolean, $upcoming: Boolean) {
+query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID], $featured: Boolean, $upcoming: Boolean, $countryCode: String, $addrState: String) {
     tournaments(query: {
         perPage: $perPage
         page: $pageNum
@@ -13,6 +13,8 @@ query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID],
             upcoming: $upcoming
             videogameIds: $videogameIds
             isFeatured: $featured
+            countryCode: $countryCode
+            addrState: $addrState
         }
     }) {
         nodes {
@@ -30,7 +32,7 @@ query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID],
     }
 }
 
-query SearchForTournaments($search: String, $videogameIds: [ID], $featured: Boolean, $sortBy: String, $perPage: Int, $page: Int) {
+query SearchForTournaments($search: String, $videogameIds: [ID], $featured: Boolean, $sortBy: String, $perPage: Int, $page: Int, $countryCode: String) {
     tournaments(query: {
         perPage: $perPage
         page: $page
@@ -39,6 +41,7 @@ query SearchForTournaments($search: String, $videogameIds: [ID], $featured: Bool
             name: $search
             videogameIds: $videogameIds
             isFeatured: $featured
+            countryCode: $countryCode
         }
     }) {
         nodes {
@@ -187,7 +190,7 @@ query PhaseGroup($id: ID) {
                 }
             }
         }
-        sets(page: 1, perPage: 100) {
+        sets(page: 1, perPage: 90) {
             nodes {
                 id
                 state
@@ -233,7 +236,7 @@ query PhaseGroupStandingsPage($id: ID, $page: Int) {
 
 query PhaseGroupSetsPage($id: ID, $page: Int) {
     phaseGroup(id: $id) {
-        sets(page: $page, perPage: 100) {
+        sets(page: $page, perPage: 90) {
             nodes {
                 id
                 state

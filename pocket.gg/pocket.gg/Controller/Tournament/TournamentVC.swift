@@ -79,7 +79,7 @@ final class TournamentVC: UITableViewController {
     
     private func setupHeaderImageView() {
         let maxLength = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
-        NetworkService.getImage(imageUrl: tournament.headerImage?.url, newSize: CGSize(width: maxLength, height: .zero)) { [weak self] (result) in
+        ImageService.getImage(imageUrl: tournament.headerImage?.url, newSize: CGSize(width: maxLength, height: .zero)) { [weak self] (result) in
             guard let result = result else { return }
             
             DispatchQueue.main.async {

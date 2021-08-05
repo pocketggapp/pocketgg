@@ -88,6 +88,7 @@ struct Constants {
         static let authTokenDate = "authTokenDate"
         static let firebaseEnabled = "firebaseEnabled"
         
+        static let mainVCSections = "mainVCSections"
         static let pinnedTournaments = "pinnedTournaments"
         static let showPinnedTournaments = "showPinnedTournaments"
         static let featuredTournaments = "featuredTournaments"
@@ -101,6 +102,10 @@ struct Constants {
         static let searchUsingEnabledGames = "searchUsingEnabledGames"
         static let recentSearches = "recentSearches"
         
+        static let useSpecificCountry = "useSpecificCountry"
+        static let useSpecificState = "useSpecificState"
+        static let selectedCountry = "selectedCountry"
+        static let selectedState = "selectedState"
         static let alternateAppIconUsed = "alternateAppIconUsed"
     }
     

@@ -16,6 +16,7 @@ final class SettingsVC: UITableViewController {
     var featuredCell = UITableViewCell()
     var upcomingCell = UITableViewCell()
     var videoGameSelectionCell = UITableViewCell()
+    var locationCell = UITableViewCell()
     var authTokenCell = UITableViewCell()
     var appIconCell = UITableViewCell()
     var firebaseCell = UITableViewCell()
@@ -67,6 +68,9 @@ final class SettingsVC: UITableViewController {
         
         videoGameSelectionCell.accessoryType = .disclosureIndicator
         videoGameSelectionCell.textLabel?.text = "Video Game Selection"
+        
+        locationCell.accessoryType = .disclosureIndicator
+        locationCell.textLabel?.text = "Location"
         
         authTokenCell.accessoryType = .disclosureIndicator
         authTokenCell.textLabel?.text = "Auth Token"
@@ -123,13 +127,13 @@ final class SettingsVC: UITableViewController {
     // MARK: - Table View Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 3
-        case 1, 2, 3, 4, 5: return 1
+        case 1, 2, 3, 4, 5, 6: return 1
         default: return 0
         }
     }
@@ -144,10 +148,11 @@ final class SettingsVC: UITableViewController {
             default: return UITableViewCell()
             }
         case 1: return videoGameSelectionCell
-        case 2: return appIconCell
-        case 3: return authTokenCell
-        case 4: return firebaseCell
-        case 5: return aboutCell
+        case 2: return locationCell
+        case 3: return appIconCell
+        case 4: return authTokenCell
+        case 5: return firebaseCell
+        case 6: return aboutCell
         default: return UITableViewCell()
         }
     }
@@ -163,13 +168,17 @@ final class SettingsVC: UITableViewController {
         // TODO: Finalize wording
         case 0: return "Enable/Disable these to show/hide the various sections on the main screen"
         case 1: return "Only tournaments that feature events with at least 1 of the video games selected here will show up on the main screen"
-        case 3:
+        case 2: return """
+        Choose a location to only load tournaments in the specified country/state. \
+        The Featured Tournaments section and tournament search function are not affected by the chosen location.
+        """
+        case 4:
             if let date = authTokenDate {
                 return "Auth Token entered on " + date
             } else {
                 return "No auth token present"
             }
-        case 4:
+        case 5:
             return """
             Enables anonymous crash reporting & analytics for pocket.gg. This greatly helps for debugging app crashes or other issues, \
             such as potential errors when generating a tournament event bracket view.
@@ -181,9 +190,10 @@ final class SettingsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1: navigationController?.pushViewController(VideoGamesVC(), animated: true)
-        case 2: navigationController?.pushViewController(AppIconVC(), animated: true)
-        case 3: navigationController?.pushViewController(AuthTokenSettingsVC(authTokenDate), animated: true)
-        case 5: navigationController?.pushViewController(AboutVC(style: .insetGrouped), animated: true)
+        case 2: navigationController?.pushViewController(LocationVC(), animated: true)
+        case 3: navigationController?.pushViewController(AppIconVC(), animated: true)
+        case 4: navigationController?.pushViewController(AuthTokenSettingsVC(authTokenDate), animated: true)
+        case 6: navigationController?.pushViewController(AboutVC(style: .insetGrouped), animated: true)
         default: return
         }
     }
