@@ -29,6 +29,7 @@ struct Constants {
         static let firebase = "https://github.com/firebase/firebase-ios-sdk"
         static let twitch = "https://www.twitch.tv/"
         
+        static let appStore = "https://apps.apple.com/app/id1576064097"
         static let twitter = "https://twitter.com/gabrielsiu_dev"
         static let privacyPolicy = "https://gabrielsiu.com/pocketgg"
     }

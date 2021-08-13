@@ -17,9 +17,10 @@ final class SettingsVC: UITableViewController {
     var upcomingCell = UITableViewCell()
     var videoGameSelectionCell = UITableViewCell()
     var locationCell = UITableViewCell()
-    var authTokenCell = UITableViewCell()
     var appIconCell = UITableViewCell()
+    var authTokenCell = UITableViewCell()
     var firebaseCell = UITableViewCell()
+    var rateCell = UITableViewCell()
     var aboutCell = UITableViewCell()
     
     let authTokenDate = UserDefaults.standard.string(forKey: k.UserDefaults.authTokenDate)
@@ -51,6 +52,7 @@ final class SettingsVC: UITableViewController {
         pinnedCell.accessoryView = pinnedSwitch
         pinnedCell.selectionStyle = .none
         pinnedCell.textLabel?.text = "Pinned"
+        pinnedCell.imageView?.image = UIImage(systemName: "pin.fill")
         
         let featuredSwitch = UISwitch()
         featuredSwitch.isOn = UserDefaults.standard.bool(forKey: k.UserDefaults.featuredTournaments)
@@ -58,6 +60,7 @@ final class SettingsVC: UITableViewController {
         featuredCell.accessoryView = featuredSwitch
         featuredCell.selectionStyle = .none
         featuredCell.textLabel?.text = "Featured"
+        featuredCell.imageView?.image = UIImage(systemName: "star.fill")
         
         let upcomingSwitch = UISwitch()
         upcomingSwitch.isOn = UserDefaults.standard.bool(forKey: k.UserDefaults.upcomingTournaments)
@@ -65,18 +68,23 @@ final class SettingsVC: UITableViewController {
         upcomingCell.accessoryView = upcomingSwitch
         upcomingCell.selectionStyle = .none
         upcomingCell.textLabel?.text = "Upcoming"
+        upcomingCell.imageView?.image = UIImage(systemName: "hourglass")
         
         videoGameSelectionCell.accessoryType = .disclosureIndicator
         videoGameSelectionCell.textLabel?.text = "Video Game Selection"
+        videoGameSelectionCell.imageView?.image = UIImage(systemName: "gamecontroller.fill")
         
         locationCell.accessoryType = .disclosureIndicator
         locationCell.textLabel?.text = "Location"
-        
-        authTokenCell.accessoryType = .disclosureIndicator
-        authTokenCell.textLabel?.text = "Auth Token"
+        locationCell.imageView?.image = UIImage(systemName: "location.fill")
         
         appIconCell.accessoryType = .disclosureIndicator
         appIconCell.textLabel?.text = "App Icon"
+        appIconCell.imageView?.image = UIImage(systemName: "app.badge.fill")
+        
+        authTokenCell.accessoryType = .disclosureIndicator
+        authTokenCell.textLabel?.text = "Auth Token"
+        authTokenCell.imageView?.image = UIImage(systemName: "key.fill")
         
         let firebaseSwitch = UISwitch()
         firebaseSwitch.isOn = UserDefaults.standard.bool(forKey: k.UserDefaults.firebaseEnabled)
@@ -84,9 +92,16 @@ final class SettingsVC: UITableViewController {
         firebaseCell.accessoryView = firebaseSwitch
         firebaseCell.selectionStyle = .none
         firebaseCell.textLabel?.text = "Crash Reporting & Analytics"
+        firebaseCell.textLabel?.numberOfLines = 0
+        firebaseCell.imageView?.image = UIImage(systemName: "ant.fill")
+        
+        rateCell.accessoryType = .disclosureIndicator
+        rateCell.textLabel?.text = "Rate pocket.gg"
+        rateCell.imageView?.image = UIImage(systemName: "heart.fill")
         
         aboutCell.accessoryType = .disclosureIndicator
         aboutCell.textLabel?.text = "About"
+        aboutCell.imageView?.image = UIImage(systemName: "info.circle.fill")
     }
     
     // MARK: - Actions
@@ -133,7 +148,8 @@ final class SettingsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 3
-        case 1, 2, 3, 4, 5, 6: return 1
+        case 1, 2, 3, 4, 5: return 1
+        case 6: return 2
         default: return 0
         }
     }
@@ -145,16 +161,23 @@ final class SettingsVC: UITableViewController {
             case 0: return pinnedCell
             case 1: return featuredCell
             case 2: return upcomingCell
-            default: return UITableViewCell()
+            default: break
             }
         case 1: return videoGameSelectionCell
         case 2: return locationCell
         case 3: return appIconCell
         case 4: return authTokenCell
         case 5: return firebaseCell
-        case 6: return aboutCell
-        default: return UITableViewCell()
+        case 6:
+            switch indexPath.row {
+            case 0: return rateCell
+            case 1: return aboutCell
+            default: break
+            }
+            return aboutCell
+        default: break
         }
+        return UITableViewCell()
     }
     
     // MARK: - Table View Delegate
@@ -193,7 +216,21 @@ final class SettingsVC: UITableViewController {
         case 2: navigationController?.pushViewController(LocationVC(), animated: true)
         case 3: navigationController?.pushViewController(AppIconVC(), animated: true)
         case 4: navigationController?.pushViewController(AuthTokenSettingsVC(authTokenDate), animated: true)
-        case 6: navigationController?.pushViewController(AboutVC(style: .insetGrouped), animated: true)
+        case 6:
+            switch indexPath.row {
+            case 0:
+                guard let url = URL(string: k.URL.appStore) else {
+                    tableView.deselectRow(at: indexPath, animated: true)
+                    return
+                }
+                var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                components?.queryItems = [URLQueryItem(name: "action", value: "write-review")]
+                guard let writeReviewURL = components?.url else { return }
+                UIApplication.shared.open(writeReviewURL)
+                tableView.deselectRow(at: indexPath, animated: true)
+            case 1: navigationController?.pushViewController(AboutVC(style: .insetGrouped), animated: true)
+            default: tableView.deselectRow(at: indexPath, animated: true)
+            }
         default: return
         }
     }

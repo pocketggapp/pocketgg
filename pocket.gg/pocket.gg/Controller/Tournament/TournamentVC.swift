@@ -28,6 +28,8 @@ final class TournamentVC: UITableViewController {
     
     var lastRefreshTime: Date?
     
+    var IDs: TournamentIDs
+    
     // MARK: - Initialization
     
     init(_ tournament: Tournament, cacheForLogo: Cache) {
@@ -36,6 +38,7 @@ final class TournamentVC: UITableViewController {
         generalInfoCell = TournamentGeneralInfoCell(tournament, cacheForLogo: cacheForLogo)
         tournamentIsPinned = PinnedTournamentsService.tournamentIsPinned(tournament.id ?? -1)
         pinnedStatusChanged = false
+        IDs = TournamentIDs(tournamentID: tournament.id, eventID: nil, phaseID: nil, phaseGroupID: nil, singularPhaseGroupID: nil)
         super.init(style: .grouped)
     }
     
@@ -154,7 +157,7 @@ final class TournamentVC: UITableViewController {
     
     @objc private func displayTournamentOptions() {
         let vc = TournamentOptionsVC(pinned: tournamentIsPinned, pinnedLimitReached: PinnedTournamentsService.numPinnedTournaments >= 10,
-                                     name: tournament.ownerName, prefix: tournament.ownerPrefix)
+                                     slug: tournament.slug, name: tournament.ownerName, prefix: tournament.ownerPrefix)
         vc.tournamentWasPinned = { [weak self] in
             self?.togglePinnedTournament()
         }
@@ -391,7 +394,13 @@ final class TournamentVC: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard !tournamentIsOnline else { return UITableView.automaticDimension }
         guard doneRequest, requestSuccessful else { return UITableView.automaticDimension }
-        return indexPath.section == 3 && indexPath.row == 0 ? k.Sizes.mapHeight : UITableView.automaticDimension
+        if indexPath.section == 3 && indexPath.row == 0 {
+            guard tournament.id != nil, tournament.location?.latitude != nil, tournament.location?.longitude != nil else {
+                return UITableView.automaticDimension
+            }
+            return k.Sizes.mapHeight
+        }
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -401,7 +410,7 @@ final class TournamentVC: UITableViewController {
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
-            navigationController?.pushViewController(EventVC(event), animated: true)
+            navigationController?.pushViewController(EventVC(event, IDs: IDs), animated: true)
             
         case 2:
             presentStreamAlert(indexPath)

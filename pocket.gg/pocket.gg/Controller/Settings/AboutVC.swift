@@ -58,6 +58,7 @@ final class AboutVC: UITableViewController {
             let cell = UITableViewCell()
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.text = "smash.gg GraphQL API"
+            cell.imageView?.image = UIImage(systemName: "server.rack")
             return cell
         case 2:
             let cell = UITableViewCell()
@@ -65,13 +66,15 @@ final class AboutVC: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Support"
-                cell.imageView?.image = UIImage(named: "icon-mail")
+                cell.imageView?.image = UIImage(systemName: "envelope")
+                cell.imageView?.tintColor = .systemOrange
                 cell.imageView?.layer.masksToBounds = true
                 cell.imageView?.layer.cornerRadius = k.Sizes.cornerRadius
                 return cell
             case 1:
-                cell.textLabel?.text = "@gabrielsiu_dev"
-                cell.imageView?.image = UIImage(named: "icon-twitter")
+                cell.textLabel?.text = "Twitter"
+                cell.imageView?.image = UIImage(systemName: "at.circle")
+                cell.imageView?.tintColor = .systemTeal
                 cell.imageView?.layer.masksToBounds = true
                 cell.imageView?.layer.cornerRadius = k.Sizes.cornerRadius
                 return cell
@@ -83,12 +86,18 @@ final class AboutVC: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Apollo iOS"
+                cell.imageView?.image = UIImage(systemName: "a.circle")
+                cell.imageView?.tintColor = .systemPurple
                 return cell
             case 1:
                 cell.textLabel?.text = "GRDB"
+                cell.imageView?.image = UIImage(systemName: "square.stack.3d.up.fill")
+                cell.imageView?.tintColor = .systemTeal
                 return cell
             case 2:
                 cell.textLabel?.text = "Firebase"
+                cell.imageView?.image = UIImage(systemName: "flame.fill")
+                cell.imageView?.tintColor = .systemOrange
                 return cell
             default: break
             }
@@ -96,6 +105,8 @@ final class AboutVC: UITableViewController {
             let cell = UITableViewCell()
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.text = "Privacy Policy"
+            cell.imageView?.image = UIImage(systemName: "hand.raised.fill")
+            cell.imageView?.tintColor = .systemBlue
             return cell
         default: break
         }

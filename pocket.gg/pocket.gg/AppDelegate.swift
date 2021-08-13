@@ -66,21 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dbQueue = try VideoGameDatabase.openDatabase(atPath: finalDatabasePath)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let sendingAppID = options[.sourceApplication]
-        print("source application = \(sendingAppID ?? "Unknown")")
-        
-        // Process the URL.
-        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
-            let albumPath = components.path,
-            let params = components.queryItems else {
-                print("Invalid URL or album path missing")
-                return false
-        }
-        
-        return true
-    }
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

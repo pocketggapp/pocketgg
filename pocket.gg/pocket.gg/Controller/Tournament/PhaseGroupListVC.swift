@@ -15,11 +15,15 @@ final class PhaseGroupListVC: UITableViewController {
     var requestSuccessful = true
     
     var lastRefreshTime: Date?
+    
+    var IDs: TournamentIDs
 
     // MARK: - Initialization
     
-    init(phase: Phase) {
+    init(phase: Phase, IDs: TournamentIDs) {
         self.phase = phase
+        self.IDs = IDs
+        self.IDs.phaseID = phase.id
         super.init(style: .insetGrouped)
     }
     
@@ -151,6 +155,6 @@ final class PhaseGroupListVC: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }
-        navigationController?.pushViewController(PhaseGroupVC(phaseGroup, title: "Pool " + (phaseGroup.name ?? "")), animated: true)
+        navigationController?.pushViewController(PhaseGroupVC(phaseGroup, title: "Pool " + (phaseGroup.name ?? ""), IDs: IDs), animated: true)
     }
 }

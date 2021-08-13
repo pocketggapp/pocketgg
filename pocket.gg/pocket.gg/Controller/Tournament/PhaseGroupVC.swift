@@ -25,11 +25,16 @@ final class PhaseGroupVC: UIViewController {
     let bracketViewSpinner: UIActivityIndicatorView
     let refreshPhaseGroupView: RefreshPhaseGroupView
     
+    var IDs: TournamentIDs
+    
     // MARK: - Initialization
     
-    init(_ phaseGroup: PhaseGroup?, _ phaseID: Int? = nil, title: String?) {
+    init(_ phaseGroup: PhaseGroup?, _ phaseID: Int? = nil, title: String?, IDs: TournamentIDs) {
         self.phaseGroup = phaseGroup
         self.phaseID = phaseID
+        self.IDs = IDs
+        self.IDs.phaseGroupID = phaseGroup?.id
+        self.IDs.singularPhaseGroupID = phaseID
         
         phaseGroupViewControl = UISegmentedControl(items: ["Standings", "Matches", "Bracket"])
         phaseGroupViewControl.selectedSegmentIndex = 0
@@ -330,7 +335,7 @@ final class PhaseGroupVC: UIViewController {
     
     private func showInvalidBracketView(cause: InvalidBracketViewCause, bracketType: String? = nil) {
         if cause == .bracketLayoutError {
-            FirebaseService.reportPhaseGroup(phaseID != nil ? phaseID : phaseGroup?.id)
+            FirebaseService.reportPhaseGroup(IDs)
         }
         bracketViewSpinner.isHidden = true
         invalidBracketView = InvalidBracketView(cause: cause, bracketType: bracketType)

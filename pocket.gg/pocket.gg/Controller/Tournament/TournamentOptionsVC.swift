@@ -12,6 +12,7 @@ final class TournamentOptionsVC: UITableViewController {
 
     let pinned: Bool
     let pinnedLimitReached: Bool
+    let tournamentSlug: String?
     let tournamentOrganizerName: String?
     let tournamentOrganizerPrefix: String?
     
@@ -20,9 +21,10 @@ final class TournamentOptionsVC: UITableViewController {
     
     // MARK: - Initialization
     
-    init(pinned: Bool, pinnedLimitReached: Bool, name: String?, prefix: String?) {
+    init(pinned: Bool, pinnedLimitReached: Bool, slug: String?, name: String?, prefix: String?) {
         self.pinned = pinned
         self.pinnedLimitReached = pinnedLimitReached
+        self.tournamentSlug = slug
         self.tournamentOrganizerName = name
         self.tournamentOrganizerPrefix = prefix
         super.init(style: .insetGrouped)
@@ -49,16 +51,16 @@ final class TournamentOptionsVC: UITableViewController {
     // MARK: - Table View Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 { return 1 }
-        return 2
+        if section == 2 { return 2 }
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard section == 1 else { return nil }
+        guard section == 2 else { return nil }
         return "Tournament Organizer"
     }
     
@@ -84,6 +86,15 @@ final class TournamentOptionsVC: UITableViewController {
             
             return cell
         case 1:
+            let cell = UITableViewCell()
+            cell.imageView?.image = UIImage(systemName: "square.and.arrow.up")
+            cell.textLabel?.text = "Share this tournament"
+            cell.textLabel?.textColor = .systemRed
+            cell.isUserInteractionEnabled = tournamentSlug != nil
+            cell.imageView?.tintColor = tournamentSlug != nil ? .systemRed : .systemGray
+            cell.textLabel?.isEnabled = tournamentSlug != nil
+            return cell
+        case 2:
             switch indexPath.row {
             case 0:
                 let cell = UITableViewCell()
@@ -114,7 +125,12 @@ final class TournamentOptionsVC: UITableViewController {
             dismiss(animated: true) { tournamentWasPinned() }
             return
         }
-        if indexPath.section == 1, indexPath.row == 1, let moreTournamentsByTO = moreTournamentsByTO {
+        if indexPath.section == 1 {
+            guard let slug = tournamentSlug, let url = URL(string: "https://smash.gg/\(slug)") else { return }
+            let ac = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            present(ac, animated: true)
+        }
+        if indexPath.section == 2, indexPath.row == 1, let moreTournamentsByTO = moreTournamentsByTO {
             dismiss(animated: true) { moreTournamentsByTO() }
             return
         }

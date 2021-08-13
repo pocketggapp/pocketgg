@@ -32,7 +32,6 @@
 		DA266131265C89A100ACEA8D /* AuthTokenStepsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA266130265C89A100ACEA8D /* AuthTokenStepsVC.swift */; };
 		DA2939CA23E7CAF400E5DB3A /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2939C923E7CAF400E5DB3A /* Tournament.swift */; };
 		DA2939D223E7D1D800E5DB3A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2939D123E7D1D800E5DB3A /* NetworkService.swift */; };
-		DA2939E623E7E42800E5DB3A /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2939E523E7E42800E5DB3A /* NetworkServiceTests.swift */; };
 		DA2D5F2B256B389000C44EEC /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = DA2D5F2A256B389000C44EEC /* Apollo */; };
 		DA2D5F31256B678300C44EEC /* ApolloService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D5F30256B678300C44EEC /* ApolloService.swift */; };
 		DA2E80A52659A91500B876F1 /* ViewAllTournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E80A42659A91500B876F1 /* ViewAllTournamentsVC.swift */; };
@@ -150,8 +149,6 @@
 		DA2939C923E7CAF400E5DB3A /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		DA2939D123E7D1D800E5DB3A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DA2939DB23E7E35B00E5DB3A /* pocket.ggTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pocket.ggTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA2939DF23E7E35B00E5DB3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA2939E523E7E42800E5DB3A /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		DA2D5F30256B678300C44EEC /* ApolloService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloService.swift; sourceTree = "<group>"; };
 		DA2E80A42659A91500B876F1 /* ViewAllTournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAllTournamentsVC.swift; sourceTree = "<group>"; };
 		DA2E80A82659A95900B876F1 /* TournamentSearchResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchResultsVC.swift; sourceTree = "<group>"; };
@@ -331,15 +328,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		DA2939DC23E7E35B00E5DB3A /* pocket.ggTests */ = {
-			isa = PBXGroup;
-			children = (
-				DA2939E523E7E42800E5DB3A /* NetworkServiceTests.swift */,
-				DA2939DF23E7E35B00E5DB3A /* Info.plist */,
-			);
-			path = pocket.ggTests;
-			sourceTree = "<group>";
-		};
 		DA4055BC26A877FF00A465FE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				DA7E519C23E46EAB0037E757 /* pocket.gg */,
-				DA2939DC23E7E35B00E5DB3A /* pocket.ggTests */,
 				DA7E519B23E46EAB0037E757 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -705,7 +692,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA2939E623E7E42800E5DB3A /* NetworkServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

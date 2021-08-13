@@ -17,10 +17,14 @@ final class EventVC: UITableViewController {
     
     var lastRefreshTime: Date?
     
+    var IDs: TournamentIDs
+    
     // MARK: - Initialization
     
-    init(_ event: Event) {
+    init(_ event: Event, IDs: TournamentIDs) {
         self.event = event
+        self.IDs = IDs
+        self.IDs.eventID = event.id
         super.init(style: .insetGrouped)
     }
     
@@ -243,10 +247,10 @@ final class EventVC: UITableViewController {
             let numPhaseGroups = phase.numPhaseGroups ?? 1
             if numPhaseGroups > 1 {
                 // If there are multiple phase groups, then proceed to PhaseGroupListViewController as normal
-                navigationController?.pushViewController(PhaseGroupListVC(phase: phase), animated: true)
+                navigationController?.pushViewController(PhaseGroupListVC(phase: phase, IDs: IDs), animated: true)
             } else if numPhaseGroups == 1 {
                 // If there is only 1 phase group, jump straight to PhaseGroupVC. The singular phase group's ID will be obtained using the phase's ID
-                navigationController?.pushViewController(PhaseGroupVC(nil, phase.id ?? nil, title: phase.name), animated: true)
+                navigationController?.pushViewController(PhaseGroupVC(nil, phase.id ?? nil, title: phase.name, IDs: IDs), animated: true)
             } else {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
