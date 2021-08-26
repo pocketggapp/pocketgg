@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let tabBarController = UITabBarController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -47,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                          UINavigationController(rootViewController: TournamentSearchVC()),
                          UINavigationController(rootViewController: ProfileVC()),
                          UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]
-        let tabBarController = UITabBarController()
+        
         tabBarController.viewControllers = tabBarVCs.enumerated().map({ (index, navController) -> UINavigationController in
             navController.navigationBar.prefersLargeTitles = true
             navController.tabBarItem = tabBarItems[index]
@@ -57,6 +58,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        
+        if let url = connectionOptions.urlContexts.first?.url {
+            loadTournamentFromDeeplink(url: url, retryNum: 0)
+        }
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        loadTournamentFromDeeplink(url: URLContexts.first?.url, retryNum: 0)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -85,5 +94,45 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+    
+    private func loadTournamentFromDeeplink(url: URL?, retryNum: Int) {
+        guard let url = url, let range = url.absoluteString.range(of: "pocketgg://") else {
+            presentErrorAlert("Unable to load smash.gg deeplink")
+            return
+        }
+        
+        let slug = String(url.absoluteString[url.absoluteString.index(range.upperBound, offsetBy: 0)...])
+        NetworkService.getTournamentBySlug(slug) { [weak self] tournament, error in
+            if let error = error {
+                // This network call has a tendency to fail sometimes; retry the network call up to a few times if this happens
+                if retryNum < 3 {
+                    self?.loadTournamentFromDeeplink(url: url, retryNum: retryNum + 1)
+                    return
+                }
+                
+                // TODO: Implement error handling for all network calls
+                let alert = UIAlertController(title: k.Error.title, message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+                    self?.loadTournamentFromDeeplink(url: url, retryNum: 3)
+                }))
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                self?.tabBarController.selectedViewController?.present(alert, animated: true)
+                return
+            }
+            guard let tournament = tournament else {
+                self?.presentErrorAlert("No tournament found with this slug: \(slug)")
+                return
+            }
+            
+            let navViewController = self?.tabBarController.selectedViewController as? UINavigationController
+            navViewController?.pushViewController(TournamentVC(tournament, cacheForLogo: .viewAllTournaments), animated: true)
+        }
+    }
+    
+    private func presentErrorAlert(_ message: String) {
+        let alert = UIAlertController(title: k.Error.title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        tabBarController.selectedViewController?.present(alert, animated: true)
     }
 }

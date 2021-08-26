@@ -59,6 +59,22 @@ query SearchForTournaments($search: String, $videogameIds: [ID], $featured: Bool
     }
 }
 
+query TournamentBySlug($slug: String) {
+    tournament(slug: $slug) {
+        id
+        name
+        startAt
+        endAt
+        venueAddress
+        isOnline
+        images {
+            url
+            type
+            ratio
+        }
+    }
+}
+
 query TournamentDetails($id: ID) {
     tournament(id: $id) {
         venueName

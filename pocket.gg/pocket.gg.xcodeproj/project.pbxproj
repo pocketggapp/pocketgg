@@ -39,6 +39,10 @@
 		DA33C2EE26AE275E00363E70 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33C2ED26AE275E00363E70 /* ProfileCell.swift */; };
 		DA33C2F026AE576B00363E70 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33C2EF26AE576B00363E70 /* ProfileService.swift */; };
 		DA33C2F226AE58D100363E70 /* ProfileTournamentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33C2F126AE58D100363E70 /* ProfileTournamentsVC.swift */; };
+		DA36034626D5992C00C1AB23 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA36034526D5992C00C1AB23 /* Media.xcassets */; };
+		DA36034826D5992C00C1AB23 /* SmashGGDeeplinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36034726D5992C00C1AB23 /* SmashGGDeeplinkVC.swift */; };
+		DA36034F26D5992C00C1AB23 /* SmashGGDeeplink.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DA36034326D5992C00C1AB23 /* SmashGGDeeplink.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DA36035726D6CD1900C1AB23 /* NavigationControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36035626D6CD1900C1AB23 /* NavigationControllerVC.swift */; };
 		DA395A4B265ABE43008086EB /* TournamentSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA395A4A265ABE43008086EB /* TournamentSearchVC.swift */; };
 		DA3FE2C2263DFBC000593504 /* ScrollableRowItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3FE2C1263DFBC000593504 /* ScrollableRowItemCell.swift */; };
 		DA4055BF26A8784800A465FE /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4055BE26A8784800A465FE /* ProfileVC.swift */; };
@@ -120,7 +124,28 @@
 			remoteGlobalIDString = DA7E519923E46EAB0037E757;
 			remoteInfo = pocket.gg;
 		};
+		DA36034D26D5992C00C1AB23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA7E519223E46EAB0037E757 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA36034226D5992C00C1AB23;
+			remoteInfo = SmashGGDeeplink;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA36035326D5992C00C1AB23 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DA36034F26D5992C00C1AB23 /* SmashGGDeeplink.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA04E3A7242726F400AB2EF0 /* UITableViewCells+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCells+Create.swift"; sourceTree = "<group>"; };
@@ -155,6 +180,11 @@
 		DA33C2ED26AE275E00363E70 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		DA33C2EF26AE576B00363E70 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		DA33C2F126AE58D100363E70 /* ProfileTournamentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTournamentsVC.swift; sourceTree = "<group>"; };
+		DA36034326D5992C00C1AB23 /* SmashGGDeeplink.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SmashGGDeeplink.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA36034526D5992C00C1AB23 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		DA36034726D5992C00C1AB23 /* SmashGGDeeplinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmashGGDeeplinkVC.swift; sourceTree = "<group>"; };
+		DA36034C26D5992C00C1AB23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA36035626D6CD1900C1AB23 /* NavigationControllerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerVC.swift; sourceTree = "<group>"; };
 		DA395A4A265ABE43008086EB /* TournamentSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchVC.swift; sourceTree = "<group>"; };
 		DA3FE2C1263DFBC000593504 /* ScrollableRowItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableRowItemCell.swift; sourceTree = "<group>"; };
 		DA4055BE26A8784800A465FE /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -229,6 +259,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		DA2939D823E7E35B00E5DB3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA36034026D5992C00C1AB23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,6 +365,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		DA36034426D5992C00C1AB23 /* SmashGGDeeplink */ = {
+			isa = PBXGroup;
+			children = (
+				DA36034526D5992C00C1AB23 /* Media.xcassets */,
+				DA36034726D5992C00C1AB23 /* SmashGGDeeplinkVC.swift */,
+				DA36035626D6CD1900C1AB23 /* NavigationControllerVC.swift */,
+				DA36034C26D5992C00C1AB23 /* Info.plist */,
+			);
+			path = SmashGGDeeplink;
+			sourceTree = "<group>";
+		};
 		DA4055BC26A877FF00A465FE /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7E519C23E46EAB0037E757 /* pocket.gg */,
+				DA36034426D5992C00C1AB23 /* SmashGGDeeplink */,
 				DA7E519B23E46EAB0037E757 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -429,6 +478,7 @@
 			children = (
 				DA7E519A23E46EAB0037E757 /* pocket.gg.app */,
 				DA2939DB23E7E35B00E5DB3A /* pocket.ggTests.xctest */,
+				DA36034326D5992C00C1AB23 /* SmashGGDeeplink.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -522,6 +572,23 @@
 			productReference = DA2939DB23E7E35B00E5DB3A /* pocket.ggTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DA36034226D5992C00C1AB23 /* SmashGGDeeplink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA36035026D5992C00C1AB23 /* Build configuration list for PBXNativeTarget "SmashGGDeeplink" */;
+			buildPhases = (
+				DA36033F26D5992C00C1AB23 /* Sources */,
+				DA36034026D5992C00C1AB23 /* Frameworks */,
+				DA36034126D5992C00C1AB23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmashGGDeeplink;
+			productName = SmashGGDeeplink;
+			productReference = DA36034326D5992C00C1AB23 /* SmashGGDeeplink.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DA7E519923E46EAB0037E757 /* pocket.gg */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA7E51AE23E46EAC0037E757 /* Build configuration list for PBXNativeTarget "pocket.gg" */;
@@ -532,10 +599,12 @@
 				DA7E519723E46EAB0037E757 /* Frameworks */,
 				DA7E519823E46EAB0037E757 /* Resources */,
 				DAA15BA326A3D76400C39446 /* Upload Firebase Crashlytics Debug Symbols */,
+				DA36035326D5992C00C1AB23 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DA36034E26D5992C00C1AB23 /* PBXTargetDependency */,
 			);
 			name = pocket.gg;
 			packageProductDependencies = (
@@ -554,13 +623,16 @@
 		DA7E519223E46EAB0037E757 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Gabriel Siu";
 				TargetAttributes = {
 					DA2939DA23E7E35B00E5DB3A = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = DA7E519923E46EAB0037E757;
+					};
+					DA36034226D5992C00C1AB23 = {
+						CreatedOnToolsVersion = 12.5.1;
 					};
 					DA7E519923E46EAB0037E757 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -587,6 +659,7 @@
 			targets = (
 				DA7E519923E46EAB0037E757 /* pocket.gg */,
 				DA2939DA23E7E35B00E5DB3A /* pocket.ggTests */,
+				DA36034226D5992C00C1AB23 /* SmashGGDeeplink */,
 			);
 		};
 /* End PBXProject section */
@@ -596,6 +669,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA36034126D5992C00C1AB23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA36034626D5992C00C1AB23 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +776,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DA36033F26D5992C00C1AB23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA36035726D6CD1900C1AB23 /* NavigationControllerVC.swift in Sources */,
+				DA36034826D5992C00C1AB23 /* SmashGGDeeplinkVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA7E519623E46EAB0037E757 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -789,6 +879,11 @@
 			target = DA7E519923E46EAB0037E757 /* pocket.gg */;
 			targetProxy = DA2939E023E7E35B00E5DB3A /* PBXContainerItemProxy */;
 		};
+		DA36034E26D5992C00C1AB23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA36034226D5992C00C1AB23 /* SmashGGDeeplink */;
+			targetProxy = DA36034D26D5992C00C1AB23 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -840,6 +935,48 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pocket.gg.app/pocket.gg";
+			};
+			name = Release;
+		};
+		DA36035126D5992C00C1AB23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIconExtension-iOS";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5HY9QQ8RU;
+				INFOPLIST_FILE = SmashGGDeeplink/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.SmashGGDeeplink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA36035226D5992C00C1AB23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIconExtension-iOS";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5HY9QQ8RU;
+				INFOPLIST_FILE = SmashGGDeeplink/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.SmashGGDeeplink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -964,6 +1101,7 @@
 		DA7E51AF23E46EAC0037E757 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -986,6 +1124,7 @@
 		DA7E51B023E46EAC0037E757 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1012,6 +1151,15 @@
 			buildConfigurations = (
 				DA2939E323E7E35B00E5DB3A /* Debug */,
 				DA2939E423E7E35B00E5DB3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA36035026D5992C00C1AB23 /* Build configuration list for PBXNativeTarget "SmashGGDeeplink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA36035126D5992C00C1AB23 /* Debug */,
+				DA36035226D5992C00C1AB23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

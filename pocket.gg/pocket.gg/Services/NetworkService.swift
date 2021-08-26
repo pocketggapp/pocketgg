@@ -55,7 +55,7 @@ final class NetworkService {
                         let end = DateFormatter.shared.dateFromTimestamp($0?.endAt)
                         let date = start == end ? start : "\(start) - \(end)"
                         
-                        // TODO: Refactor this and all similar logic to use "type" propert instead to distinguish between profile and banner images
+                        // TODO: Refactor this and all similar logic to use "type" property instead to distinguish between profile and banner images
                         let logo = $0?.images?.reduce(("", 10), { (smallestImage, image) -> (String, Double) in
                             guard let url = image?.url else { return smallestImage }
                             guard let ratio = image?.ratio else { return smallestImage }
@@ -131,6 +131,47 @@ final class NetworkService {
                     }
                 }
                 DispatchQueue.main.async { complete(tournaments) }
+            }
+        }
+    }
+    
+    static func getTournamentBySlug(_ slug: String, complete: @escaping (_ tournament: Tournament?, _ error: Error?) -> Void) {
+        ApolloService.shared.client.fetch(query: TournamentBySlugQuery(slug: slug),
+                                          cachePolicy: .fetchIgnoringCacheCompletely,
+                                          queue: .global(qos: .utility)) { (result) in
+            switch result {
+            case .failure(let error):
+                debugPrint(k.Error.apolloFetch, error as Any)
+                DispatchQueue.main.async { complete(nil, error) }
+                return
+                
+            case .success(let graphQLResult):
+                guard let tournament = graphQLResult.data?.tournament else {
+                    DispatchQueue.main.async { complete(nil, nil) }
+                    return
+                }
+                
+                let start = DateFormatter.shared.dateFromTimestamp(tournament.startAt)
+                let end = DateFormatter.shared.dateFromTimestamp(tournament.endAt)
+                let date = start == end ? start : "\(start) - \(end)"
+                
+                let logoURL = tournament.images?.first(where: { $0?.type ?? "" == "profile" })??.url
+                let header = tournament.images?.reduce(("", 1), { (widestImage, image) -> (String, Double) in
+                    guard let url = image?.url else { return widestImage }
+                    guard let ratio = image?.ratio else { return widestImage }
+                    if ratio > widestImage.1 { return (url, ratio) }
+                    return widestImage
+                })
+                
+                DispatchQueue.main.async {
+                    complete(Tournament(id: Int(tournament.id ?? "nil"),
+                                        name: tournament.name,
+                                        date: date,
+                                        logoUrl: logoURL,
+                                        isOnline: tournament.isOnline,
+                                        location: Location(address: tournament.venueAddress),
+                                        headerImage: header), nil)
+                }
             }
         }
     }
