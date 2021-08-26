@@ -17,6 +17,7 @@ final class TournamentOptionsVC: UITableViewController {
     let tournamentOrganizerPrefix: String?
     
     var tournamentWasPinned: (() -> Void)?
+    var shareButtonPressed: (() -> Void)?
     var moreTournamentsByTO: (() -> Void)?
     
     // MARK: - Initialization
@@ -125,10 +126,9 @@ final class TournamentOptionsVC: UITableViewController {
             dismiss(animated: true) { tournamentWasPinned() }
             return
         }
-        if indexPath.section == 1 {
-            guard let slug = tournamentSlug, let url = URL(string: "https://smash.gg/\(slug)") else { return }
-            let ac = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            present(ac, animated: true)
+        if indexPath.section == 1, let shareButtonPressed = shareButtonPressed {
+            dismiss(animated: true) { shareButtonPressed() }
+            return
         }
         if indexPath.section == 2, indexPath.row == 1, let moreTournamentsByTO = moreTournamentsByTO {
             dismiss(animated: true) { moreTournamentsByTO() }

@@ -161,6 +161,11 @@ final class TournamentVC: UITableViewController {
         vc.tournamentWasPinned = { [weak self] in
             self?.togglePinnedTournament()
         }
+        vc.shareButtonPressed = { [weak self] in
+            guard let slug = self?.tournament.slug, let url = URL(string: "https://smash.gg/\(slug)") else { return }
+            let ac = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            self?.present(ac, animated: true)
+        }
         vc.moreTournamentsByTO = { [weak self] in
             var title = ""
             if let ownerPrefix = self?.tournament.ownerPrefix {

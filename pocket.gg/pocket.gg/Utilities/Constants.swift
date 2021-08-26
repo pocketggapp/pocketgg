@@ -132,6 +132,9 @@ struct Constants {
         Unfortunately, the search function provided by the smash.gg API treats each individual word in the search term as a separate search term. \
         For example, if you search for "On The Grind", the smash.gg API will return all tournaments whose names contain "On", "The", or "Grind". \
         To mitigate this, try using fewer, more unique terms when searching.
+        
+        Alternatively, you can use your device's web browser to find the desired tournament on smash.gg, tap the Share button, \
+        then tap "Open in pocket.gg" to open the tournament page in this app.
         """
     }
     
