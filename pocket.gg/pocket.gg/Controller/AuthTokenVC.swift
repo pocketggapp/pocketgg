@@ -138,26 +138,7 @@ final class AuthTokenVC: UIViewController {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                 guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
                 guard let window = sceneDelegate.window else { return }
-                
-                let tabBarItems = [UITabBarItem(title: "Tournaments", image: UIImage(named: "tournament"), tag: 0),
-                                   UITabBarItem(title: "Following", image: UIImage(systemName: "person.3.fill"), tag: 1),
-                                   UITabBarItem(tabBarSystemItem: .search, tag: 2),
-                                   UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3),
-                                   UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 4)]
-                let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
-                                 UINavigationController(rootViewController: FollowingVC()),
-                                 UINavigationController(rootViewController: TournamentSearchVC()),
-                                 UINavigationController(rootViewController: ProfileVC()),
-                                 UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]
-                let tabBarController = UITabBarController()
-                tabBarController.viewControllers = tabBarVCs.enumerated().map({ (index, navController) -> UINavigationController in
-                    navController.navigationBar.prefersLargeTitles = true
-                    navController.tabBarItem = tabBarItems[index]
-                    return navController
-                })
-                tabBarController.selectedIndex = 0
-                
-                window.rootViewController = tabBarController
+                window.rootViewController = MainTabBarControllerService.initTabBarController()
                 window.makeKeyAndVisible()
             } else {
                 UserDefaults.standard.removeObject(forKey: k.UserDefaults.authToken)

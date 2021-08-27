@@ -102,6 +102,7 @@
 		DAC290F2251B854F003D05B9 /* AuthTokenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */; };
 		DAC4257A26503C0600F523CC /* TournamentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4257926503C0600F523CC /* TournamentListVC.swift */; };
 		DACC4AD523E81990004A8CF3 /* NetworkService.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA92DF1623E812350084FEB1 /* NetworkService.graphql */; };
+		DAD09B5526D80B23001E53DE /* MainTabBarControllerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD09B5426D80B23001E53DE /* MainTabBarControllerService.swift */; };
 		DADBE41524074A38005B707F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBE41424074A38005B707F /* AboutVC.swift */; };
 		DADBE41724074AC5005B707F /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBE41624074AC5005B707F /* AboutInfoCell.swift */; };
 		DADBE41924074BB7005B707F /* VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBE41824074BB7005B707F /* VideoGame.swift */; };
@@ -243,6 +244,7 @@
 		DABECAF026B8AA9C00F6D170 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenVC.swift; sourceTree = "<group>"; };
 		DAC4257926503C0600F523CC /* TournamentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentListVC.swift; sourceTree = "<group>"; };
+		DAD09B5426D80B23001E53DE /* MainTabBarControllerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerService.swift; sourceTree = "<group>"; };
 		DADBE41424074A38005B707F /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		DADBE41624074AC5005B707F /* AboutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInfoCell.swift; sourceTree = "<group>"; };
 		DADBE41824074BB7005B707F /* VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGame.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				DAA59C182676DC3000A27B43 /* PinnedTournamentsService.swift */,
 				DA80062D2698DD8E003FD3F7 /* FirebaseService.swift */,
 				DAADCDB426B4B0A6009B46B3 /* TOFollowedService.swift */,
+				DAD09B5426D80B23001E53DE /* MainTabBarControllerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				DA80062E2698DD8E003FD3F7 /* FirebaseService.swift in Sources */,
 				DA64A2FD241DF1AA00481280 /* EventVC.swift in Sources */,
 				DADBE41524074A38005B707F /* AboutVC.swift in Sources */,
+				DAD09B5526D80B23001E53DE /* MainTabBarControllerService.swift in Sources */,
 				DA68B6B5257EB3BE00A010F3 /* RoundRobinBracketView.swift in Sources */,
 				DAC290F2251B854F003D05B9 /* AuthTokenVC.swift in Sources */,
 				DA33C2F226AE58D100363E70 /* ProfileTournamentsVC.swift in Sources */,
@@ -943,6 +947,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIconExtension-iOS";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				INFOPLIST_FILE = SmashGGDeeplink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -951,6 +956,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.SmashGGDeeplink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -964,6 +970,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIconExtension-iOS";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				INFOPLIST_FILE = SmashGGDeeplink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -972,6 +979,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.SmashGGDeeplink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1104,7 +1112,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				INFOPLIST_FILE = pocket.gg/Info.plist;
@@ -1127,7 +1135,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				INFOPLIST_FILE = pocket.gg/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -54,7 +54,6 @@ final class SmashGGDeeplinkVC: UIViewController {
                     } else {
                         slug = trimmedURL
                     }
-                    print(slug)
                     return String(slug)
                 case "league":
                     showErrorMessage("Leagues are currently not supported in pocket.gg")

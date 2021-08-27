@@ -11,7 +11,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let tabBarController = UITabBarController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -38,25 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        let tabBarItems = [UITabBarItem(title: "Tournaments", image: UIImage(named: "tournament"), tag: 0),
-                           UITabBarItem(title: "Following", image: UIImage(systemName: "person.3.fill"), tag: 1),
-                           UITabBarItem(tabBarSystemItem: .search, tag: 2),
-                           UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 3),
-                           UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 4)]
-        let tabBarVCs = [UINavigationController(rootViewController: MainVC(style: .grouped)),
-                         UINavigationController(rootViewController: FollowingVC()),
-                         UINavigationController(rootViewController: TournamentSearchVC()),
-                         UINavigationController(rootViewController: ProfileVC()),
-                         UINavigationController(rootViewController: SettingsVC(style: .insetGrouped))]
-        
-        tabBarController.viewControllers = tabBarVCs.enumerated().map({ (index, navController) -> UINavigationController in
-            navController.navigationBar.prefersLargeTitles = true
-            navController.tabBarItem = tabBarItems[index]
-            return navController
-        })
-        tabBarController.selectedIndex = 0
-        
-        window?.rootViewController = tabBarController
+        window?.rootViewController = MainTabBarControllerService.initTabBarController()
         window?.makeKeyAndVisible()
         
         if let url = connectionOptions.urlContexts.first?.url {
@@ -98,7 +79,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func loadTournamentFromDeeplink(url: URL?, retryNum: Int) {
         guard let url = url, let range = url.absoluteString.range(of: "pocketgg://") else {
-            presentErrorAlert("Unable to load smash.gg deeplink")
+            MainTabBarControllerService.presentErrorAlert("Unable to load smash.gg deeplink")
             return
         }
         
@@ -117,22 +98,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     self?.loadTournamentFromDeeplink(url: url, retryNum: 3)
                 }))
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-                self?.tabBarController.selectedViewController?.present(alert, animated: true)
+                MainTabBarControllerService.presentAlertController(alert)
                 return
             }
             guard let tournament = tournament else {
-                self?.presentErrorAlert("No tournament found with this slug: \(slug)")
+                MainTabBarControllerService.presentErrorAlert("No tournament found with this slug: \(slug)")
                 return
             }
             
-            let navViewController = self?.tabBarController.selectedViewController as? UINavigationController
-            navViewController?.pushViewController(TournamentVC(tournament, cacheForLogo: .viewAllTournaments), animated: true)
+            MainTabBarControllerService.pushNewTournamentVC(tournament)
         }
-    }
-    
-    private func presentErrorAlert(_ message: String) {
-        let alert = UIAlertController(title: k.Error.title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-        tabBarController.selectedViewController?.present(alert, animated: true)
     }
 }

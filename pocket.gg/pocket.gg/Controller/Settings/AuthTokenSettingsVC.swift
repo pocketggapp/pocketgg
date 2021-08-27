@@ -86,6 +86,7 @@ final class AuthTokenSettingsVC: UITableViewController {
                 
                 window.rootViewController = AuthTokenVC()
                 window.makeKeyAndVisible()
+                MainTabBarControllerService.deinitTabBarController()
             }))
             // Make the presentation a popover for iPads
             alert.modalPresentationStyle = .popover
