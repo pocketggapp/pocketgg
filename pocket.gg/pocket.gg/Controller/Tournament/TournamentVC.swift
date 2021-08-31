@@ -107,7 +107,7 @@ final class TournamentVC: UITableViewController {
             tableView.reloadData()
             return
         }
-        NetworkService.getTournamentDetails(id) { [weak self] (result) in
+        TournamentDetailsService.getTournamentDetails(id) { [weak self] (result) in
             guard let result = result else {
                 self?.doneRequest = true
                 self?.requestSuccessful = false

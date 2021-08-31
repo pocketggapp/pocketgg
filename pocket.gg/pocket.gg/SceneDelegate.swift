@@ -84,7 +84,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let slug = String(url.absoluteString[url.absoluteString.index(range.upperBound, offsetBy: 0)...])
-        NetworkService.getTournamentBySlug(slug) { [weak self] tournament, error in
+        TournamentInfoService.getTournamentBySlug(slug) { [weak self] tournament, error in
             if let error = error {
                 // This network call has a tendency to fail sometimes; retry the network call up to a few times if this happens
                 if retryNum < 3 {

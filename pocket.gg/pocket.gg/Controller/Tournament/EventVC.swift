@@ -51,7 +51,7 @@ final class EventVC: UITableViewController {
             tableView.reloadData()
             return
         }
-        NetworkService.getEvent(id) { [weak self] (result) in
+        TournamentDetailsService.getEvent(id) { [weak self] (result) in
             guard let result = result else {
                 self?.doneRequest = true
                 self?.requestSuccessful = false

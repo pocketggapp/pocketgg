@@ -50,7 +50,7 @@ final class ViewAllTournamentsVC: TournamentListVC {
                                                   upcoming: true,
                                                   countryCode: countryCode,
                                                   addrState: addrState)
-        NetworkService.getTournamentsByVideogames(info) { [weak self] (tournaments) in
+        TournamentInfoService.getTournamentsByVideogames(info) { [weak self] (tournaments) in
             guard let tournaments = tournaments else {
                 self?.doneRequest = true
                 self?.tableView.reloadData()

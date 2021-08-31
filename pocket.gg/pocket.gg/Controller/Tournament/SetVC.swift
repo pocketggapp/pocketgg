@@ -47,7 +47,7 @@ final class SetVC: UITableViewController {
             tableView.reloadData()
             return
         }
-        NetworkService.getPhaseGroupSetGames(id) { [weak self] (games) in
+        TournamentDetailsService.getPhaseGroupSetGames(id) { [weak self] (games) in
             guard let games = games else {
                 self?.doneRequest = true
                 self?.requestSuccessful = false

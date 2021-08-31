@@ -52,7 +52,7 @@ final class StandingsVC: UITableViewController {
         currentStandingsPage += 1
         doneRequest = false
         
-        NetworkService.getEventStandings(id, page: currentStandingsPage) { [weak self] standings in
+        TournamentDetailsService.getEventStandings(id, page: currentStandingsPage) { [weak self] standings in
             guard let standings = standings else {
                 self?.doneRequest = true
                 self?.refreshControl?.endRefreshing()

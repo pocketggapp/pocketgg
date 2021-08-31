@@ -4,6 +4,32 @@ query AuthTokenTest {
     }
 }
 
+query FeaturedTournaments($perPage: Int, $pageNum: Int, $videogameIds: [ID]) {
+    tournaments(query: {
+        perPage: $perPage
+        page: $pageNum
+        sortBy: "startAt asc"
+        filter: {
+            videogameIds: $videogameIds
+            staffPicks: true
+        }
+    }) {
+        nodes {
+            id
+            name
+            startAt
+            endAt
+            venueAddress
+            isOnline
+            images {
+                url
+                type
+                ratio
+            }
+        }
+    }
+}
+
 query TournamentsByVideogames($perPage: Int, $pageNum: Int, $videogameIds: [ID], $featured: Boolean, $upcoming: Boolean, $countryCode: String, $addrState: String) {
     tournaments(query: {
         perPage: $perPage
@@ -122,6 +148,9 @@ query TournamentDetails($id: ID) {
                 prefix
                 gamerTag
             }
+        }
+        admins {
+            id
         }
     }
 }

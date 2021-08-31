@@ -51,7 +51,7 @@ final class PhaseGroupListVC: UITableViewController {
             return
         }
         
-        NetworkService.getPhaseGroups(id, numPhaseGroups: phase.numPhaseGroups ?? 90) { [weak self] (result) in
+        TournamentDetailsService.getPhaseGroups(id, numPhaseGroups: phase.numPhaseGroups ?? 90) { [weak self] (result) in
             guard let result = result else {
                 self?.doneRequest = true
                 self?.requestSuccessful = false

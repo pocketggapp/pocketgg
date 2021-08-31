@@ -124,7 +124,7 @@ final class PhaseGroupVC: UIViewController {
     private func getPhaseGroup(_ complete: @escaping () -> Void) {
         guard let id = phaseID else { return }
         
-        NetworkService.getPhaseGroups(id, numPhaseGroups: 1) { [weak self] (result) in
+        TournamentDetailsService.getPhaseGroups(id, numPhaseGroups: 1) { [weak self] (result) in
             guard let result = result, !result.isEmpty else {
                 complete()
                 return
@@ -145,7 +145,7 @@ final class PhaseGroupVC: UIViewController {
             return
         }
         
-        NetworkService.getPhaseGroup(id) { [weak self] (result) in
+        TournamentDetailsService.getPhaseGroup(id) { [weak self] (result) in
             guard let result = result else {
                 self?.doneRequest = true
                 self?.requestSuccessful = false
@@ -202,7 +202,7 @@ final class PhaseGroupVC: UIViewController {
         if let page = standingsPage {
             // Upper limit to prevent potential infinite recursive calls
             if page < 6 {
-                NetworkService.getPhaseGroupStandings(id, page: page) { [weak self] (standings) in
+                TournamentDetailsService.getPhaseGroupStandings(id, page: page) { [weak self] (standings) in
                     guard let standings = standings, !standings.isEmpty else {
                         dispatchGroup.leave()
                         return
@@ -221,7 +221,7 @@ final class PhaseGroupVC: UIViewController {
         if let page = setsPage {
             // Upper limit to prevent potential infinite recursive calls
             if page < 6 {
-                NetworkService.getPhaseGroupSets(id, page: page) { [weak self] (sets) in
+                TournamentDetailsService.getPhaseGroupSets(id, page: page) { [weak self] (sets) in
                     guard let sets = sets, !sets.isEmpty else {
                         dispatchGroup.leave()
                         return

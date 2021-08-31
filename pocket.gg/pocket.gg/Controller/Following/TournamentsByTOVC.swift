@@ -90,7 +90,7 @@ final class TournamentsByTOVC: TournamentListVC {
         currentTournamentsPage += 1
         doneRequest = false
         
-        NetworkService.getTournamentsByTO(id: id, page: currentTournamentsPage, perPage: numTournamentsToLoad) { [weak self] (tournaments) in
+        TournamentDetailsService.getTournamentsByTO(id: id, page: currentTournamentsPage, perPage: numTournamentsToLoad) { [weak self] (tournaments) in
             guard let tournaments = tournaments else {
                 self?.doneRequest = true
                 self?.tableView.reloadData()

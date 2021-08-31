@@ -183,7 +183,7 @@ final class MainVC: UITableViewController {
                                                       upcoming: true,
                                                       countryCode: featured ? "" : countryCode,
                                                       addrState: featured ? "" : addrState)
-            NetworkService.getTournamentsByVideogames(info) { [weak self] (tournaments) in
+            TournamentInfoService.getTournamentsByVideogames(info) { [weak self] (tournaments) in
                 guard let tournaments = tournaments else {
                     self?.doneRequest[i] = true
                     self?.requestSuccessful[i] = false

@@ -73,6 +73,8 @@
 		DA6CBE6A24303D1E006DB38F /* VideoGameDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6CBE6924303D1E006DB38F /* VideoGameDatabase.swift */; };
 		DA759E5B23E4FE5500D4B3E7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759E5A23E4FE5500D4B3E7 /* MainVC.swift */; };
 		DA770573268656C300BBD8CA /* SetUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA770572268656C300BBD8CA /* SetUtilities.swift */; };
+		DA7850AD26DDC99C00EB4DB2 /* TournamentDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7850AC26DDC99C00EB4DB2 /* TournamentDetailsService.swift */; };
+		DA7850AF26DDCD8600EB4DB2 /* TournamentInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7850AE26DDCD8600EB4DB2 /* TournamentInfoService.swift */; };
 		DA79A6312589AA7800651BB4 /* RoundRobinSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA79A6302589AA7800651BB4 /* RoundRobinSetCell.swift */; };
 		DA7AF00E24F59BAB009A00E2 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = DA7AF00D24F59BAB009A00E2 /* schema.json */; };
 		DA7AF01224F5B2DC009A00E2 /* Value1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7AF01124F5B2DC009A00E2 /* Value1Cell.swift */; };
@@ -215,6 +217,8 @@
 		DA6CBE6924303D1E006DB38F /* VideoGameDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGameDatabase.swift; sourceTree = "<group>"; };
 		DA759E5A23E4FE5500D4B3E7 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		DA770572268656C300BBD8CA /* SetUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUtilities.swift; sourceTree = "<group>"; };
+		DA7850AC26DDC99C00EB4DB2 /* TournamentDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentDetailsService.swift; sourceTree = "<group>"; };
+		DA7850AE26DDCD8600EB4DB2 /* TournamentInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentInfoService.swift; sourceTree = "<group>"; };
 		DA79A6302589AA7800651BB4 /* RoundRobinSetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinSetCell.swift; sourceTree = "<group>"; };
 		DA7AF00D24F59BAB009A00E2 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		DA7AF01124F5B2DC009A00E2 /* Value1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value1Cell.swift; sourceTree = "<group>"; };
@@ -354,9 +358,8 @@
 		DA2939D023E7D1C800E5DB3A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				DA961BA426DC47C7009BD7FA /* Network */,
 				DA2D5F30256B678300C44EEC /* ApolloService.swift */,
-				DA2939D123E7D1D800E5DB3A /* NetworkService.swift */,
-				DA33C2EF26AE576B00363E70 /* ProfileService.swift */,
 				DAF0BE50266C03FD000F7506 /* EntrantService.swift */,
 				DA83B1DD23F7B372002D06C1 /* ImageService.swift */,
 				DAECFB642647436000661EDA /* PreferredGamesService.swift */,
@@ -534,6 +537,17 @@
 				DA92DF1623E812350084FEB1 /* NetworkService.graphql */,
 			);
 			path = "GraphQL Files";
+			sourceTree = "<group>";
+		};
+		DA961BA426DC47C7009BD7FA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DA2939D123E7D1D800E5DB3A /* NetworkService.swift */,
+				DA7850AE26DDCD8600EB4DB2 /* TournamentInfoService.swift */,
+				DA7850AC26DDC99C00EB4DB2 /* TournamentDetailsService.swift */,
+				DA33C2EF26AE576B00363E70 /* ProfileService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		DAADCDBA26B4B13F009B46B3 /* Search */ = {
@@ -824,6 +838,7 @@
 				DA51F6CE265E0551004D6EE5 /* AuthTokenSettingsVC.swift in Sources */,
 				DAA59C192676DC3000A27B43 /* PinnedTournamentsService.swift in Sources */,
 				DAEACF8F250AF53E002F0674 /* EliminationBracketView.swift in Sources */,
+				DA7850AF26DDCD8600EB4DB2 /* TournamentInfoService.swift in Sources */,
 				DA2939CA23E7CAF400E5DB3A /* Tournament.swift in Sources */,
 				DAF39622265F4D5C00FA9778 /* VideoGamesSearchResultsVC.swift in Sources */,
 				DA4055BF26A8784800A465FE /* ProfileVC.swift in Sources */,
@@ -840,6 +855,7 @@
 				DAADCDB726B4B0E4009B46B3 /* TournamentOrganizer.swift in Sources */,
 				DA81E8AC2693A28200C256D2 /* Standing.swift in Sources */,
 				DAEACF97250AF963002F0674 /* PhaseGroupSet.swift in Sources */,
+				DA7850AD26DDC99C00EB4DB2 /* TournamentDetailsService.swift in Sources */,
 				DA759E5B23E4FE5500D4B3E7 /* MainVC.swift in Sources */,
 				DAF2A20D256B345B00580AAB /* API.swift in Sources */,
 				DA1DD9C8263C479800A1B4A9 /* ScrollableRowCell.swift in Sources */,

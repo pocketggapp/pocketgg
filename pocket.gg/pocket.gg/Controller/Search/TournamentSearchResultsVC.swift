@@ -55,12 +55,12 @@ final class TournamentSearchResultsVC: TournamentListVC {
         currentSearchResultsPage += 1
         doneRequest = false
         
-        NetworkService.searchForTournaments(searchTerm,
-                                            gameIDs: preferredGameIDs,
-                                            featured: featured,
-                                            sortBy: sortBy,
-                                            perPage: numTournamentsToLoad,
-                                            page: currentSearchResultsPage) { [weak self] (tournaments) in
+        TournamentInfoService.searchForTournaments(searchTerm,
+                                                   gameIDs: preferredGameIDs,
+                                                   featured: featured,
+                                                   sortBy: sortBy,
+                                                   perPage: numTournamentsToLoad,
+                                                   page: currentSearchResultsPage) { [weak self] (tournaments) in
             guard let tournaments = tournaments else {
                 self?.doneRequest = true
                 self?.tableView.reloadData()
