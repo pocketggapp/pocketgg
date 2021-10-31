@@ -17,7 +17,8 @@ final class TournamentVC: UITableViewController {
     var locationCell: TournamentLocationCell?
     
     var tournament: Tournament
-    var doneRequest = false
+    var userIsAdmin = false
+    var doneRequest = true
     var requestSuccessful = true
     var tournamentIsOnline: Bool {
         return tournament.isOnline ?? true
@@ -100,6 +101,7 @@ final class TournamentVC: UITableViewController {
     }
     
     private func loadTournamentDetails() {
+        guard doneRequest else { return }
         guard let id = tournament.id else {
             doneRequest = true
             requestSuccessful = false
@@ -107,6 +109,7 @@ final class TournamentVC: UITableViewController {
             tableView.reloadData()
             return
         }
+        doneRequest = false
         TournamentDetailsService.getTournamentDetails(id) { [weak self] (result) in
             guard let result = result else {
                 self?.doneRequest = true
@@ -132,6 +135,7 @@ final class TournamentVC: UITableViewController {
             self?.tournament.ownerID = result["ownerID"] as? Int
             self?.tournament.ownerName = result["ownerName"] as? String
             self?.tournament.ownerPrefix = result["ownerPrefix"] as? String
+            self?.userIsAdmin = result["isAdmin"] as? Bool ?? false
             
             self?.doneRequest = true
             self?.requestSuccessful = true
@@ -156,8 +160,9 @@ final class TournamentVC: UITableViewController {
     }
     
     @objc private func displayTournamentOptions() {
+        guard doneRequest else { return }
         let vc = TournamentOptionsVC(pinned: tournamentIsPinned, pinnedLimitReached: PinnedTournamentsService.numPinnedTournaments >= 10,
-                                     slug: tournament.slug, name: tournament.ownerName, prefix: tournament.ownerPrefix)
+                                     isAdmin: userIsAdmin, slug: tournament.slug, name: tournament.ownerName, prefix: tournament.ownerPrefix)
         vc.tournamentWasPinned = { [weak self] in
             self?.togglePinnedTournament()
         }
@@ -176,6 +181,9 @@ final class TournamentVC: UITableViewController {
             }
             let vc = TournamentsByTOVC(id: self?.tournament.ownerID, name: self?.tournament.ownerName, prefix: self?.tournament.ownerPrefix)
             self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        vc.adminSettingsTapped = { [weak self] in
+            self?.navigationController?.pushViewController(AdminSettingsVC(self?.tournament.id), animated: true)
         }
         present(UINavigationController(rootViewController: vc), animated: true)
     }

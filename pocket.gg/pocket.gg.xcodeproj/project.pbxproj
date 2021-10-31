@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DA04E3A8242726F400AB2EF0 /* UITableViewCells+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04E3A7242726F400AB2EF0 /* UITableViewCells+Create.swift */; };
+		DA08E7F026DFFDF800DD3520 /* BracketSetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA08E7EF26DFFDF800DD3520 /* BracketSetupVC.swift */; };
+		DA08E7F226E035D000DD3520 /* AdminPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA08E7F126E035D000DD3520 /* AdminPhase.swift */; };
+		DA08E7F426E0564200DD3520 /* EditPhaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA08E7F326E0564200DD3520 /* EditPhaseVC.swift */; };
+		DA08E7F626E13C5400DD3520 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA08E7F526E13C5400DD3520 /* LoadingView.swift */; };
 		DA0C4CEC26818C1B004831EC /* SetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C4CEB26818C1B004831EC /* SetVC.swift */; };
 		DA0C4CF02683F6E3004831EC /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C4CEF2683F6E2004831EC /* SetCell.swift */; };
 		DA0E5D55255773B600FF6E42 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E5D54255773B600FF6E42 /* SetView.swift */; };
@@ -93,6 +97,9 @@
 		DA83B1DE23F7B372002D06C1 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA83B1DD23F7B372002D06C1 /* ImageService.swift */; };
 		DA86242626630A8E00FD0A9C /* TournamentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA86242526630A8E00FD0A9C /* TournamentListCell.swift */; };
 		DA9429AA24F1CF19002595AF /* videoGame.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DA9429A924F1CF19002595AF /* videoGame.sqlite */; };
+		DAA364F726DEC49100F1BFC6 /* AdminSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA364F626DEC49100F1BFC6 /* AdminSettingsVC.swift */; };
+		DAA364F926DECBC900F1BFC6 /* EventListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA364F826DECBC900F1BFC6 /* EventListVC.swift */; };
+		DAA364FB26DEE30500F1BFC6 /* AdminEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA364FA26DEE30500F1BFC6 /* AdminEvent.swift */; };
 		DAA59C192676DC3000A27B43 /* PinnedTournamentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA59C182676DC3000A27B43 /* PinnedTournamentsService.swift */; };
 		DAADCDB026B37C0E009B46B3 /* TournamentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */; };
 		DAADCDB326B4A6C1009B46B3 /* FollowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAADCDB226B4A6C1009B46B3 /* FollowingVC.swift */; };
@@ -104,6 +111,8 @@
 		DAC290F2251B854F003D05B9 /* AuthTokenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */; };
 		DAC4257A26503C0600F523CC /* TournamentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4257926503C0600F523CC /* TournamentListVC.swift */; };
 		DACC4AD523E81990004A8CF3 /* NetworkService.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA92DF1623E812350084FEB1 /* NetworkService.graphql */; };
+		DAD0185826DE8F73004EF40A /* Mutations.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DAD0185726DE8F73004EF40A /* Mutations.graphql */; };
+		DAD0185A26DE8FD9004EF40A /* TournamentMutationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0185926DE8FD9004EF40A /* TournamentMutationsService.swift */; };
 		DAD09B5526D80B23001E53DE /* MainTabBarControllerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD09B5426D80B23001E53DE /* MainTabBarControllerService.swift */; };
 		DADBE41524074A38005B707F /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBE41424074A38005B707F /* AboutVC.swift */; };
 		DADBE41724074AC5005B707F /* AboutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBE41624074AC5005B707F /* AboutInfoCell.swift */; };
@@ -152,6 +161,10 @@
 
 /* Begin PBXFileReference section */
 		DA04E3A7242726F400AB2EF0 /* UITableViewCells+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCells+Create.swift"; sourceTree = "<group>"; };
+		DA08E7EF26DFFDF800DD3520 /* BracketSetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketSetupVC.swift; sourceTree = "<group>"; };
+		DA08E7F126E035D000DD3520 /* AdminPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPhase.swift; sourceTree = "<group>"; };
+		DA08E7F326E0564200DD3520 /* EditPhaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhaseVC.swift; sourceTree = "<group>"; };
+		DA08E7F526E13C5400DD3520 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA0C4CEB26818C1B004831EC /* SetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVC.swift; sourceTree = "<group>"; };
 		DA0C4CEF2683F6E2004831EC /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
 		DA0E5D54255773B600FF6E42 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
@@ -238,6 +251,9 @@
 		DA86242526630A8E00FD0A9C /* TournamentListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentListCell.swift; sourceTree = "<group>"; };
 		DA92DF1623E812350084FEB1 /* NetworkService.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NetworkService.graphql; sourceTree = "<group>"; };
 		DA9429A924F1CF19002595AF /* videoGame.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoGame.sqlite; sourceTree = "<group>"; };
+		DAA364F626DEC49100F1BFC6 /* AdminSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSettingsVC.swift; sourceTree = "<group>"; };
+		DAA364F826DECBC900F1BFC6 /* EventListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListVC.swift; sourceTree = "<group>"; };
+		DAA364FA26DEE30500F1BFC6 /* AdminEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminEvent.swift; sourceTree = "<group>"; };
 		DAA59C182676DC3000A27B43 /* PinnedTournamentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedTournamentsService.swift; sourceTree = "<group>"; };
 		DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentOptionsVC.swift; sourceTree = "<group>"; };
 		DAADCDB226B4A6C1009B46B3 /* FollowingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingVC.swift; sourceTree = "<group>"; };
@@ -248,6 +264,8 @@
 		DABECAF026B8AA9C00F6D170 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenVC.swift; sourceTree = "<group>"; };
 		DAC4257926503C0600F523CC /* TournamentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentListVC.swift; sourceTree = "<group>"; };
+		DAD0185726DE8F73004EF40A /* Mutations.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Mutations.graphql; sourceTree = "<group>"; };
+		DAD0185926DE8FD9004EF40A /* TournamentMutationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentMutationsService.swift; sourceTree = "<group>"; };
 		DAD09B5426D80B23001E53DE /* MainTabBarControllerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerService.swift; sourceTree = "<group>"; };
 		DADBE41424074A38005B707F /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		DADBE41624074AC5005B707F /* AboutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInfoCell.swift; sourceTree = "<group>"; };
@@ -292,6 +310,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA08E7FF26E318BC00DD3520 /* Bracket Setup */ = {
+			isa = PBXGroup;
+			children = (
+				DAA364F626DEC49100F1BFC6 /* AdminSettingsVC.swift */,
+				DAA364F826DECBC900F1BFC6 /* EventListVC.swift */,
+				DA08E7EF26DFFDF800DD3520 /* BracketSetupVC.swift */,
+				DA08E7F326E0564200DD3520 /* EditPhaseVC.swift */,
+			);
+			path = "Bracket Setup";
+			sourceTree = "<group>";
+		};
 		DA1C92862413780200E5BA96 /* Tournament */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +367,8 @@
 				DA4B496324FCC72000BE7E0E /* Stream.swift */,
 				DADBE41824074BB7005B707F /* VideoGame.swift */,
 				DAADCDB626B4B0E4009B46B3 /* TournamentOrganizer.swift */,
+				DAA364FA26DEE30500F1BFC6 /* AdminEvent.swift */,
+				DA08E7F126E035D000DD3520 /* AdminPhase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -425,6 +456,7 @@
 				DA7AF01724F5E53C009A00E2 /* PhaseGroupListVC.swift */,
 				DA7AF02A24F71A83009A00E2 /* PhaseGroupVC.swift */,
 				DA0C4CEB26818C1B004831EC /* SetVC.swift */,
+				DAA364F526DEC46700F1BFC6 /* Admin */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -454,6 +486,7 @@
 				DA3FE2C1263DFBC000593504 /* ScrollableRowItemCell.swift */,
 				DA86242526630A8E00FD0A9C /* TournamentListCell.swift */,
 				DA33C2ED26AE275E00363E70 /* ProfileCell.swift */,
+				DA08E7F526E13C5400DD3520 /* LoadingView.swift */,
 				DA1C92862413780200E5BA96 /* Tournament */,
 				DA7AF02324F6EC74009A00E2 /* Reusable Cells */,
 			);
@@ -535,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				DA92DF1623E812350084FEB1 /* NetworkService.graphql */,
+				DAD0185726DE8F73004EF40A /* Mutations.graphql */,
 			);
 			path = "GraphQL Files";
 			sourceTree = "<group>";
@@ -546,8 +580,17 @@
 				DA7850AE26DDCD8600EB4DB2 /* TournamentInfoService.swift */,
 				DA7850AC26DDC99C00EB4DB2 /* TournamentDetailsService.swift */,
 				DA33C2EF26AE576B00363E70 /* ProfileService.swift */,
+				DAD0185926DE8FD9004EF40A /* TournamentMutationsService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DAA364F526DEC46700F1BFC6 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				DA08E7FF26E318BC00DD3520 /* Bracket Setup */,
+			);
+			path = Admin;
 			sourceTree = "<group>";
 		};
 		DAADCDBA26B4B13F009B46B3 /* Search */ = {
@@ -716,6 +759,7 @@
 				DA234B1E269797A400E0E6C9 /* icon_alt_29pt@2x.png in Resources */,
 				DA234B22269797A400E0E6C9 /* icon_alt_40pt@3x.png in Resources */,
 				DA234B1D269797A400E0E6C9 /* icon_alt_83.5pt@2x.png in Resources */,
+				DAD0185826DE8F73004EF40A /* Mutations.graphql in Resources */,
 				DACC4AD523E81990004A8CF3 /* NetworkService.graphql in Resources */,
 				DA234B2A269797A400E0E6C9 /* icon_alt_60pt@2x.png in Resources */,
 				DA80063C2698FEFD003FD3F7 /* GoogleService-Info.plist in Resources */,
@@ -823,6 +867,7 @@
 				DA1C927F2413311D00E5BA96 /* UIView+Constraints.swift in Sources */,
 				DA266131265C89A100ACEA8D /* AuthTokenStepsVC.swift in Sources */,
 				DAF0BE57267032DA000F7506 /* SetIdentifierView.swift in Sources */,
+				DAD0185A26DE8FD9004EF40A /* TournamentMutationsService.swift in Sources */,
 				DA2E80A92659A95900B876F1 /* TournamentSearchResultsVC.swift in Sources */,
 				DA68B6C1257EB7CB00A010F3 /* BracketView.swift in Sources */,
 				DA80062E2698DD8E003FD3F7 /* FirebaseService.swift in Sources */,
@@ -834,6 +879,7 @@
 				DA33C2F226AE58D100363E70 /* ProfileTournamentsVC.swift in Sources */,
 				DA770573268656C300BBD8CA /* SetUtilities.swift in Sources */,
 				DA0C4CEC26818C1B004831EC /* SetVC.swift in Sources */,
+				DA08E7F226E035D000DD3520 /* AdminPhase.swift in Sources */,
 				DA7AF01824F5E53C009A00E2 /* PhaseGroupListVC.swift in Sources */,
 				DA51F6CE265E0551004D6EE5 /* AuthTokenSettingsVC.swift in Sources */,
 				DAA59C192676DC3000A27B43 /* PinnedTournamentsService.swift in Sources */,
@@ -844,6 +890,7 @@
 				DA4055BF26A8784800A465FE /* ProfileVC.swift in Sources */,
 				DA68B684257C9A6B00A010F3 /* SetPathView.swift in Sources */,
 				DADBE41724074AC5005B707F /* AboutInfoCell.swift in Sources */,
+				DAA364F726DEC49100F1BFC6 /* AdminSettingsVC.swift in Sources */,
 				DA637A8D23F5012B00268A85 /* VideoGamesVC.swift in Sources */,
 				DA1C9279241220AE00E5BA96 /* TournamentLocationCell.swift in Sources */,
 				DA64A2F0241B3FCA00481280 /* DateFormatter+FromTimestamp.swift in Sources */,
@@ -856,6 +903,7 @@
 				DA81E8AC2693A28200C256D2 /* Standing.swift in Sources */,
 				DAEACF97250AF963002F0674 /* PhaseGroupSet.swift in Sources */,
 				DA7850AD26DDC99C00EB4DB2 /* TournamentDetailsService.swift in Sources */,
+				DA08E7F626E13C5400DD3520 /* LoadingView.swift in Sources */,
 				DA759E5B23E4FE5500D4B3E7 /* MainVC.swift in Sources */,
 				DAF2A20D256B345B00580AAB /* API.swift in Sources */,
 				DA1DD9C8263C479800A1B4A9 /* ScrollableRowCell.swift in Sources */,
@@ -879,10 +927,14 @@
 				DA637A8B23F5010D00268A85 /* SettingsVC.swift in Sources */,
 				DAADCDB326B4A6C1009B46B3 /* FollowingVC.swift in Sources */,
 				DA2E80A52659A91500B876F1 /* ViewAllTournamentsVC.swift in Sources */,
+				DA08E7F026DFFDF800DD3520 /* BracketSetupVC.swift in Sources */,
 				DA33C2F026AE576B00363E70 /* ProfileService.swift in Sources */,
+				DAA364FB26DEE30500F1BFC6 /* AdminEvent.swift in Sources */,
 				DA81E8B2269415F200C256D2 /* RefreshPhaseGroupView.swift in Sources */,
+				DA08E7F426E0564200DD3520 /* EditPhaseVC.swift in Sources */,
 				DAF0BE51266C03FD000F7506 /* EntrantService.swift in Sources */,
 				DA56559423E50C51003FEF20 /* Constants.swift in Sources */,
+				DAA364F926DECBC900F1BFC6 /* EventListVC.swift in Sources */,
 				DA7AF02B24F71A83009A00E2 /* PhaseGroupVC.swift in Sources */,
 				DAADCDB026B37C0E009B46B3 /* TournamentOptionsVC.swift in Sources */,
 				DA637A9123F7A6FE00268A85 /* TournamentVC.swift in Sources */,

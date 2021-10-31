@@ -15,19 +15,22 @@ final class TournamentOptionsVC: UITableViewController {
     let tournamentSlug: String?
     let tournamentOrganizerName: String?
     let tournamentOrganizerPrefix: String?
+    let userIsAdmin: Bool
     
     var tournamentWasPinned: (() -> Void)?
     var shareButtonPressed: (() -> Void)?
     var moreTournamentsByTO: (() -> Void)?
+    var adminSettingsTapped: (() -> Void)?
     
     // MARK: - Initialization
     
-    init(pinned: Bool, pinnedLimitReached: Bool, slug: String?, name: String?, prefix: String?) {
+    init(pinned: Bool, pinnedLimitReached: Bool, isAdmin: Bool, slug: String?, name: String?, prefix: String?) {
         self.pinned = pinned
         self.pinnedLimitReached = pinnedLimitReached
         self.tournamentSlug = slug
         self.tournamentOrganizerName = name
         self.tournamentOrganizerPrefix = prefix
+        self.userIsAdmin = isAdmin
         super.init(style: .insetGrouped)
         title = "Options"
     }
@@ -35,8 +38,6 @@ final class TournamentOptionsVC: UITableViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ final class TournamentOptionsVC: UITableViewController {
     // MARK: - Table View Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return userIsAdmin ? 4 : 3
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,17 +84,19 @@ final class TournamentOptionsVC: UITableViewController {
                 return cell.setupDisabled("Pin this tournament")
             }
             cell.textLabel?.text = pinned ? "Unpin this tournament" : "Pin this tournament"
-            cell.textLabel?.textColor = .systemRed
-            
+            cell.accessoryType = .disclosureIndicator
             return cell
         case 1:
             let cell = UITableViewCell()
             cell.imageView?.image = UIImage(systemName: "square.and.arrow.up")
             cell.textLabel?.text = "Share this tournament"
-            cell.textLabel?.textColor = .systemRed
             cell.isUserInteractionEnabled = tournamentSlug != nil
-            cell.imageView?.tintColor = tournamentSlug != nil ? .systemRed : .systemGray
             cell.textLabel?.isEnabled = tournamentSlug != nil
+            if tournamentSlug == nil {
+                cell.imageView?.tintColor = .systemGray
+            } else {
+                cell.accessoryType = .disclosureIndicator
+            }
             return cell
         case 2:
             switch indexPath.row {
@@ -113,6 +116,12 @@ final class TournamentOptionsVC: UITableViewController {
                 return cell
             default: break
             }
+        case 3:
+            let cell = UITableViewCell()
+            cell.imageView?.image = UIImage(systemName: "gearshape.2.fill")
+            cell.textLabel?.text = "Admin Settings"
+            cell.accessoryType = .disclosureIndicator
+            return cell
         default: break
         }
         return UITableViewCell()
@@ -132,6 +141,10 @@ final class TournamentOptionsVC: UITableViewController {
         }
         if indexPath.section == 2, indexPath.row == 1, let moreTournamentsByTO = moreTournamentsByTO {
             dismiss(animated: true) { moreTournamentsByTO() }
+            return
+        }
+        if indexPath.section == 3, let adminSettingsTapped = adminSettingsTapped {
+            dismiss(animated: true) { adminSettingsTapped() }
             return
         }
     }

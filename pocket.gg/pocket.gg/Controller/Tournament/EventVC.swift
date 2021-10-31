@@ -124,7 +124,10 @@ final class EventVC: UITableViewController {
                 switch eventType {
                 case 1: detailText = "Singles"
                 case 2: detailText = "Doubles"
+                case 3: detailText = "Crew"
+                case 4: detailText = "Other"
                 case 5: detailText = "Teams"
+                case 6: detailText = "Circuit"
                 default: break
                 }
             }

@@ -1,0 +1,53 @@
+query TournamentEvents($id: ID) {
+    tournament(id: $id) {
+        events {
+            id
+            name
+            state
+            videogame {
+                name
+                images {
+                    url
+                    ratio
+                }
+            }
+        }
+    }
+}
+
+query EventPhases($id: ID) {
+    event(id: $id) {
+        phases {
+            id
+            name
+            bracketType
+            groupCount
+        }
+    }
+}
+
+mutation CreatePhase($eventID: ID, $payload: PhaseUpsertInput!) {
+    upsertPhase(eventId: $eventID, payload: $payload) {
+        id
+    }
+}
+
+mutation UpdatePhase($phaseID: ID, $payload: PhaseUpsertInput!) {
+    upsertPhase(phaseId: $phaseID, payload: $payload) {
+        id
+    }
+}
+
+mutation DeletePhase($phaseID: ID!) {
+    deletePhase(phaseId: $phaseID)
+}
+
+mutation SwapSeeds($phaseID: ID!, $seed1ID: ID!, $seed2ID: ID!) {
+    swapSeeds(phaseId: $phaseID, seed1Id: $seed1ID, seed2Id: $seed2ID) {
+        id
+    }
+}
+
+mutation DeleteStation($stationID: ID!) {
+    deleteStation(stationId: $stationID)
+}

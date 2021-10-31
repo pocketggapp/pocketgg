@@ -49,6 +49,9 @@ struct Constants {
         static let value1Cell = "value1Cell"
         static let eventStandingCell = "eventStandingCell"
         static let roundRobinSetCell = "roundRobinSetCell"
+        
+        static let adminEventCell = "adminEventCell"
+        static let adminPhaseCell = "adminPhaseCell"
     }
     
     struct Sizes {
