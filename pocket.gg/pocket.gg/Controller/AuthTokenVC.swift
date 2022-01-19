@@ -71,6 +71,7 @@ final class AuthTokenVC: UIViewController {
         authTokenField.borderStyle = .roundedRect
         authTokenField.clearButtonMode = .whileEditing
         authTokenField.addTarget(self, action: #selector(verifyAuthToken), for: .editingDidEndOnExit)
+        authTokenField.heightAnchor.constraint(equalToConstant: k.Sizes.buttonHeight).isActive = true
         
         let authTokenStepsButton = UIButton(type: .system)
         authTokenStepsButton.setTitle("How do I get an Auth Token?", for: .normal)
@@ -78,6 +79,7 @@ final class AuthTokenVC: UIViewController {
         authTokenStepsButton.contentHorizontalAlignment = .leading
         authTokenStepsButton.setTitleColor(.systemRed, for: .normal)
         authTokenStepsButton.addTarget(self, action: #selector(presentAuthTokenStepsVC), for: .touchUpInside)
+        authTokenStepsButton.heightAnchor.constraint(equalToConstant: k.Sizes.buttonHeight).isActive = true
         
         let submitButton = UIButton(type: .roundedRect)
         submitButton.setTitle("Submit", for: .normal)
@@ -85,6 +87,7 @@ final class AuthTokenVC: UIViewController {
         submitButton.backgroundColor = .systemRed
         submitButton.layer.cornerRadius = 5
         submitButton.addTarget(self, action: #selector(verifyAuthToken), for: .touchUpInside)
+        submitButton.heightAnchor.constraint(equalToConstant: k.Sizes.buttonHeight).isActive = true
         
         bottomStackView.setup(subviews: [authTokenField, authTokenStepsButton, submitButton], axis: .vertical, alignment: .fill, spacing: 5)
         view.addSubview(bottomStackView)
@@ -94,9 +97,7 @@ final class AuthTokenVC: UIViewController {
                                            padding: UIEdgeInsets(top: 50, left: 16, bottom: 0, right: 16))
         
         var bottomStackViewHeight: CGFloat = 0
-        bottomStackViewHeight += authTokenField.intrinsicContentSize.height
-        bottomStackViewHeight += authTokenStepsButton.intrinsicContentSize.height
-        bottomStackViewHeight += submitButton.intrinsicContentSize.height
+        bottomStackViewHeight += 3 * k.Sizes.buttonHeight
         bottomStackViewHeight += 10
         bottomStackView.heightAnchor.constraint(equalToConstant: bottomStackViewHeight).isActive = true
         bottomStackView.alpha = 0

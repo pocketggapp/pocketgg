@@ -41,6 +41,7 @@ final class RefreshPhaseGroupView: UIView {
                                          bottom: bottomAnchor,
                                          leading: leadingAnchor,
                                          trailing: trailingAnchor)
+        refreshButton.heightAnchor.constraint(equalToConstant: k.Sizes.buttonHeight).isActive = true
         spinner.setAxisConstraints(xAnchor: centerXAnchor, yAnchor: centerYAnchor)
     }
     

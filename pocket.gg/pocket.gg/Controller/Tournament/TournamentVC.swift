@@ -351,8 +351,13 @@ final class TournamentVC: UITableViewController {
         guard let contactInfo = tournament.contact?.info else { return UITableViewCell().setupDisabled(k.Message.noContactInfo) }
         
         let cell = UITableViewCell()
-        cell.textLabel?.text = contactInfo
         cell.accessoryType = .disclosureIndicator
+        
+        if let type = type, type == "discord" {
+            cell.textLabel?.text = contactInfo.replacingOccurrences(of: "https://", with: "")
+        } else {
+            cell.textLabel?.text = contactInfo
+        }
         
         if let type = type {
             var image: UIImage?

@@ -52,6 +52,8 @@ struct Constants {
     }
     
     struct Sizes {
+        static let buttonHeight: CGFloat = 44
+        
         static let tournamentCellWidth: CGFloat = 125
         static let tournamentCellHeight: CGFloat = 225
         
