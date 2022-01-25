@@ -34,20 +34,7 @@ struct Tournament {
     var ownerPrefix: String?
 }
 
-extension Tournament {
-    init(_ tournament: SavedTournament) {
-        id = tournament.id
-        name = tournament.name
-        date = tournament.date
-        logoUrl = tournament.logoUrl
-        isOnline = tournament.isOnline
-        
-        location = Location(address: tournament.address)
-        
-        headerImage = (url: tournament.headerImageURL, ratio: tournament.headerImageRatio)
-    }
-}
-
+/// Deprecated as of v1.2
 struct SavedTournament: Codable {
     let id: Int?
     let name: String?

@@ -21,13 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.tintColor = .systemRed
         
-        PinnedTournamentsService.initPinnedTournaments()
         TOFollowedService.initFollowedTOs()
+        StartupTasksService.appVersionMigration1()
         
         if !UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
-            UserDefaults.standard.set(true, forKey: k.UserDefaults.showPinnedTournaments)
-            UserDefaults.standard.set(true, forKey: k.UserDefaults.featuredTournaments)
-            UserDefaults.standard.set(true, forKey: k.UserDefaults.upcomingTournaments)
             UserDefaults.standard.set(true, forKey: k.UserDefaults.firebaseEnabled)
         }
         

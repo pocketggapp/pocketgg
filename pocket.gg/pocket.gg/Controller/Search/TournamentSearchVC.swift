@@ -148,7 +148,7 @@ final class TournamentSearchVC: UITableViewController {
                 tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
-            let preferredGameIDs = searchUsingEnabledGamesSwitch.isOn ? PreferredGamesService.getEnabledGames().map { $0.id } : []
+            let preferredGameIDs = searchUsingEnabledGamesSwitch.isOn ? MainVCDataService.getEnabledGames().map { $0.id } : []
             navigationController?.pushViewController(TournamentSearchResultsVC(searchTerm: text, preferredGameIDs: preferredGameIDs), animated: true)
         case 2:
             if recentSearches.isEmpty { fallthrough }
@@ -183,7 +183,7 @@ extension TournamentSearchVC: UISearchBarDelegate {
         searchBar.endEditing(true)
         guard let text = searchBar.text, !text.isEmpty else { return }
         
-        let preferredGameIDs = searchUsingEnabledGamesSwitch.isOn ? PreferredGamesService.getEnabledGames().map { $0.id } : []
+        let preferredGameIDs = searchUsingEnabledGamesSwitch.isOn ? MainVCDataService.getEnabledGames().map { $0.id } : []
         navigationController?.pushViewController(TournamentSearchResultsVC(searchTerm: text, preferredGameIDs: preferredGameIDs), animated: true)
         
         // If the search term is already present, just move it to the front of the array

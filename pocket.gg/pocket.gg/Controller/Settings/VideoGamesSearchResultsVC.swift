@@ -54,7 +54,7 @@ final class VideoGamesSearchResultsVC: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Save the list of enabled video games
-        PreferredGamesService.updateEnabledGames(enabledGames)
+        MainVCDataService.updateEnabledGames(enabledGames)
         canSendNotification = true
         if let reloadEnabledGames = reloadEnabledGames, enabledGamesChanged {
             reloadEnabledGames()

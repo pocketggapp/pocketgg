@@ -36,7 +36,7 @@ final class TournamentVC: UITableViewController {
         self.tournament = tournament
         self.cacheForLogo = cacheForLogo
         generalInfoCell = TournamentGeneralInfoCell(tournament, cacheForLogo: cacheForLogo)
-        tournamentIsPinned = PinnedTournamentsService.tournamentIsPinned(tournament.id ?? -1)
+        tournamentIsPinned = MainVCDataService.getPinnedTournamentIDs().contains(tournament.id ?? -1)
         pinnedStatusChanged = false
         IDs = TournamentIDs(tournamentID: tournament.id, eventID: nil, phaseID: nil, phaseGroupID: nil, singularPhaseGroupID: nil)
         super.init(style: .grouped)
@@ -156,7 +156,8 @@ final class TournamentVC: UITableViewController {
     }
     
     @objc private func displayTournamentOptions() {
-        let vc = TournamentOptionsVC(pinned: tournamentIsPinned, pinnedLimitReached: PinnedTournamentsService.numPinnedTournaments >= 10,
+        let pinnedLimitReached = MainVCDataService.getPinnedTournamentIDs().count >= 30
+        let vc = TournamentOptionsVC(pinned: tournamentIsPinned, pinnedLimitReached: pinnedLimitReached,
                                      slug: tournament.slug, name: tournament.ownerName, prefix: tournament.ownerPrefix)
         vc.tournamentWasPinned = { [weak self] in
             self?.togglePinnedTournament()
@@ -181,12 +182,22 @@ final class TournamentVC: UITableViewController {
     }
     
     @objc private func togglePinnedTournament() {
-        guard PinnedTournamentsService.togglePinnedTournament(tournament) else {
+        var pinnedTournamentIDs = MainVCDataService.getPinnedTournamentIDs()
+        guard pinnedTournamentIDs.count < 30 else {
             let alert = UIAlertController(title: k.Error.title, message: k.Error.pinnedTournamentLimit, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
             present(alert, animated: true)
             return
         }
+        guard let id = tournament.id else { return }
+        
+        if let index = pinnedTournamentIDs.firstIndex(where: { $0 == id }) {
+            pinnedTournamentIDs.remove(at: index)
+        } else {
+            pinnedTournamentIDs.append(id)
+        }
+        MainVCDataService.updatePinnedTournamentIDs(nil, pinnedTournamentIDs)
+        
         tournamentIsPinned.toggle()
         pinnedStatusChanged.toggle()
     }

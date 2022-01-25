@@ -92,10 +92,7 @@ struct Constants {
         static let firebaseEnabled = "firebaseEnabled"
         
         static let mainVCSections = "mainVCSections"
-        static let pinnedTournaments = "pinnedTournaments"
-        static let showPinnedTournaments = "showPinnedTournaments"
-        static let featuredTournaments = "featuredTournaments"
-        static let upcomingTournaments = "upcomingTournaments"
+        static let pinnedTournamentIDs = "pinnedTournamentIDs"
         static let preferredVideoGames = "preferredVideoGames"
         
         static let tournamentOrganizersFollowed = "tournamentOrganizersFollowed"
@@ -110,6 +107,14 @@ struct Constants {
         static let selectedCountry = "selectedCountry"
         static let selectedState = "selectedState"
         static let alternateAppIconUsed = "alternateAppIconUsed"
+        
+        static let appVersionMigration1 = "appVersionMigration1"
+        
+        // Deprecated
+        static let pinnedTournaments = "pinnedTournaments"
+        static let showPinnedTournaments = "showPinnedTournaments"
+        static let featuredTournaments = "featuredTournaments"
+        static let upcomingTournaments = "upcomingTournaments"
     }
     
     // MARK: - Notification Center

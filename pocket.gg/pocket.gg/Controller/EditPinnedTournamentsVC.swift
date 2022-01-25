@@ -13,10 +13,12 @@ final class EditPinnedTournamentsVC: UITableViewController {
     var pinnedTournaments: [Tournament]
     var pinnedTournamentsEdited: Bool
     
+    var applyChanges: (([Tournament]) -> Void)?
+    
     // MARK: - Initialization
     
-    init() {
-        pinnedTournaments = PinnedTournamentsService.getPinnedTournaments()
+    init(_ pinnedTournaments: [Tournament]) {
+        self.pinnedTournaments = pinnedTournaments
         pinnedTournamentsEdited = false
         super.init(style: .grouped)
     }
@@ -47,8 +49,13 @@ final class EditPinnedTournamentsVC: UITableViewController {
     
     @objc private func saveChanges() {
         if pinnedTournamentsEdited {
-            PinnedTournamentsService.updatePinnedTournaments(pinnedTournaments)
-            NotificationCenter.default.post(name: Notification.Name(k.Notification.tournamentPinToggled), object: nil)
+            MainVCDataService.updatePinnedTournamentIDs(pinnedTournaments)
+            if let applyChanges = applyChanges {
+                dismiss(animated: true) { [weak self] in
+                    guard let tournaments = self?.pinnedTournaments else { return }
+                    applyChanges(tournaments)
+                }
+            }
         }
         dismiss(animated: true, completion: nil)
     }

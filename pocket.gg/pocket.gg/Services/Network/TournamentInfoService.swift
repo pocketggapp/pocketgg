@@ -20,6 +20,45 @@ struct GetTournamentsByVideogamesInfo {
 
 final class TournamentInfoService {
     
+    static func getTournamentByID(id: Int, complete: @escaping (_ tournament: Tournament?) -> Void) {
+        ApolloService.shared.client.fetch(query: TournamentByIdQuery(id: "\(id)"),
+                                          cachePolicy: .fetchIgnoringCacheCompletely,
+                                          queue: .global(qos: .utility)) { result in
+            switch result {
+            case .failure(let error):
+                debugPrint(k.Error.apolloFetch, error as Any)
+                DispatchQueue.main.async { complete(nil) }
+                return
+                
+            case .success(let graphQLResult):
+                var tournament: Tournament?
+                if let data = graphQLResult.data?.tournament {
+                    let start = DateFormatter.shared.dateFromTimestamp(data.startAt)
+                    let end = DateFormatter.shared.dateFromTimestamp(data.endAt)
+                    let date = start == end ? start : "\(start) - \(end)"
+                    
+                    let logoURL = data.images?.first(where: { $0?.type ?? "" == "profile" })??.url
+                    let header = data.images?.reduce(("", 1), { (widestImage, image) -> (String, Double) in
+                        guard let url = image?.url else { return widestImage }
+                        guard let ratio = image?.ratio else { return widestImage }
+                        if ratio > widestImage.1 { return (url, ratio) }
+                        return widestImage
+                    })
+                    
+                    tournament = Tournament(id: Int(data.id ?? "nil"),
+                                            name: data.name,
+                                            date: date,
+                                            logoUrl: logoURL,
+                                            isOnline: data.isOnline,
+                                            location: Location(address: data.venueAddress),
+                                            headerImage: header)
+                }
+                
+                DispatchQueue.main.async { complete(tournament) }
+            }
+        }
+    }
+    
     static func getFeaturedTournaments(perPage: Int, pageNum: Int, gameIDs: [Int], complete: @escaping (_ tournaments: [Tournament]?) -> Void) {
         ApolloService.shared.client.fetch(query: FeaturedTournamentsQuery(perPage: perPage,
                                                                           pageNum: pageNum,

@@ -24,7 +24,7 @@ final class VideoGamesVC: UITableViewController {
     
     init() {
         // Load the list of enabled video games
-        enabledGames = PreferredGamesService.getEnabledGames()
+        enabledGames = MainVCDataService.getEnabledGames()
         headerView = UIView(frame: .zero)
         searchBar = UISearchBar(frame: .zero)
         canSendNotification = true
@@ -126,7 +126,7 @@ final class VideoGamesVC: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedVideoGame = enabledGames.remove(at: sourceIndexPath.row)
         enabledGames.insert(movedVideoGame, at: destinationIndexPath.row)
-        PreferredGamesService.updateEnabledGames(enabledGames)
+        MainVCDataService.updateEnabledGames(enabledGames)
         requestTournamentsReload()
     }
     
@@ -137,7 +137,7 @@ final class VideoGamesVC: UITableViewController {
             if enabledGames.isEmpty {
                 navigationItem.rightBarButtonItem = nil
             }
-            PreferredGamesService.updateEnabledGames(enabledGames)
+            MainVCDataService.updateEnabledGames(enabledGames)
             requestTournamentsReload()
         }
     }
@@ -214,7 +214,7 @@ extension VideoGamesVC: UISearchBarDelegate {
         let videoGamesSearchResultsVC = VideoGamesSearchResultsVC(searchTerm: text, enabledGames: enabledGames)
         videoGamesSearchResultsVC.reloadEnabledGames = { [weak self] in
             // If the list of enabled games was changed in VideoGamesSearchResultsVC, reload the table view
-            self?.enabledGames = PreferredGamesService.getEnabledGames()
+            self?.enabledGames = MainVCDataService.getEnabledGames()
             self?.tableView.reloadData()
             if let noEnabledGames = self?.enabledGames.isEmpty, noEnabledGames {
                 self?.navigationItem.rightBarButtonItem = nil

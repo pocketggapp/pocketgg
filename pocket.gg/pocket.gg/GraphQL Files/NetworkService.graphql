@@ -4,6 +4,22 @@ query AuthTokenTest {
     }
 }
 
+query TournamentByID($id: ID) {
+    tournament(id: $id) {
+        id
+        name
+        startAt
+        endAt
+        venueAddress
+        isOnline
+        images {
+            url
+            type
+            ratio
+        }
+    }
+}
+
 query FeaturedTournaments($perPage: Int, $pageNum: Int, $videogameIds: [ID]) {
     tournaments(query: {
         perPage: $perPage
