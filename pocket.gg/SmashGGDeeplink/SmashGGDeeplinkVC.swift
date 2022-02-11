@@ -17,7 +17,7 @@ final class SmashGGDeeplinkVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissVC))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         setupViews()
         
         if let extensionItem = extensionContext?.inputItems.first as? NSExtensionItem,

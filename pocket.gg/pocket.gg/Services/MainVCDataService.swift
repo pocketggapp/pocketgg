@@ -16,6 +16,10 @@ final class MainVCDataService {
         return UserDefaults.standard.array(forKey: k.UserDefaults.mainVCSections) as? [Int] ?? []
     }
     
+    static func updateEnabledSections(_ enabledSections: [Int]) {
+        UserDefaults.standard.set(enabledSections, forKey: k.UserDefaults.mainVCSections)
+    }
+    
     // Pinned Tournaments
     
     static func getPinnedTournamentIDs() -> [Int] {

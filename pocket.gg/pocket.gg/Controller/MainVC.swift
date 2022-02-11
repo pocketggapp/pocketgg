@@ -155,7 +155,6 @@ final class MainVC: UITableViewController {
     
     private func getTournaments() {
         let dispatchGroup = DispatchGroup()
-        let preferredGameIDs = preferredGames.map { $0.id }
         
         for _ in 0..<numSections {
             dispatchGroup.enter()
@@ -163,16 +162,22 @@ final class MainVC: UITableViewController {
         for i in 0..<numSections {
             switch sectionTypeForIndex(i) {
             case .pinned: getPinnedTournaments(dispatchGroup, i)
-            case .featured: getFeaturedTournaments(dispatchGroup, i)
+            case .featured:
+                getFeaturedTournaments(dispatchGroup, i)
             default:
-                let gameIDs = sectionTypeForIndex(i) == .upcoming ? preferredGameIDs : [enabledSections[i]]
-                let info = GetTournamentsByVideogamesInfo(perPage: numTournamentsToLoad,
-                                                          pageNum: 1,
+                guard !preferredGames.isEmpty else {
+                    doneRequest[i] = true
+                    requestSuccessful[i] = true
+                    tableView.reloadSections([i], with: .automatic)
+                    dispatchGroup.leave()
+                    continue
+                }
+                let gameIDs = sectionTypeForIndex(i) == .upcoming ? preferredGames.map { $0.id } : [enabledSections[i]]
+                let info = GetTournamentsByVideogamesInfo(perPage: numTournamentsToLoad, pageNum: 1,
                                                           gameIDs: gameIDs,
-                                                          featured: false, // maybe leave this out completely? check how it impacts results
-                                                          upcoming: true,
-                                                          countryCode: countryCode,
-                                                          addrState: addrState)
+                                                          // TODO: maybe leave this out completely? check how it impacts results
+                                                          featured: false, upcoming: true,
+                                                          countryCode: countryCode, addrState: addrState)
                 TournamentInfoService.getTournamentsByVideogames(info) { [weak self] tournaments in
                     guard let tournaments = tournaments else {
                         self?.doneRequest[i] = true
@@ -234,16 +239,16 @@ final class MainVC: UITableViewController {
         for _ in 0..<pinnedTournamentIDs.count {
             pinnedTournamentDispatchGroup.enter()
         }
-        for id in pinnedTournamentIDs {
+        for (j, id) in pinnedTournamentIDs.enumerated() {
             TournamentInfoService.getTournamentByID(id: id) { tournament in
                 guard let tournament = tournament else {
-                    requestSuccessfulPinned[i] = false
+                    requestSuccessfulPinned[j] = false
                     pinnedTournamentDispatchGroup.leave()
                     return
                 }
                 returnedTournaments.append(tournament)
                 
-                requestSuccessfulPinned[i] = true
+                requestSuccessfulPinned[j] = true
                 pinnedTournamentDispatchGroup.leave()
             }
         }
@@ -262,8 +267,17 @@ final class MainVC: UITableViewController {
     }
     
     private func getFeaturedTournaments(_ dispatchGroup: DispatchGroup, _ i: Int) {
+        guard !preferredGames.isEmpty else {
+            doneRequest[i] = true
+            requestSuccessful[i] = true
+            tableView.reloadSections([i], with: .automatic)
+            dispatchGroup.leave()
+            return
+        }
+        
+        let gameIDs = preferredGames.map { $0.id }
         TournamentInfoService.getFeaturedTournaments(perPage: numTournamentsToLoad, pageNum: 1,
-                                                     gameIDs: preferredGames.map { $0.id }) { [weak self] tournaments in
+                                                     gameIDs: gameIDs) { [weak self] tournaments in
             guard let tournaments = tournaments else {
                 self?.doneRequest[i] = true
                 self?.requestSuccessful[i] = false
@@ -295,7 +309,11 @@ final class MainVC: UITableViewController {
     }
     
     @objc private func editSectionOrder() {
-        present(UINavigationController(rootViewController: EditMainVC()), animated: true, completion: nil)
+        let vc = EditMainVC(enabledSections)
+        vc.applyChanges = { [weak self] in
+            self?.reloadTournamentList()
+        }
+        present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
     }
     
     @objc private func editPinnedTournaments(sender: UIButton) {
