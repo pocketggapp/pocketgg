@@ -178,12 +178,12 @@ final class EditMainVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section == 2 else { return }
-        let vc = TestSearchVC(preferredGames)
+        let vc = VideoGamesVC(preferredGames)
         vc.applyChanges = { [weak self] in
             guard let self = self else { return }
             let preferredGames = $0
             
-            // Remove any video games that were deselected in TestSearchVC
+            // Remove any video games that were deselected in VideoGamesVC
             for section in self.enabledSections {
                 guard section != -1, section != -2, section != -3 else { continue }
                 if !preferredGames.contains(where: { $0.id == section }) {
@@ -191,7 +191,7 @@ final class EditMainVC: UITableViewController {
                     self.enabledSections.remove(at: index)
                 }
             }
-            // Add the new video games that were selected in TestSearchVC
+            // Add the new video games that were selected in VideoGamesVC
             for videoGame in preferredGames {
                 // If the video game was previously disabled, re-enable it
                 if let index = self.disabledSections.firstIndex(where: { $0 == videoGame.id }) {

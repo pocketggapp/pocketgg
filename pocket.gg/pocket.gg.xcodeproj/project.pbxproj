@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA033E4527A738F500F350A5 /* TestSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA033E4427A738F500F350A5 /* TestSearchVC.swift */; };
+		DA033E4527A738F500F350A5 /* VideoGamesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA033E4427A738F500F350A5 /* VideoGamesVC.swift */; };
 		DA04E3A8242726F400AB2EF0 /* UITableViewCells+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04E3A7242726F400AB2EF0 /* UITableViewCells+Create.swift */; };
 		DA0C4CEC26818C1B004831EC /* SetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C4CEB26818C1B004831EC /* SetVC.swift */; };
 		DA0C4CF02683F6E3004831EC /* SetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C4CEF2683F6E2004831EC /* SetCell.swift */; };
@@ -151,7 +151,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DA033E4427A738F500F350A5 /* TestSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSearchVC.swift; sourceTree = "<group>"; };
+		DA033E4427A738F500F350A5 /* VideoGamesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamesVC.swift; sourceTree = "<group>"; };
 		DA04E3A7242726F400AB2EF0 /* UITableViewCells+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCells+Create.swift"; sourceTree = "<group>"; };
 		DA0C4CEB26818C1B004831EC /* SetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetVC.swift; sourceTree = "<group>"; };
 		DA0C4CEF2683F6E2004831EC /* SetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCell.swift; sourceTree = "<group>"; };
@@ -519,7 +519,7 @@
 				DA759E5A23E4FE5500D4B3E7 /* MainVC.swift */,
 				DAA7AD7A279B8AED00EE0785 /* EditMainVC.swift */,
 				DA4A1C5A2679A4F800736D8F /* EditPinnedTournamentsVC.swift */,
-				DA033E4427A738F500F350A5 /* TestSearchVC.swift */,
+				DA033E4427A738F500F350A5 /* VideoGamesVC.swift */,
 				DAC4257926503C0600F523CC /* TournamentListVC.swift */,
 				DA2E80A42659A91500B876F1 /* ViewAllTournamentsVC.swift */,
 				DA64A2F9241DF04E00481280 /* Tournament */,
@@ -848,7 +848,7 @@
 				DAADCDB526B4B0A6009B46B3 /* TOFollowedService.swift in Sources */,
 				DA4B496024FCC6ED00BE7E0E /* Event.swift in Sources */,
 				DA2939D223E7D1D800E5DB3A /* NetworkService.swift in Sources */,
-				DA033E4527A738F500F350A5 /* TestSearchVC.swift in Sources */,
+				DA033E4527A738F500F350A5 /* VideoGamesVC.swift in Sources */,
 				DA0C4CF02683F6E3004831EC /* SetCell.swift in Sources */,
 				DA86242626630A8E00FD0A9C /* TournamentListCell.swift in Sources */,
 				DAA7AD7B279B8AED00EE0785 /* EditMainVC.swift in Sources */,
@@ -972,7 +972,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.SmashGGDeeplink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -995,7 +995,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.SmashGGDeeplink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1137,7 +1137,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1159,7 +1159,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

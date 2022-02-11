@@ -1,5 +1,5 @@
 //
-//  TestSearchVC.swift
+//  VideoGamesVC.swift
 //  pocket.gg
 //
 //  Created by Gabriel Siu on 2022-01-30.
@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-final class TestSearchVC: UITableViewController {
+final class VideoGamesVC: UITableViewController {
     
     let searchController: UISearchController
     
@@ -170,7 +170,7 @@ final class TestSearchVC: UITableViewController {
     }
 }
 
-extension TestSearchVC: UISearchResultsUpdating {
+extension VideoGamesVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteredVideoGames.removeAll()
         guard let searchText = searchController.searchBar.text else { return }
@@ -179,7 +179,7 @@ extension TestSearchVC: UISearchResultsUpdating {
     }
 }
 
-extension TestSearchVC: MFMailComposeViewControllerDelegate {
+extension VideoGamesVC: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
