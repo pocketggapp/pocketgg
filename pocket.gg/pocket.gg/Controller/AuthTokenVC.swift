@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class AuthTokenVC: UIViewController {
     
@@ -51,6 +52,7 @@ final class AuthTokenVC: UIViewController {
     
     private func setupViews() {
         let logoImageView = UIImageView(image: UIImage(named: "tournament-red"))
+        logoImageView.setSquareAspectRatio(sideLength: k.Sizes.logoSideLength)
         let appNameLabel = UILabel(frame: .zero)
         appNameLabel.text = "pocket.gg"
         appNameLabel.font = UIFont.systemFont(ofSize: 32, weight: .semibold)
@@ -60,7 +62,7 @@ final class AuthTokenVC: UIViewController {
         titleStackView.alignment = .center
         view.addSubview(titleStackView)
         titleStackView.setAxisConstraints(xAnchor: view.centerXAnchor)
-        let constraintOffset = (UIScreen.main.bounds.height / 2) - (logoImageView.intrinsicContentSize.height / 2)
+        let constraintOffset = (UIScreen.main.bounds.height / 2) - (k.Sizes.logoSideLength / 2)
         titleCenterConstraint = titleStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: constraintOffset)
         titleCenterConstraint.isActive = true
         titleTopConstraint = titleStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
@@ -76,7 +78,6 @@ final class AuthTokenVC: UIViewController {
         let authTokenStepsButton = UIButton(type: .system)
         authTokenStepsButton.setTitle("How do I get an Auth Token?", for: .normal)
         authTokenStepsButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        authTokenStepsButton.contentHorizontalAlignment = .leading
         authTokenStepsButton.setTitleColor(.systemRed, for: .normal)
         authTokenStepsButton.addTarget(self, action: #selector(presentAuthTokenStepsVC), for: .touchUpInside)
         authTokenStepsButton.heightAnchor.constraint(equalToConstant: k.Sizes.buttonHeight).isActive = true
@@ -139,7 +140,13 @@ final class AuthTokenVC: UIViewController {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                 guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
                 guard let window = sceneDelegate.window else { return }
-                window.rootViewController = MainTabBarControllerService.initTabBarController()
+                
+                if UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
+                    window.rootViewController = MainTabBarControllerService.initTabBarController()
+                } else {
+                    let viewModel = OnboardingViewModel<AnyHashable>(content: OnboardingContentFactory.generateOnboardingContent())
+                    window.rootViewController = UIHostingController(rootView: OnboardingView(viewModel: viewModel, flowType: .firstTimeOnboarding))
+                }
                 window.makeKeyAndVisible()
             } else {
                 UserDefaults.standard.removeObject(forKey: k.UserDefaults.authToken)

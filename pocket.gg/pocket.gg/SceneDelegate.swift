@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -24,17 +25,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         TOFollowedService.initFollowedTOs()
         StartupTasksService.appVersionMigration1()
         
-        if !UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
-            UserDefaults.standard.set(true, forKey: k.UserDefaults.firebaseEnabled)
-        }
-        
+        // Present AuthTokenVC if no auth token is present
         guard let authToken = UserDefaults.standard.string(forKey: k.UserDefaults.authToken), !authToken.isEmpty else {
             window?.rootViewController = AuthTokenVC()
             window?.makeKeyAndVisible()
             return
         }
         
-        window?.rootViewController = MainTabBarControllerService.initTabBarController()
+        // If an auth token is present but the onboarding flow hasn't been completed, present the onboarding flow
+        guard UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) else {
+            let viewModel = OnboardingViewModel<AnyHashable>(content: OnboardingContentFactory.generateOnboardingContent())
+            window?.rootViewController = UIHostingController(rootView: OnboardingView(viewModel: viewModel, flowType: .firstTimeOnboarding))
+            window?.makeKeyAndVisible()
+            return
+        }
+        
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+           appVersion != UserDefaults.standard.string(forKey: k.UserDefaults.appVersion) {
+            // Present the update flow if the current app version doesn't match the latest saved app version
+            let viewModel = OnboardingViewModel<AnyHashable>(content: OnboardingContentFactory.generateUpdateContent())
+            window?.rootViewController = UIHostingController(rootView: OnboardingView(viewModel: viewModel, flowType: .appUpdated))
+            // Update the saved app version
+            UserDefaults.standard.set(appVersion, forKey: k.UserDefaults.appVersion)
+        } else {
+            window?.rootViewController = MainTabBarControllerService.initTabBarController()
+        }
         window?.makeKeyAndVisible()
         
         if let url = connectionOptions.urlContexts.first?.url {

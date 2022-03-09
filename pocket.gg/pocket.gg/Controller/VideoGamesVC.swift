@@ -48,6 +48,8 @@ final class VideoGamesVC: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveChanges))
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.setValue("Done", forKey: "cancelButtonText")
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: k.Identifiers.videoGameCell)
     }
@@ -86,27 +88,12 @@ final class VideoGamesVC: UITableViewController {
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
-                mail.setToRecipients(["pocketggapp@gmail.com"])
+                mail.setToRecipients([k.Mail.address])
                 mail.setSubject("pocket.gg Video Game Update Request")
-                let message = """
-                Please enter the required info between the lines:
-                ---------------------------------------
-                
-                Name of video game (Required):
-                
-                Name and/or URL of tournament on smash.gg that features the missing video game (Required):
-
-                ---------------------------------------
-                """
-                mail.setMessageBody(message, isHTML: false)
+                mail.setMessageBody(k.Mail.videoGameUpdateRequest, isHTML: false)
                 self?.present(mail, animated: true)
             } else {
-                let message = """
-                Please send an email to pocketggapp@gmail.com and include the following details:
-                Name of the video game
-                Name and/or URL of tournament on smash.gg that features the missing video game
-                """
-                let alert = UIAlertController(title: "Video Game Update Request", message: message, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Video Game Update Request", message: k.Mail.videoGameUpdateRequestFallback, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                 self?.present(alert, animated: true)
             }

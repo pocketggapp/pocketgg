@@ -103,13 +103,6 @@ final class MainVC: UITableViewController {
             shouldReloadTournaments = false
             reloadTournamentList()
         }
-        
-        if !UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
-            UserDefaults.standard.set(true, forKey: k.UserDefaults.returningUser)
-            let alert = UIAlertController(title: k.UserDefaults.returningUserTitle, message: k.UserDefaults.returningUserMessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true)
-        }
     }
     
     // MARK: - Actions

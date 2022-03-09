@@ -59,7 +59,7 @@ struct Constants {
         
         static let tournamentListCellHeight: CGFloat = 75
         
-        static let logoSize: CGFloat = 100
+        static let logoSideLength: CGFloat = 100
         static let margin: CGFloat = 16
         static let mapHeight: CGFloat = 300
         
@@ -84,8 +84,6 @@ struct Constants {
     
     struct UserDefaults {
         static let returningUser = "returningUser"
-        static let returningUserTitle = "Welcome to pocket.gg!"
-        static let returningUserMessage = "To get started, go to Settings → Video Game Selection and select your favourite video games"
         
         static let authToken = "authToken"
         static let authTokenDate = "authTokenDate"
@@ -108,6 +106,9 @@ struct Constants {
         static let selectedState = "selectedState"
         static let alternateAppIconUsed = "alternateAppIconUsed"
         
+        /// Hardcoded backup in case the call to Bundle.main.infoDictionary?["CFBundleShortVersionString"] somehow fails
+        static let currentAppVersion = "1.2"
+        static let appVersion = "appVersion"
         static let appVersionMigration1 = "appVersionMigration1"
         
         // Deprecated
@@ -197,6 +198,42 @@ struct Constants {
         // MARK: ProfileVC
         static let errorLoadingProfile = "Unable to load profile"
         static let noProfileTournaments = "No tournaments found"
+    }
+    
+    // MARK: - Mail Messages
+    
+    struct Mail {
+        static let address = "pocketggapp@gmail.com"
+        
+        static let videoGameUpdateRequest = """
+        Please enter the required info between the lines:
+        ---------------------------------------
+        
+        Name of video game (Required):
+        
+        Name and/or URL of tournament on smash.gg that features the missing video game (Required):
+
+        ---------------------------------------
+        """
+        static let videoGameUpdateRequestFallback = """
+        Please send an email to pocketggapp@gmail.com and include the following details:
+        Name of the video game
+        Name and/or URL of tournament on smash.gg that features the missing video game
+        """
+        
+        static let supportRequest = """
+        Please enter your support request below the line, and include any screenshots if applicable
+        ---------------------------------------
+
+
+
+
+
+        ----- Debug Info -----
+        OS Version: \(UIDevice.current.systemVersion)
+        Device: \(UIDevice.current.model)
+        """
+        static let supportRequestFallback = "Please send an email to pocketggapp@gmail.com with your support request"
     }
 }
 

@@ -176,6 +176,13 @@ final class EditMainVC: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 1: return "Drag sections here to hide them from the main screen. Disabling a video game will also remove it from the Video Game Selection"
+        default: return nil
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section == 2 else { return }
         let vc = VideoGamesVC(preferredGames)

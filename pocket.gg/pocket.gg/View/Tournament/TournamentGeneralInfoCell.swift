@@ -89,14 +89,12 @@ final class TournamentGeneralInfoCell: UITableViewCell {
         dateIconView.setSquareAspectRatio(sideLength: dateLabel.font.pointSize)
         locationIconView.setSquareAspectRatio(sideLength: locationLabel.font.pointSize)
         
-        logoImageView.setSquareAspectRatio(sideLength: k.Sizes.logoSize)
+        logoImageView.setSquareAspectRatio(sideLength: k.Sizes.logoSideLength)
         totalStackView.setEdgeConstraints(top: contentView.topAnchor,
                                           bottom: contentView.bottomAnchor,
                                           leading: contentView.leadingAnchor,
                                           trailing: contentView.trailingAnchor,
-                                          padding: UIEdgeInsets.init(top: k.Sizes.margin,
-                                                                     left: k.Sizes.margin,
-                                                                     bottom: k.Sizes.margin,
-                                                                     right: k.Sizes.margin))
+                                          padding: UIEdgeInsets.init(top: k.Sizes.margin, left: k.Sizes.margin,
+                                                                     bottom: k.Sizes.margin, right: k.Sizes.margin))
     }
 }

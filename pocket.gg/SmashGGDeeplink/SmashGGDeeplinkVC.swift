@@ -98,6 +98,7 @@ final class SmashGGDeeplinkVC: UIViewController {
                                         trailing: view.trailingAnchor,
                                         padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16))
         
+        imageView.setSquareAspectRatio(sideLength: 100)
         imageView.setAxisConstraints(xAnchor: view.centerXAnchor)
         imageView.setEdgeConstraints(bottom: titleLabel.topAnchor,
                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0))
@@ -156,5 +157,11 @@ extension UIView {
         if let yAnchor = yAnchor {
             centerYAnchor.constraint(equalTo: yAnchor).isActive = true
         }
+    }
+    
+    func setSquareAspectRatio(sideLength: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        widthAnchor.constraint(equalToConstant: sideLength).isActive = true
+        heightAnchor.constraint(equalTo: widthAnchor).isActive = true
     }
 }

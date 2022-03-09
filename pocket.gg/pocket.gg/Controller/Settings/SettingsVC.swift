@@ -111,7 +111,6 @@ final class SettingsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        // TODO: Finalize wording
         case 0: return """
         Choose a location to only load tournaments in the specified country/state. \
         The Featured Tournaments section and tournament search function are not affected by the chosen location.

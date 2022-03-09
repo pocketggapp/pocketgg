@@ -38,10 +38,8 @@ final class AboutInfoCell: UITableViewCell {
     private func setupViews() {
         appNameLabel.text = "pocket.gg"
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        
-        if let versionNum = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            appVersionLabel.text = "Version \(versionNum)"
-        }
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? k.UserDefaults.currentAppVersion
+        appVersionLabel.text = "Version \(appVersion)"
         
         labelStackView.setup(subviews: [appNameLabel, appVersionLabel], axis: .vertical, spacing: 10)
         
@@ -55,6 +53,7 @@ final class AboutInfoCell: UITableViewCell {
             iconImageView.image = appIcon
             iconImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconImageViewTapped)))
             iconImageView.isUserInteractionEnabled = true
+            iconImageView.setSquareAspectRatio(sideLength: k.Sizes.logoSideLength)
             
             aboutInfoStackView = UIStackView()
             guard let aboutInfoStackView = aboutInfoStackView else { return }
@@ -75,7 +74,7 @@ final class AboutInfoCell: UITableViewCell {
     @objc private func iconImageViewTapped() {
         guard appIconVisible else { return }
         guard let iconImageView = iconImageView else { return }
-        guard let image = UIImage(named: "mang0") else { return }
+        guard let image = UIImage(named: "sos-brigade") else { return }
         appIconVisible = false
         
         UIView.transition(with: iconImageView, duration: 0.3, options: .transitionFlipFromRight, animations: { [weak self] in
