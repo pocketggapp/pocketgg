@@ -61,10 +61,9 @@ final class ScrollableRowItemCell: UICollectionViewCell {
         
         imageView.layer.cornerRadius = k.Sizes.cornerRadius
         imageView.layer.masksToBounds = true
-        guard let imageURL = imageURL else { return }
         let newSize = CGSize(width: k.Sizes.tournamentListCellHeight, height: k.Sizes.tournamentListCellHeight)
         ImageService.getImage(imageUrl: imageURL, cache: .viewAllTournaments, newSize: newSize) { [weak self] (image) in
-            let image = image ?? UIImage(named: "placeholder")
+            let image = image ?? UIImage(named: "game-controller-square")
             DispatchQueue.main.async {
                 guard let imageView = self?.imageView else { return }
                 // FIXME: This cell sometimes displays the wrong image, due to the closure holding a reference to the cell,

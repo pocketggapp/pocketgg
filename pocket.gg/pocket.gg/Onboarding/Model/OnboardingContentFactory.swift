@@ -58,11 +58,12 @@ final class OnboardingContentFactory {
                                   """,
                                   imageName: "update-1", imagePadding: 0),
                 TextContent(title: "Other Changes", message: """
-                            • Made some buttons easier to tap
                             • Added the following games to the Video Game Selection:
                                 ◦ Rocket League Sideswipe
                                 ◦ Melty Blood: Type Lumina
                                 ◦ The King of Fighters XV
+                            • Made some buttons easier to tap
+                            • Other miscellaneous improvements and bug fixes
                             """)]
     }
 }

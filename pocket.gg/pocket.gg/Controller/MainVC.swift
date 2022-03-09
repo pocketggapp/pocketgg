@@ -449,10 +449,8 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: k.Identifiers.tournamentCell, for: indexPath) as? ScrollableRowItemCell {
-            
             let tournament = tournaments[safe: collectionView.tag]?[safe: indexPath.row]
-            
-            cell.imageView.image = nil // change to placeholder
+            cell.imageView.image = nil
             cell.setLabelsStyle()
             var detailText = tournament?.date ?? ""
             detailText += tournament?.isOnline ?? false ? "\nOnline" : ""

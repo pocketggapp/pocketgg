@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icon-discord.png",
+      "filename" : "placeholder.png",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "icon-discord-dark.png",
+      "filename" : "placeholder-dark.png",
       "idiom" : "universal"
     }
   ],

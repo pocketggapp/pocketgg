@@ -9,10 +9,7 @@ class ApolloService {
         let cache = InMemoryNormalizedCache()
         let store = ApolloStore(cache: cache)
         let provider = NetworkInterceptorProvider(client: urlSessionClient, store: store)
-        guard let url = URL(string: k.API.endpoint) else {
-            // TODO: Handle this better
-            fatalError()
-        }
+        guard let url = URL(string: k.API.endpoint) else { fatalError() }
         let transport = RequestChainNetworkTransport(interceptorProvider: provider, endpointURL: url)
         return ApolloClient(networkTransport: transport, store: store)
     }()
@@ -22,10 +19,7 @@ class ApolloService {
         let cache = InMemoryNormalizedCache()
         let store = ApolloStore(cache: cache)
         let provider = NetworkInterceptorProvider(client: urlSessionClient, store: store)
-        guard let url = URL(string: k.API.endpoint) else {
-            // TODO: Handle this better
-            fatalError()
-        }
+        guard let url = URL(string: k.API.endpoint) else { fatalError() }
         let transport = RequestChainNetworkTransport(interceptorProvider: provider, endpointURL: url)
         client = ApolloClient(networkTransport: transport, store: store)
     }

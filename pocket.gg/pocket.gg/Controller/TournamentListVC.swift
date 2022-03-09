@@ -87,11 +87,11 @@ class TournamentListVC: UITableViewController {
             cell.imageView?.layer.masksToBounds = true
             let newSize = CGSize(width: k.Sizes.tournamentListCellHeight, height: k.Sizes.tournamentListCellHeight)
             ImageService.getImage(imageUrl: tournament.logoUrl, cache: imageCache, newSize: newSize) { image in
-                guard let image = image else { return }
                 DispatchQueue.main.async {
                     guard let imageView = cell.imageView else { return }
                     if cell.tag == indexPath.row {
                         UIView.transition(with: imageView, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                            let image = image ?? UIImage(named: "game-controller-square")
                             cell.imageView?.image = image
                         }, completion: nil)
                     }

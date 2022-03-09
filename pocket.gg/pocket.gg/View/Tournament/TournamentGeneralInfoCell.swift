@@ -13,7 +13,7 @@ final class TournamentGeneralInfoCell: UITableViewCell {
     let tournament: Tournament
     let cacheForLogo: Cache
     
-    let logoImageView = UIImageView(image: UIImage(named: "placeholder"))
+    let logoImageView = UIImageView(image: UIImage(named: "game-controller-square"))
     let dateIconView = UIImageView(image: UIImage(systemName: "calendar"))
     let locationIconView = UIImageView(image: UIImage(systemName: "mappin.and.ellipse"))
     let nameLabel = UILabel()

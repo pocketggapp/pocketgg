@@ -1,17 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "placeholder.png",
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "filename" : "placeholder-1.png",
+      "filename" : "game-controller-square.png",
       "idiom" : "universal"
     },
     {
@@ -21,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "placeholder-dark.png",
+      "filename" : "game-controller-square-dark.png",
       "idiom" : "universal"
     }
   ],
