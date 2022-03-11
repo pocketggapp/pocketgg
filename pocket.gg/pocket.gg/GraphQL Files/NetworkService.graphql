@@ -1,5 +1,5 @@
-query AuthTokenTest {
-    tournament(id: 2018) {
+query CurrentUserID {
+    currentUser {
         id
     }
 }

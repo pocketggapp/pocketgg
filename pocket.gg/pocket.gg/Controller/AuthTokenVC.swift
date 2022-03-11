@@ -134,26 +134,27 @@ final class AuthTokenVC: UIViewController {
         dismissKeyboard()
         UserDefaults.standard.set(authTokenField.text, forKey: k.UserDefaults.authToken)
         ApolloService.shared.updateApolloClient()
-        NetworkService.isAuthTokenValid { [weak self] valid in
-            if valid {
-                UserDefaults.standard.set(DateFormatter.shared.dateFromTimestamp("\(Int(Date().timeIntervalSince1970))"), forKey: k.UserDefaults.authTokenDate)
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
-                guard let window = sceneDelegate.window else { return }
-                
-                if UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
-                    window.rootViewController = MainTabBarControllerService.initTabBarController()
-                } else {
-                    let viewModel = OnboardingViewModel<AnyHashable>(content: OnboardingContentFactory.generateOnboardingContent())
-                    window.rootViewController = UIHostingController(rootView: OnboardingView(viewModel: viewModel, flowType: .firstTimeOnboarding))
-                }
-                window.makeKeyAndVisible()
-            } else {
+        NetworkService.getCurrentUserID { [weak self] userID in
+            guard userID != nil else {
                 UserDefaults.standard.removeObject(forKey: k.UserDefaults.authToken)
                 let alert = UIAlertController(title: k.Error.title, message: k.Error.invalidAuthToken, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
                 self?.present(alert, animated: true)
+                return
             }
+            
+            UserDefaults.standard.set(DateFormatter.shared.dateFromTimestamp("\(Int(Date().timeIntervalSince1970))"), forKey: k.UserDefaults.authTokenDate)
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+            guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
+            guard let window = sceneDelegate.window else { return }
+            
+            if UserDefaults.standard.bool(forKey: k.UserDefaults.returningUser) {
+                window.rootViewController = MainTabBarControllerService.initTabBarController()
+            } else {
+                let viewModel = OnboardingViewModel<AnyHashable>(content: OnboardingContentFactory.generateOnboardingContent())
+                window.rootViewController = UIHostingController(rootView: OnboardingView(viewModel: viewModel, flowType: .firstTimeOnboarding))
+            }
+            window.makeKeyAndVisible()
         }
     }
 }

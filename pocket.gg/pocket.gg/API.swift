@@ -208,19 +208,19 @@ public enum BracketType: RawRepresentable, Equatable, Hashable, CaseIterable, Ap
   }
 }
 
-public final class AuthTokenTestQuery: GraphQLQuery {
+public final class CurrentUserIdQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query AuthTokenTest {
-      tournament(id: 2018) {
+    query CurrentUserID {
+      currentUser {
         __typename
         id
       }
     }
     """
 
-  public let operationName: String = "AuthTokenTest"
+  public let operationName: String = "CurrentUserID"
 
   public init() {
   }
@@ -230,7 +230,7 @@ public final class AuthTokenTestQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("tournament", arguments: ["id": 2018], type: .object(Tournament.selections)),
+        GraphQLField("currentUser", type: .object(CurrentUser.selections)),
       ]
     }
 
@@ -240,22 +240,22 @@ public final class AuthTokenTestQuery: GraphQLQuery {
       self.resultMap = unsafeResultMap
     }
 
-    public init(tournament: Tournament? = nil) {
-      self.init(unsafeResultMap: ["__typename": "Query", "tournament": tournament.flatMap { (value: Tournament) -> ResultMap in value.resultMap }])
+    public init(currentUser: CurrentUser? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "currentUser": currentUser.flatMap { (value: CurrentUser) -> ResultMap in value.resultMap }])
     }
 
-    /// Returns a tournament given its id or slug
-    public var tournament: Tournament? {
+    /// Returns the authenticated user
+    public var currentUser: CurrentUser? {
       get {
-        return (resultMap["tournament"] as? ResultMap).flatMap { Tournament(unsafeResultMap: $0) }
+        return (resultMap["currentUser"] as? ResultMap).flatMap { CurrentUser(unsafeResultMap: $0) }
       }
       set {
-        resultMap.updateValue(newValue?.resultMap, forKey: "tournament")
+        resultMap.updateValue(newValue?.resultMap, forKey: "currentUser")
       }
     }
 
-    public struct Tournament: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["Tournament"]
+    public struct CurrentUser: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
 
       public static var selections: [GraphQLSelection] {
         return [
@@ -271,7 +271,7 @@ public final class AuthTokenTestQuery: GraphQLQuery {
       }
 
       public init(id: GraphQLID? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Tournament", "id": id])
+        self.init(unsafeResultMap: ["__typename": "User", "id": id])
       }
 
       public var __typename: String {
