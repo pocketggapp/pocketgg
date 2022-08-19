@@ -1,5 +1,6 @@
 disabled_rules:
   - todo
+  - no_space_in_method_call
 excluded:
   - pocket.gg/API.swift
   - pocket.gg/Utilities/Constants.swift
