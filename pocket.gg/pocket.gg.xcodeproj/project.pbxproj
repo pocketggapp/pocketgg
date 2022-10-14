@@ -96,6 +96,9 @@
 		DA83B1DE23F7B372002D06C1 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA83B1DD23F7B372002D06C1 /* ImageService.swift */; };
 		DA86242626630A8E00FD0A9C /* TournamentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA86242526630A8E00FD0A9C /* TournamentListCell.swift */; };
 		DA9429AA24F1CF19002595AF /* videoGame.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = DA9429A924F1CF19002595AF /* videoGame.sqlite */; };
+		DA98EB4B28A6E8C300BBF372 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98EB4A28A6E8C300BBF372 /* LoginVC.swift */; };
+		DA98EB4D28A6E8F200BBF372 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98EB4C28A6E8F200BBF372 /* LoginViewModel.swift */; };
+		DA98EB4F28AC71A700BBF372 /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98EB4E28AC71A700BBF372 /* OAuthService.swift */; };
 		DAA7AD7B279B8AED00EE0785 /* EditMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7AD7A279B8AED00EE0785 /* EditMainVC.swift */; };
 		DAA7AD7D279CCB7F00EE0785 /* StartupTasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7AD7C279CCB7F00EE0785 /* StartupTasksService.swift */; };
 		DAADCDB026B37C0E009B46B3 /* TournamentOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */; };
@@ -119,6 +122,7 @@
 		DADBE41924074BB7005B707F /* VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBE41824074BB7005B707F /* VideoGame.swift */; };
 		DAEACF8F250AF53E002F0674 /* EliminationBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEACF8E250AF53E002F0674 /* EliminationBracketView.swift */; };
 		DAEACF97250AF963002F0674 /* PhaseGroupSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEACF96250AF963002F0674 /* PhaseGroupSet.swift */; };
+		DAEB941A28E879FF0099D7D6 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEB941928E879FF0099D7D6 /* KeychainService.swift */; };
 		DAECFB652647436000661EDA /* MainVCDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAECFB642647436000661EDA /* MainVCDataService.swift */; };
 		DAF0BE412665BAB8000F7506 /* AppIconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0BE402665BAB8000F7506 /* AppIconVC.swift */; };
 		DAF0BE51266C03FD000F7506 /* EntrantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF0BE50266C03FD000F7506 /* EntrantService.swift */; };
@@ -249,6 +253,9 @@
 		DA86242526630A8E00FD0A9C /* TournamentListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentListCell.swift; sourceTree = "<group>"; };
 		DA92DF1623E812350084FEB1 /* NetworkService.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = NetworkService.graphql; sourceTree = "<group>"; };
 		DA9429A924F1CF19002595AF /* videoGame.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoGame.sqlite; sourceTree = "<group>"; };
+		DA98EB4A28A6E8C300BBF372 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		DA98EB4C28A6E8F200BBF372 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DA98EB4E28AC71A700BBF372 /* OAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
 		DAA7AD7A279B8AED00EE0785 /* EditMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMainVC.swift; sourceTree = "<group>"; };
 		DAA7AD7C279CCB7F00EE0785 /* StartupTasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupTasksService.swift; sourceTree = "<group>"; };
 		DAADCDAF26B37C0E009B46B3 /* TournamentOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentOptionsVC.swift; sourceTree = "<group>"; };
@@ -271,6 +278,7 @@
 		DADBE41824074BB7005B707F /* VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGame.swift; sourceTree = "<group>"; };
 		DAEACF8E250AF53E002F0674 /* EliminationBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationBracketView.swift; sourceTree = "<group>"; };
 		DAEACF96250AF963002F0674 /* PhaseGroupSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSet.swift; sourceTree = "<group>"; };
+		DAEB941928E879FF0099D7D6 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DAECFB642647436000661EDA /* MainVCDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCDataService.swift; sourceTree = "<group>"; };
 		DAF0BE402665BAB8000F7506 /* AppIconVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconVC.swift; sourceTree = "<group>"; };
 		DAF0BE50266C03FD000F7506 /* EntrantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantService.swift; sourceTree = "<group>"; };
@@ -383,6 +391,7 @@
 				DAADCDB426B4B0A6009B46B3 /* TOFollowedService.swift */,
 				DAD09B5426D80B23001E53DE /* MainTabBarControllerService.swift */,
 				DAA7AD7C279CCB7F00EE0785 /* StartupTasksService.swift */,
+				DAEB941928E879FF0099D7D6 /* KeychainService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -519,6 +528,7 @@
 				DA2939C823E7CAE300E5DB3A /* Model */,
 				DA759E5E23E4FECD00D4B3E7 /* View */,
 				DA7E51B123E475500037E757 /* Controller */,
+				DA98EB4928A6E89800BBF372 /* ViewModel */,
 				DA50615227B5F7460027747D /* Onboarding */,
 				DA2939D023E7D1C800E5DB3A /* Services */,
 				DA56559223E50C3E003FEF20 /* Utilities */,
@@ -541,6 +551,7 @@
 		DA7E51B123E475500037E757 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DA98EB4A28A6E8C300BBF372 /* LoginVC.swift */,
 				DAC290F1251B854F003D05B9 /* AuthTokenVC.swift */,
 				DA266130265C89A100ACEA8D /* AuthTokenStepsVC.swift */,
 				DA759E5A23E4FE5500D4B3E7 /* MainVC.swift */,
@@ -569,12 +580,21 @@
 		DA961BA426DC47C7009BD7FA /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DA98EB4E28AC71A700BBF372 /* OAuthService.swift */,
 				DA2939D123E7D1D800E5DB3A /* NetworkService.swift */,
 				DA7850AE26DDCD8600EB4DB2 /* TournamentInfoService.swift */,
 				DA7850AC26DDC99C00EB4DB2 /* TournamentDetailsService.swift */,
 				DA33C2EF26AE576B00363E70 /* ProfileService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DA98EB4928A6E89800BBF372 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA98EB4C28A6E8F200BBF372 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DAADCDBA26B4B13F009B46B3 /* Search */ = {
@@ -862,6 +882,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA98EB4D28A6E8F200BBF372 /* LoginViewModel.swift in Sources */,
 				DA79A6312589AA7800651BB4 /* RoundRobinSetCell.swift in Sources */,
 				DAF618E9241E176100AB4D93 /* UIStackView+Setup.swift in Sources */,
 				DAA7AD7D279CCB7F00EE0785 /* StartupTasksService.swift in Sources */,
@@ -871,6 +892,7 @@
 				DA2D5F31256B678300C44EEC /* ApolloService.swift in Sources */,
 				DADBE41924074BB7005B707F /* VideoGame.swift in Sources */,
 				DA4B496224FCC6FC00BE7E0E /* Location.swift in Sources */,
+				DA98EB4B28A6E8C300BBF372 /* LoginVC.swift in Sources */,
 				DA4CE1FC23EF9CDA00BDE107 /* Collection+Safe.swift in Sources */,
 				DADA6DD327CC255A003A98F8 /* PagerView.swift in Sources */,
 				DA33C2EE26AE275E00363E70 /* ProfileCell.swift in Sources */,
@@ -883,7 +905,9 @@
 				DAF0BE57267032DA000F7506 /* SetIdentifierView.swift in Sources */,
 				DA2E80A92659A95900B876F1 /* TournamentSearchResultsVC.swift in Sources */,
 				DA68B6C1257EB7CB00A010F3 /* BracketView.swift in Sources */,
+				DAEB941A28E879FF0099D7D6 /* KeychainService.swift in Sources */,
 				DA80062E2698DD8E003FD3F7 /* FirebaseService.swift in Sources */,
+				DA98EB4F28AC71A700BBF372 /* OAuthService.swift in Sources */,
 				DA64A2FD241DF1AA00481280 /* EventVC.swift in Sources */,
 				DADBE41524074A38005B707F /* AboutVC.swift in Sources */,
 				DAD09B5526D80B23001E53DE /* MainTabBarControllerService.swift in Sources */,
