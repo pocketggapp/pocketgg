@@ -9,10 +9,10 @@
 import UIKit
 
 extension UIStackView {
-    func setup(subviews: [UIView], axis: NSLayoutConstraint.Axis, alignment: UIStackView.Alignment = .fill, spacing: CGFloat = 0) {
-        subviews.forEach { addArrangedSubview($0) }
-        self.axis = axis
-        self.alignment = alignment
-        self.spacing = spacing
-    }
+  func setup(subviews: [UIView], axis: NSLayoutConstraint.Axis, alignment: UIStackView.Alignment = .fill, spacing: CGFloat = 0) {
+    subviews.forEach { addArrangedSubview($0) }
+    self.axis = axis
+    self.alignment = alignment
+    self.spacing = spacing
+  }
 }

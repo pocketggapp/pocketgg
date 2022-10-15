@@ -10,25 +10,25 @@ import UIKit
 
 final class Value1Cell: UITableViewCell {
 
-    // MARK: - Initialization
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        textLabel?.numberOfLines = 0
+  // MARK: - Initialization
+  
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+    textLabel?.numberOfLines = 0
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - Public Methods
+  
+  func updateLabels(text: String? = nil, attributedText: NSAttributedString? = nil, detailText: String?) {
+    if let attributedText = attributedText {
+      textLabel?.attributedText = attributedText
+    } else {
+      textLabel?.text = text
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Public Methods
-    
-    func updateLabels(text: String? = nil, attributedText: NSAttributedString? = nil, detailText: String?) {
-        if let attributedText = attributedText {
-            textLabel?.attributedText = attributedText
-        } else {
-            textLabel?.text = text
-        }
-        detailTextLabel?.text = detailText
-    }
+    detailTextLabel?.text = detailText
+  }
 }

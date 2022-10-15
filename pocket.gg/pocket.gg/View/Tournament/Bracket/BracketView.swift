@@ -9,16 +9,16 @@
 import UIKit
 
 enum InvalidBracketViewCause {
-    case noEntrants
-    case noSets
-    case bracketNotStarted
-    case bracketLayoutError
-    case unsupportedBracketType
-    case errorLoadingBracket
+  case noEntrants
+  case noSets
+  case bracketNotStarted
+  case bracketLayoutError
+  case unsupportedBracketType
+  case errorLoadingBracket
 }
 
 protocol BracketView: UIView {
-    var sets: [PhaseGroupSet]? { get }
-    var isValid: Bool { get }
-    var invalidationCause: InvalidBracketViewCause? { get }
+  var sets: [PhaseGroupSet]? { get }
+  var isValid: Bool { get }
+  var invalidationCause: InvalidBracketViewCause? { get }
 }

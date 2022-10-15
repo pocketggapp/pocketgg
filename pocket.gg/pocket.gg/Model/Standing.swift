@@ -7,6 +7,6 @@
 //
 
 struct Standing {
-    var entrant: Entrant?
-    var placement: Int?
+  var entrant: Entrant?
+  var placement: Int?
 }

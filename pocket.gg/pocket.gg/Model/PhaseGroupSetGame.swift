@@ -7,6 +7,6 @@
 //
 
 struct PhaseGroupSetGame {
-    let winnerID: Int?
-    let stageName: String?
+  let winnerID: Int?
+  let stageName: String?
 }

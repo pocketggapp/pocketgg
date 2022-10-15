@@ -10,17 +10,16 @@
 ///
 /// Eg: R1 Pools can have many phase groups, whereas Top 8 only has 1
 struct PhaseGroup {
-    
-    // Info needed by PhaseGroupListVC
-    // Query 3 - PhaseGroupsById
-    let id: Int?
-    let name: String?
-    let state: String?
-    
-    // On-demand data for PhaseGroupVC
-    // Query 4 - PhaseGroupStandingsById
-    var bracketType: String?
-    var progressionsOut: [Int]?
-    var standings: [Standing]?
-    var matches: [PhaseGroupSet]?
+  // Info needed by PhaseGroupListVC
+  // Query 3 - PhaseGroupsById
+  let id: Int?
+  let name: String?
+  let state: String?
+  
+  // On-demand data for PhaseGroupVC
+  // Query 4 - PhaseGroupStandingsById
+  var bracketType: String?
+  var progressionsOut: [Int]?
+  var standings: [Standing]?
+  var matches: [PhaseGroupSet]?
 }

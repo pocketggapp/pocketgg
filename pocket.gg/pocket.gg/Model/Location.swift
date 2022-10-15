@@ -10,8 +10,8 @@
 ///
 /// The address for each tournament pre-fetched as part of the TournamentsByVideogames query, and the rest is fetched as a part of the TournamentDetailsById query
 struct Location {
-    let address: String?
-    var venueName: String?
-    var longitude: Double?
-    var latitude: Double?
+  let address: String?
+  var venueName: String?
+  var longitude: Double?
+  var latitude: Double?
 }

@@ -8,7 +8,7 @@
 
 /// An external service where the tournament is streamed, and can be viewed online
 struct Stream {
-    let name: String?
-    let logoUrl: String?
-    let sourceUrl: String?
+  let name: String?
+  let logoUrl: String?
+  let sourceUrl: String?
 }

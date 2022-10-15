@@ -12,7 +12,7 @@ final class AuthTokenSettingsVC: UITableViewController {
     
   let authTokenDate: String?
 
-  // MARK: - Initialization
+  // MARK: Initialization
 
   init(_ authTokenDate: String?) {
     self.authTokenDate = authTokenDate
@@ -23,14 +23,14 @@ final class AuthTokenSettingsVC: UITableViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Life Cycle
+  // MARK: Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Auth Token"
   }
 
-  // MARK: - Table View Data Source
+  // MARK: Table View Data Source
 
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 3

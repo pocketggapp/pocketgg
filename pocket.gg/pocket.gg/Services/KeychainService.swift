@@ -49,7 +49,7 @@ final class KeychainService {
     let query: [String: Any] = [
       kSecClass as String: kSecClassGenericPassword,
       kSecAttrAccount as String: type.rawValue,
-      kSecAttrService as String: KeychainConstants.bundleID,
+      kSecAttrService as String: KeychainConstants.bundleID
     ]
     let attributes: [String: Any] = [
       kSecValueData as String: data

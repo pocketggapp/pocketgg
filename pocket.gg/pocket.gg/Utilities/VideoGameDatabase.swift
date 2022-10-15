@@ -9,29 +9,29 @@
 import GRDB
 
 enum VideoGameDatabaseError: Error {
-    case appSupportDirURL
-    case dbNotInAppBundle
-    case dbNotInitialized
+  case appSupportDirURL
+  case dbNotInAppBundle
+  case dbNotInitialized
 }
 
 struct VideoGameDatabase {
-    static func openDatabase(atPath path: String) throws -> DatabaseQueue {
-        return try DatabaseQueue(path: path)
+  static func openDatabase(atPath path: String) throws -> DatabaseQueue {
+    return try DatabaseQueue(path: path)
+  }
+  
+  static func getVideoGames() throws -> [VideoGame] {
+    guard let dbQueue = dbQueue else { throw VideoGameDatabaseError.dbNotInitialized }
+    let videoGames: [VideoGame] = try dbQueue.read { db in
+      try VideoGame.fetchAll(db)
     }
-    
-    static func getVideoGames() throws -> [VideoGame] {
-        guard let dbQueue = dbQueue else { throw VideoGameDatabaseError.dbNotInitialized }
-        let videoGames: [VideoGame] = try dbQueue.read { db in
-            try VideoGame.fetchAll(db)
-        }
-        return videoGames
+    return videoGames
+  }
+  
+  static func getVideoGamesForSearch(_ search: String) throws -> [VideoGame] {
+    guard let dbQueue = dbQueue else { throw VideoGameDatabaseError.dbNotInitialized }
+    let videoGames: [VideoGame] = try dbQueue.read { db in
+      try VideoGame.fetchAll(db, sql: "SELECT * FROM videoGame WHERE name LIKE '%\(search)%'")
     }
-    
-    static func getVideoGamesForSearch(_ search: String) throws -> [VideoGame] {
-        guard let dbQueue = dbQueue else { throw VideoGameDatabaseError.dbNotInitialized }
-        let videoGames: [VideoGame] = try dbQueue.read { db in
-            try VideoGame.fetchAll(db, sql: "SELECT * FROM videoGame WHERE name LIKE '%\(search)%'")
-        }
-        return videoGames
-    }
+    return videoGames
+  }
 }

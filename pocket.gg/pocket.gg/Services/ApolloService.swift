@@ -2,6 +2,7 @@ import Foundation
 import Apollo
 
 class ApolloService {
+  
   static let shared = ApolloService()
   
   private(set) lazy var client: ApolloClient = {

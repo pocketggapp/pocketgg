@@ -9,20 +9,20 @@
 import UIKit
 
 extension UITableViewCell {
-    
-    func setupActive(textColor: UIColor, text: String?, detailText: String? = nil) -> UITableViewCell {
-        accessoryType = .disclosureIndicator
-        textLabel?.textColor = textColor
-        textLabel?.text = text
-        textLabel?.numberOfLines = 0
-        detailTextLabel?.text = detailText
-        return self
-    }
-    
-    func setupDisabled(_ text: String?) -> UITableViewCell {
-        isUserInteractionEnabled = false
-        textLabel?.text = text
-        textLabel?.numberOfLines = 0
-        return self
-    }
+  
+  func setupActive(textColor: UIColor, text: String?, detailText: String? = nil) -> UITableViewCell {
+    accessoryType = .disclosureIndicator
+    textLabel?.textColor = textColor
+    textLabel?.text = text
+    textLabel?.numberOfLines = 0
+    detailTextLabel?.text = detailText
+    return self
+  }
+  
+  func setupDisabled(_ text: String?) -> UITableViewCell {
+    isUserInteractionEnabled = false
+    textLabel?.text = text
+    textLabel?.numberOfLines = 0
+    return self
+  }
 }

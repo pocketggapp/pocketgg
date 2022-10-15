@@ -7,9 +7,9 @@
 //
 
 struct TournamentOrganizer: Codable {
-    var id: Int?
-    var name: String?
-    var prefix: String?
-    var customName: String?
-    var customPrefix: String?
+  var id: Int?
+  var name: String?
+  var prefix: String?
+  var customName: String?
+  var customPrefix: String?
 }

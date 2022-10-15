@@ -9,6 +9,6 @@
 import GRDB
 
 struct VideoGame: Hashable, Codable, FetchableRecord, MutablePersistableRecord {
-    let id: Int
-    let name: String
+  let id: Int
+  let name: String
 }
