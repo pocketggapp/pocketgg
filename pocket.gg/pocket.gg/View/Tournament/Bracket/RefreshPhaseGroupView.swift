@@ -10,7 +10,7 @@ import UIKit
 
 final class RefreshPhaseGroupView: UIView {
     
-  private let refreshButton: UIButton
+  let refreshButton: UIButton
   private let spinner: UIActivityIndicatorView
   
   // MARK: Initialization
