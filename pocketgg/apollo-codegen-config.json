@@ -1,0 +1,43 @@
+{
+  "schemaNamespace" : "startggAPI",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./startggAPI",
+      "moduleType" : {
+        "swiftPackageManager" : {
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  },
+  "schemaDownloadConfiguration": {
+    "downloadMethod": {
+        "introspection": {
+            "endpointURL": "https://api.start.gg/gql/alpha",
+            "httpMethod": {
+                "POST": {}
+            },
+            "includeDeprecatedInputValues": false,
+            "outputFormat": "SDL"
+        }
+    },
+    "downloadTimeout": 60,
+    "headers": [],
+    "outputPath": "./graphql/schema.graphqls"
+  }
+}
