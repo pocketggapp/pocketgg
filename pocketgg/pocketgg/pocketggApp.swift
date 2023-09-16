@@ -9,12 +9,20 @@ import SwiftUI
 
 @main
 struct pocketggApp: App {
-    let persistenceController = PersistenceController.shared
+  let persistenceController = PersistenceController.shared
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
+  var body: some Scene {
+    WindowGroup {
+      TabView {
+        HomeView()
+          .tabItem {
+            Label("Tournaments", systemImage: "pencil.circle.fill")
+          }
+        SettingsView()
+          .tabItem {
+            Label("Settings", systemImage: "gear")
+          }
+      }
     }
+  }
 }

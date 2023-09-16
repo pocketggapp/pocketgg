@@ -14,6 +14,12 @@
 		DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B19C2A5E564C00814252 /* Persistence.swift */; };
 		DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA46B19E2A5E564C00814252 /* pocketgg.xcdatamodeld */; };
 		DA46B1AA2A5E564C00814252 /* pocketggTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1A92A5E564C00814252 /* pocketggTests.swift */; };
+		DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65B2AB618B100EF18E0 /* SettingsView.swift */; };
+		DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65D2AB61AE300EF18E0 /* HomeView.swift */; };
+		DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */; };
+		DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D6632AB6253500EF18E0 /* Tournament.swift */; };
+		DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */; };
+		DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		DA46B19F2A5E564C00814252 /* pocketgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pocketgg.xcdatamodel; sourceTree = "<group>"; };
 		DA46B1A52A5E564C00814252 /* pocketggTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pocketggTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA46B1A92A5E564C00814252 /* pocketggTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketggTests.swift; sourceTree = "<group>"; };
+		DA65D65B2AB618B100EF18E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DA65D65D2AB61AE300EF18E0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		DA65D6632AB6253500EF18E0 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHorizontalListView.swift; sourceTree = "<group>"; };
+		DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,9 @@
 		DA46B1922A5E564B00814252 /* pocketgg */ = {
 			isa = PBXGroup;
 			children = (
+				DA65D6622AB6252C00EF18E0 /* Model */,
+				DADCFECF2A5F96F000A98C0D /* View */,
+				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
 				DA46B1952A5E564B00814252 /* ContentView.swift */,
 				DA46B1972A5E564C00814252 /* Assets.xcassets */,
@@ -101,6 +116,57 @@
 				DA46B1A92A5E564C00814252 /* pocketggTests.swift */,
 			);
 			path = pocketggTests;
+			sourceTree = "<group>";
+		};
+		DA65D65F2AB61EB800EF18E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D66F2AB64A7500EF18E0 /* Home */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DA65D6622AB6252C00EF18E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D6632AB6253500EF18E0 /* Tournament.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA65D66D2AB64A4700EF18E0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D65D2AB61AE300EF18E0 /* HomeView.swift */,
+				DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */,
+				DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DA65D66E2AB64A5C00EF18E0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D65B2AB618B100EF18E0 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DA65D66F2AB64A7500EF18E0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DADCFECF2A5F96F000A98C0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D66D2AB64A4700EF18E0 /* Home */,
+				DA65D66E2AB64A5C00EF18E0 /* Settings */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,8 +269,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
+				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
+				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
+				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
+				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
+				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,
 				DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */,
 			);
