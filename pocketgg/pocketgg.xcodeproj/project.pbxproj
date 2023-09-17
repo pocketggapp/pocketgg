@@ -23,6 +23,8 @@
 		DA65D6722AB6522D00EF18E0 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6712AB6522D00EF18E0 /* Apollo */; };
 		DA65D6742AB6522D00EF18E0 /* ApolloAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6732AB6522D00EF18E0 /* ApolloAPI */; };
 		DA65D6762AB6522D00EF18E0 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6752AB6522D00EF18E0 /* ApolloWebSocket */; };
+		DA65D67C2AB6746F00EF18E0 /* StartggAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D67B2AB6746F00EF18E0 /* StartggAPI */; };
+		DA65D67F2AB6751900EF18E0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D67E2AB6751900EF18E0 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		DA65D6632AB6253500EF18E0 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHorizontalListView.swift; sourceTree = "<group>"; };
 		DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTileView.swift; sourceTree = "<group>"; };
+		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tournament.graphql; path = graphql/Tournament.graphql; sourceTree = SOURCE_ROOT; };
+		DA65D6792AB6744400EF18E0 /* startggAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = startggAPI; sourceTree = "<group>"; };
+		DA65D67E2AB6751900EF18E0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA65D67C2AB6746F00EF18E0 /* StartggAPI in Frameworks */,
 				DA65D6742AB6522D00EF18E0 /* ApolloAPI in Frameworks */,
 				DA65D6762AB6522D00EF18E0 /* ApolloWebSocket in Frameworks */,
 				DA65D6722AB6522D00EF18E0 /* Apollo in Frameworks */,
@@ -79,7 +85,9 @@
 			children = (
 				DA46B1922A5E564B00814252 /* pocketgg */,
 				DA46B1A82A5E564C00814252 /* pocketggTests */,
+				DA65D6782AB6744400EF18E0 /* Packages */,
 				DA46B1912A5E564B00814252 /* Products */,
+				DA65D67A2AB6746F00EF18E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,9 +106,11 @@
 				DA65D6622AB6252C00EF18E0 /* Model */,
 				DADCFECF2A5F96F000A98C0D /* View */,
 				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
+				DA65D67D2AB674FD00EF18E0 /* Network */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
 				DA46B1952A5E564B00814252 /* ContentView.swift */,
 				DA46B1972A5E564C00814252 /* Assets.xcassets */,
+				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
 				DA46B19C2A5E564C00814252 /* Persistence.swift */,
 				DA46B19E2A5E564C00814252 /* pocketgg.xcdatamodeld */,
 				DA46B1992A5E564C00814252 /* Preview Content */,
@@ -166,6 +176,29 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		DA65D6782AB6744400EF18E0 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D6792AB6744400EF18E0 /* startggAPI */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		DA65D67A2AB6746F00EF18E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA65D67D2AB674FD00EF18E0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D67E2AB6751900EF18E0 /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		DADCFECF2A5F96F000A98C0D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +228,7 @@
 				DA65D6712AB6522D00EF18E0 /* Apollo */,
 				DA65D6732AB6522D00EF18E0 /* ApolloAPI */,
 				DA65D6752AB6522D00EF18E0 /* ApolloWebSocket */,
+				DA65D67B2AB6746F00EF18E0 /* StartggAPI */,
 			);
 			productName = pocketgg;
 			productReference = DA46B1902A5E564B00814252 /* pocketgg.app */;
@@ -288,6 +322,7 @@
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
+				DA65D67F2AB6751900EF18E0 /* Network.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
@@ -587,6 +622,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA65D6702AB6522D00EF18E0 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = ApolloWebSocket;
+		};
+		DA65D67B2AB6746F00EF18E0 /* StartggAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StartggAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 
