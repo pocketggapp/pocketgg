@@ -25,6 +25,11 @@
 		DA65D6762AB6522D00EF18E0 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6752AB6522D00EF18E0 /* ApolloWebSocket */; };
 		DA65D67C2AB6746F00EF18E0 /* StartggAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D67B2AB6746F00EF18E0 /* StartggAPI */; };
 		DA65D67F2AB6751900EF18E0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D67E2AB6751900EF18E0 /* Network.swift */; };
+		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
+		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
+		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
+		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
+		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,9 +58,15 @@
 		DA65D6632AB6253500EF18E0 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHorizontalListView.swift; sourceTree = "<group>"; };
 		DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTileView.swift; sourceTree = "<group>"; };
-		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tournament.graphql; path = graphql/Tournament.graphql; sourceTree = SOURCE_ROOT; };
+		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tournament.graphql; path = graphql/Tournament.graphql; sourceTree = SOURCE_ROOT; };
 		DA65D6792AB6744400EF18E0 /* startggAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = startggAPI; sourceTree = "<group>"; };
 		DA65D67E2AB6751900EF18E0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
+		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DABFF2712AB90FA90053614D /* OAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +118,9 @@
 				DADCFECF2A5F96F000A98C0D /* View */,
 				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
 				DA65D67D2AB674FD00EF18E0 /* Network */,
+				DABFF2702AB90F880053614D /* Services */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
+				DABFF26C2AB906580053614D /* Info.plist */,
 				DA46B1952A5E564B00814252 /* ContentView.swift */,
 				DA46B1972A5E564C00814252 /* Assets.xcassets */,
 				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
@@ -137,6 +150,7 @@
 		DA65D65F2AB61EB800EF18E0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DABFF26D2AB906D30053614D /* Login */,
 				DA65D66F2AB64A7500EF18E0 /* Home */,
 			);
 			path = ViewModel;
@@ -195,13 +209,40 @@
 			isa = PBXGroup;
 			children = (
 				DA65D67E2AB6751900EF18E0 /* Network.swift */,
+				DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DABFF2692AB794CE0053614D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DABFF26A2AB794E20053614D /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DABFF26D2AB906D30053614D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DABFF26E2AB906DC0053614D /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DABFF2702AB90F880053614D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DABFF2712AB90FA90053614D /* OAuthService.swift */,
+				DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DADCFECF2A5F96F000A98C0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DABFF2692AB794CE0053614D /* Login */,
 				DA65D66D2AB64A4700EF18E0 /* Home */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
 			);
@@ -322,8 +363,13 @@
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
+				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
 				DA65D67F2AB6751900EF18E0 /* Network.swift in Sources */,
+				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
+				DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */,
+				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
+				DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,
@@ -475,6 +521,7 @@
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pocketgg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pocket.gg;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -505,6 +552,7 @@
 				DEVELOPMENT_TEAM = H5HY9QQ8RU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pocketgg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pocket.gg;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

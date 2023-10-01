@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  pocketgg
-//
-//  Created by Gabriel Siu on 2023-07-11.
-//
-
 import SwiftUI
 import CoreData
 
