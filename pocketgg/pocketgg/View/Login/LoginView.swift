@@ -6,7 +6,7 @@ private enum Constants {
 }
 
 struct LoginView: View {
-  
+  @EnvironmentObject private var appRootManager: AppRootManager
   @StateObject private var viewModel = LoginViewModel(oAuthService: OAuthService())
   
   var body: some View {
@@ -25,6 +25,9 @@ struct LoginView: View {
       Button {
         Task {
           await viewModel.logIn()
+          if viewModel.loggedInSuccessfully {
+            appRootManager.currentRoot = .home
+          }
         }
       } label: {
         Text("Log in with start.gg")

@@ -3,20 +3,28 @@ import SwiftUI
 @main
 struct pocketggApp: App {
   let persistenceController = PersistenceController.shared
+  @StateObject private var appRootManager = AppRootManager()
 
   var body: some Scene {
     WindowGroup {
-      LoginView()
-//      TabView {
-//        HomeView()
-//          .tabItem {
-//            Label("Tournaments", systemImage: "pencil.circle.fill")
-//          }
-//        SettingsView()
-//          .tabItem {
-//            Label("Settings", systemImage: "gear")
-//          }
-//      }
+      Group {
+        switch appRootManager.currentRoot {
+        case .login:
+          LoginView()
+        case .home:
+          TabView {
+            HomeView()
+              .tabItem {
+                Label("Tournaments", systemImage: "pencil.circle.fill")
+              }
+            SettingsView()
+              .tabItem {
+                Label("Settings", systemImage: "gear")
+              }
+          }
+        }
+      }
+      .environmentObject(appRootManager)
     }
   }
 }
