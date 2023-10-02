@@ -28,6 +28,8 @@
 		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
 		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
+		DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B12ACA362E0093FC49 /* Constants.swift */; };
+		DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B32ACA6D800093FC49 /* LoadingView.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
 		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
@@ -65,6 +67,8 @@
 		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
+		DA8D00B12ACA362E0093FC49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DA8D00B32ACA6D800093FC49 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
 				DA65D67D2AB674FD00EF18E0 /* Network */,
 				DABFF2702AB90F880053614D /* Services */,
+				DA8D00B02ACA36200093FC49 /* Utilities */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
 				DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */,
 				DABFF26C2AB906580053614D /* Info.plist */,
@@ -217,6 +222,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		DA8D00B02ACA36200093FC49 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DA8D00B12ACA362E0093FC49 /* Constants.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		DABFF2692AB794CE0053614D /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +258,7 @@
 		DADCFECF2A5F96F000A98C0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DA8D00B32ACA6D800093FC49 /* LoadingView.swift */,
 				DABFF2692AB794CE0053614D /* Login */,
 				DA65D66D2AB64A4700EF18E0 /* Home */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
@@ -378,6 +392,8 @@
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,
 				DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */,
+				DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */,
+				DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

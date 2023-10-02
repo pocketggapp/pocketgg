@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct HomeView: View {
-  @StateObject private var viewModel = HomeViewModel()
+  @StateObject private var viewModel: HomeViewModel
+  
+  init(viewModel: HomeViewModel) {
+    self._viewModel = StateObject(wrappedValue: { viewModel }())
+  }
 
   var body: some View {
     NavigationStack {
@@ -18,12 +22,16 @@ struct HomeView: View {
       .navigationDestination(for: TournamentData.self) { tournament in
         EmptyView()
       }
+      .alert("Error", isPresented: $viewModel.showingAlert, actions: {}, message: {
+        Text(viewModel.alertMessage)
+      })
+    }
+    .onAppear {
+      viewModel.onViewAppear()
     }
   }
 }
 
-struct HomeView_Previews: PreviewProvider {
-  static var previews: some View {
-    HomeView()
-  }
+#Preview {
+  HomeView(viewModel: HomeViewModel(oAuthService: OAuthService()))
 }

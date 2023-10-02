@@ -1,9 +1,5 @@
 import SwiftUI
 
-private enum Constants {
-  static let accessTokenLastRefreshed = "accessTokenLastRefreshed"
-}
-
 struct SettingsView: View {
   @EnvironmentObject private var appRootManager: AppRootManager
   
@@ -12,7 +8,7 @@ struct SettingsView: View {
       do {
         try KeychainService.deleteToken(.accessToken)
         try KeychainService.deleteToken(.refreshToken)
-        UserDefaults.standard.removeObject(forKey: Constants.accessTokenLastRefreshed)
+        UserDefaults.standard.removeObject(forKey: Constants.UserDefaults.accessTokenLastRefreshed)
         appRootManager.currentRoot = .login
       } catch {
         print(error)
@@ -21,8 +17,6 @@ struct SettingsView: View {
   }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-  static var previews: some View {
-    SettingsView()
-  }
+#Preview {
+  SettingsView()
 }

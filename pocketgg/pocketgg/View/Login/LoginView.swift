@@ -1,20 +1,24 @@
 import SwiftUI
 
-private enum Constants {
+private enum LoginConstants {
   static let imageLength: CGFloat = 100
   static let buttonHeight: CGFloat = 44
 }
 
 struct LoginView: View {
   @EnvironmentObject private var appRootManager: AppRootManager
-  @StateObject private var viewModel = LoginViewModel(oAuthService: OAuthService())
+  @StateObject private var viewModel: LoginViewModel
+  
+  init(viewModel: LoginViewModel) {
+    self._viewModel = StateObject(wrappedValue: { viewModel }())
+  }
   
   var body: some View {
     VStack {
       HStack {
         Image("tournament-red")
           .resizable()
-          .frame(width: Constants.imageLength, height: Constants.imageLength)
+          .frame(width: LoginConstants.imageLength, height: LoginConstants.imageLength)
         
         Text("pocket.gg")
           .font(.largeTitle)
@@ -34,16 +38,17 @@ struct LoginView: View {
           .font(.body)
           .frame(maxWidth: .infinity)
       }
-      .frame(minHeight: Constants.buttonHeight)
+      .frame(minHeight: LoginConstants.buttonHeight)
       .buttonStyle(.borderedProminent)
       .tint(.red)
     }
     .padding()
+    .alert("Error", isPresented: $viewModel.showingAlert, actions: {}, message: {
+      Text(viewModel.alertMessage)
+    })
   }
 }
 
-struct LoginView_Previews: PreviewProvider {
-  static var previews: some View {
-    LoginView()
-  }
+#Preview {
+  LoginView(viewModel: LoginViewModel(oAuthService: OAuthService()))
 }

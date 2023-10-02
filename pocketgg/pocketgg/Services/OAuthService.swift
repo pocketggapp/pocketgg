@@ -29,6 +29,8 @@ struct AccessTokenResponse: Codable {
 
 final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProviding {
   
+  // MARK: OAuth 2.0 Flow
+  
   func webAuthAsync() async throws -> AccessTokenResponse {
     return try await withCheckedThrowingContinuation { continuation in
       webAuth { result in
@@ -77,9 +79,10 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
     }
   }
   
+  // MARK: Get Access Token
+  
   private func getAccessToken(_ authCode: String) async throws -> AccessTokenResponse {
     let clientSecret = ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
-    let url = URL(string: OAuthConstants.accessTokenEndpoint)!
     
     let parameters: [String: Any] = [
       "grant_type": "authorization_code",
@@ -89,6 +92,51 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
       "client_id": OAuthConstants.clientID,
       "redirect_uri": OAuthConstants.redirectURI
     ]
+    
+    do {
+      return try await requestTokens(token: .accessToken, parameters: parameters)
+    } catch {
+      throw error
+    }
+  }
+  
+  // MARK: Refresh Access Token
+  
+  func refreshAccessToken() async throws -> AccessTokenResponse {
+    let clientSecret = ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
+    var refreshToken = ""
+    do {
+      refreshToken = try KeychainService.getToken(.refreshToken)
+    } catch {
+      throw error
+    }
+    
+    let parameters: [String: Any] = [
+      "grant_type": "refresh_token",
+      "refresh_token": refreshToken,
+      "scope": "user.identity",
+      "client_id": OAuthConstants.clientID,
+      "client_secret": clientSecret,
+      "redirect_uri": OAuthConstants.redirectURI
+    ]
+    
+    do {
+      return try await requestTokens(token: .refreshToken, parameters: parameters)
+    } catch {
+      throw error
+    }
+  }
+  
+  // MARK: Request Tokens
+  
+  private func requestTokens(token: Token, parameters: [String: Any]) async throws -> AccessTokenResponse {
+    let url: URL
+    switch token {
+    case .accessToken:
+      url = URL(string: OAuthConstants.accessTokenEndpoint)!
+    case .refreshToken:
+      url = URL(string: OAuthConstants.refreshTokenEndpoint)!
+    }
     
     let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
     
@@ -109,6 +157,27 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
       }
     } catch {
       throw OAuthError.dataTaskError(error.localizedDescription)
+    }
+  }
+  
+  // MARK: Save Tokens
+  
+  func saveTokens(_ response: AccessTokenResponse) async throws {
+    // By default, tokens expire in 604800 seconds (7 days)
+    // Try to get a new access token once every day
+    UserDefaults.standard.set(Date(), forKey: Constants.UserDefaults.accessTokenLastRefreshed)
+    
+    return try await withCheckedThrowingContinuation { continuation in
+      do {
+        try KeychainService.upsertToken(response.accessToken, .accessToken)
+        try KeychainService.upsertToken(response.refreshToken, .refreshToken)
+      } catch {
+        continuation.resume(throwing: error)
+        return
+      }
+
+      Network.shared.updateApolloClient()
+      continuation.resume()
     }
   }
   
