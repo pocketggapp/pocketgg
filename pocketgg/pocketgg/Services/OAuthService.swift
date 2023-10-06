@@ -4,7 +4,7 @@ import AuthenticationServices
 private enum OAuthConstants {
   static let accessTokenEndpoint = "https://api.start.gg/oauth/access_token"
   static let refreshTokenEndpoint = "https://api.start.gg/oauth/refresh"
-  static let redirectURI = "https://pocketggapp.github.io"
+  static let redirectURI = "https://pocketggapp.github.io/oauth_callback"
   static let clientID = "17"
 }
 
