@@ -25,6 +25,9 @@
 		DA65D6762AB6522D00EF18E0 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6752AB6522D00EF18E0 /* ApolloWebSocket */; };
 		DA65D67C2AB6746F00EF18E0 /* StartggAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D67B2AB6746F00EF18E0 /* StartggAPI */; };
 		DA65D67F2AB6751900EF18E0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D67E2AB6751900EF18E0 /* Network.swift */; };
+		DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926632AD1DDFA0086B92A /* EditHomeView.swift */; };
+		DA6926672AD1E2AB0086B92A /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926662AD1E2AB0086B92A /* LocationView.swift */; };
+		DA6926692AD1F5850086B92A /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926682AD1F5850086B92A /* LocationViewModel.swift */; };
 		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
 		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
@@ -64,6 +67,9 @@
 		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tournament.graphql; path = graphql/Tournament.graphql; sourceTree = SOURCE_ROOT; };
 		DA65D6792AB6744400EF18E0 /* startggAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = startggAPI; sourceTree = "<group>"; };
 		DA65D67E2AB6751900EF18E0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		DA6926632AD1DDFA0086B92A /* EditHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeView.swift; sourceTree = "<group>"; };
+		DA6926662AD1E2AB0086B92A /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		DA6926682AD1F5850086B92A /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
@@ -180,6 +186,8 @@
 				DA65D65D2AB61AE300EF18E0 /* HomeView.swift */,
 				DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */,
 				DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */,
+				DA6926632AD1DDFA0086B92A /* EditHomeView.swift */,
+				DA6926662AD1E2AB0086B92A /* LocationView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -196,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */,
+				DA6926682AD1F5850086B92A /* LocationViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -380,6 +389,9 @@
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
+				DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */,
+				DA6926672AD1E2AB0086B92A /* LocationView.swift in Sources */,
+				DA6926692AD1F5850086B92A /* LocationViewModel.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
