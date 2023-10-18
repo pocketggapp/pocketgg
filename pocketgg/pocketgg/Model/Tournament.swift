@@ -1,7 +1,7 @@
 import Foundation
 
 struct TournamentData: Identifiable, Hashable {
-  let id = UUID()
+  let id: Int
   let name: String
   let imageURL: String
   let date: String

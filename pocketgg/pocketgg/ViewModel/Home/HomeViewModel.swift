@@ -1,4 +1,5 @@
 import SwiftUI
+import StartggAPI
 
 @MainActor
 class HomeViewModel: ObservableObject {
@@ -14,50 +15,29 @@ class HomeViewModel: ObservableObject {
     self.oAuthService = oAuthService
     
     Task {
-      self.tournamentGroups = await fetchTournamentGroups()
+      await fetchTournaments()
     }
-  }
-
-  private func fetchTournamentGroups() async -> [TournamentsGroup] {
-    try? await Task.sleep(nanoseconds: 3_000_000_000)
-    return Array(repeating: TournamentsGroup(
-      name: "Group",
-      tournaments: getTournaments()
-    ), count: 2)
-  }
-
-  private func getTournaments() -> [TournamentData] {
-    let imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
-    return [
-      TournamentData(
-        name: "Genesis 4",
-        imageURL: imageURL,
-        date: "Jul 21 - Jul 23, 2023"
-      ),
-      TournamentData(
-        name: "Genesis 5",
-        imageURL: imageURL,
-        date: "Jul 21 - Jul 23, 2023"
-      ),
-      TournamentData(
-        name: "Genesis 6",
-        imageURL: imageURL,
-        date: "Jul 21 - Jul 23, 2023"
-      ),
-      TournamentData(
-        name: "Genesis 7",
-        imageURL: imageURL,
-        date: "Jul 21 - Jul 23, 2023"
-      )
-    ]
   }
   
   func onViewAppear() {
     if shouldRefreshAccessToken() {
+      print("REFRESHING ACCESS TOKEN")
+      // TODO: Might be causing SWIFT TASK CONTINUATION MISUSE when called
       Task {
         await refreshAccessToken()
         didAttemptTokenRefresh = true
       }
+    } else {
+      print("NOT REFRESHING ACCESS TOKEN")
+    }
+  }
+  
+  func fetchTournaments() async {
+    do {
+      let tournaments = try await Network.shared.getFeaturedTournaments(pageNum: 1, gameIDs: [1])
+      tournamentGroups = [TournamentsGroup(name: "Featured", tournaments: tournaments)]
+    } catch {
+      print(error) // TODO: handle error
     }
   }
   

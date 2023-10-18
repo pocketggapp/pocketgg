@@ -5,25 +5,32 @@ struct TournamentTileView: View {
   var name: String
   var date: String
   
+  @ScaledMetric private var scale: CGFloat = 1
+  
   var body: some View {
     VStack(alignment: .leading) {
       AsyncImage(url: URL(string: imageURL)) {
         $0.resizable()
-          .aspectRatio(contentMode: .fit)
+          .aspectRatio(1, contentMode: .fit)
       } placeholder: {
         ProgressView()
+          .frame(width: 150 * scale, height: 150 * scale)
+          .border(Color.blue)
       }
       .cornerRadius(15)
       
       Text(name)
         .font(.headline)
         .lineLimit(2)
+        .multilineTextAlignment(.leading)
       
       Text(date)
         .font(.subheadline)
+        .multilineTextAlignment(.leading)
     }
+    .aspectRatio(0.6, contentMode: .fit)
+    .frame(width: 150 * scale)
     .foregroundColor(.primary)
-    .border(.green)
   }
 }
 

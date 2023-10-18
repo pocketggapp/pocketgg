@@ -5,7 +5,7 @@ struct TournamentHorizontalListView: View {
 
   var body: some View {
     ScrollView(.horizontal, showsIndicators: true) {
-      HStack {
+      HStack(alignment: .top) {
         ForEach(tournaments) { tournament in
           NavigationLink(value: tournament) {
             TournamentTileView(
@@ -14,6 +14,8 @@ struct TournamentHorizontalListView: View {
               date: tournament.date
             )
           }
+          // TODO: Add support for context menu (may have to replace List in HomeView with ScrollView + (Lazy)VStack to get it to work)
+          // https://stackoverflow.com/q/75793978
         }
       }
     }
