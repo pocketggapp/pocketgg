@@ -15,9 +15,8 @@ struct TournamentTileView: View {
       } placeholder: {
         ProgressView()
           .frame(width: 150 * scale, height: 150 * scale)
-          .border(Color.blue)
       }
-      .cornerRadius(15)
+      .cornerRadius(10)
       
       Text(name)
         .font(.headline)

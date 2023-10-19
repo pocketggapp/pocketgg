@@ -7,7 +7,7 @@ extension Network {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: FeaturedTournamentsQuery(pageNum: .some(pageNum), gameIDs: .some(gameIDs.map { String($0) }))
-      ) { [weak self] result in
+      ) { result in
         switch result {
         case .success(let graphQLResult):
           guard let tournamentNodes = graphQLResult.data?.tournaments?.nodes else {
@@ -37,19 +37,45 @@ extension Network {
     }
   }
   
-  private func getCityAndCountry(_ address: String?) -> String {
-    guard let address else { return "" }
+  func getTournamentLocation(id: Int) async throws -> String? {
+    return try await withCheckedThrowingContinuation { continuation in
+      apollo.fetch(
+        query: TournamentLocationQuery(id: .some(String(id)))
+      ) { [weak self] result in
+        switch result {
+        case .success(let graphQLResult):
+          guard let tournament = graphQLResult.data?.tournament else {
+            continuation.resume(returning: nil)
+            return
+          }
+          
+          var location: String?
+          if let address = tournament.venueAddress {
+            location = self?.getCityAndCountry(address)
+          }
+          if location == nil, let isOnline = tournament.isOnline, isOnline {
+            location = "Online"
+          }
+          continuation.resume(returning: location)
+        case .failure(let error):
+          continuation.resume(throwing: error)
+        }
+      }
+    }
+  }
+  
+  private func getCityAndCountry(_ address: String?) -> String? {
+    guard let address else { return nil }
     do {
       if let addressComponents = try NSDataDetector(types: NSTextCheckingResult.CheckingType.address.rawValue)
         .matches(in: address, range: NSRange(location: 0, length: address.utf16.count)).first?.addressComponents,
          let city = addressComponents[.city],
          let state = addressComponents[.state] {
-        
         return "\(city), \(state)"
       }
     } catch {
-      return ""
+      return nil
     }
-    return ""
+    return nil
   }
 }

@@ -1,23 +1,74 @@
 import SwiftUI
 
 struct TournamentHorizontalListView: View {
-  var tournaments: [TournamentData]
+  var tournamentsGroup: TournamentsGroup
 
   var body: some View {
-    ScrollView(.horizontal, showsIndicators: true) {
-      HStack(alignment: .top) {
-        ForEach(tournaments) { tournament in
-          NavigationLink(value: tournament) {
-            TournamentTileView(
-              imageURL: tournament.imageURL,
-              name: tournament.name,
-              date: tournament.date
-            )
+    VStack(alignment: .leading) {
+      HStack {
+        Text(tournamentsGroup.name)
+          .font(.headline)
+        
+        Spacer()
+        
+        if tournamentsGroup.tournaments.count > 10 {
+          Button {
+            // TODO: Launch list of tournaments
+          } label: {
+            Text("View all")
           }
-          // TODO: Add support for context menu (may have to replace List in HomeView with ScrollView + (Lazy)VStack to get it to work)
-          // https://stackoverflow.com/q/75793978
+        }
+      }
+      .padding([.horizontal])
+      
+      ScrollView(.horizontal, showsIndicators: true) {
+        HStack(alignment: .top) {
+          ForEach(tournamentsGroup.tournaments) { tournament in
+            NavigationLink(value: tournament) {
+              TournamentTileView(
+                imageURL: tournament.imageURL,
+                name: tournament.name,
+                date: tournament.date
+              )
+              .contextMenu {
+                Button {
+                  // TODO: Open tournament
+                } label: {
+                  Label("Open", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                }
+                
+                Button {
+                  // TODO: Pin/unpin tournament
+                } label: {
+                  // TODO: Change text/image based on whether the tournament is already pinned or not
+                  Label("Pin", systemImage: "pin.fill")
+                }
+              } preview: {
+                TournamentHeaderView(
+                  viewModel: TournamentHeaderViewModel(
+                    id: tournament.id,
+                    name: tournament.name,
+                    imageURL: tournament.imageURL,
+                    date: tournament.date
+                  )
+                )
+              }
+            }
+          }
         }
       }
     }
   }
+}
+
+#Preview {
+  let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
+  let date = "Jul 21 - Jul 23, 2023"
+  return TournamentHorizontalListView(
+    tournamentsGroup: TournamentsGroup(name: "Test Group", tournaments: [
+      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date),
+      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date),
+      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date),
+    ])
+  )
 }

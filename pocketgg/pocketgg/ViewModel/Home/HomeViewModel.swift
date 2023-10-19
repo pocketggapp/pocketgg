@@ -2,7 +2,7 @@ import SwiftUI
 import StartggAPI
 
 @MainActor
-class HomeViewModel: ObservableObject {
+final class HomeViewModel: ObservableObject {
   
   @Published var tournamentGroups = [TournamentsGroup]()
   @Published var showingAlert = false

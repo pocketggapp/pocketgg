@@ -10,15 +10,14 @@ struct HomeView: View {
 
   var body: some View {
     NavigationStack {
-      List {
-        ForEach(viewModel.tournamentGroups) { tournamentGroup in
-          Section(tournamentGroup.name) {
-            TournamentHorizontalListView(tournaments: tournamentGroup.tournaments)
-              .listRowInsets(EdgeInsets())
+      ScrollView {
+        LazyVStack(spacing: 32) {
+          ForEach(viewModel.tournamentGroups) { tournamentGroup in
+            TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
+                .listRowInsets(EdgeInsets())
           }
         }
       }
-      .listStyle(.grouped)
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentData.self) { tournament in
         EmptyView()
