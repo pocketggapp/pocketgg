@@ -48,6 +48,7 @@
 		DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AD2AE1C33300ED35FC /* TournamentView.swift */; };
 		DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */; };
 		DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */; };
+		DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		DADD99AD2AE1C33300ED35FC /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewModel.swift; sourceTree = "<group>"; };
 		DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceholderView.swift; sourceTree = "<group>"; };
+		DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsPlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +358,7 @@
 		DAF117A92B4F875000D39F65 /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
+				DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */,
 				DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */,
 			);
 			path = Placeholder;
@@ -472,6 +475,7 @@
 			files = (
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
+				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,

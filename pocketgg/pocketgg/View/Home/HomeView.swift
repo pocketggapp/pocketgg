@@ -14,7 +14,9 @@ struct HomeView: View {
         LazyVStack(spacing: 32) {
           switch viewModel.state {
           case .uninitialized, .loading:
-            LoadingView()
+            TournamentsPlaceholderView()
+            TournamentsPlaceholderView()
+            TournamentsPlaceholderView()
           case .loaded(let tournamentGroups):
             ForEach(tournamentGroups) { tournamentGroup in
               TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
