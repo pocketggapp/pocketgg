@@ -23,6 +23,7 @@ struct TournamentHorizontalListView: View {
       
       ScrollView(.horizontal, showsIndicators: true) {
         HStack(alignment: .top) {
+          Spacer()
           ForEach(tournamentsGroup.tournaments) { tournament in
             NavigationLink(value: tournament) {
               TournamentTileView(
@@ -52,9 +53,11 @@ struct TournamentHorizontalListView: View {
                     date: tournament.date
                   )
                 )
+                .padding()
               }
             }
           }
+          Spacer()
         }
       }
     }

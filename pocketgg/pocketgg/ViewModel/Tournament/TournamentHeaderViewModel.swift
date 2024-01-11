@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 final class TournamentHeaderViewModel: ObservableObject {
   @Published var location: String?
   
@@ -15,17 +16,22 @@ final class TournamentHeaderViewModel: ObservableObject {
     self.date = date
     
     Task {
-      await getTournamentLocation()
+      await setTournamentLocation()
     }
   }
   
-  private func getTournamentLocation() async {
+  private func setTournamentLocation() async {
+    location = await getTournamentLocation()
+  }
+  
+  private nonisolated func getTournamentLocation() async -> String? {
     do {
       if let location = try await Network.shared.getTournamentLocation(id: id) {
-        self.location = location
+        return location
       }
     } catch {
       print(error) // TODO: Handle error
     }
+    return nil
   }
 }

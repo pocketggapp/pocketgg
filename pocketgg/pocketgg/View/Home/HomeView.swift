@@ -12,15 +12,29 @@ struct HomeView: View {
     NavigationStack {
       ScrollView {
         LazyVStack(spacing: 32) {
-          ForEach(viewModel.tournamentGroups) { tournamentGroup in
-            TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
-                .listRowInsets(EdgeInsets())
+          switch viewModel.state {
+          case .uninitialized, .loading:
+            LoadingView()
+          case .loaded(let tournamentGroups):
+            ForEach(tournamentGroups) { tournamentGroup in
+              TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
+            }
+          case .error(let error):
+            Text(error)
           }
         }
+      }
+      .refreshable {
+        await viewModel.fetchTournaments()
       }
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentData.self) { tournament in
         EmptyView()
+        TournamentView(
+          viewModel: TournamentViewModel(
+            tournamentData: tournament
+          )
+        )
       }
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
@@ -29,9 +43,6 @@ struct HomeView: View {
           }
         }
       }
-      .alert("Error", isPresented: $viewModel.showingAlert, actions: {}, message: {
-        Text(viewModel.alertMessage)
-      })
     }
     .onAppear {
       viewModel.onViewAppear()

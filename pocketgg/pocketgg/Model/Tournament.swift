@@ -12,3 +12,7 @@ struct TournamentsGroup: Identifiable {
   let name: String
   let tournaments: [TournamentData]
 }
+
+struct TournamentDetails {
+  let events: [Event]
+}

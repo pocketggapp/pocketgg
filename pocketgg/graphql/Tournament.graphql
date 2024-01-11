@@ -28,6 +28,50 @@ query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
   }
 }
 
+query TournamentDetails($id: ID) {
+  tournament(id: $id) {
+    events {
+      id
+      name
+      state
+      standings(query: {
+        perPage: 1
+      }) {
+        nodes {
+          entrant {
+            name
+            participants {
+              gamerTag
+            }
+          }
+        }
+      }
+      startAt
+      type
+      videogame {
+        name
+        images {
+          url
+          ratio
+        }
+      }
+    }
+    streams {
+      streamName
+      streamLogo
+      streamSource
+    }
+    lat
+    lng
+    venueName
+    isRegistrationOpen
+    registrationClosesAt
+    primaryContact
+    primaryContactType
+    slug
+  }
+}
+
 query TournamentLocationQuery($id: ID) {
   tournament(id: $id) {
     venueAddress

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TournamentHeaderView: View {
   @StateObject private var viewModel: TournamentHeaderViewModel
+  @ScaledMetric private var scale: CGFloat = 1
   
   init(viewModel: TournamentHeaderViewModel) {
     self._viewModel = StateObject(wrappedValue: { viewModel }())
@@ -14,9 +15,9 @@ struct TournamentHeaderView: View {
           .aspectRatio(1, contentMode: .fit)
       } placeholder: {
         ProgressView()
-          .frame(width: 100, height: 100)
+          .frame(width: 100 * scale, height: 100 * scale)
       }
-      .frame(width: 100, height: 100)
+      .frame(width: 100 * scale, height: 100 * scale)
       .cornerRadius(10)
       
       VStack(alignment: .leading, spacing: 5) {
@@ -30,15 +31,14 @@ struct TournamentHeaderView: View {
         
         HStack {
           Image(systemName: "mappin.and.ellipse")
-          locationView()
+          locationView
         }
       }
     }
-    .padding()
   }
   
   @ViewBuilder
-  private func locationView() -> some View {
+  private var locationView: some View {
     if let location = viewModel.location {
       Text(location)
     } else {

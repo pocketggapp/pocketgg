@@ -1,22 +1,23 @@
 import SwiftUI
 import StartggAPI
 
+enum HomeViewState {
+  case uninitialized
+  case loading
+  case loaded([TournamentsGroup])
+  case error(String)
+}
+
 @MainActor
 final class HomeViewModel: ObservableObject {
-  
-  @Published var tournamentGroups = [TournamentsGroup]()
-  @Published var showingAlert = false
-  @Published var alertMessage = ""
+  @Published var state: HomeViewState
   
   private let oAuthService: OAuthService
   private var didAttemptTokenRefresh = false
   
   init(oAuthService: OAuthService) {
     self.oAuthService = oAuthService
-    
-    Task {
-      await fetchTournaments()
-    }
+    self.state = .uninitialized
   }
   
   func onViewAppear() {
@@ -30,14 +31,25 @@ final class HomeViewModel: ObservableObject {
     } else {
       print("NOT REFRESHING ACCESS TOKEN")
     }
+    
+    Task {
+      switch state {
+      case .uninitialized:
+        await fetchTournaments()
+      default: return
+      }
+    }
   }
   
+  // MARK: Fetch Tournaments
+  
   func fetchTournaments() async {
+    state = .loading
     do {
       let tournaments = try await Network.shared.getFeaturedTournaments(pageNum: 1, gameIDs: [1])
-      tournamentGroups = [TournamentsGroup(name: "Featured", tournaments: tournaments)]
+      state = .loaded([TournamentsGroup(name: "Featured", tournaments: tournaments)])
     } catch {
-      print(error) // TODO: handle error
+      state = .error(error.localizedDescription)
     }
   }
   
@@ -48,8 +60,7 @@ final class HomeViewModel: ObservableObject {
       let tokenResponse = try await oAuthService.refreshAccessToken()
       try await oAuthService.saveTokens(tokenResponse)
     } catch {
-      alertMessage = error.localizedDescription
-      showingAlert = true
+      state = .error(error.localizedDescription)
     }
   }
   
