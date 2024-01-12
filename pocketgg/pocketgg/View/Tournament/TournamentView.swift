@@ -2,14 +2,16 @@ import SwiftUI
 
 struct TournamentView: View {
   @StateObject private var viewModel: TournamentViewModel
+  @State private var selected: String
   
   init(viewModel: TournamentViewModel) {
     self._viewModel = StateObject(wrappedValue: { viewModel }())
+    self.selected = "Events"
   }
   
   var body: some View {
-    List {
-      Section {
+    ScrollView(.vertical) {
+      VStack(alignment: .leading) {
         TournamentHeaderView(
           viewModel: TournamentHeaderViewModel(
             id: viewModel.tournamentData.id,
@@ -18,42 +20,31 @@ struct TournamentView: View {
             date: viewModel.tournamentData.date
           )
         )
-      }
-      
-      Section {
-        switch viewModel.state {
-        case .uninitialized, .loading:
-          EventPlaceholderView()
-          EventPlaceholderView()
-          EventPlaceholderView()
-        case .loaded(let tournamentDetails):
-          EmptyView()
-        case .error(let string):
+        .padding()
+        
+        SegmentedControlView(selected: $selected, sections: ["Events", "Streams", "Location", "Contact Info"])
+        
+        switch selected {
+        case "Events":
+          VStack {
+            EventPlaceholderView()
+            EventPlaceholderView()
+            EventPlaceholderView()
+            EventPlaceholderView()
+            EventPlaceholderView()
+          }
+          .padding()
+        case "Streams":
+          Color.blue
+        case "Location":
+          Color.green
+        case "Contact Info":
+          Color.purple
+        default:
           EmptyView()
         }
-      } header: {
-        Text("Events")
-      }
-      
-      Section {
-        Text("hi hand 1")
-      } header: {
-        Text("Streams")
-      }
-      
-      Section {
-        Text("hi hand 1")
-      } header: {
-        Text("Location")
-      }
-      
-      Section {
-        Text("hi hand 1")
-      } header: {
-        Text("Contact Info")
       }
     }
-    .listStyle(.grouped)
     .navigationTitle(viewModel.tournamentData.name)
   }
 }
