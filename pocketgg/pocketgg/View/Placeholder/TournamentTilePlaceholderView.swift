@@ -1,38 +1,30 @@
 import SwiftUI
 
-struct TournamentTileView: View {
-  var imageURL: String
-  var name: String
-  var date: String
-  
+struct TournamentTilePlaceholderView: View {
   @ScaledMetric private var scale: CGFloat = 1
   
   var body: some View {
     VStack(alignment: .leading) {
-      AsyncImageView(imageURL: imageURL)
+      Rectangle()
+        .fill(Color(red: 214/255, green: 214/255, blue: 214/255))
         .frame(width: 150 * scale, height: 150 * scale)
         .cornerRadius(10)
-        .clipped()
       
-      Text(name)
+      Text("The Big House 6")
         .font(.headline)
         .lineLimit(2)
         .multilineTextAlignment(.leading)
       
-      Text(date)
+      Text("Oct 7, 2019 - Oct 9, 2016")
         .font(.subheadline)
         .multilineTextAlignment(.leading)
     }
     .aspectRatio(0.6, contentMode: .fit)
     .frame(width: 150 * scale)
-    .foregroundColor(.primary)
+    .redacted(reason: .placeholder)
   }
 }
 
 #Preview {
-  TournamentTileView(
-    imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s",
-    name: "Genesis 5",
-    date: "Jul 21 - Jul 23, 2023"
-  )
+  TournamentTilePlaceholderView()
 }

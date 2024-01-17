@@ -17,9 +17,20 @@ final class TournamentViewModel: ObservableObject {
     self.state = .uninitialized
   }
   
+  func onViewAppear() {
+    Task {
+      switch state {
+      case .uninitialized:
+        await fetchTournament()
+      default: return
+      }
+    }
+  }
+  
   // MARK: Fetch Tournament
   
-  func fetchTournament() async {
+  @MainActor
+  private func fetchTournament() async {
     state = .loading
     do {
       let tournamentDetails = try await Network.shared.getTournamentDetails(id: tournamentData.id)

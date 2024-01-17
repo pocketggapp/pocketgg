@@ -1,6 +1,5 @@
 import SwiftUI
 
-@MainActor
 final class TournamentHeaderViewModel: ObservableObject {
   @Published var location: String?
   
@@ -20,6 +19,7 @@ final class TournamentHeaderViewModel: ObservableObject {
     }
   }
   
+  @MainActor
   private func setTournamentLocation() async {
     location = await getTournamentLocation()
   }

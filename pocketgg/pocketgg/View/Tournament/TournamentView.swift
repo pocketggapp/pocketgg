@@ -26,14 +26,7 @@ struct TournamentView: View {
         
         switch selected {
         case "Events":
-          VStack {
-            EventPlaceholderView()
-            EventPlaceholderView()
-            EventPlaceholderView()
-            EventPlaceholderView()
-            EventPlaceholderView()
-          }
-          .padding()
+          eventsView
         case "Streams":
           Color.blue
         case "Location":
@@ -45,7 +38,39 @@ struct TournamentView: View {
         }
       }
     }
+    .onAppear {
+      viewModel.onViewAppear()
+    }
     .navigationTitle(viewModel.tournamentData.name)
+  }
+  
+  @ViewBuilder
+  private var eventsView: some View {
+    VStack(alignment: .leading) {
+      switch viewModel.state {
+      case .uninitialized, .loading:
+        EventPlaceholderView()
+        EventPlaceholderView()
+        EventPlaceholderView()
+        EventPlaceholderView()
+        EventPlaceholderView()
+      case .loaded(let tournamentDetails):
+        if let events = tournamentDetails?.events, !events.isEmpty {
+          ForEach(events) {
+            EventRowView(
+              imageURL: $0.videogameImage?.url, // TODO: figure out why i needed ratio in the first place
+              eventName: $0.name,
+              eventDate: $0.startDate // TODO: Format date before this step
+            )
+          }
+        } else {
+          EmptyView()
+        }
+      case .error(let string):
+        Text(string)
+      }
+    }
+    .padding()
   }
 }
 

@@ -8,7 +8,6 @@ enum HomeViewState {
   case error(String)
 }
 
-@MainActor
 final class HomeViewModel: ObservableObject {
   @Published var state: HomeViewState
   
@@ -43,6 +42,7 @@ final class HomeViewModel: ObservableObject {
   
   // MARK: Fetch Tournaments
   
+  @MainActor
   func fetchTournaments() async {
     state = .loading
     do {

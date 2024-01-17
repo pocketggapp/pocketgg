@@ -10,15 +10,10 @@ struct TournamentHeaderView: View {
   
   var body: some View {
     HStack(alignment: .top) {
-      AsyncImage(url: URL(string: viewModel.imageURL)) {
-        $0.resizable()
-          .aspectRatio(1, contentMode: .fit)
-      } placeholder: {
-        ProgressView()
-          .frame(width: 100 * scale, height: 100 * scale)
-      }
-      .frame(width: 100 * scale, height: 100 * scale)
-      .cornerRadius(10)
+      AsyncImageView(imageURL: viewModel.imageURL)
+        .frame(width: 100 * scale, height: 100 * scale)
+        .cornerRadius(10)
+        .clipped()
       
       VStack(alignment: .leading, spacing: 5) {
         Text(viewModel.name)

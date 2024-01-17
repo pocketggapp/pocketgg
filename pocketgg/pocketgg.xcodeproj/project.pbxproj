@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */; };
 		DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1932A5E564B00814252 /* pocketggApp.swift */; };
 		DA46B1962A5E564B00814252 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1952A5E564B00814252 /* ContentView.swift */; };
 		DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA46B1972A5E564C00814252 /* Assets.xcassets */; };
@@ -47,9 +48,13 @@
 		DADD99AC2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AB2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift */; };
 		DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AD2AE1C33300ED35FC /* TournamentView.swift */; };
 		DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */; };
+		DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF343C2B54CAF50020C29D /* AsyncImageView.swift */; };
+		DADF343F2B54CB960020C29D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF343E2B54CB960020C29D /* ImageService.swift */; };
+		DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */; };
 		DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */; };
 		DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */; };
 		DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */; };
+		DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B52B50E2FF00D39F65 /* EventRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTilePlaceholderView.swift; sourceTree = "<group>"; };
 		DA46B1902A5E564B00814252 /* pocketgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA46B1932A5E564B00814252 /* pocketggApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketggApp.swift; sourceTree = "<group>"; };
 		DA46B1952A5E564B00814252 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,9 +111,13 @@
 		DADD99AB2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHeaderViewModel.swift; sourceTree = "<group>"; };
 		DADD99AD2AE1C33300ED35FC /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewModel.swift; sourceTree = "<group>"; };
+		DADF343C2B54CAF50020C29D /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		DADF343E2B54CB960020C29D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 		DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		DAF117B52B50E2FF00D39F65 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +323,7 @@
 				DABFF2712AB90FA90053614D /* OAuthService.swift */,
 				DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */,
 				DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */,
+				DADF343E2B54CB960020C29D /* ImageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -321,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */,
+				DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */,
 				DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */,
 			);
 			path = Extensions;
@@ -330,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				DA8D00B32ACA6D800093FC49 /* LoadingView.swift */,
+				DADF343C2B54CAF50020C29D /* AsyncImageView.swift */,
 				DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */,
 				DABFF2692AB794CE0053614D /* Login */,
 				DA65D66D2AB64A4700EF18E0 /* Home */,
@@ -343,6 +356,7 @@
 		DADD99A52AE0BA8B00ED35FC /* Tournament */ = {
 			isa = PBXGroup;
 			children = (
+				DAF117B42B50E2DA00D39F65 /* Row Views */,
 				DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */,
 				DADD99AD2AE1C33300ED35FC /* TournamentView.swift */,
 			);
@@ -361,10 +375,19 @@
 		DAF117A92B4F875000D39F65 /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
+				DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */,
 				DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */,
 				DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */,
 			);
 			path = Placeholder;
+			sourceTree = "<group>";
+		};
+		DAF117B42B50E2DA00D39F65 /* Row Views */ = {
+			isa = PBXGroup;
+			children = (
+				DAF117B52B50E2FF00D39F65 /* EventRowView.swift */,
+			);
+			path = "Row Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,13 +499,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
 				DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */,
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
+				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,
+				DADF343F2B54CB960020C29D /* ImageService.swift in Sources */,
 				DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */,
 				DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */,
 				DA6926672AD1E2AB0086B92A /* LocationView.swift in Sources */,
@@ -490,12 +516,14 @@
 				DA6926692AD1F5850086B92A /* LocationViewModel.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
 				DADD99AC2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift in Sources */,
+				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
 				DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */,
 				DA65D67F2AB6751900EF18E0 /* Network.swift in Sources */,
 				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
+				DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */,
 				DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */,
 				DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */,
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
