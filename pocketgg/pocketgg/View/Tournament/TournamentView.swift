@@ -57,11 +57,7 @@ struct TournamentView: View {
       case .loaded(let tournamentDetails):
         if let events = tournamentDetails?.events, !events.isEmpty {
           ForEach(events) {
-            EventRowView(
-              imageURL: $0.videogameImage?.url, // TODO: figure out why i needed ratio in the first place
-              eventName: $0.name,
-              eventDate: $0.startDate // TODO: Format date before this step
-            )
+            EventRowView(event: $0)
           }
         } else {
           EmptyView()

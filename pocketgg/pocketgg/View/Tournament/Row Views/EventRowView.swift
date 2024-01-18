@@ -2,32 +2,59 @@ import SwiftUI
 
 struct EventRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  var imageURL: String?
-  var eventName: String?
-  var eventDate: String?
+  private var event: Event
+  
+  init(event: Event) {
+    self.event = event
+  }
   
   var body: some View {
     HStack {
-      AsyncImageView(imageURL: imageURL ?? "")
+      // TODO: figure out why i needed ratio in the first place
+      AsyncImageView(imageURL: event.videogameImage?.url ?? "")
         .frame(width: 33 * scale, height: 44 * scale)
         .cornerRadius(5)
         .clipped()
       
       VStack(alignment: .leading) {
-        Text(eventName ?? "")
+        Text(event.name ?? "")
           .font(.body)
         
-        Text(eventDate ?? "")
+        subtitleText
           .font(.caption)
       }
+    }
+  }
+  
+  private var subtitleText: some View {
+    switch event.state {
+    case "ACTIVE":
+      return Text("● ").foregroundColor(.green) + Text("In Progress")
+    case "COMPLETED":
+      guard let winnerName = event.winner?.name else { fallthrough }
+      
+      if let teamName = event.winner?.teamName {
+        return Text("● ").foregroundColor(.gray) + Text("1st place: ") + Text("\(teamName) ").foregroundColor(.gray) + Text(winnerName)
+      } else {
+        return Text("● ").foregroundColor(.gray) + Text("1st place: \(winnerName)")
+      }
+    default:
+      return Text("● ").foregroundColor(.blue) + Text(event.startDate ?? "")
     }
   }
 }
 
 #Preview {
-    EventRowView(
-      imageURL: "https://images.start.gg/images/videogame/1/image-36450d5d1b6f2c693be2abfdbc159106.jpg?ehk=kHyxo9ZpitIjPcTdkRi6H4H8JkRXjeM5%2BousqjDV%2B%2FI%3D&ehkOptimized=CRpoBnGE8dtJkSIGcd2811UkurtlEPOKEay%2BqgCETlQ%3D",
-      eventName: "Smash Bros. Melee Singles",
-      eventDate: "● Oct 9, 2016"
+  EventRowView(
+    event: Event(
+      id: 1,
+      name: "Smash Bros. Melee Singles",
+      state: "COMPLETED",
+      winner: Entrant(id: 1, name: "Mang0", teamName: "C9"),
+      startDate: "Oct 9, 2016",
+      eventType: 1,
+      videogameName: "Super Smash Bros. Melee",
+      videogameImage: ("https://images.start.gg/images/videogame/1/image-36450d5d1b6f2c693be2abfdbc159106.jpg?ehk=kHyxo9ZpitIjPcTdkRi6H4H8JkRXjeM5%2BousqjDV%2B%2FI%3D&ehkOptimized=CRpoBnGE8dtJkSIGcd2811UkurtlEPOKEay%2BqgCETlQ%3D", 1)
     )
+  )
 }

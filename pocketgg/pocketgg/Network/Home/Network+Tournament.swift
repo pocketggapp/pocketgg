@@ -18,12 +18,13 @@ extension Network {
           var events = [Event]()
           if let tournamentEvents = tournament.events {
             events = tournamentEvents.map {
-              Event(
+              let date = DateFormatter.shared.dateFromTimestamp($0?.startAt)
+              return Event(
                 id: Int($0?.id ?? "nil"),
                 name: $0?.name,
                 state: $0?.state?.rawValue,
                 winner: EntrantService.getEventWinner($0),
-                startDate: $0?.startAt,
+                startDate: date,
                 eventType: $0?.type,
                 videogameName: $0?.videogame?.name,
                 videogameImage: $0?.videogame?.images?.compactMap { return ($0?.url, $0?.ratio) }.first

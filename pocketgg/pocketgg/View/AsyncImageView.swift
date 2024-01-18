@@ -1,5 +1,12 @@
 import SwiftUI
 
+enum AsyncImageViewState {
+  case uninitialized
+  case loading
+  case loaded(UIImage)
+  case error
+}
+
 struct AsyncImageView: View {
   @StateObject private var viewModel: AsyncImageViewModel
   private var imageURL: String
@@ -10,11 +17,17 @@ struct AsyncImageView: View {
   }
   
   var body: some View {
-    if let image = viewModel.image {
+    switch viewModel.state {
+    case .uninitialized, .loading:
+      Rectangle()
+        .fill(Color(red: 214/255, green: 214/255, blue: 214/255))
+        .cornerRadius(10)
+        .aspectRatio(1, contentMode: .fit)
+    case .loaded(let image):
       Image(uiImage: image)
         .resizable()
         .scaledToFill()
-    } else {
+    case .error:
       Image(systemName: "gamecontroller")
         .resizable()
         .scaledToFit()
@@ -23,9 +36,10 @@ struct AsyncImageView: View {
 }
 
 class AsyncImageViewModel: ObservableObject {
-  @Published var image: UIImage?
+  @Published var state: AsyncImageViewState
   
   init(imageURL: String) {
+    self.state = .uninitialized
     Task {
       await loadImage(imageURL)
     }
@@ -33,7 +47,12 @@ class AsyncImageViewModel: ObservableObject {
   
   @MainActor
   func loadImage(_ url: String) async {
+    state = .loading
     let image = await ImageService.getImage(imageUrl: url)
-    self.image = image
+    if let image {
+      state = .loaded(image)
+    } else {
+      state = .error
+    }
   }
 }
