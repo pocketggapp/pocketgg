@@ -9,24 +9,29 @@ struct EventRowView: View {
   }
   
   var body: some View {
-    HStack {
-      // TODO: figure out why i needed ratio in the first place
-      AsyncImageView(imageURL: event.videogameImage?.url ?? "")
-        .frame(width: 33 * scale, height: 44 * scale)
-        .cornerRadius(5)
-        .clipped()
+    ZStack {
+      Color(UIColor.systemBackground)
       
-      VStack(alignment: .leading) {
-        Text(event.name ?? "")
-          .font(.body)
+      HStack {
+        AsyncImageView(imageURL: event.videogameImage ?? "")
+          .frame(width: 33 * scale, height: 44 * scale)
+          .cornerRadius(5)
+          .clipped()
         
-        subtitleText
-          .font(.caption)
+        VStack(alignment: .leading) {
+          Text(event.name ?? "")
+            .font(.body)
+          
+          subtitleTextView
+            .font(.caption)
+        }
+        
+        Spacer()
       }
     }
   }
   
-  private var subtitleText: some View {
+  private var subtitleTextView: some View {
     switch event.state {
     case "ACTIVE":
       return Text("● ").foregroundColor(.green) + Text("In Progress")
@@ -54,7 +59,7 @@ struct EventRowView: View {
       startDate: "Oct 9, 2016",
       eventType: 1,
       videogameName: "Super Smash Bros. Melee",
-      videogameImage: ("https://images.start.gg/images/videogame/1/image-36450d5d1b6f2c693be2abfdbc159106.jpg?ehk=kHyxo9ZpitIjPcTdkRi6H4H8JkRXjeM5%2BousqjDV%2B%2FI%3D&ehkOptimized=CRpoBnGE8dtJkSIGcd2811UkurtlEPOKEay%2BqgCETlQ%3D", 1)
+      videogameImage: "https://images.start.gg/images/videogame/1/image-36450d5d1b6f2c693be2abfdbc159106.jpg?ehk=kHyxo9ZpitIjPcTdkRi6H4H8JkRXjeM5%2BousqjDV%2B%2FI%3D&ehkOptimized=CRpoBnGE8dtJkSIGcd2811UkurtlEPOKEay%2BqgCETlQ%3D"
     )
   )
 }

@@ -27,7 +27,7 @@ extension Network {
                 startDate: date,
                 eventType: $0?.type,
                 videogameName: $0?.videogame?.name,
-                videogameImage: $0?.videogame?.images?.compactMap { return ($0?.url, $0?.ratio) }.first
+                videogameImage: $0?.videogame?.images?.first??.url
               )
             }
           }

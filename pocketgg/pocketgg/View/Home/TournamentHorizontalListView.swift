@@ -58,6 +58,7 @@ struct TournamentHorizontalListView: View {
                 .padding()
               }
             }
+            .buttonStyle(.plain)
           }
           Spacer()
         }

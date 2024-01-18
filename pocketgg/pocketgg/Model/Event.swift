@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Identifiable {
+struct Event: Identifiable, Hashable {
   let id: Int?
   let name: String?
   let state: String?
@@ -18,5 +18,5 @@ struct Event: Identifiable {
   let startDate: String?
   let eventType: Int?
   let videogameName: String?
-  let videogameImage: (url: String?, ratio: Double?)?
+  let videogameImage: String?
 }

@@ -25,7 +25,6 @@ struct TournamentTileView: View {
     }
     .aspectRatio(0.6, contentMode: .fit)
     .frame(width: 150 * scale)
-    .foregroundColor(.primary)
   }
 }
 

@@ -31,7 +31,6 @@ struct HomeView: View {
       }
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentData.self) { tournament in
-        EmptyView()
         TournamentView(
           viewModel: TournamentViewModel(
             tournamentData: tournament

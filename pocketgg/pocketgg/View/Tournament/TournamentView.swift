@@ -42,9 +42,11 @@ struct TournamentView: View {
       viewModel.onViewAppear()
     }
     .navigationTitle(viewModel.tournamentData.name)
+    .navigationDestination(for: Event.self) { event in
+      EmptyView() // TODO: EventView
+    }
   }
   
-  @ViewBuilder
   private var eventsView: some View {
     VStack(alignment: .leading) {
       switch viewModel.state {
@@ -56,10 +58,14 @@ struct TournamentView: View {
         EventPlaceholderView()
       case .loaded(let tournamentDetails):
         if let events = tournamentDetails?.events, !events.isEmpty {
-          ForEach(events) {
-            EventRowView(event: $0)
+          ForEach(events) { event in
+            NavigationLink(value: event) {
+              EventRowView(event: event)
+            }
+            .buttonStyle(.plain)
           }
         } else {
+          // TODO: No events view
           EmptyView()
         }
       case .error(let string):
