@@ -1,12 +1,3 @@
-//
-//  Event.swift
-//  pocketgg
-//
-//  Created by Gabriel Siu on 2024-01-07.
-//
-
-import Foundation
-
 struct Event: Identifiable, Hashable {
   let id: Int?
   let name: String?

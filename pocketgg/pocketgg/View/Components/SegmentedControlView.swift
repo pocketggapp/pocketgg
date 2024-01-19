@@ -2,8 +2,14 @@ import SwiftUI
 
 struct SegmentedControlView: View {
   @Namespace var animation
-  @Binding var selected: String
-  let sections: [String]
+  @Binding private var selected: String
+  private let sections: [String]
+  private let feedbackGenerator = UISelectionFeedbackGenerator()
+  
+  init(selected: Binding<String>, sections: [String]) {
+    self._selected = selected
+    self.sections = sections
+  }
   
   var body: some View {
     ScrollView(.horizontal) {
@@ -11,6 +17,7 @@ struct SegmentedControlView: View {
         ForEach(sections, id: \.self) { section in
           Button {
             selected = section
+            feedbackGenerator.selectionChanged()
           } label: {
             VStack {
               Text(section)
@@ -25,6 +32,7 @@ struct SegmentedControlView: View {
                     .fill(Color.red)
                     .frame(height: 2)
                     .matchedGeometryEffect(id: "Section", in: animation)
+                    .transition(.offset())
                 }
               }
             }
@@ -47,6 +55,11 @@ private struct SegmentedControlViewStyle: ButtonStyle {
 }
 
 #Preview {
-  @State var selected = "Events"
-  return SegmentedControlView(selected: $selected, sections: ["Events", "Streams", "Location", "Contact Info"])
+  struct ContainerView: View {
+    @State var selected = "Events"
+    var body: some View {
+      SegmentedControlView(selected: $selected, sections: ["Events", "Streams", "Location", "Contact Info"])
+    }
+  }
+  return ContainerView()
 }

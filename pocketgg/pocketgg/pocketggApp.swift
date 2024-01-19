@@ -12,12 +12,12 @@ struct pocketggApp: App {
       Group {
         switch appRootManager.currentRoot {
         case .login:
-          LoginView(viewModel: LoginViewModel(oAuthService: oAuthService))
+          LoginView()
         case .home:
           TabView {
-            HomeView(viewModel: HomeViewModel(oAuthService: oAuthService))
+            HomeView()
               .tabItem {
-                Label("Tournaments", systemImage: "pencil.circle.fill")
+                Label("Tournaments", systemImage: "trophy.fill")
               }
             SettingsView()
               .tabItem {

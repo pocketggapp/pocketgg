@@ -2,8 +2,14 @@ import Foundation
 import Apollo
 import StartggAPI
 
-class Network {
-  static let shared = Network()
+protocol StartggServiceType {
+  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [TournamentData]
+  func getTournamentDetails(id: Int) async throws -> TournamentDetails?
+  func getTournamentLocation(id: Int) async throws -> String?
+}
+
+class StartggService: StartggServiceType {
+  static let shared = StartggService()
   
   private(set) lazy var apollo: ApolloClient = {
     let client = URLSessionClient()

@@ -11,12 +11,20 @@ enum HomeViewState {
 final class HomeViewModel: ObservableObject {
   @Published var state: HomeViewState
   
-  private let oAuthService: OAuthService
-  private var didAttemptTokenRefresh = false
+  private let oAuthService: OAuthServiceType
+  private let service: StartggServiceType
+  private let userDefaults: UserDefaults
+  private(set) var didAttemptTokenRefresh = false
   
-  init(oAuthService: OAuthService) {
-    self.oAuthService = oAuthService
+  init(
+    oAuthService: OAuthServiceType = OAuthService.shared,
+    service: StartggServiceType = StartggService.shared,
+    userDefaults: UserDefaults = .standard
+  ) {
     self.state = .uninitialized
+    self.oAuthService = oAuthService
+    self.service = service
+    self.userDefaults = userDefaults
   }
   
   func onViewAppear() {
@@ -46,7 +54,7 @@ final class HomeViewModel: ObservableObject {
   func fetchTournaments() async {
     state = .loading
     do {
-      let tournaments = try await Network.shared.getFeaturedTournaments(pageNum: 1, gameIDs: [1])
+      let tournaments = try await service.getFeaturedTournaments(pageNum: 1, gameIDs: [1])
       state = .loaded([TournamentsGroup(name: "Featured", tournaments: tournaments)])
     } catch {
       state = .error(error.localizedDescription)
@@ -55,6 +63,7 @@ final class HomeViewModel: ObservableObject {
   
   // MARK: Refresh Access Token
   
+  @MainActor
   private func refreshAccessToken() async {
     do {
       let tokenResponse = try await oAuthService.refreshAccessToken()
@@ -67,7 +76,7 @@ final class HomeViewModel: ObservableObject {
   private func shouldRefreshAccessToken() -> Bool {
     if didAttemptTokenRefresh { return false }
     let lastRefreshedKey = Constants.UserDefaults.accessTokenLastRefreshed
-    guard let lastRefreshed = UserDefaults.standard.object(forKey: lastRefreshedKey) as? Date else { return true }
+    guard let lastRefreshed = userDefaults.object(forKey: lastRefreshedKey) as? Date else { return true }
     return !Calendar.current.isDate(lastRefreshed, inSameDayAs: Date())
   }
 }

@@ -3,16 +3,12 @@ import SwiftUI
 final class TournamentHeaderViewModel: ObservableObject {
   @Published var location: String?
   
-  var id: Int
-  var name: String
-  var imageURL: String
-  var date: String
+  private let id: Int
+  private let service: StartggServiceType
   
-  init(id: Int, name: String, imageURL: String, date: String) {
+  init(id: Int, service: StartggServiceType = StartggService.shared) {
     self.id = id
-    self.name = name
-    self.imageURL = imageURL
-    self.date = date
+    self.service = service
     
     Task {
       await setTournamentLocation()
@@ -26,7 +22,7 @@ final class TournamentHeaderViewModel: ObservableObject {
   
   private nonisolated func getTournamentLocation() async -> String? {
     do {
-      if let location = try await Network.shared.getTournamentLocation(id: id) {
+      if let location = try await service.getTournamentLocation(id: id) {
         return location
       }
     } catch {

@@ -1,14 +1,13 @@
 import SwiftUI
 
 final class LoginViewModel: ObservableObject {
-  
   @Published var loggedInSuccessfully = false
   @Published var showingAlert = false
   @Published var alertMessage = ""
   
-  private let oAuthService: OAuthService
+  private let oAuthService: OAuthServiceType
   
-  init(oAuthService: OAuthService) {
+  init(oAuthService: OAuthServiceType = OAuthService.shared) {
     self.oAuthService = oAuthService
   }
   

@@ -1,8 +1,7 @@
 import Foundation
 import StartggAPI
 
-extension Network {
-  
+extension StartggService {
   func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [TournamentData] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(

@@ -27,7 +27,19 @@ struct AccessTokenResponse: Codable {
   let refreshToken: String
 }
 
-final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProviding {
+protocol OAuthServiceType {
+  func webAuthAsync() async throws -> AccessTokenResponse
+  func refreshAccessToken() async throws -> AccessTokenResponse
+  func saveTokens(_ response: AccessTokenResponse) async throws
+}
+
+final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProviding, OAuthServiceType {
+  static let shared = OAuthService()
+  private let userDefaults: UserDefaults
+  
+  init(userDefaults: UserDefaults = .standard) {
+    self.userDefaults = userDefaults
+  }
   
   // MARK: OAuth 2.0 Flow
   
@@ -165,7 +177,7 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
   func saveTokens(_ response: AccessTokenResponse) async throws {
     // By default, tokens expire in 604800 seconds (7 days)
     // Try to get a new access token once every day
-    UserDefaults.standard.set(Date(), forKey: Constants.UserDefaults.accessTokenLastRefreshed)
+    userDefaults.set(Date(), forKey: Constants.UserDefaults.accessTokenLastRefreshed)
     
     return try await withCheckedThrowingContinuation { continuation in
       do {
@@ -176,7 +188,7 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
         return
       }
 
-      Network.shared.updateApolloClient()
+      StartggService.shared.updateApolloClient()
       continuation.resume()
     }
   }

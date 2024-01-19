@@ -4,8 +4,13 @@ struct HomeView: View {
   @StateObject private var viewModel: HomeViewModel
   @State private var showingEditView = false
   
-  init(viewModel: HomeViewModel) {
-    self._viewModel = StateObject(wrappedValue: { viewModel }())
+  init(
+    oAuthService: OAuthServiceType = OAuthService.shared,
+    service: StartggServiceType = StartggService.shared
+  ) {
+    self._viewModel = StateObject(wrappedValue: {
+      HomeViewModel(oAuthService: oAuthService, service: service)
+    }())
   }
 
   var body: some View {
@@ -32,9 +37,7 @@ struct HomeView: View {
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentData.self) { tournament in
         TournamentView(
-          viewModel: TournamentViewModel(
-            tournamentData: tournament
-          )
+          tournamentData: tournament
         )
       }
       .toolbar {
@@ -57,5 +60,8 @@ struct HomeView: View {
 }
 
 #Preview {
-  HomeView(viewModel: HomeViewModel(oAuthService: OAuthService()))
+  HomeView(
+    oAuthService: MockOAuthService(),
+    service: MockStartggService()
+  )
 }

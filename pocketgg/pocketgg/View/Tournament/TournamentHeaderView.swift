@@ -4,24 +4,33 @@ struct TournamentHeaderView: View {
   @StateObject private var viewModel: TournamentHeaderViewModel
   @ScaledMetric private var scale: CGFloat = 1
   
-  init(viewModel: TournamentHeaderViewModel) {
-    self._viewModel = StateObject(wrappedValue: { viewModel }())
+  private let name: String
+  private let imageURL: String
+  private let date: String
+  
+  init(id: Int, name: String, imageURL: String, date: String) {
+    self.name = name
+    self.imageURL = imageURL
+    self.date = date
+    self._viewModel = StateObject(wrappedValue: {
+      TournamentHeaderViewModel(id: id)
+    }())
   }
   
   var body: some View {
     HStack(alignment: .top) {
-      AsyncImageView(imageURL: viewModel.imageURL)
+      AsyncImageView(imageURL: imageURL)
         .frame(width: 100 * scale, height: 100 * scale)
         .cornerRadius(10)
         .clipped()
       
       VStack(alignment: .leading, spacing: 5) {
-        Text(viewModel.name)
+        Text(name)
           .font(.headline)
         
         HStack {
           Image(systemName: "calendar")
-          Text(viewModel.date)
+          Text(date)
         }
         
         HStack {
@@ -45,11 +54,9 @@ struct TournamentHeaderView: View {
 
 #Preview {
   TournamentHeaderView(
-    viewModel: TournamentHeaderViewModel(
-      id: 0,
-      name: "Genesis 4",
-      imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s",
-      date: "Jul 21 - Jul 23, 2023"
-    )
+    id: 0,
+    name: "Genesis 4",
+    imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s",
+    date: "Jul 21 - Jul 23, 2023"
   )
 }

@@ -3,22 +3,27 @@ import SwiftUI
 struct TournamentView: View {
   @StateObject private var viewModel: TournamentViewModel
   @State private var selected: String
+  private var tournamentData: TournamentData
   
-  init(viewModel: TournamentViewModel) {
-    self._viewModel = StateObject(wrappedValue: { viewModel }())
+  init(tournamentData: TournamentData, service: StartggServiceType = StartggService.shared) {
+    self._viewModel = StateObject(wrappedValue: {
+      TournamentViewModel(
+        tournamentData: tournamentData,
+        service: service
+      )
+    }())
     self.selected = "Events"
+    self.tournamentData = tournamentData
   }
   
   var body: some View {
     ScrollView(.vertical) {
       VStack(alignment: .leading) {
         TournamentHeaderView(
-          viewModel: TournamentHeaderViewModel(
-            id: viewModel.tournamentData.id,
-            name: viewModel.tournamentData.name,
-            imageURL: viewModel.tournamentData.imageURL,
-            date: viewModel.tournamentData.date
-          )
+          id: tournamentData.id,
+          name: tournamentData.name,
+          imageURL: tournamentData.imageURL,
+          date: tournamentData.date
         )
         .padding()
         
@@ -41,7 +46,7 @@ struct TournamentView: View {
     .onAppear {
       viewModel.onViewAppear()
     }
-    .navigationTitle(viewModel.tournamentData.name)
+    .navigationTitle(tournamentData.name)
     .navigationDestination(for: Event.self) { event in
       EmptyView() // TODO: EventView
     }
@@ -80,8 +85,7 @@ struct TournamentView: View {
   let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
   let date = "Jul 21 - Jul 23, 2023"
   return TournamentView(
-    viewModel: TournamentViewModel(
-      tournamentData: TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date)
-    )
+    tournamentData: TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date),
+    service: MockStartggService()
   )
 }

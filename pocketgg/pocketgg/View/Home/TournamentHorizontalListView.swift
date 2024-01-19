@@ -48,12 +48,10 @@ struct TournamentHorizontalListView: View {
                 // BUG: When the tournament name is too long, the padding of the context menu preview is incorrect
                 //      and the tournament name is forced into only 1 line
                 TournamentHeaderView(
-                  viewModel: TournamentHeaderViewModel(
-                    id: tournament.id,
-                    name: tournament.name,
-                    imageURL: tournament.imageURL,
-                    date: tournament.date
-                  )
+                  id: tournament.id,
+                  name: tournament.name,
+                  imageURL: tournament.imageURL,
+                  date: tournament.date
                 )
                 .padding()
               }

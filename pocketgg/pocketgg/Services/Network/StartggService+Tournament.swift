@@ -1,8 +1,7 @@
 import Foundation
 import StartggAPI
 
-extension Network {
-  
+extension StartggService {
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(

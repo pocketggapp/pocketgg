@@ -9,8 +9,10 @@ struct LoginView: View {
   @EnvironmentObject private var appRootManager: AppRootManager
   @StateObject private var viewModel: LoginViewModel
   
-  init(viewModel: LoginViewModel) {
-    self._viewModel = StateObject(wrappedValue: { viewModel }())
+  init(oAuthService: OAuthServiceType = OAuthService.shared) {
+    self._viewModel = StateObject(wrappedValue: {
+      LoginViewModel(oAuthService: oAuthService)
+    }())
   }
   
   var body: some View {
@@ -58,5 +60,5 @@ struct LoginView: View {
 }
 
 #Preview {
-  LoginView(viewModel: LoginViewModel(oAuthService: OAuthService()))
+  LoginView(oAuthService: MockOAuthService())
 }
