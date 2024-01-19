@@ -27,31 +27,26 @@ final class HomeViewModel: ObservableObject {
     self.userDefaults = userDefaults
   }
   
-  func onViewAppear() {
+  // MARK: Fetch Tournaments
+  
+  @MainActor
+  func fetchTournaments(refreshed: Bool = false) async {
+    if !refreshed {
+      switch state {
+      case .uninitialized: break
+      default: return
+      }
+    }
+    
     if shouldRefreshAccessToken() {
       print("REFRESHING ACCESS TOKEN")
       // TODO: Might be causing SWIFT TASK CONTINUATION MISUSE when called
-      Task {
-        await refreshAccessToken()
-        didAttemptTokenRefresh = true
-      }
+      await refreshAccessToken()
+      didAttemptTokenRefresh = true
     } else {
       print("NOT REFRESHING ACCESS TOKEN")
     }
     
-    Task {
-      switch state {
-      case .uninitialized:
-        await fetchTournaments()
-      default: return
-      }
-    }
-  }
-  
-  // MARK: Fetch Tournaments
-  
-  @MainActor
-  func fetchTournaments() async {
     state = .loading
     do {
       let tournaments = try await service.getFeaturedTournaments(pageNum: 1, gameIDs: [1])

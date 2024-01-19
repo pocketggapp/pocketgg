@@ -31,8 +31,11 @@ struct HomeView: View {
           }
         }
       }
-      .refreshable {
+      .task {
         await viewModel.fetchTournaments()
+      }
+      .refreshable {
+        await viewModel.fetchTournaments(refreshed: true)
       }
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentData.self) { tournament in
@@ -47,9 +50,6 @@ struct HomeView: View {
           }
         }
       }
-    }
-    .onAppear {
-      viewModel.onViewAppear()
     }
     .sheet(isPresented: $showingEditView) {
       print("EDIT HOME DISMISSED")

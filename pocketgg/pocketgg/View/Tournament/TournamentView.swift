@@ -43,8 +43,11 @@ struct TournamentView: View {
         }
       }
     }
-    .onAppear {
-      viewModel.onViewAppear()
+    .task {
+      await viewModel.fetchTournament()
+    }
+    .refreshable {
+      await viewModel.fetchTournament(refreshed: true)
     }
     .navigationTitle(tournamentData.name)
     .navigationDestination(for: Event.self) { event in

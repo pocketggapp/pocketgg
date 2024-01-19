@@ -6,7 +6,7 @@ struct TournamentTilePlaceholderView: View {
   var body: some View {
     VStack(alignment: .leading) {
       Rectangle()
-        .fill(Color(red: 214/255, green: 214/255, blue: 214/255))
+        .fill(Color(.placeholder))
         .frame(width: 150 * scale, height: 150 * scale)
         .cornerRadius(10)
       

@@ -20,7 +20,7 @@ struct AsyncImageView: View {
     switch viewModel.state {
     case .uninitialized, .loading:
       Rectangle()
-        .fill(Color(red: 214/255, green: 214/255, blue: 214/255))
+        .fill(Color(.placeholder))
         .cornerRadius(10)
         .aspectRatio(1, contentMode: .fit)
     case .loaded(let image):

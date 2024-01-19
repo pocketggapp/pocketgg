@@ -39,6 +39,7 @@
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
 		DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B12ACA362E0093FC49 /* Constants.swift */; };
 		DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B32ACA6D800093FC49 /* LoadingView.swift */; };
+		DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
 		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
@@ -104,6 +105,7 @@
 		DA8D00B12ACA362E0093FC49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA8D00B32ACA6D800093FC49 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA8D00EB2ACB4D820093FC49 /* pocketgg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pocketgg.entitlements; sourceTree = "<group>"; };
+		DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				DA15EC612B5A3750003FD258 /* LoginViewModelTests.swift */,
+				DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */,
 			);
 			path = pocketggTests;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA15EC622B5A3750003FD258 /* LoginViewModelTests.swift in Sources */,
+				DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
