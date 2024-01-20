@@ -31,9 +31,21 @@ extension StartggService {
             }
           }
           
-          // TODO: streams
+          var streams = [Stream]()
+          if let tournamentStreams = tournament.streams {
+            streams = tournamentStreams.map {
+              Stream(
+                name: $0?.streamName,
+                logoUrl: $0?.streamLogo,
+                sourceUrl: $0?.streamSource?.rawValue
+              )
+            }
+          }
           
-          continuation.resume(returning: TournamentDetails(events: events))
+          continuation.resume(returning: TournamentDetails(
+            events: events,
+            streams: streams
+          ))
         case .failure(let error):
           continuation.resume(throwing: error)
         }

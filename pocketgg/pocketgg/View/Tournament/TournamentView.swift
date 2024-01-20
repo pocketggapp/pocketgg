@@ -33,7 +33,7 @@ struct TournamentView: View {
         case "Events":
           eventsView
         case "Streams":
-          Color.blue
+          streamsView
         case "Location":
           Color.green
         case "Contact Info":
@@ -55,8 +55,10 @@ struct TournamentView: View {
     }
   }
   
+  // MARK: Events View
+  
   private var eventsView: some View {
-    VStack(alignment: .leading) {
+    VStack {
       switch viewModel.state {
       case .uninitialized, .loading:
         EventPlaceholderView()
@@ -73,14 +75,44 @@ struct TournamentView: View {
             .buttonStyle(.plain)
           }
         } else {
-          // TODO: No events view
-          EmptyView()
+          NoEventsView()
         }
       case .error(let string):
+        // TODO: Error view
         Text(string)
       }
     }
     .padding()
+  }
+  
+  // MARK: Streams View
+  
+  private var streamsView: some View {
+    VStack {
+      switch viewModel.state {
+      case .uninitialized, .loading:
+        StreamPlaceholderView()
+        StreamPlaceholderView()
+        StreamPlaceholderView()
+        StreamPlaceholderView()
+        StreamPlaceholderView()
+      case .loaded(let tournamentDetails):
+        if let streams = tournamentDetails?.streams, !streams.isEmpty{
+          ForEach(streams) { stream in
+            // TODO: Handle stream tapped, might not be navigationlink
+            NavigationLink(value: stream) {
+              StreamRowView(stream: stream)
+            }
+            .buttonStyle(.plain)
+          }
+        } else {
+          NoStreamsView()
+        }
+      case .error(let string):
+        // TODO: Error view
+        Text(string)
+      }
+    }
   }
 }
 

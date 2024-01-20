@@ -15,6 +15,10 @@
 		DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC672B5A3BDC003FD258 /* StartggService+Apollo.swift */; };
 		DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC692B5A3C86003FD258 /* StartggService+Home.swift */; };
 		DA15EC6C2B5A3CAE003FD258 /* StartggService+Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */; };
+		DA2723A12B5B451C002FF875 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A02B5B451C002FF875 /* Stream.swift */; };
+		DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A22B5B469A002FF875 /* StreamPlaceholderView.swift */; };
+		DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A42B5B4A79002FF875 /* StreamRowView.swift */; };
+		DA2723A72B5B4DA3002FF875 /* NoStreamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */; };
 		DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1932A5E564B00814252 /* pocketggApp.swift */; };
 		DA46B1962A5E564B00814252 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1952A5E564B00814252 /* ContentView.swift */; };
 		DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA46B1972A5E564C00814252 /* Assets.xcassets */; };
@@ -80,6 +84,10 @@
 		DA15EC672B5A3BDC003FD258 /* StartggService+Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Apollo.swift"; sourceTree = "<group>"; };
 		DA15EC692B5A3C86003FD258 /* StartggService+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Home.swift"; sourceTree = "<group>"; };
 		DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Tournament.swift"; sourceTree = "<group>"; };
+		DA2723A02B5B451C002FF875 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		DA2723A22B5B469A002FF875 /* StreamPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPlaceholderView.swift; sourceTree = "<group>"; };
+		DA2723A42B5B4A79002FF875 /* StreamRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamRowView.swift; sourceTree = "<group>"; };
+		DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStreamsView.swift; sourceTree = "<group>"; };
 		DA46B1902A5E564B00814252 /* pocketgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA46B1932A5E564B00814252 /* pocketggApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketggApp.swift; sourceTree = "<group>"; };
 		DA46B1952A5E564B00814252 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				DA15EC592B5A28DF003FD258 /* NoEventsView.swift */,
+				DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */,
 			);
 			path = "Empty State";
 			sourceTree = "<group>";
@@ -272,6 +281,7 @@
 				DA65D6632AB6253500EF18E0 /* Tournament.swift */,
 				DAC4E94D2B4B96B700B356A0 /* Entrant.swift */,
 				DAC4E94B2B4B95FB00B356A0 /* Event.swift */,
+				DA2723A02B5B451C002FF875 /* Stream.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -406,6 +416,7 @@
 				DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */,
 				DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */,
 				DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */,
+				DA2723A22B5B469A002FF875 /* StreamPlaceholderView.swift */,
 			);
 			path = Placeholder;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				DAF117B52B50E2FF00D39F65 /* EventRowView.swift */,
+				DA2723A42B5B4A79002FF875 /* StreamRowView.swift */,
 			);
 			path = "Row Views";
 			sourceTree = "<group>";
@@ -533,6 +545,7 @@
 				DA15EC602B5A2DE2003FD258 /* MockStartggService.swift in Sources */,
 				DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */,
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
+				DA2723A72B5B4DA3002FF875 /* NoStreamsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
@@ -562,6 +575,9 @@
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
 				DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
+				DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */,
+				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
+				DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */,
 				DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,

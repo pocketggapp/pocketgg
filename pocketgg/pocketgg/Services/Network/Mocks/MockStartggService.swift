@@ -22,6 +22,12 @@ final class MockStartggService: StartggServiceType {
           videogameName: "Super Smash Bros. Melee",
           videogameImage: "https://images.start.gg/images/videogame/1/image-36450d5d1b6f2c693be2abfdbc159106.jpg?ehk=kHyxo9ZpitIjPcTdkRi6H4H8JkRXjeM5%2BousqjDV%2B%2FI%3D&ehkOptimized=CRpoBnGE8dtJkSIGcd2811UkurtlEPOKEay%2BqgCETlQ%3D"
         )
+      ], streams: [
+        Stream(
+          name: "VGBootCamp",
+          logoUrl: "https://static-cdn.jtvnw.net/jtv_user_pictures/vgbootcamp-profile_image-2d7c9dd9b19b8c44-300x300.png",
+          sourceUrl: "TWITCH"
+        )
       ]
     )
   }

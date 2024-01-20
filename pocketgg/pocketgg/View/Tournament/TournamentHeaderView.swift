@@ -19,10 +19,12 @@ struct TournamentHeaderView: View {
   
   var body: some View {
     HStack(alignment: .top) {
-      AsyncImageView(imageURL: imageURL)
-        .frame(width: 100 * scale, height: 100 * scale)
-        .cornerRadius(10)
-        .clipped()
+      AsyncImageView(
+        imageURL: imageURL,
+        cornerRadius: 10
+      )
+      .frame(width: 100 * scale, height: 100 * scale)
+      .clipped()
       
       VStack(alignment: .leading, spacing: 5) {
         Text(name)

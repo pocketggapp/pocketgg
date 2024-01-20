@@ -7,8 +7,7 @@ struct EventPlaceholderView: View {
     HStack {
       Rectangle()
         .fill(Color(.placeholder))
-        .aspectRatio(0.75, contentMode: .fit)
-        .frame(height: 44 * scale)
+        .frame(width: 33 * scale, height: 44 * scale)
         .cornerRadius(5)
       
       VStack(alignment: .leading) {

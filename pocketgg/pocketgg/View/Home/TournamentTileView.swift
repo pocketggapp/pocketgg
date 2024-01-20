@@ -9,10 +9,12 @@ struct TournamentTileView: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      AsyncImageView(imageURL: imageURL)
-        .frame(width: 150 * scale, height: 150 * scale)
-        .cornerRadius(10)
-        .clipped()
+      AsyncImageView(
+        imageURL: imageURL,
+        cornerRadius: 10
+      )
+      .frame(width: 150 * scale, height: 150 * scale)
+      .clipped()
       
       Text(name)
         .font(.headline)

@@ -15,4 +15,5 @@ struct TournamentsGroup: Identifiable {
 
 struct TournamentDetails {
   let events: [Event]
+  let streams: [Stream]
 }

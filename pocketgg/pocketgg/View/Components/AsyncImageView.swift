@@ -9,11 +9,16 @@ enum AsyncImageViewState {
 
 struct AsyncImageView: View {
   @StateObject private var viewModel: AsyncImageViewModel
-  private var imageURL: String
+  private let imageURL: String
+  private let cornerRadius: CGFloat
   
-  init(imageURL: String) {
+  init(
+    imageURL: String,
+    cornerRadius: CGFloat
+  ) {
     self._viewModel = StateObject(wrappedValue: { AsyncImageViewModel(imageURL: imageURL) }())
     self.imageURL = imageURL
+    self.cornerRadius = cornerRadius
   }
   
   var body: some View {
@@ -21,16 +26,17 @@ struct AsyncImageView: View {
     case .uninitialized, .loading:
       Rectangle()
         .fill(Color(.placeholder))
-        .cornerRadius(10)
-        .aspectRatio(1, contentMode: .fit)
+        .cornerRadius(cornerRadius)
     case .loaded(let image):
       Image(uiImage: image)
         .resizable()
         .scaledToFill()
+        .cornerRadius(cornerRadius)
     case .error:
       Image(systemName: "gamecontroller")
         .resizable()
-        .scaledToFit()
+        .scaledToFill()
+        .cornerRadius(cornerRadius)
     }
   }
 }

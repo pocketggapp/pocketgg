@@ -13,10 +13,12 @@ struct EventRowView: View {
       Color(UIColor.systemBackground)
       
       HStack {
-        AsyncImageView(imageURL: event.videogameImage ?? "")
-          .frame(width: 33 * scale, height: 44 * scale)
-          .cornerRadius(5)
-          .clipped()
+        AsyncImageView(
+          imageURL: event.videogameImage ?? "",
+          cornerRadius: 5
+        )
+        .frame(width: 33 * scale, height: 44 * scale)
+        .clipped()
         
         VStack(alignment: .leading) {
           Text(event.name ?? "")
