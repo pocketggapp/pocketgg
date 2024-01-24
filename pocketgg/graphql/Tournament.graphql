@@ -64,6 +64,7 @@ query TournamentDetails($id: ID) {
     lat
     lng
     venueName
+    venueAddress
     isRegistrationOpen
     registrationClosesAt
     primaryContact

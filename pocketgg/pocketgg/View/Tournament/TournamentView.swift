@@ -1,4 +1,5 @@
 import SwiftUI
+import MapKit
 
 struct TournamentView: View {
   @StateObject private var viewModel: TournamentViewModel
@@ -35,7 +36,7 @@ struct TournamentView: View {
         case "Streams":
           streamsView
         case "Location":
-          Color.green
+          locationView
         case "Contact Info":
           Color.purple
         default:
@@ -97,7 +98,7 @@ struct TournamentView: View {
         StreamPlaceholderView()
         StreamPlaceholderView()
       case .loaded(let tournamentDetails):
-        if let streams = tournamentDetails?.streams, !streams.isEmpty{
+        if let streams = tournamentDetails?.streams, !streams.isEmpty {
           ForEach(streams) { stream in
             // TODO: Handle stream tapped, might not be navigationlink
             NavigationLink(value: stream) {
@@ -107,6 +108,30 @@ struct TournamentView: View {
           }
         } else {
           NoStreamsView()
+        }
+      case .error(let string):
+        // TODO: Error view
+        Text(string)
+      }
+    }
+    .padding()
+  }
+  
+  // MARK: Location View
+  
+  private var locationView: some View {
+    return VStack {
+      switch viewModel.state {
+      case .uninitialized, .loading:
+        LocationPlaceholderView()
+      case .loaded(let tournamentDetails):
+        if let location = tournamentDetails?.location {
+          TournamentLocationView(
+            tournamentID: tournamentData.id,
+            location: location
+          )
+        } else {
+          NoLocationView()
         }
       case .error(let string):
         // TODO: Error view

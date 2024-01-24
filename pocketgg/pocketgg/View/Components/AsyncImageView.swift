@@ -35,7 +35,7 @@ struct AsyncImageView: View {
     case .error:
       Image(systemName: "gamecontroller")
         .resizable()
-        .scaledToFill()
+        .scaledToFit()
         .cornerRadius(cornerRadius)
     }
   }

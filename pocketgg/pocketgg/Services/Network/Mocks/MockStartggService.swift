@@ -28,7 +28,13 @@ final class MockStartggService: StartggServiceType {
           logoUrl: "https://static-cdn.jtvnw.net/jtv_user_pictures/vgbootcamp-profile_image-2d7c9dd9b19b8c44-300x300.png",
           sourceUrl: "TWITCH"
         )
-      ]
+      ], location:
+        Location(
+          address: "600 Town Center Dr, Dearborn, MI 48126, USA",
+          venueName: "Edward Hotel & Conference Center",
+          latitude: 42.3122619,
+          longitude: -83.2178603
+        )
     )
   }
   

@@ -42,9 +42,20 @@ extension StartggService {
             }
           }
           
+          var location: Location?
+          if let address = tournament.venueAddress {
+            location = Location(
+              address: address,
+              venueName: tournament.venueName,
+              latitude: tournament.lat,
+              longitude: tournament.lng
+            )
+          }
+          
           continuation.resume(returning: TournamentDetails(
             events: events,
-            streams: streams
+            streams: streams,
+            location: location
           ))
         case .failure(let error):
           continuation.resume(throwing: error)
