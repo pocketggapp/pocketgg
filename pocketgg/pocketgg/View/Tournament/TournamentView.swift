@@ -38,7 +38,7 @@ struct TournamentView: View {
         case "Location":
           locationView
         case "Contact Info":
-          Color.purple
+          contactInfoView
         default:
           EmptyView()
         }
@@ -120,7 +120,7 @@ struct TournamentView: View {
   // MARK: Location View
   
   private var locationView: some View {
-    return VStack {
+    VStack {
       switch viewModel.state {
       case .uninitialized, .loading:
         LocationPlaceholderView()
@@ -138,6 +138,28 @@ struct TournamentView: View {
         Text(string)
       }
     }
+  }
+  
+  // MARK: Contact Info View
+  
+  private var contactInfoView: some View {
+    VStack {
+      switch viewModel.state {
+      case .uninitialized, .loading:
+        LocationPlaceholderView()
+      case .loaded(let tournamentDetails):
+        if let contactInfo = tournamentDetails?.contact.info,
+           let contactType = tournamentDetails?.contact.type {
+          ContactInfoView(contactInfo: contactInfo, contactType: contactType)
+        } else {
+          NoContactInfoView()
+        }
+      case .error(let string):
+        // TODO: Error view
+        Text(string)
+      }
+    }
+    .padding()
   }
 }
 

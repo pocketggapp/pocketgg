@@ -29,6 +29,7 @@ struct TournamentHeaderView: View {
       VStack(alignment: .leading, spacing: 5) {
         Text(name)
           .font(.headline)
+          .lineLimit(3)
         
         HStack {
           Image(systemName: "calendar")

@@ -50,7 +50,7 @@ private struct SegmentedControlViewStyle: ButtonStyle {
     configuration
       .label
       .padding(EdgeInsets(top: 14, leading: 20, bottom: 0, trailing: 20))
-      .background(configuration.isPressed ? Color(red: 0.808, green: 0.831, blue: 0.855, opacity: 0.5) : Color.clear)
+      .background(configuration.isPressed ? Color(uiColor: UIColor.systemGray4).opacity(0.5) : Color.clear)
   }
 }
 

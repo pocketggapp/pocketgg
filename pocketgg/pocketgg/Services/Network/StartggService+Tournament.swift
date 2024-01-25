@@ -52,10 +52,13 @@ extension StartggService {
             )
           }
           
+          let contactInfo = (tournament.primaryContact, tournament.primaryContactType)
+          
           continuation.resume(returning: TournamentDetails(
             events: events,
             streams: streams,
-            location: location
+            location: location,
+            contact: contactInfo
           ))
         case .failure(let error):
           continuation.resume(throwing: error)

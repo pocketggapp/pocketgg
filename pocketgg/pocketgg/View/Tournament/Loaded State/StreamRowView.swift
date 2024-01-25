@@ -2,7 +2,7 @@ import SwiftUI
 
 struct StreamRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  private var stream: Stream
+  private let stream: Stream
   
   init(stream: Stream) {
     self.stream = stream

@@ -35,6 +35,7 @@ final class MockStartggService: StartggServiceType {
           latitude: 42.3122619,
           longitude: -83.2178603
         )
+      , contact: (info: "hello@genesisgaming.gg", type: "email")
     )
   }
   
