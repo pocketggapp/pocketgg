@@ -6,7 +6,7 @@ struct EditHomeView: View {
       List {
         Section {
           NavigationLink {
-            LocationView()
+            LocationPreferenceView()
           } label: {
             HStack {
               Image(systemName: "location.fill")

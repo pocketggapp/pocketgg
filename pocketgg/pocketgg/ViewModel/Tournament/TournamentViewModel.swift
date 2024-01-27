@@ -4,7 +4,7 @@ enum TournamentViewState {
   case uninitialized
   case loading
   case loaded(TournamentDetails?)
-  case error(String)
+  case error
 }
 
 final class TournamentViewModel: ObservableObject {
@@ -38,7 +38,10 @@ final class TournamentViewModel: ObservableObject {
       let tournamentDetails = try await service.getTournamentDetails(id: tournamentData.id)
       state = .loaded(tournamentDetails)
     } catch {
-      state = .error(error.localizedDescription)
+      state = .error
+      #if DEBUG
+      print(error.localizedDescription)
+      #endif
     }
   }
 }

@@ -35,13 +35,21 @@ struct TournamentView: View {
         
         switch selected {
         case "Events":
-          eventsView
+          EventsView(state: $viewModel.state) {
+            reloadTournament()
+          }
         case "Streams":
-          streamsView
+          StreamsView(state: $viewModel.state) {
+            reloadTournament()
+          }
         case "Location":
-          locationView
+          LocationView(state: $viewModel.state, tournamentID: tournamentData.id) {
+            reloadTournament()
+          }
         case "Contact Info":
-          contactInfoView
+          ContactInfoView(state: $viewModel.state) {
+            reloadTournament()
+          }
         default:
           EmptyView()
         }
@@ -59,134 +67,12 @@ struct TournamentView: View {
     }
   }
   
-  // MARK: Events View
+  // MARK: Reload Tournament
   
-  private var eventsView: some View {
-    VStack {
-      switch viewModel.state {
-      case .uninitialized, .loading:
-        EventPlaceholderView()
-        EventPlaceholderView()
-        EventPlaceholderView()
-        EventPlaceholderView()
-        EventPlaceholderView()
-      case .loaded(let tournamentDetails):
-        if let events = tournamentDetails?.events, !events.isEmpty {
-          ForEach(events) { event in
-            NavigationLink(value: event) {
-              EventRowView(event: event)
-            }
-            .buttonStyle(.plain)
-          }
-        } else {
-          NoEventsView()
-        }
-      case .error(let error):
-        ErrorStateView {
-          Task {
-            await viewModel.fetchTournament(refreshed: true)
-          }
-          #if DEBUG
-          print(error)
-          #endif
-        }
-      }
+  private func reloadTournament() {
+    Task {
+      await viewModel.fetchTournament(refreshed: true)
     }
-    .padding()
-  }
-  
-  // MARK: Streams View
-  
-  private var streamsView: some View {
-    VStack {
-      switch viewModel.state {
-      case .uninitialized, .loading:
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-      case .loaded(let tournamentDetails):
-        if let streams = tournamentDetails?.streams, !streams.isEmpty {
-          ForEach(streams) { stream in
-            // TODO: Handle stream tapped, might not be navigationlink
-            NavigationLink(value: stream) {
-              StreamRowView(stream: stream)
-            }
-            .buttonStyle(.plain)
-          }
-        } else {
-          NoStreamsView()
-        }
-      case .error(let error):
-        ErrorStateView {
-          Task {
-            await viewModel.fetchTournament(refreshed: true)
-          }
-          #if DEBUG
-          print(error)
-          #endif
-        }
-      }
-    }
-    .padding()
-  }
-  
-  // MARK: Location View
-  
-  private var locationView: some View {
-    VStack {
-      switch viewModel.state {
-      case .uninitialized, .loading:
-        LocationPlaceholderView()
-      case .loaded(let tournamentDetails):
-        if let location = tournamentDetails?.location {
-          TournamentLocationView(
-            tournamentID: tournamentData.id,
-            location: location
-          )
-        } else {
-          NoLocationView()
-        }
-      case .error(let error):
-        ErrorStateView {
-          Task {
-            await viewModel.fetchTournament(refreshed: true)
-          }
-          #if DEBUG
-          print(error)
-          #endif
-        }
-      }
-    }
-  }
-  
-  // MARK: Contact Info View
-  
-  private var contactInfoView: some View {
-    VStack {
-      switch viewModel.state {
-      case .uninitialized, .loading:
-        LocationPlaceholderView()
-      case .loaded(let tournamentDetails):
-        if let contactInfo = tournamentDetails?.contact.info,
-           let contactType = tournamentDetails?.contact.type {
-          ContactInfoView(contactInfo: contactInfo, contactType: contactType)
-        } else {
-          NoContactInfoView()
-        }
-      case .error(let error):
-        ErrorStateView {
-          Task {
-            await viewModel.fetchTournament(refreshed: true)
-          }
-          #if DEBUG
-          print(error)
-          #endif
-        }
-      }
-    }
-    .padding()
   }
 }
 

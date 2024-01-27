@@ -22,7 +22,6 @@ struct SegmentedControlView: View {
             VStack {
               Text(section)
                 .font(.subheadline)
-                .foregroundStyle(.primary)
               ZStack {
                 Rectangle()
                   .fill(Color.clear)

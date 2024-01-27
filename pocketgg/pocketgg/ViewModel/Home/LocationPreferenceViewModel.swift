@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreLocation
 
-final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
   @AppStorage("locationEnabled") var locationEnabled: Bool = false
   @AppStorage("locationCoordinates") var locationCoordinates: String = ""
   @AppStorage("locationString") var locationString: String = ""
@@ -78,7 +78,7 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
 
 // MARK: CLLocationManagerDelegate
 
-extension LocationViewModel {
+extension LocationPreferenceViewModel {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard gettingLocation else { return }
     Task { @MainActor in

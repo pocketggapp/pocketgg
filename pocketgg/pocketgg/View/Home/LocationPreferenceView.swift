@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct LocationView: View {
-  @StateObject private var viewModel = LocationViewModel()
+struct LocationPreferenceView: View {
+  @StateObject private var viewModel = LocationPreferenceViewModel()
   
   var body: some View {
     List {
@@ -54,5 +54,5 @@ struct LocationView: View {
 }
 
 #Preview {
-  LocationView()
+  LocationPreferenceView()
 }

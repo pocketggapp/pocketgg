@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContactInfoView: View {
+struct ContactInfoRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
   private let contactInfo: String
   private let contactType: String
@@ -12,8 +12,8 @@ struct ContactInfoView: View {
   
   var imageName: String {
     switch contactType {
-    case "email": return "envelope.fill"
-    case "discord": return "gamecontroller.fill"
+    case "email": return "envelope"
+    case "discord": return "bubble.left.and.bubble.right"
     default: return "person.text.rectangle"
     }
   }
@@ -44,7 +44,7 @@ struct ContactInfoView: View {
 }
 
 #Preview {
-  ContactInfoView(
+  ContactInfoRowView(
     contactInfo: "hello@genesisgaming.gg",
     contactType: "email"
   )

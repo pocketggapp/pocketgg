@@ -32,7 +32,7 @@ final class HomeViewModelTests: XCTestCase {
       XCTFail("Could not create Date() object for 'yesterday'")
       return
     }
-    userDefaults.set(yesterday, forKey: Constants.UserDefaults.accessTokenLastRefreshed)
+    userDefaults.set(yesterday, forKey: Constants.accessTokenLastRefreshed)
     sut = HomeViewModel(
       oAuthService: MockOAuthService(),
       service: MockStartggService(),
@@ -47,7 +47,7 @@ final class HomeViewModelTests: XCTestCase {
   
   
   func testTournamentFetchWithoutAccessTokenRefresh() async {
-    userDefaults.set(Date(), forKey: Constants.UserDefaults.accessTokenLastRefreshed)
+    userDefaults.set(Date(), forKey: Constants.accessTokenLastRefreshed)
     sut = HomeViewModel(
       oAuthService: MockOAuthService(),
       service: MockStartggService(),
