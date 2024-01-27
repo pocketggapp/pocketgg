@@ -2,7 +2,6 @@ import SwiftUI
 
 private enum LoginConstants {
   static let imageLength: CGFloat = 100
-  static let buttonHeight: CGFloat = 44
 }
 
 struct LoginView: View {
@@ -46,9 +45,9 @@ struct LoginView: View {
       } label: {
         Text("Log in with start.gg")
           .font(.body)
+          .padding(5)
           .frame(maxWidth: .infinity)
       }
-      .frame(minHeight: LoginConstants.buttonHeight)
       .buttonStyle(.borderedProminent)
       .tint(.red)
     }

@@ -8,7 +8,7 @@ struct SettingsView: View {
       do {
         try KeychainService.deleteToken(.accessToken)
         try KeychainService.deleteToken(.refreshToken)
-        UserDefaults.standard.removeObject(forKey: Constants.UserDefaults.accessTokenLastRefreshed)
+        UserDefaults.standard.removeObject(forKey: Constants.accessTokenLastRefreshed)
         appRootManager.currentRoot = .login
       } catch {
         print(error)

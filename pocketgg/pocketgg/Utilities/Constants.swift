@@ -1,5 +1,4 @@
 enum Constants {
-  enum UserDefaults {
-    static let accessTokenLastRefreshed = "accessTokenLastRefreshed"
-  }
+  // UserDefaults
+  static let accessTokenLastRefreshed = "accessTokenLastRefreshed"
 }

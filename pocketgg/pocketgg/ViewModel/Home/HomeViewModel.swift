@@ -70,7 +70,7 @@ final class HomeViewModel: ObservableObject {
   
   private func shouldRefreshAccessToken() -> Bool {
     if didAttemptTokenRefresh { return false }
-    let lastRefreshedKey = Constants.UserDefaults.accessTokenLastRefreshed
+    let lastRefreshedKey = Constants.accessTokenLastRefreshed
     guard let lastRefreshed = userDefaults.object(forKey: lastRefreshedKey) as? Date else { return true }
     return !Calendar.current.isDate(lastRefreshed, inSameDayAs: Date())
   }

@@ -177,7 +177,7 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
   func saveTokens(_ response: AccessTokenResponse) async throws {
     // By default, tokens expire in 604800 seconds (7 days)
     // Try to get a new access token once every day
-    userDefaults.set(Date(), forKey: Constants.UserDefaults.accessTokenLastRefreshed)
+    userDefaults.set(Date(), forKey: Constants.accessTokenLastRefreshed)
     
     return try await withCheckedThrowingContinuation { continuation in
       do {

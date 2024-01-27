@@ -28,7 +28,10 @@ struct TournamentView: View {
         )
         .padding()
         
-        SegmentedControlView(selected: $selected, sections: ["Events", "Streams", "Location", "Contact Info"])
+        SegmentedControlView(
+          selected: $selected,
+          sections: ["Events", "Streams", "Location", "Contact Info"]
+        )
         
         switch selected {
         case "Events":
@@ -78,9 +81,15 @@ struct TournamentView: View {
         } else {
           NoEventsView()
         }
-      case .error(let string):
-        // TODO: Error view
-        Text(string)
+      case .error(let error):
+        ErrorStateView {
+          Task {
+            await viewModel.fetchTournament(refreshed: true)
+          }
+          #if DEBUG
+          print(error)
+          #endif
+        }
       }
     }
     .padding()
@@ -109,9 +118,15 @@ struct TournamentView: View {
         } else {
           NoStreamsView()
         }
-      case .error(let string):
-        // TODO: Error view
-        Text(string)
+      case .error(let error):
+        ErrorStateView {
+          Task {
+            await viewModel.fetchTournament(refreshed: true)
+          }
+          #if DEBUG
+          print(error)
+          #endif
+        }
       }
     }
     .padding()
@@ -133,9 +148,15 @@ struct TournamentView: View {
         } else {
           NoLocationView()
         }
-      case .error(let string):
-        // TODO: Error view
-        Text(string)
+      case .error(let error):
+        ErrorStateView {
+          Task {
+            await viewModel.fetchTournament(refreshed: true)
+          }
+          #if DEBUG
+          print(error)
+          #endif
+        }
       }
     }
   }
@@ -154,9 +175,15 @@ struct TournamentView: View {
         } else {
           NoContactInfoView()
         }
-      case .error(let string):
-        // TODO: Error view
-        Text(string)
+      case .error(let error):
+        ErrorStateView {
+          Task {
+            await viewModel.fetchTournament(refreshed: true)
+          }
+          #if DEBUG
+          print(error)
+          #endif
+        }
       }
     }
     .padding()
