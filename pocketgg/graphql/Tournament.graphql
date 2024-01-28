@@ -60,6 +60,7 @@ query TournamentDetails($id: ID) {
       streamName
       streamLogo
       streamSource
+      streamId
     }
     lat
     lng

@@ -37,7 +37,8 @@ extension StartggService {
               Stream(
                 name: $0?.streamName,
                 logoUrl: $0?.streamLogo,
-                sourceUrl: $0?.streamSource?.rawValue
+                source: $0?.streamSource?.rawValue,
+                streamID: $0?.streamId
               )
             }
           }

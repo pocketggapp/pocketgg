@@ -7,7 +7,7 @@ public class TournamentDetailsQuery: GraphQLQuery {
   public static let operationName: String = "TournamentDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType slug } }"#
+      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType slug } }"#
     ))
 
   public var id: GraphQLNullable<ID>
@@ -219,11 +219,13 @@ public class TournamentDetailsQuery: GraphQLQuery {
           .field("streamName", String?.self),
           .field("streamLogo", String?.self),
           .field("streamSource", GraphQLEnum<StartggAPI.StreamSource>?.self),
+          .field("streamId", String?.self),
         ] }
 
         public var streamName: String? { __data["streamName"] }
         public var streamLogo: String? { __data["streamLogo"] }
         public var streamSource: GraphQLEnum<StartggAPI.StreamSource>? { __data["streamSource"] }
+        public var streamId: String? { __data["streamId"] }
       }
     }
   }

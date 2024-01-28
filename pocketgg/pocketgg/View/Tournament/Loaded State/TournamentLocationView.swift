@@ -9,6 +9,7 @@ enum TournamentLocationViewState {
 }
 
 struct TournamentLocationView: View {
+  @ScaledMetric private var scale: CGFloat = 1
   @StateObject private var viewModel: TournamentLocationViewModel
   @State private var image: UIImage? = nil
   private let location: Location
@@ -40,9 +41,22 @@ struct TournamentLocationView: View {
           Text(location.address ?? "")
             .font(.caption)
             .padding(.leading)
-        }
-        .onTapGesture {
-          viewModel.openInMaps(location.address)
+          
+          Button {
+            viewModel.openInMaps(location.address)
+          } label: {
+            HStack {
+              Image(systemName: "location.fill")
+              .frame(width: 44 * scale, height: 44 * scale)
+              .clipped()
+              
+              Text("Get Directions")
+                .font(.body)
+              
+              Spacer()
+            }
+          }
+          .padding(.leading)
         }
       } else {
         NoLocationView()

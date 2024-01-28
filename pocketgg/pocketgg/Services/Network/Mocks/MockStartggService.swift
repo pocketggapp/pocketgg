@@ -44,7 +44,8 @@ final class MockStartggService: StartggServiceType {
       Stream(
         name: "VGBootCamp",
         logoUrl: "https://static-cdn.jtvnw.net/jtv_user_pictures/vgbootcamp-profile_image-2d7c9dd9b19b8c44-300x300.png",
-        sourceUrl: "TWITCH"
+        source: "TWITCH",
+        streamID: "61213141"
       )
     ]
   }

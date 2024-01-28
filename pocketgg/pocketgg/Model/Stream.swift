@@ -5,5 +5,6 @@ struct Stream: Identifiable, Hashable {
   let id = UUID()
   let name: String?
   let logoUrl: String?
-  let sourceUrl: String?
+  let source: String?
+  let streamID: String?
 }

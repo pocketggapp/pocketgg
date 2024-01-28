@@ -14,6 +14,10 @@ struct LocationPlaceholderView: View {
       Text("123 Queen St W, Toronto, ON M5H 3M9, Canada")
         .font(.caption)
         .padding(.leading)
+      
+      Text("Get Directions")
+        .font(.body)
+        .padding(.leading)
     }
     .redacted(reason: .placeholder)
   }

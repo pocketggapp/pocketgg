@@ -21,16 +21,10 @@ struct StreamsView: View {
       case .loaded(let tournamentDetails):
         if let streams = tournamentDetails?.streams, !streams.isEmpty {
           ForEach(streams) { stream in
-            // TODO: Handle stream tapped, might not be navigationlink
-            NavigationLink(value: stream) {
-              StreamRowView(stream: stream)
-            }
-            .buttonStyle(.plain)
+            StreamRowView(stream: stream)
           }
         } else {
-          ErrorStateView {
-            reloadTournament()
-          }
+          NoStreamsView()
         }
       case .error:
         ErrorStateView {

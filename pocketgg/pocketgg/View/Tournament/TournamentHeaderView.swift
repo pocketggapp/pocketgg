@@ -30,6 +30,8 @@ struct TournamentHeaderView: View {
         Text(name)
           .font(.headline)
           .lineLimit(3)
+        // TODO: Get best value for maxWidth that fixes context menu preview issue
+          .frame(maxWidth: 300, alignment: .leading)
         
         HStack {
           Image(systemName: "calendar")
