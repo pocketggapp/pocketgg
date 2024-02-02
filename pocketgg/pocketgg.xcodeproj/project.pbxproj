@@ -184,15 +184,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DA15EC582B5A28BC003FD258 /* Empty State */ = {
+		DA15EC582B5A28BC003FD258 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				DA15EC592B5A28DF003FD258 /* NoEventsView.swift */,
-				DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */,
+				DA4DDBCA2B6564B800F3131E /* LocationView.swift */,
+				DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */,
 				DA2723AA2B5C655E002FF875 /* NoLocationView.swift */,
-				DAE36C302B6203290037B45D /* NoContactInfoView.swift */,
 			);
-			path = "Empty State";
+			path = Location;
 			sourceTree = "<group>";
 		};
 		DA15EC5B2B5A2A51003FD258 /* Components */ = {
@@ -293,15 +292,14 @@
 			path = pocketggTests;
 			sourceTree = "<group>";
 		};
-		DA4DDBC72B65638D00F3131E /* Sections */ = {
+		DA4DDBC72B65638D00F3131E /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				DA4DDBC82B65639D00F3131E /* EventsView.swift */,
-				DA4DDBC52B655F6600F3131E /* StreamsView.swift */,
-				DA4DDBCA2B6564B800F3131E /* LocationView.swift */,
-				DA4DDBCC2B65662F00F3131E /* ContactInfoView.swift */,
+				DAF117B52B50E2FF00D39F65 /* EventRowView.swift */,
+				DA15EC592B5A28DF003FD258 /* NoEventsView.swift */,
 			);
-			path = Sections;
+			path = Events;
 			sourceTree = "<group>";
 		};
 		DA65D65F2AB61EB800EF18E0 /* ViewModel */ = {
@@ -451,12 +449,13 @@
 		DADD99A52AE0BA8B00ED35FC /* Tournament */ = {
 			isa = PBXGroup;
 			children = (
-				DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */,
 				DADD99AD2AE1C33300ED35FC /* TournamentView.swift */,
-				DA4DDBC72B65638D00F3131E /* Sections */,
-				DAF117B42B50E2DA00D39F65 /* Loaded State */,
-				DA15EC582B5A28BC003FD258 /* Empty State */,
-				DAF8FF9E2B5E17AE0070BD49 /* Error State */,
+				DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */,
+				DAF8FF9F2B5E17CA0070BD49 /* ErrorStateView.swift */,
+				DA4DDBC72B65638D00F3131E /* Events */,
+				DAF117B42B50E2DA00D39F65 /* Streams */,
+				DA15EC582B5A28BC003FD258 /* Location */,
+				DAF8FF9E2B5E17AE0070BD49 /* Contact Info */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -482,23 +481,24 @@
 			path = Placeholder;
 			sourceTree = "<group>";
 		};
-		DAF117B42B50E2DA00D39F65 /* Loaded State */ = {
+		DAF117B42B50E2DA00D39F65 /* Streams */ = {
 			isa = PBXGroup;
 			children = (
-				DAF117B52B50E2FF00D39F65 /* EventRowView.swift */,
+				DA4DDBC52B655F6600F3131E /* StreamsView.swift */,
 				DA2723A42B5B4A79002FF875 /* StreamRowView.swift */,
-				DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */,
-				DAE36C322B6204440037B45D /* ContactInfoRowView.swift */,
+				DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */,
 			);
-			path = "Loaded State";
+			path = Streams;
 			sourceTree = "<group>";
 		};
-		DAF8FF9E2B5E17AE0070BD49 /* Error State */ = {
+		DAF8FF9E2B5E17AE0070BD49 /* Contact Info */ = {
 			isa = PBXGroup;
 			children = (
-				DAF8FF9F2B5E17CA0070BD49 /* ErrorStateView.swift */,
+				DA4DDBCC2B65662F00F3131E /* ContactInfoView.swift */,
+				DAE36C322B6204440037B45D /* ContactInfoRowView.swift */,
+				DAE36C302B6203290037B45D /* NoContactInfoView.swift */,
 			);
-			path = "Error State";
+			path = "Contact Info";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
