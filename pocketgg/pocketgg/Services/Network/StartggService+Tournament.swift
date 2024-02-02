@@ -18,13 +18,22 @@ extension StartggService {
           if let tournamentEvents = tournament.events {
             events = tournamentEvents.map {
               let date = DateFormatter.shared.dateFromTimestamp($0?.startAt)
+              var eventType: String?
+              if let eventTypeID = $0?.type {
+                switch eventTypeID {
+                case 1: eventType = "Singles"
+                case 2: eventType = "Doubles"
+                case 5: eventType = "Teams"
+                default: break
+                }
+              }
               return Event(
                 id: Int($0?.id ?? "nil"),
                 name: $0?.name,
                 state: $0?.state?.rawValue,
                 winner: EntrantService.getEventWinner($0),
                 startDate: date,
-                eventType: $0?.type,
+                eventType: eventType,
                 videogameName: $0?.videogame?.name,
                 videogameImage: $0?.videogame?.images?.first??.url
               )

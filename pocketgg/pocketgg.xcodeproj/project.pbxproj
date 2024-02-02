@@ -44,6 +44,8 @@
 		DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926632AD1DDFA0086B92A /* EditHomeView.swift */; };
 		DA6926672AD1E2AB0086B92A /* LocationPreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */; };
 		DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */; };
+		DA789D9E2B66C324009B9799 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA789D9D2B66C324009B9799 /* EventView.swift */; };
+		DA789DA12B66C4AB009B9799 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA789DA02B66C4AB009B9799 /* EventViewModel.swift */; };
 		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
 		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
@@ -124,6 +126,8 @@
 		DA6926632AD1DDFA0086B92A /* EditHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeView.swift; sourceTree = "<group>"; };
 		DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreferenceView.swift; sourceTree = "<group>"; };
 		DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreferenceViewModel.swift; sourceTree = "<group>"; };
+		DA789D9D2B66C324009B9799 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		DA789DA02B66C4AB009B9799 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				DABFF26D2AB906D30053614D /* Login */,
 				DA65D66F2AB64A7500EF18E0 /* Home */,
 				DADD99A82AE0C6B300ED35FC /* Tournament */,
+				DA789D9F2B66C490009B9799 /* Event */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -366,6 +371,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA789D9C2B66C315009B9799 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				DA789D9D2B66C324009B9799 /* EventView.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		DA789D9F2B66C490009B9799 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				DA789DA02B66C4AB009B9799 /* EventViewModel.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		DA8D00B02ACA36200093FC49 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +440,7 @@
 				DABFF2692AB794CE0053614D /* Login */,
 				DA65D66D2AB64A4700EF18E0 /* Home */,
 				DADD99A52AE0BA8B00ED35FC /* Tournament */,
+				DA789D9C2B66C315009B9799 /* Event */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
 				DA15EC5B2B5A2A51003FD258 /* Components */,
 				DAF117A92B4F875000D39F65 /* Placeholder */,
@@ -628,11 +650,13 @@
 				DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */,
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
 				DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */,
+				DA789D9E2B66C324009B9799 /* EventView.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
 				DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */,
 				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
 				DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */,
 				DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */,
+				DA789DA12B66C4AB009B9799 /* EventViewModel.swift in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,

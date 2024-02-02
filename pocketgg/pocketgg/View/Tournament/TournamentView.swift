@@ -63,7 +63,7 @@ struct TournamentView: View {
     }
     .navigationTitle(tournamentData.name)
     .navigationDestination(for: Event.self) { event in
-      EmptyView() // TODO: EventView
+      EventView(event)
     }
   }
   

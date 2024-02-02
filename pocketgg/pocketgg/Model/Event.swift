@@ -4,10 +4,8 @@ struct Event: Identifiable, Hashable {
   let state: String?
   let winner: Entrant?
   
-  // Preloaded data for EventVC
-  // Query 1 - TournamentDetailsById
   let startDate: String?
-  let eventType: Int?
+  let eventType: String?
   let videogameName: String?
   let videogameImage: String?
 }

@@ -39,7 +39,7 @@ struct StreamsView: View {
 #Preview {
   let tournamentDetails = TournamentDetails(
     events: [],
-    streams: MockStartggService.createStreams(),
+    streams: [MockStartggService.createStream()],
     location: nil,
     contact: (nil, nil)
   )
