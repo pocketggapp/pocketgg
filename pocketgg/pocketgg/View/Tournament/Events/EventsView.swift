@@ -27,10 +27,14 @@ struct EventsView: View {
             .buttonStyle(.plain)
           }
         } else {
-          NoEventsView()
+          EmptyStateView(
+            systemImageName: "questionmark.app.dashed",
+            title: "No Events",
+            subtitle: "There are currently no events for this tournament"
+          )
         }
       case .error:
-        ErrorStateView {
+        ErrorStateView(subtitle: "There was an error loading this tournament") {
           reloadTournament()
         }
       }

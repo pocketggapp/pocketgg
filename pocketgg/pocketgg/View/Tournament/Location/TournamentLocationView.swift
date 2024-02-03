@@ -59,10 +59,18 @@ struct TournamentLocationView: View {
           .padding(.leading)
         }
       } else {
-        NoLocationView()
+        EmptyStateView(
+          systemImageName: "wifi",
+          title: "Online",
+          subtitle: "This tournament is being held online"
+        )
       }
     case .error:
-      NoLocationView()
+      EmptyStateView(
+        systemImageName: "wifi",
+        title: "Online",
+        subtitle: "This tournament is being held online"
+      )
     }
   }
 }

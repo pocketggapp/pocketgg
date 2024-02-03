@@ -2,9 +2,11 @@ import SwiftUI
 
 struct ErrorStateView: View {
   @ScaledMetric private var scale: CGFloat = 1
+  private let subtitle: String
   private let reload: (() -> Void)
   
-  init(reload: @escaping () -> Void) {
+  init(subtitle: String, reload: @escaping () -> Void) {
+    self.subtitle = subtitle
     self.reload = reload
   }
   
@@ -22,7 +24,7 @@ struct ErrorStateView: View {
             .font(.title)
             .multilineTextAlignment(.center)
           
-          Text("There was an error loading this tournament")
+          Text(subtitle)
             .font(.title3)
             .multilineTextAlignment(.center)
           
@@ -44,5 +46,5 @@ struct ErrorStateView: View {
 }
 
 #Preview {
-  ErrorStateView(reload: {})
+  ErrorStateView(subtitle: "There was an error loading this tournament", reload: {})
 }

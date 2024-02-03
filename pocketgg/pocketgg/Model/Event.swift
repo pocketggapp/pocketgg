@@ -1,5 +1,5 @@
 struct Event: Identifiable, Hashable {
-  let id: Int?
+  let id: Int
   let name: String?
   let state: String?
   let winner: Entrant?
@@ -8,4 +8,9 @@ struct Event: Identifiable, Hashable {
   let eventType: String?
   let videogameName: String?
   let videogameImage: String?
+}
+
+struct EventDetails {
+  let phases: [Phase]
+  let topStandings: [Standing]
 }

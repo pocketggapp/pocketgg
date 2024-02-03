@@ -2,9 +2,10 @@ import Foundation
 
 struct TournamentData: Identifiable, Hashable {
   let id: Int
-  let name: String
-  let imageURL: String
-  let date: String
+  let name: String?
+  let imageURL: String?
+  let date: String?
+  let location: String
 }
 
 struct TournamentsGroup: Identifiable {

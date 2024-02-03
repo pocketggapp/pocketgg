@@ -48,10 +48,10 @@ struct TournamentHorizontalListView: View {
                 // BUG: When the tournament name is too long, the padding of the context menu preview is incorrect
                 //      and the tournament name is forced into only 1 line
                 TournamentHeaderView(
-                  id: tournament.id,
                   name: tournament.name,
                   imageURL: tournament.imageURL,
-                  date: tournament.date
+                  date: tournament.date,
+                  location: tournament.location
                 )
                 .padding()
               }
@@ -70,9 +70,9 @@ struct TournamentHorizontalListView: View {
   let date = "Jul 21 - Jul 23, 2023"
   return TournamentHorizontalListView(
     tournamentsGroup: TournamentsGroup(name: "Test Group", tournaments: [
-      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date),
-      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date),
-      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date),
+      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
+      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
+      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere")
     ])
   )
 }

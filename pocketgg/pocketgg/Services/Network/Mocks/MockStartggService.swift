@@ -3,9 +3,9 @@ final class MockStartggService: StartggServiceType {
     let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
     let date = "Jul 21 - Jul 23, 2023"
     return [
-      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date),
-      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date),
-      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date),
+      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
+      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
+      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere"),
     ]
   }
   
@@ -18,8 +18,11 @@ final class MockStartggService: StartggServiceType {
     )
   }
   
-  func getTournamentLocation(id: Int) async throws -> String? {
-    "Toronto, ON"
+  func getEventDetails(id: Int) async throws -> EventDetails? {
+    EventDetails(
+      phases: [MockStartggService.createPhase()],
+      topStandings: MockStartggService.createStandings()
+    )
   }
   
   // MARK: Mock Data
@@ -57,5 +60,34 @@ final class MockStartggService: StartggServiceType {
   
   static func createContactInfo() -> (info: String?, type: String?) {
     (info: "hello@genesisgaming.gg", type: "email")
+  }
+  
+  static func createPhase() -> Phase {
+    Phase(
+      id: 1,
+      name: "Top 8",
+      state: "COMPLETED",
+      numPhaseGroups: 1,
+      numEntrants: 8,
+      bracketType: "SINGLE_ELIMINATION",
+      phaseGroups: [MockStartggService.createPhaseGroup()]
+    )
+  }
+  
+  static func createPhaseGroup() -> PhaseGroup {
+    PhaseGroup(id: 1, name: "Top 8", state: "COMPLETED") // TODO
+  }
+  
+  static func createStandings() -> [Standing] {
+    [
+      Standing(entrant: Entrant(id: 0, name: "Mang0", teamName: "C9"), placement: 1),
+      Standing(entrant: Entrant(id: 1, name: "Mang0", teamName: "C9"), placement: 2),
+      Standing(entrant: Entrant(id: 2, name: "Mang0", teamName: "C9"), placement: 3),
+      Standing(entrant: Entrant(id: 3, name: "Mang0", teamName: "C9"), placement: 4),
+      Standing(entrant: Entrant(id: 4, name: "Mang0", teamName: "C9"), placement: 5),
+      Standing(entrant: Entrant(id: 5, name: "Mang0", teamName: "C9"), placement: 6),
+      Standing(entrant: Entrant(id: 6, name: "Mang0", teamName: "C9"), placement: 7),
+      Standing(entrant: Entrant(id: 7, name: "Mang0", teamName: "C9"), placement: 8)
+    ]
   }
 }

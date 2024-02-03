@@ -6,14 +6,17 @@ struct TournamentView: View {
   @State private var selected: String
   private var tournamentData: TournamentData
   
-  init(tournamentData: TournamentData, service: StartggServiceType = StartggService.shared) {
+  init(
+    tournamentData: TournamentData,
+    service: StartggServiceType = StartggService.shared
+  ) {
     self._viewModel = StateObject(wrappedValue: {
       TournamentViewModel(
         tournamentData: tournamentData,
         service: service
       )
     }())
-    self.selected = "Events"
+    self._selected = State(initialValue: "Events")
     self.tournamentData = tournamentData
   }
   
@@ -21,10 +24,10 @@ struct TournamentView: View {
     ScrollView(.vertical) {
       VStack(alignment: .leading) {
         TournamentHeaderView(
-          id: tournamentData.id,
           name: tournamentData.name,
           imageURL: tournamentData.imageURL,
-          date: tournamentData.date
+          date: tournamentData.date,
+          location: tournamentData.location
         )
         .padding()
         
@@ -61,9 +64,9 @@ struct TournamentView: View {
     .refreshable {
       await viewModel.fetchTournament(refreshed: true)
     }
-    .navigationTitle(tournamentData.name)
+    .navigationTitle(tournamentData.name ?? "")
     .navigationDestination(for: Event.self) { event in
-      EventView(event)
+      EventView(event: event)
     }
   }
   
@@ -80,7 +83,7 @@ struct TournamentView: View {
   let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
   let date = "Jul 21 - Jul 23, 2023"
   return TournamentView(
-    tournamentData: TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date),
+    tournamentData: TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
     service: MockStartggService()
   )
 }

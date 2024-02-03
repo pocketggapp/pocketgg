@@ -16,7 +16,9 @@ extension StartggService {
           
           var events = [Event]()
           if let tournamentEvents = tournament.events {
-            events = tournamentEvents.map {
+            events = tournamentEvents.compactMap {
+              guard let id = Int($0?.id ?? "nil") else { return nil }
+              
               let date = DateFormatter.shared.dateFromTimestamp($0?.startAt)
               var eventType: String?
               if let eventTypeID = $0?.type {
@@ -28,7 +30,7 @@ extension StartggService {
                 }
               }
               return Event(
-                id: Int($0?.id ?? "nil"),
+                id: id,
                 name: $0?.name,
                 state: $0?.state?.rawValue,
                 winner: EntrantService.getEventWinner($0),

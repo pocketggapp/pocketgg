@@ -24,10 +24,14 @@ struct StreamsView: View {
             StreamRowView(stream: stream)
           }
         } else {
-          NoStreamsView()
+          EmptyStateView(
+            systemImageName: "questionmark.video",
+            title: "No Streams",
+            subtitle: "There are currently no streams for this tournament"
+          )
         }
       case .error:
-        ErrorStateView {
+        ErrorStateView(subtitle: "There was an error loading this tournament") {
           reloadTournament()
         }
       }

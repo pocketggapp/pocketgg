@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */; };
-		DA15EC5A2B5A28DF003FD258 /* NoEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC592B5A28DF003FD258 /* NoEventsView.swift */; };
+		DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E597C2B6D58520031A5A1 /* Phase.swift */; };
+		DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */; };
+		DA0E59832B6D5A930031A5A1 /* StartggService+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E59822B6D5A930031A5A1 /* StartggService+Event.swift */; };
+		DA0E59862B6D5AEF0031A5A1 /* Event.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA0E59852B6D5AEF0031A5A1 /* Event.graphql */; };
 		DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC5D2B5A2DD8003FD258 /* MockOAuthService.swift */; };
 		DA15EC602B5A2DE2003FD258 /* MockStartggService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC5F2B5A2DE2003FD258 /* MockStartggService.swift */; };
 		DA15EC622B5A3750003FD258 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC612B5A3750003FD258 /* LoginViewModelTests.swift */; };
@@ -18,9 +21,7 @@
 		DA2723A12B5B451C002FF875 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A02B5B451C002FF875 /* Stream.swift */; };
 		DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A22B5B469A002FF875 /* StreamPlaceholderView.swift */; };
 		DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A42B5B4A79002FF875 /* StreamRowView.swift */; };
-		DA2723A72B5B4DA3002FF875 /* NoStreamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */; };
 		DA2723A92B5C5509002FF875 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A82B5C5509002FF875 /* Location.swift */; };
-		DA2723AB2B5C655E002FF875 /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723AA2B5C655E002FF875 /* NoLocationView.swift */; };
 		DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1932A5E564B00814252 /* pocketggApp.swift */; };
 		DA46B1962A5E564B00814252 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B1952A5E564B00814252 /* ContentView.swift */; };
 		DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA46B1972A5E564C00814252 /* Assets.xcassets */; };
@@ -51,6 +52,10 @@
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
 		DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B12ACA362E0093FC49 /* Constants.swift */; };
 		DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B32ACA6D800093FC49 /* LoadingView.swift */; };
+		DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178542B6E99BE00579360 /* BracketsView.swift */; };
+		DA9178572B6E9B3F00579360 /* EventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178562B6E9B3F00579360 /* EventHeaderView.swift */; };
+		DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178582B6E9D9B00579360 /* EmptyStateView.swift */; };
+		DA91785B2B6E9DAA00579360 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91785A2B6E9DAA00579360 /* ErrorStateView.swift */; };
 		DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
@@ -61,20 +66,17 @@
 		DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
 		DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */; };
-		DADD99AC2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AB2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift */; };
 		DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AD2AE1C33300ED35FC /* TournamentView.swift */; };
 		DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */; };
 		DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF343C2B54CAF50020C29D /* AsyncImageView.swift */; };
 		DADF343F2B54CB960020C29D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF343E2B54CB960020C29D /* ImageService.swift */; };
 		DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */; };
-		DAE36C312B6203290037B45D /* NoContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE36C302B6203290037B45D /* NoContactInfoView.swift */; };
 		DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE36C322B6204440037B45D /* ContactInfoRowView.swift */; };
 		DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */; };
 		DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */; };
 		DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */; };
 		DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B52B50E2FF00D39F65 /* EventRowView.swift */; };
 		DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */; };
-		DAF8FFA02B5E17CA0070BD49 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FF9F2B5E17CA0070BD49 /* ErrorStateView.swift */; };
 		DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +92,10 @@
 
 /* Begin PBXFileReference section */
 		DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTilePlaceholderView.swift; sourceTree = "<group>"; };
-		DA15EC592B5A28DF003FD258 /* NoEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventsView.swift; sourceTree = "<group>"; };
+		DA0E597C2B6D58520031A5A1 /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
+		DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroup.swift; sourceTree = "<group>"; };
+		DA0E59822B6D5A930031A5A1 /* StartggService+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Event.swift"; sourceTree = "<group>"; };
+		DA0E59852B6D5AEF0031A5A1 /* Event.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Event.graphql; sourceTree = "<group>"; };
 		DA15EC5D2B5A2DD8003FD258 /* MockOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOAuthService.swift; sourceTree = "<group>"; };
 		DA15EC5F2B5A2DE2003FD258 /* MockStartggService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStartggService.swift; sourceTree = "<group>"; };
 		DA15EC612B5A3750003FD258 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
@@ -100,9 +105,7 @@
 		DA2723A02B5B451C002FF875 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		DA2723A22B5B469A002FF875 /* StreamPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamPlaceholderView.swift; sourceTree = "<group>"; };
 		DA2723A42B5B4A79002FF875 /* StreamRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamRowView.swift; sourceTree = "<group>"; };
-		DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoStreamsView.swift; sourceTree = "<group>"; };
 		DA2723A82B5C5509002FF875 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		DA2723AA2B5C655E002FF875 /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
 		DA46B1902A5E564B00814252 /* pocketgg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketgg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA46B1932A5E564B00814252 /* pocketggApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketggApp.swift; sourceTree = "<group>"; };
 		DA46B1952A5E564B00814252 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,7 +124,7 @@
 		DA65D6632AB6253500EF18E0 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHorizontalListView.swift; sourceTree = "<group>"; };
 		DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTileView.swift; sourceTree = "<group>"; };
-		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tournament.graphql; path = graphql/Tournament.graphql; sourceTree = SOURCE_ROOT; };
+		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tournament.graphql; path = pocketgg/GraphQL/Tournament.graphql; sourceTree = SOURCE_ROOT; };
 		DA65D6792AB6744400EF18E0 /* startggAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = startggAPI; sourceTree = "<group>"; };
 		DA6926632AD1DDFA0086B92A /* EditHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeView.swift; sourceTree = "<group>"; };
 		DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreferenceView.swift; sourceTree = "<group>"; };
@@ -134,6 +137,10 @@
 		DA8D00B12ACA362E0093FC49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA8D00B32ACA6D800093FC49 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA8D00EB2ACB4D820093FC49 /* pocketgg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pocketgg.entitlements; sourceTree = "<group>"; };
+		DA9178542B6E99BE00579360 /* BracketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketsView.swift; sourceTree = "<group>"; };
+		DA9178562B6E9B3F00579360 /* EventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderView.swift; sourceTree = "<group>"; };
+		DA9178582B6E9D9B00579360 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		DA91785A2B6E9DAA00579360 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 		DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -145,20 +152,17 @@
 		DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
 		DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHeaderView.swift; sourceTree = "<group>"; };
-		DADD99AB2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHeaderViewModel.swift; sourceTree = "<group>"; };
 		DADD99AD2AE1C33300ED35FC /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewModel.swift; sourceTree = "<group>"; };
 		DADF343C2B54CAF50020C29D /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		DADF343E2B54CB960020C29D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
-		DAE36C302B6203290037B45D /* NoContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactInfoView.swift; sourceTree = "<group>"; };
 		DAE36C322B6204440037B45D /* ContactInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRowView.swift; sourceTree = "<group>"; };
 		DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		DAF117B52B50E2FF00D39F65 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 		DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentLocationView.swift; sourceTree = "<group>"; };
-		DAF8FF9F2B5E17CA0070BD49 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 		DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,12 +188,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA0E59842B6D5ACE0031A5A1 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
+				DA0E59852B6D5AEF0031A5A1 /* Event.graphql */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		DA15EC582B5A28BC003FD258 /* Location */ = {
 			isa = PBXGroup;
 			children = (
 				DA4DDBCA2B6564B800F3131E /* LocationView.swift */,
 				DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */,
-				DA2723AA2B5C655E002FF875 /* NoLocationView.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -197,6 +209,8 @@
 		DA15EC5B2B5A2A51003FD258 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DA9178582B6E9D9B00579360 /* EmptyStateView.swift */,
+				DA91785A2B6E9DAA00579360 /* ErrorStateView.swift */,
 				DA8D00B32ACA6D800093FC49 /* LoadingView.swift */,
 				DADF343C2B54CAF50020C29D /* AsyncImageView.swift */,
 				DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */,
@@ -218,6 +232,7 @@
 			children = (
 				DA15EC692B5A3C86003FD258 /* StartggService+Home.swift */,
 				DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */,
+				DA0E59822B6D5A930031A5A1 /* StartggService+Event.swift */,
 				DA15EC662B5A3AC5003FD258 /* Apollo */,
 				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
@@ -261,13 +276,13 @@
 				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
 				DABFF2702AB90F880053614D /* Services */,
 				DA8D00B02ACA36200093FC49 /* Utilities */,
+				DA0E59842B6D5ACE0031A5A1 /* GraphQL */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
 				DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */,
 				DABFF26C2AB906580053614D /* Info.plist */,
 				DA8D00EB2ACB4D820093FC49 /* pocketgg.entitlements */,
 				DA46B1952A5E564B00814252 /* ContentView.swift */,
 				DA46B1972A5E564C00814252 /* Assets.xcassets */,
-				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
 				DA46B19C2A5E564C00814252 /* Persistence.swift */,
 				DA46B19E2A5E564C00814252 /* pocketgg.xcdatamodeld */,
 				DA46B1992A5E564C00814252 /* Preview Content */,
@@ -297,7 +312,6 @@
 			children = (
 				DA4DDBC82B65639D00F3131E /* EventsView.swift */,
 				DAF117B52B50E2FF00D39F65 /* EventRowView.swift */,
-				DA15EC592B5A28DF003FD258 /* NoEventsView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -321,6 +335,8 @@
 				DAC4E94B2B4B95FB00B356A0 /* Event.swift */,
 				DA2723A02B5B451C002FF875 /* Stream.swift */,
 				DA2723A82B5C5509002FF875 /* Location.swift */,
+				DA0E597C2B6D58520031A5A1 /* Phase.swift */,
+				DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +389,9 @@
 			isa = PBXGroup;
 			children = (
 				DA789D9D2B66C324009B9799 /* EventView.swift */,
+				DA9178562B6E9B3F00579360 /* EventHeaderView.swift */,
+				DA9178522B6E989700579360 /* Brackets */,
+				DA9178532B6E989D00579360 /* Standings */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -392,6 +411,21 @@
 				DAD2BCD92ADB2D520088BA96 /* Extensions */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DA9178522B6E989700579360 /* Brackets */ = {
+			isa = PBXGroup;
+			children = (
+				DA9178542B6E99BE00579360 /* BracketsView.swift */,
+			);
+			path = Brackets;
+			sourceTree = "<group>";
+		};
+		DA9178532B6E989D00579360 /* Standings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Standings;
 			sourceTree = "<group>";
 		};
 		DABFF2692AB794CE0053614D /* Login */ = {
@@ -451,7 +485,6 @@
 			children = (
 				DADD99AD2AE1C33300ED35FC /* TournamentView.swift */,
 				DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */,
-				DAF8FF9F2B5E17CA0070BD49 /* ErrorStateView.swift */,
 				DA4DDBC72B65638D00F3131E /* Events */,
 				DAF117B42B50E2DA00D39F65 /* Streams */,
 				DA15EC582B5A28BC003FD258 /* Location */,
@@ -463,7 +496,6 @@
 		DADD99A82AE0C6B300ED35FC /* Tournament */ = {
 			isa = PBXGroup;
 			children = (
-				DADD99AB2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift */,
 				DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */,
 			);
 			path = Tournament;
@@ -486,7 +518,6 @@
 			children = (
 				DA4DDBC52B655F6600F3131E /* StreamsView.swift */,
 				DA2723A42B5B4A79002FF875 /* StreamRowView.swift */,
-				DA2723A62B5B4DA3002FF875 /* NoStreamsView.swift */,
 			);
 			path = Streams;
 			sourceTree = "<group>";
@@ -496,7 +527,6 @@
 			children = (
 				DA4DDBCC2B65662F00F3131E /* ContactInfoView.swift */,
 				DAE36C322B6204440037B45D /* ContactInfoRowView.swift */,
-				DAE36C302B6203290037B45D /* NoContactInfoView.swift */,
 			);
 			path = "Contact Info";
 			sourceTree = "<group>";
@@ -592,6 +622,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA0E59862B6D5AEF0031A5A1 /* Event.graphql in Resources */,
 				DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */,
 				DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */,
 			);
@@ -617,27 +648,27 @@
 				DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */,
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
 				DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */,
-				DA2723A72B5B4DA3002FF875 /* NoStreamsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
+				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,
 				DADF343F2B54CB960020C29D /* ImageService.swift in Sources */,
 				DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */,
+				DA0E59832B6D5A930031A5A1 /* StartggService+Event.swift in Sources */,
 				DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */,
 				DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */,
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
-				DAE36C312B6203290037B45D /* NoContactInfoView.swift in Sources */,
 				DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */,
-				DA15EC5A2B5A28DF003FD258 /* NoEventsView.swift in Sources */,
 				DA6926672AD1E2AB0086B92A /* LocationPreferenceView.swift in Sources */,
 				DA15EC6C2B5A3CAE003FD258 /* StartggService+Tournament.swift in Sources */,
 				DAC4E94E2B4B96B700B356A0 /* Entrant.swift in Sources */,
+				DA9178572B6E9B3F00579360 /* EventHeaderView.swift in Sources */,
 				DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */,
 				DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
-				DADD99AC2AE0C6D000ED35FC /* TournamentHeaderViewModel.swift in Sources */,
+				DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */,
 				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
@@ -662,16 +693,17 @@
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,
 				DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */,
 				DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */,
-				DAF8FFA02B5E17CA0070BD49 /* ErrorStateView.swift in Sources */,
+				DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */,
 				DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */,
+				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
 				DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,
 				DA4DDBCD2B65662F00F3131E /* ContactInfoView.swift in Sources */,
 				DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */,
 				DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */,
-				DA2723AB2B5C655E002FF875 /* NoLocationView.swift in Sources */,
 				DA2723A92B5C5509002FF875 /* Location.swift in Sources */,
+				DA91785B2B6E9DAA00579360 /* ErrorStateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,67 +14,68 @@ extension StartggService {
             return
           }
           
-          let tournaments = tournamentNodes.map {
-            let start = DateFormatter.shared.dateFromTimestamp($0?.startAt)
-            let end = DateFormatter.shared.dateFromTimestamp($0?.endAt)
+          // TODO: Change back to const
+          var tournaments = tournamentNodes.compactMap { tournament -> TournamentData? in
+            guard let id = Int(tournament?.id ?? "nil") else { return nil }
+            
+            let start = DateFormatter.shared.dateFromTimestamp(tournament?.startAt)
+            let end = DateFormatter.shared.dateFromTimestamp(tournament?.endAt)
             let date = start == end ? start : "\(start) - \(end)"
             
-            let logoURL = $0?.images?.first(where: { $0?.type ?? "" == "profile" })??.url
+            let logoURL = tournament?.images?.first(where: { $0?.type ?? "" == "profile" })??.url
+            
+            var location = ""
+            var components = [String]()
+            if let city = tournament?.city {
+              components.append(city)
+            }
+            if let addrState = tournament?.addrState {
+              components.append(addrState)
+            }
+            if let countryCode = tournament?.countryCode {
+              components.append(countryCode)
+            }
+            for component in components {
+              if !location.isEmpty {
+                location += ", "
+              }
+              location += component
+            }
+            if location.isEmpty, let isOnline = tournament?.isOnline, isOnline {
+              location = "Online"
+            }
             
             return TournamentData(
-              id: Int($0?.id ?? "nil") ?? -1,
-              name: $0?.name ?? "",
-              imageURL: logoURL ?? "",
-              date: date
+              id: id,
+              name: tournament?.name,
+              imageURL: logoURL,
+              date: date,
+              location: location
             )
           }
+          
+          // TODO: Mock Data, remove later
+          tournaments.append(TournamentData(
+            id: 548572,
+            name: "Big House 11",
+            imageURL: nil,
+            date: "Never",
+            location: "Somewhere"
+          ))
+          tournaments.append(TournamentData(
+            id: 628538,
+            name: "Test tournament",
+            imageURL: nil,
+            date: "Never",
+            location: "Somewhere"
+          ))
+          
+          
           continuation.resume(returning: tournaments)
         case .failure(let error):
           continuation.resume(throwing: error)
         }
       }
     }
-  }
-  
-  func getTournamentLocation(id: Int) async throws -> String? {
-    return try await withCheckedThrowingContinuation { continuation in
-      apollo.fetch(
-        query: TournamentLocationQuery(id: .some(String(id)))
-      ) { [weak self] result in
-        switch result {
-        case .success(let graphQLResult):
-          guard let tournament = graphQLResult.data?.tournament else {
-            continuation.resume(returning: nil)
-            return
-          }
-          
-          var location: String?
-          if let address = tournament.venueAddress {
-            location = self?.getCityAndCountry(address)
-          }
-          if location == nil, let isOnline = tournament.isOnline, isOnline {
-            location = "Online"
-          }
-          continuation.resume(returning: location)
-        case .failure(let error):
-          continuation.resume(throwing: error)
-        }
-      }
-    }
-  }
-  
-  private func getCityAndCountry(_ address: String?) -> String? {
-    guard let address else { return nil }
-    do {
-      if let addressComponents = try NSDataDetector(types: NSTextCheckingResult.CheckingType.address.rawValue)
-        .matches(in: address, range: NSRange(location: 0, length: address.utf16.count)).first?.addressComponents,
-         let city = addressComponents[.city],
-         let state = addressComponents[.state] {
-        return "\(city), \(state)"
-      }
-    } catch {
-      return nil
-    }
-    return nil
   }
 }

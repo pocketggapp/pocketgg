@@ -1,0 +1,44 @@
+query EventDetails($id: ID) {
+  event(id: $id) {
+    phases {
+      id
+      name
+      state
+      groupCount
+      numSeeds
+      bracketType
+    }
+    standings(query: {
+      perPage: 65
+    }) {
+      nodes {
+        placement
+        entrant {
+          name
+          participants {
+            gamerTag
+          }
+        }
+      }
+    }
+  }
+}
+
+query EventStandings($id: ID, $page: Int) {
+  event(id: $id) {
+    standings(query: {
+      page: $page
+      perPage: 65
+    }) {
+      nodes {
+        placement
+        entrant {
+          name
+          participants {
+            gamerTag
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,69 +2,81 @@ import SwiftUI
 
 struct EventView: View {
   @ScaledMetric private var scale: CGFloat = 1
+  
   @StateObject private var viewModel: EventViewModel
+  @State private var selected: String
+  
   private let event: Event
   
-  init(_ event: Event) {
-    self.event = event
+  init(
+    event: Event,
+    service: StartggServiceType = StartggService.shared
+  ) {
     self._viewModel = StateObject(wrappedValue: {
-      EventViewModel(event)
+      EventViewModel(
+        event: event,
+        service: service
+      )
     }())
+    self._selected = State(initialValue: "Brackets")
+    self.event = event
   }
   
   var body: some View {
-    List {
-      Section {
-        headerView
-      } header: {
-        Text("Summary")
-      }
-      
-      Section {
-        // TODO: Brackets
-        Text("handland")
-      } header: {
-        Text("Brackets")
-      }
-      
-      Section {
-        // TODO: Standings
-        Text("handland")
-      } header: {
-        Text("Standings")
-      }
-    }
-    .listStyle(.insetGrouped)
-    .navigationTitle(event.name ?? "")
-  }
-  
-  private var headerView: some View {
-    HStack {
-      AsyncImageView(
-        imageURL: event.videogameImage ?? "",
-        cornerRadius: 5
-      )
-      .frame(width: 54 * scale, height: 72 * scale)
-      .clipped()
-      
+    ScrollView(.vertical) {
       VStack(alignment: .leading) {
-        Text(event.name ?? "")
-          .font(.headline)
+        EventHeaderView(
+          name: event.name,
+          imageURL: event.videogameImage,
+          eventType: event.eventType,
+          videogameName: event.videogameName,
+          startDate: event.startDate,
+          dotColor: viewModel.headerDotColor
+        )
+        .padding()
         
-        subtitleTextView
-          .font(.caption)
+        SegmentedControlView(
+          selected: $selected,
+          sections: ["Brackets", "Standings"]
+        )
+        
+        switch selected {
+        case "Brackets":
+          BracketsView(state: $viewModel.state) {
+            reloadEvent()
+          }
+        case "Standings":
+          // TODO: Standings
+          EmptyView()
+        default:
+          EmptyView()
+        }
       }
-      
-      Spacer()
+    }
+    .task {
+      await viewModel.fetchEvent()
+    }
+    .refreshable {
+      await viewModel.fetchEvent(refreshed: true)
+    }
+    .navigationTitle(event.name ?? "")
+    .navigationDestination(for: Phase.self) { phase in
+      EmptyView()
     }
   }
   
-  private var subtitleTextView: some View {
-    return Text(event.eventType ?? "") + Text(" • ") + Text(event.videogameName ?? "")
-    + Text("\n") + Text("● ").foregroundColor(viewModel.headerDotColor) + Text(event.startDate ?? "")
+  // MARK: Reload Event
+  
+  private func reloadEvent() {
+    Task {
+      await viewModel.fetchEvent(refreshed: true)
+    }
   }
 }
 
 #Preview {
-  EventView(MockStartggService.createEvent())
+  EventView(
+    event: MockStartggService.createEvent(),
+    service: MockStartggService()
+  )
 }

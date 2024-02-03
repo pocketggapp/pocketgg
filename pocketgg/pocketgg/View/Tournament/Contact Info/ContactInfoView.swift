@@ -19,10 +19,14 @@ struct ContactInfoView: View {
            let contactType = tournamentDetails?.contact.type {
           ContactInfoRowView(contactInfo: contactInfo, contactType: contactType)
         } else {
-          NoContactInfoView()
+          EmptyStateView(
+            systemImageName: "person.fill.questionmark",
+            title: "No Contact Info",
+            subtitle: "There is currently no contact info for this tournament"
+          )
         }
       case .error:
-        ErrorStateView {
+        ErrorStateView(subtitle: "There was an error loading this tournament") {
           reloadTournament()
         }
       }

@@ -19,6 +19,10 @@ query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
       name
       startAt
       endAt
+      isOnline
+      city
+      addrState
+      countryCode
       images {
         url
         type
@@ -71,12 +75,5 @@ query TournamentDetails($id: ID) {
     primaryContact
     primaryContactType
     slug
-  }
-}
-
-query TournamentLocationQuery($id: ID) {
-  tournament(id: $id) {
-    venueAddress
-    isOnline
   }
 }

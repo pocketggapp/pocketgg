@@ -27,10 +27,14 @@ struct LocationView: View {
             location: location
           )
         } else {
-          NoLocationView()
+          EmptyStateView(
+            systemImageName: "wifi",
+            title: "Online",
+            subtitle: "This tournament is being held online"
+          )
         }
       case .error:
-        ErrorStateView {
+        ErrorStateView(subtitle: "There was an error loading this tournament") {
           reloadTournament()
         }
       }

@@ -7,7 +7,7 @@ public class FeaturedTournamentsQuery: GraphQLQuery {
   public static let operationName: String = "FeaturedTournaments"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) { tournaments( query: {perPage: 50, page: $pageNum, sortBy: "startAt asc", filter: {videogameIds: $gameIDs, staffPicks: true}} ) { __typename nodes { __typename id name startAt endAt images { __typename url type ratio } } } }"#
+      #"query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) { tournaments( query: {perPage: 50, page: $pageNum, sortBy: "startAt asc", filter: {videogameIds: $gameIDs, staffPicks: true}} ) { __typename nodes { __typename id name startAt endAt isOnline city addrState countryCode images { __typename url type ratio } } } }"#
     ))
 
   public var pageNum: GraphQLNullable<Int>
@@ -75,6 +75,10 @@ public class FeaturedTournamentsQuery: GraphQLQuery {
           .field("name", String?.self),
           .field("startAt", StartggAPI.Timestamp?.self),
           .field("endAt", StartggAPI.Timestamp?.self),
+          .field("isOnline", Bool?.self),
+          .field("city", String?.self),
+          .field("addrState", String?.self),
+          .field("countryCode", String?.self),
           .field("images", [Image?]?.self),
         ] }
 
@@ -85,6 +89,11 @@ public class FeaturedTournamentsQuery: GraphQLQuery {
         public var startAt: StartggAPI.Timestamp? { __data["startAt"] }
         /// When the tournament ends
         public var endAt: StartggAPI.Timestamp? { __data["endAt"] }
+        /// True if tournament has at least one online event
+        public var isOnline: Bool? { __data["isOnline"] }
+        public var city: String? { __data["city"] }
+        public var addrState: String? { __data["addrState"] }
+        public var countryCode: String? { __data["countryCode"] }
         public var images: [Image?]? { __data["images"] }
 
         /// Tournaments.Node.Image

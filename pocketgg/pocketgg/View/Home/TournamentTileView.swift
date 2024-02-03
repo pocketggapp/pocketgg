@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct TournamentTileView: View {
-  var imageURL: String
-  var name: String
-  var date: String
+  var imageURL: String?
+  var name: String?
+  var date: String?
   
   @ScaledMetric private var scale: CGFloat = 1
   
@@ -16,12 +16,12 @@ struct TournamentTileView: View {
       .frame(width: 150 * scale, height: 150 * scale)
       .clipped()
       
-      Text(name)
+      Text(name ?? "")
         .font(.headline)
         .lineLimit(2)
         .multilineTextAlignment(.leading)
       
-      Text(date)
+      Text(date ?? "")
         .font(.subheadline)
         .multilineTextAlignment(.leading)
     }

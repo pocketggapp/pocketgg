@@ -5,7 +5,7 @@ import StartggAPI
 protocol StartggServiceType {
   func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [TournamentData]
   func getTournamentDetails(id: Int) async throws -> TournamentDetails?
-  func getTournamentLocation(id: Int) async throws -> String?
+  func getEventDetails(id: Int) async throws -> EventDetails?
 }
 
 class StartggService: StartggServiceType {
