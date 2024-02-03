@@ -2,7 +2,7 @@ import Foundation
 import StartggAPI
 
 extension StartggService {
-  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [TournamentData] {
+  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: FeaturedTournamentsQuery(pageNum: .some(pageNum), gameIDs: .some(gameIDs.map { String($0) }))
@@ -15,7 +15,7 @@ extension StartggService {
           }
           
           // TODO: Change back to const
-          var tournaments = tournamentNodes.compactMap { tournament -> TournamentData? in
+          var tournaments = tournamentNodes.compactMap { tournament -> Tournament? in
             guard let id = Int(tournament?.id ?? "nil") else { return nil }
             
             let start = DateFormatter.shared.dateFromTimestamp(tournament?.startAt)
@@ -45,7 +45,7 @@ extension StartggService {
               location = "Online"
             }
             
-            return TournamentData(
+            return Tournament(
               id: id,
               name: tournament?.name,
               imageURL: logoURL,
@@ -55,14 +55,14 @@ extension StartggService {
           }
           
           // TODO: Mock Data, remove later
-          tournaments.append(TournamentData(
+          tournaments.append(Tournament(
             id: 548572,
             name: "Big House 11",
             imageURL: nil,
             date: "Never",
             location: "Somewhere"
           ))
-          tournaments.append(TournamentData(
+          tournaments.append(Tournament(
             id: 628538,
             name: "Test tournament",
             imageURL: nil,

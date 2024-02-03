@@ -1,3 +1,6 @@
+/// Preview of Event data
+///
+/// Used by **TournamentView**
 struct Event: Identifiable, Hashable {
   let id: Int
   let name: String?
@@ -10,6 +13,9 @@ struct Event: Identifiable, Hashable {
   let videogameImage: String?
 }
 
+/// Complete Event data
+///
+/// Used by **EventView**
 struct EventDetails {
   let phases: [Phase]
   let topStandings: [Standing]

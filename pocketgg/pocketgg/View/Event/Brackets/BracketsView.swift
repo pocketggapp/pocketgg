@@ -13,15 +13,16 @@ struct BracketsView: View {
     VStack {
       switch state {
       case .uninitialized, .loading:
-        StreamPlaceholderView() // TODO: Maybe make generic placeholder views
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
+        ForEach(1..<10) { _ in
+          TextPlaceholderView()
+        }
       case .loaded(let eventDetails):
         if let brackets = eventDetails?.phases, !brackets.isEmpty {
           ForEach(brackets) { bracket in
-            Text(bracket.name ?? "")
+            NavigationLink(value: bracket) {
+              BracketRowView(name: bracket.name)
+            }
+            .buttonStyle(.plain)
           }
         } else {
           EmptyStateView(

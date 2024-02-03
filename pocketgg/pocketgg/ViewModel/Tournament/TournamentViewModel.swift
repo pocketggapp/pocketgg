@@ -10,15 +10,15 @@ enum TournamentViewState {
 final class TournamentViewModel: ObservableObject {
   @Published var state: TournamentViewState
   
-  private let tournamentData: TournamentData
+  private let tournament: Tournament
   private let service: StartggServiceType
   
   init(
-    tournamentData: TournamentData,
+    tournament: Tournament,
     service: StartggServiceType = StartggService.shared
   ) {
     self.state = .uninitialized
-    self.tournamentData = tournamentData
+    self.tournament = tournament
     self.service = service
   }
   
@@ -35,7 +35,7 @@ final class TournamentViewModel: ObservableObject {
     
     state = .loading
     do {
-      let tournamentDetails = try await service.getTournamentDetails(id: tournamentData.id)
+      let tournamentDetails = try await service.getTournamentDetails(id: tournament.id)
       state = .loaded(tournamentDetails)
     } catch {
       state = .error

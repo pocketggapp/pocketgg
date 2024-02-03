@@ -70,9 +70,9 @@ struct TournamentHorizontalListView: View {
   let date = "Jul 21 - Jul 23, 2023"
   return TournamentHorizontalListView(
     tournamentsGroup: TournamentsGroup(name: "Test Group", tournaments: [
-      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
-      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
-      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere")
+      Tournament(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
+      Tournament(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
+      Tournament(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere")
     ])
   )
 }

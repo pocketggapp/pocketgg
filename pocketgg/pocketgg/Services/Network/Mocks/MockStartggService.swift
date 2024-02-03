@@ -1,11 +1,11 @@
 final class MockStartggService: StartggServiceType {
-  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [TournamentData] {
+  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament] {
     let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
     let date = "Jul 21 - Jul 23, 2023"
     return [
-      TournamentData(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
-      TournamentData(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
-      TournamentData(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere"),
+      Tournament(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
+      Tournament(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
+      Tournament(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere"),
     ]
   }
   
@@ -69,8 +69,7 @@ final class MockStartggService: StartggServiceType {
       state: "COMPLETED",
       numPhaseGroups: 1,
       numEntrants: 8,
-      bracketType: "SINGLE_ELIMINATION",
-      phaseGroups: [MockStartggService.createPhaseGroup()]
+      bracketType: "SINGLE_ELIMINATION"
     )
   }
   

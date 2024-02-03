@@ -38,9 +38,9 @@ struct HomeView: View {
         await viewModel.fetchTournaments(refreshed: true)
       }
       .navigationTitle("Tournaments")
-      .navigationDestination(for: TournamentData.self) { tournament in
+      .navigationDestination(for: Tournament.self) { tournament in
         TournamentView(
-          tournamentData: tournament
+          tournament: tournament
         )
       }
       .toolbar {

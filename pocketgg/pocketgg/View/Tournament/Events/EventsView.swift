@@ -13,11 +13,9 @@ struct EventsView: View {
     VStack {
       switch state {
       case .uninitialized, .loading:
-        EventPlaceholderView()
-        EventPlaceholderView()
-        EventPlaceholderView()
-        EventPlaceholderView()
-        EventPlaceholderView()
+        ForEach(1..<10) { _ in
+          EventPlaceholderView()
+        }
       case .loaded(let tournamentDetails):
         if let events = tournamentDetails?.events, !events.isEmpty {
           ForEach(events) { event in

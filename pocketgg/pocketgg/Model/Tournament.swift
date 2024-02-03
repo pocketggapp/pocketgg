@@ -1,6 +1,9 @@
 import Foundation
 
-struct TournamentData: Identifiable, Hashable {
+/// Preview of Tournament data
+///
+/// Used by **HomeView**
+struct Tournament: Identifiable, Hashable {
   let id: Int
   let name: String?
   let imageURL: String?
@@ -11,9 +14,12 @@ struct TournamentData: Identifiable, Hashable {
 struct TournamentsGroup: Identifiable {
   let id = UUID()
   let name: String
-  let tournaments: [TournamentData]
+  let tournaments: [Tournament]
 }
 
+/// Complete Tournament data
+///
+/// Used by **TournamentView**
 struct TournamentDetails {
   let events: [Event]
   let streams: [Stream]

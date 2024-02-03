@@ -13,11 +13,9 @@ struct StreamsView: View {
     VStack {
       switch state {
       case .uninitialized, .loading:
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
-        StreamPlaceholderView()
+        ForEach(1..<10) { _ in
+          StreamPlaceholderView()
+        }
       case .loaded(let tournamentDetails):
         if let streams = tournamentDetails?.streams, !streams.isEmpty {
           ForEach(streams) { stream in
