@@ -1,3 +1,5 @@
+import Foundation
+
 /// A pool within a certain phase
 ///
 /// Eg: R1 Pools can have many phase groups, whereas Top 8 only has 1
@@ -14,9 +16,10 @@ struct PhaseGroup: Hashable {
   var matches: [PhaseGroupSet]?
 }
 
-struct Standing: Hashable {
-  var entrant: Entrant?
-  var placement: Int?
+struct Standing: Identifiable, Hashable {
+  let id = UUID()
+  let entrant: Entrant?
+  let placement: Int?
 }
 
 struct PhaseGroupSet: Hashable {

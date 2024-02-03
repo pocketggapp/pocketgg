@@ -7,7 +7,7 @@ public class EventDetailsQuery: GraphQLQuery {
   public static let operationName: String = "EventDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query EventDetails($id: ID) { event(id: $id) { __typename phases { __typename id name state groupCount numSeeds bracketType } standings(query: {perPage: 65}) { __typename nodes { __typename placement entrant { __typename name participants { __typename gamerTag } } } } } }"#
+      #"query EventDetails($id: ID) { event(id: $id) { __typename phases { __typename id name state groupCount numSeeds bracketType } standings(query: {perPage: 8}) { __typename nodes { __typename placement entrant { __typename name participants { __typename gamerTag } } } } } }"#
     ))
 
   public var id: GraphQLNullable<ID>
@@ -41,7 +41,7 @@ public class EventDetailsQuery: GraphQLQuery {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("phases", [Phase?]?.self),
-        .field("standings", Standings?.self, arguments: ["query": ["perPage": 65]]),
+        .field("standings", Standings?.self, arguments: ["query": ["perPage": 8]]),
       ] }
 
       /// The phases that belong to an event.

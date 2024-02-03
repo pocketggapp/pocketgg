@@ -16,7 +16,7 @@ struct Event: Identifiable, Hashable {
 /// Complete Event data
 ///
 /// Used by **EventView**
-struct EventDetails {
+struct EventDetails: Hashable {
   let phases: [Phase]
   let topStandings: [Standing]
 }

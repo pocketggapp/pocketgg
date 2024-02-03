@@ -17,7 +17,7 @@ struct LocationPlaceholderView: View {
       
       Text("Get Directions")
         .font(.body)
-        .padding(.leading)
+        .padding([.top, .leading])
     }
     .redacted(reason: .placeholder)
   }

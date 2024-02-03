@@ -9,7 +9,6 @@ enum TournamentLocationViewState {
 }
 
 struct TournamentLocationView: View {
-  @ScaledMetric private var scale: CGFloat = 1
   @StateObject private var viewModel: TournamentLocationViewModel
   @State private var image: UIImage? = nil
   private let location: Location
@@ -47,8 +46,6 @@ struct TournamentLocationView: View {
           } label: {
             HStack {
               Image(systemName: "location.fill")
-              .frame(width: 44 * scale, height: 44 * scale)
-              .clipped()
               
               Text("Get Directions")
                 .font(.body)
@@ -56,7 +53,7 @@ struct TournamentLocationView: View {
               Spacer()
             }
           }
-          .padding(.leading)
+          .padding([.top, .leading])
         }
       } else {
         EmptyStateView(

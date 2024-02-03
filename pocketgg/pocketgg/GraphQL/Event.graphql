@@ -9,7 +9,7 @@ query EventDetails($id: ID) {
       bracketType
     }
     standings(query: {
-      perPage: 65
+      perPage: 8
     }) {
       nodes {
         placement

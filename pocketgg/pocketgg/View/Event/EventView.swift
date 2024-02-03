@@ -46,8 +46,9 @@ struct EventView: View {
             reloadEvent()
           }
         case "Standings":
-          // TODO: Standings
-          EmptyView()
+          TopStandingsView(state: $viewModel.state) {
+            reloadEvent()
+          }
         default:
           EmptyView()
         }
@@ -61,6 +62,11 @@ struct EventView: View {
     }
     .navigationTitle(event.name ?? "")
     .navigationDestination(for: Phase.self) { phase in
+      // TODO: Phase View
+      EmptyView()
+    }
+    .navigationDestination(for: EventDetails.self) { eventDetails in
+      // TODO: All standings
       EmptyView()
     }
   }
