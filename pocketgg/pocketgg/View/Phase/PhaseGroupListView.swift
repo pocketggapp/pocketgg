@@ -74,8 +74,12 @@ struct PhaseGroupListView: View {
     }
     .listStyle(.insetGrouped)
     .navigationTitle(phase.name ?? "")
-    .navigationDestination(for: PhaseGroup.self) { _ in
-      EmptyView() // TODO: PhaseGroupView
+    .navigationDestination(for: PhaseGroup.self) {
+      PhaseGroupView(
+        phaseGroup: $0,
+        phaseID: nil,
+        title: "Pool \($0.name ?? "")"
+      )
     }
   }
 }

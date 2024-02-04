@@ -40,9 +40,6 @@ struct TopStandingRowView: View {
 
 #Preview {
   TopStandingRowView(
-    standing: Standing(
-      entrant: Entrant(id: 0, name: "Mang0", teamName: "C9"),
-      placement: 1
-    )
+    standing: MockStartggService.createStanding(id: 1)
   )
 }

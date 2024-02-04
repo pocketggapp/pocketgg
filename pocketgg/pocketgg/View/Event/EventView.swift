@@ -63,7 +63,11 @@ struct EventView: View {
     .navigationTitle(event.name ?? "")
     .navigationDestination(for: Phase.self) { phase in
       if let numPhaseGroups = phase.numPhaseGroups, numPhaseGroups == 1 {
-        EmptyView() // TODO: Single phase group
+        PhaseGroupView(
+          phaseGroup: nil,
+          phaseID: phase.id,
+          title: phase.name ?? ""
+        )
       } else {
         PhaseGroupListView(phase: phase)
       }

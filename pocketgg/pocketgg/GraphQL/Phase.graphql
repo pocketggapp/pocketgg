@@ -11,3 +11,48 @@ query PhaseGroups($id: ID, $perPage: Int) {
     }
   }
 }
+
+query PhaseGroup($id: ID) {
+  phaseGroup(id: $id) {
+    bracketType
+    progressionsOut{
+      originPlacement
+    }
+    standings(query: {
+      page: 1
+      perPage: 65
+    }) {
+      nodes {
+        placement
+        entrant {
+          id
+          name
+          participants {
+            gamerTag
+          }
+        }
+      }
+    }
+    sets(page: 1, perPage: 90) {
+      nodes {
+        id
+        state
+        round
+        identifier
+        fullRoundText
+        displayScore
+        winnerId
+        slots {
+          prereqId
+          entrant {
+            id
+            name
+            participants {
+              gamerTag
+            }
+          }
+        }
+      }
+    }
+  }
+}

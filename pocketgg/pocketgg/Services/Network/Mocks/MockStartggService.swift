@@ -33,14 +33,22 @@ final class MockStartggService: StartggServiceType {
     [MockStartggService.createPhaseGroup()]
   }
   
+  func getPhaseGroupDetails(id: Int) async throws -> PhaseGroupDetails? {
+    MockStartggService.createPhaseGroupDetails()
+  }
+  
   // MARK: Mock Data
+  
+  static func createEntrant(id: Int) -> Entrant {
+    Entrant(id: id, name: "Mang0", teamName: "C9")
+  }
   
   static func createEvent() -> Event {
     Event(
       id: 1,
       name: "Smash Bros. Melee Singles",
       state: "COMPLETED",
-      winner: Entrant(id: 1, name: "Mang0", teamName: "C9"),
+      winner: createEntrant(id: 1),
       startDate: "Oct 9, 2016",
       eventType: "Singles",
       videogameName: "Super Smash Bros. Melee",
@@ -67,7 +75,7 @@ final class MockStartggService: StartggServiceType {
   }
   
   static func createContactInfo() -> (info: String?, type: String?) {
-    (info: "hello@genesisgaming.gg", type: "email")
+    (info: "pocketggapp@gmail.com", type: "email")
   }
   
   static func createPhase() -> Phase {
@@ -85,16 +93,29 @@ final class MockStartggService: StartggServiceType {
     PhaseGroup(id: 1, name: "Top 8", state: "COMPLETED")
   }
   
+  static func createPhaseGroupDetails() -> PhaseGroupDetails {
+    PhaseGroupDetails(
+      bracketType: nil, // TODO: Complete
+      progressionsOut: [],
+      standings: [],
+      matches: []
+    )
+  }
+  
+  static func createStanding(id: Int) -> Standing {
+    Standing(entrant: createEntrant(id: id), placement: id)
+  }
+  
   static func createStandings() -> [Standing] {
     [
-      Standing(entrant: Entrant(id: 0, name: "Mang0", teamName: "C9"), placement: 1),
-      Standing(entrant: Entrant(id: 1, name: "Mang0", teamName: "C9"), placement: 2),
-      Standing(entrant: Entrant(id: 2, name: "Mang0", teamName: "C9"), placement: 3),
-      Standing(entrant: Entrant(id: 3, name: "Mang0", teamName: "C9"), placement: 4),
-      Standing(entrant: Entrant(id: 4, name: "Mang0", teamName: "C9"), placement: 5),
-      Standing(entrant: Entrant(id: 5, name: "Mang0", teamName: "C9"), placement: 6),
-      Standing(entrant: Entrant(id: 6, name: "Mang0", teamName: "C9"), placement: 7),
-      Standing(entrant: Entrant(id: 7, name: "Mang0", teamName: "C9"), placement: 8)
+      createStanding(id: 1),
+      createStanding(id: 2),
+      createStanding(id: 3),
+      createStanding(id: 4),
+      createStanding(id: 5),
+      createStanding(id: 6),
+      createStanding(id: 7),
+      createStanding(id: 8)
     ]
   }
 }

@@ -37,6 +37,10 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Phase": return StartggAPI.Objects.Phase
     case "PhaseGroupConnection": return StartggAPI.Objects.PhaseGroupConnection
     case "PhaseGroup": return StartggAPI.Objects.PhaseGroup
+    case "Progression": return StartggAPI.Objects.Progression
+    case "SetConnection": return StartggAPI.Objects.SetConnection
+    case "Set": return StartggAPI.Objects.Set
+    case "SetSlot": return StartggAPI.Objects.SetSlot
     default: return nil
     }
   }

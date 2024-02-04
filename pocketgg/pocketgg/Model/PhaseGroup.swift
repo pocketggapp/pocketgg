@@ -7,13 +7,13 @@ struct PhaseGroup: Identifiable, Hashable {
   let id: Int
   let name: String?
   let state: String?
-  
-  // On-demand data for PhaseGroupVC
-  // Query 4 - PhaseGroupStandingsById
-  var bracketType: String?
-  var progressionsOut: [Int]?
-  var standings: [Standing]?
-  var matches: [PhaseGroupSet]?
+}
+
+struct PhaseGroupDetails {
+  let bracketType: String?
+  let progressionsOut: [Int]
+  let standings: [Standing]
+  let matches: [PhaseGroupSet]
 }
 
 struct Standing: Identifiable, Hashable {
@@ -29,5 +29,10 @@ struct PhaseGroupSet: Hashable {
   let identifier: String
   let fullRoundText: String?
   let prevRoundIDs: [Int]?
-//  var entrants: [(entrant: Entrant?, score: String?)]?
+  let entrants: [PhaseGroupSetEntrant]?
+}
+
+struct PhaseGroupSetEntrant: Hashable {
+  let entrant: Entrant?
+  let score: String?
 }

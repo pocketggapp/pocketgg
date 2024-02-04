@@ -15,24 +15,24 @@ extension StartggService {
           }
           
           // TODO: Change back to const
-          var tournaments = tournamentNodes.compactMap { tournament -> Tournament? in
-            guard let id = Int(tournament?.id ?? "nil") else { return nil }
+          var tournaments: [Tournament] = tournamentNodes.compactMap {
+            guard let id = Int($0?.id ?? "nil") else { return nil }
             
-            let start = DateFormatter.shared.dateFromTimestamp(tournament?.startAt)
-            let end = DateFormatter.shared.dateFromTimestamp(tournament?.endAt)
+            let start = DateFormatter.shared.dateFromTimestamp($0?.startAt)
+            let end = DateFormatter.shared.dateFromTimestamp($0?.endAt)
             let date = start == end ? start : "\(start) - \(end)"
             
-            let logoURL = tournament?.images?.first(where: { $0?.type ?? "" == "profile" })??.url
+            let logoURL = $0?.images?.first(where: { $0?.type ?? "" == "profile" })??.url
             
             var location = ""
             var components = [String]()
-            if let city = tournament?.city {
+            if let city = $0?.city {
               components.append(city)
             }
-            if let addrState = tournament?.addrState {
+            if let addrState = $0?.addrState {
               components.append(addrState)
             }
-            if let countryCode = tournament?.countryCode {
+            if let countryCode = $0?.countryCode {
               components.append(countryCode)
             }
             for component in components {
@@ -41,13 +41,13 @@ extension StartggService {
               }
               location += component
             }
-            if location.isEmpty, let isOnline = tournament?.isOnline, isOnline {
+            if location.isEmpty, let isOnline = $0?.isOnline, isOnline {
               location = "Online"
             }
             
             return Tournament(
               id: id,
-              name: tournament?.name,
+              name: $0?.name,
               imageURL: logoURL,
               date: date,
               location: location
