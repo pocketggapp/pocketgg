@@ -41,7 +41,7 @@ struct ErrorStateView: View {
       }
       Spacer()
     }
-    .padding(.top, 64)
+    .padding(.vertical, 64)
   }
 }
 

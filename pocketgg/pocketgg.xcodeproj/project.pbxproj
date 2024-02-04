@@ -59,7 +59,10 @@
 		DA91785D2B6EBFC500579360 /* BracketRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91785C2B6EBFC500579360 /* BracketRowView.swift */; };
 		DA91785F2B6ECF7300579360 /* TextPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91785E2B6ECF7300579360 /* TextPlaceholderView.swift */; };
 		DA9178612B6ED69F00579360 /* TopStandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178602B6ED69F00579360 /* TopStandingsView.swift */; };
-		DA9178632B6ED7F600579360 /* StandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178622B6ED7F600579360 /* StandingRowView.swift */; };
+		DA9178632B6ED7F600579360 /* TopStandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178622B6ED7F600579360 /* TopStandingRowView.swift */; };
+		DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178642B6EF32900579360 /* AllStandingsView.swift */; };
+		DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178662B6EF42F00579360 /* AllStandingsViewModel.swift */; };
+		DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178682B6F45EA00579360 /* AllStandingRowView.swift */; };
 		DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
@@ -148,7 +151,10 @@
 		DA91785C2B6EBFC500579360 /* BracketRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketRowView.swift; sourceTree = "<group>"; };
 		DA91785E2B6ECF7300579360 /* TextPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPlaceholderView.swift; sourceTree = "<group>"; };
 		DA9178602B6ED69F00579360 /* TopStandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStandingsView.swift; sourceTree = "<group>"; };
-		DA9178622B6ED7F600579360 /* StandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingRowView.swift; sourceTree = "<group>"; };
+		DA9178622B6ED7F600579360 /* TopStandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStandingRowView.swift; sourceTree = "<group>"; };
+		DA9178642B6EF32900579360 /* AllStandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStandingsView.swift; sourceTree = "<group>"; };
+		DA9178662B6EF42F00579360 /* AllStandingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStandingsViewModel.swift; sourceTree = "<group>"; };
+		DA9178682B6F45EA00579360 /* AllStandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStandingRowView.swift; sourceTree = "<group>"; };
 		DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -408,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				DA789DA02B66C4AB009B9799 /* EventViewModel.swift */,
+				DA9178662B6EF42F00579360 /* AllStandingsViewModel.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -434,7 +441,9 @@
 			isa = PBXGroup;
 			children = (
 				DA9178602B6ED69F00579360 /* TopStandingsView.swift */,
-				DA9178622B6ED7F600579360 /* StandingRowView.swift */,
+				DA9178622B6ED7F600579360 /* TopStandingRowView.swift */,
+				DA9178642B6EF32900579360 /* AllStandingsView.swift */,
+				DA9178682B6F45EA00579360 /* AllStandingRowView.swift */,
 			);
 			path = Standings;
 			sourceTree = "<group>";
@@ -664,6 +673,7 @@
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
+				DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,
@@ -684,6 +694,7 @@
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
 				DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */,
 				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
+				DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
@@ -697,7 +708,7 @@
 				DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */,
 				DA789D9E2B66C324009B9799 /* EventView.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
-				DA9178632B6ED7F600579360 /* StandingRowView.swift in Sources */,
+				DA9178632B6ED7F600579360 /* TopStandingRowView.swift in Sources */,
 				DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */,
 				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
 				DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */,
@@ -712,6 +723,7 @@
 				DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */,
 				DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */,
 				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
+				DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */,
 				DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,

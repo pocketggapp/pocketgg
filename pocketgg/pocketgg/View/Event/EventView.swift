@@ -65,9 +65,8 @@ struct EventView: View {
       // TODO: Phase View
       EmptyView()
     }
-    .navigationDestination(for: EventDetails.self) { eventDetails in
-      // TODO: All standings
-      EmptyView()
+    .navigationDestination(for: EventDetails.self) { _ in
+      AllStandingsView(eventID: event.id)
     }
   }
   

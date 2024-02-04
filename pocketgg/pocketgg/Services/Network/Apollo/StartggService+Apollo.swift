@@ -6,6 +6,7 @@ protocol StartggServiceType {
   func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament]
   func getTournamentDetails(id: Int) async throws -> TournamentDetails?
   func getEventDetails(id: Int) async throws -> EventDetails?
+  func getEventStandings(id: Int, page: Int) async throws -> [Standing]?
 }
 
 class StartggService: StartggServiceType {

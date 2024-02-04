@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StandingRowView: View {
+struct TopStandingRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
   private var standing: Standing
   
@@ -39,7 +39,7 @@ struct StandingRowView: View {
 }
 
 #Preview {
-  StandingRowView(
+  TopStandingRowView(
     standing: Standing(
       entrant: Entrant(id: 0, name: "Mang0", teamName: "C9"),
       placement: 1

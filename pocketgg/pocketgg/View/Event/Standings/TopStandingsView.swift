@@ -19,20 +19,22 @@ struct TopStandingsView: View {
       case .loaded(let eventDetails):
         if let standings = eventDetails?.topStandings, !standings.isEmpty {
           ForEach(standings) { standing in
-            StandingRowView(standing: standing)
+            TopStandingRowView(standing: standing)
           }
           
-          NavigationLink(value: eventDetails) {
-            HStack {
-              Image(systemName: "list.number")
-              
-              Text("View all standings")
-                .font(.body)
-              
-              Spacer()
+          if standings.count == 8 {
+            NavigationLink(value: eventDetails) {
+              HStack {
+                Image(systemName: "list.number")
+                
+                Text("View all standings")
+                  .font(.body)
+                
+                Spacer()
+              }
             }
+            .padding(.top)
           }
-          .padding(.top)
         } else {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",

@@ -25,6 +25,10 @@ final class MockStartggService: StartggServiceType {
     )
   }
   
+  func getEventStandings(id: Int, page: Int) async throws -> [Standing]? {
+    MockStartggService.createStandings()
+  }
+  
   // MARK: Mock Data
   
   static func createEvent() -> Event {

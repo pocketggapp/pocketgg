@@ -45,4 +45,26 @@ extension StartggService {
       }
     }
   }
+  
+  func getEventStandings(id: Int, page: Int) async throws -> [Standing]? {
+    return try await withCheckedThrowingContinuation { continuation in
+      apollo.fetch(
+        query: EventStandingsQuery(id: .some(String(id)), page: .some(page))
+      ) { result in
+        switch result {
+        case .success(let graphQLResult):
+          guard let nodes = graphQLResult.data?.event?.standings?.nodes else {
+            continuation.resume(returning: nil)
+            return
+          }
+          
+          let standings = nodes.compactMap { EntrantService.getEntrantAndStanding2($0) }
+          
+          continuation.resume(returning: standings)
+        case .failure(let error):
+          continuation.resume(throwing: error)
+        }
+      }
+    }
+  }
 }
