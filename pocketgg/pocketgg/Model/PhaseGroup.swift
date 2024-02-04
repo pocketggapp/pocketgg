@@ -3,7 +3,7 @@ import Foundation
 /// A pool within a certain phase
 ///
 /// Eg: R1 Pools can have many phase groups, whereas Top 8 only has 1
-struct PhaseGroup: Hashable {
+struct PhaseGroup: Identifiable, Hashable {
   let id: Int
   let name: String?
   let state: String?

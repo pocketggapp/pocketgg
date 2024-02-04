@@ -8,7 +8,7 @@ struct TournamentTilePlaceholderView: View {
       Rectangle()
         .fill(Color(.placeholder))
         .frame(width: 150 * scale, height: 150 * scale)
-        .cornerRadius(10)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
       
       Text("The Big House 6")
         .font(.headline)

@@ -8,7 +8,7 @@ struct StreamPlaceholderView: View {
       Rectangle()
         .fill(Color(.placeholder))
         .frame(width: 44 * scale, height: 44 * scale)
-        .cornerRadius(5)
+        .clipShape(RoundedRectangle(cornerRadius: 5))
       
       Text("VGBootCamp & EvenMatchupGaming")
         .font(.body)

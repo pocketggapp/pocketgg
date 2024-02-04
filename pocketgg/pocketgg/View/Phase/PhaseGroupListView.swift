@@ -1,0 +1,88 @@
+import SwiftUI
+
+struct PhaseGroupListView: View {
+  @StateObject private var viewModel: PhaseGroupListViewModel
+  
+  private let phase: Phase
+  
+  init(
+    phase: Phase,
+    service: StartggServiceType = StartggService.shared
+  ) {
+    self._viewModel = StateObject(wrappedValue: {
+      PhaseGroupListViewModel(
+        phase: phase,
+        service: service
+      )
+    }())
+    self.phase = phase
+  }
+  
+  var body: some View {
+    List {
+      Section {
+        VStack(alignment: .leading) {
+          Text(phase.name ?? "")
+            .font(.body)
+          
+          Text(viewModel.headerSubtitleText)
+            .font(.caption)
+        }
+      }
+      
+      switch viewModel.state {
+      case .uninitialized, .loading:
+        ForEach(1..<20) { _ in
+          Text("Phase Placeholder")
+            .redacted(reason: .placeholder)
+        }
+      case .loaded(let phaseGroups):
+        if let phaseGroups, !phaseGroups.isEmpty {
+          ForEach(phaseGroups) { phaseGroup in
+            NavigationLink(value: phaseGroup) {
+              HStack {
+                Text("Pool \(phaseGroup.name ?? "")")
+                
+                Spacer()
+                
+                Text(phaseGroup.state ?? "")
+                  .foregroundColor(.gray)
+              }
+            }
+            .buttonStyle(.plain)
+          }
+        } else {
+          EmptyStateView(
+            systemImageName: "questionmark.app.dashed",
+            title: "No Pools",
+            subtitle: "There are currently no pools for this phase"
+          )
+        }
+      case .error:
+        ErrorStateView(subtitle: "There was an error loading this phase") {
+          Task {
+            await viewModel.fetchPhaseGroups(refreshed: true)
+          }
+        }
+      }
+    }
+    .task {
+      await viewModel.fetchPhaseGroups()
+    }
+    .refreshable {
+      await viewModel.fetchPhaseGroups(refreshed: true)
+    }
+    .listStyle(.insetGrouped)
+    .navigationTitle(phase.name ?? "")
+    .navigationDestination(for: PhaseGroup.self) { _ in
+      EmptyView() // TODO: PhaseGroupView
+    }
+  }
+}
+
+#Preview {
+  PhaseGroupListView(
+    phase: MockStartggService.createPhase(),
+    service: MockStartggService()
+  )
+}

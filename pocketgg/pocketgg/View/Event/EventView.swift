@@ -62,8 +62,11 @@ struct EventView: View {
     }
     .navigationTitle(event.name ?? "")
     .navigationDestination(for: Phase.self) { phase in
-      // TODO: Phase View
-      EmptyView()
+      if let numPhaseGroups = phase.numPhaseGroups, numPhaseGroups == 1 {
+        EmptyView() // TODO: Single phase group
+      } else {
+        PhaseGroupListView(phase: phase)
+      }
     }
     .navigationDestination(for: EventDetails.self) { _ in
       AllStandingsView(eventID: event.id)

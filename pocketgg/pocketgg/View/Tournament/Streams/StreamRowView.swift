@@ -18,7 +18,8 @@ struct StreamRowView: View {
         HStack {
           AsyncImageView(
             imageURL: stream.logoUrl ?? "",
-            cornerRadius: 5
+            cornerRadius: 5,
+            placeholderImageName: "play.tv"
           )
           .frame(width: 44 * scale, height: 44 * scale)
           .clipped()

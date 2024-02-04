@@ -11,16 +11,19 @@ struct AsyncImageView: View {
   @StateObject private var viewModel: AsyncImageViewModel
   private let imageURL: String?
   private let cornerRadius: CGFloat
+  private let placeholderImageName: String
   
   init(
     imageURL: String?,
-    cornerRadius: CGFloat
+    cornerRadius: CGFloat,
+    placeholderImageName: String = "gamecontroller"
   ) {
     self._viewModel = StateObject(wrappedValue: {
       AsyncImageViewModel(imageURL: imageURL)
     }())
     self.imageURL = imageURL
     self.cornerRadius = cornerRadius
+    self.placeholderImageName = placeholderImageName
   }
   
   var body: some View {
@@ -28,17 +31,17 @@ struct AsyncImageView: View {
     case .uninitialized, .loading:
       Rectangle()
         .fill(Color(.placeholder))
-        .cornerRadius(cornerRadius)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     case .loaded(let image):
       Image(uiImage: image)
         .resizable()
         .scaledToFill()
-        .cornerRadius(cornerRadius)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     case .error:
-      Image(systemName: "gamecontroller")
+      Image(systemName: placeholderImageName)
         .resizable()
         .scaledToFit()
-        .cornerRadius(cornerRadius)
+        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
   }
 }

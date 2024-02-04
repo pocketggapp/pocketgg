@@ -8,7 +8,7 @@ struct EventPlaceholderView: View {
       Rectangle()
         .fill(Color(.placeholder))
         .frame(width: 33 * scale, height: 44 * scale)
-        .cornerRadius(5)
+        .clipShape(RoundedRectangle(cornerRadius: 5))
       
       VStack(alignment: .leading) {
         Text("Smash Bros. Melee Singles")

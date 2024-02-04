@@ -29,6 +29,10 @@ final class MockStartggService: StartggServiceType {
     MockStartggService.createStandings()
   }
   
+  func getPhaseGroups(id: Int, numPhaseGroups: Int) async throws -> [PhaseGroup]? {
+    [MockStartggService.createPhaseGroup()]
+  }
+  
   // MARK: Mock Data
   
   static func createEvent() -> Event {
@@ -78,7 +82,7 @@ final class MockStartggService: StartggServiceType {
   }
   
   static func createPhaseGroup() -> PhaseGroup {
-    PhaseGroup(id: 1, name: "Top 8", state: "COMPLETED") // TODO
+    PhaseGroup(id: 1, name: "Top 8", state: "COMPLETED")
   }
   
   static func createStandings() -> [Standing] {

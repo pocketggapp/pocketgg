@@ -8,7 +8,7 @@ struct LoadingView: View {
       ProgressView()
     }
     .frame(width: 50, height: 50)
-    .cornerRadius(5)
+    .clipShape(RoundedRectangle(cornerRadius: 5))
   }
 }
 

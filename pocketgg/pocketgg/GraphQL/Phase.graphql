@@ -1,0 +1,13 @@
+query PhaseGroups($id: ID, $perPage: Int) {
+  phase(id: $id) {
+    phaseGroups(query: {
+      perPage: $perPage
+    }) {
+      nodes {
+        id
+        displayIdentifier
+        state
+      }
+    }
+  }
+}

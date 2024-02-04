@@ -11,8 +11,4 @@ struct Phase: Identifiable, Hashable {
   let bracketType: String?
 }
 
-struct PhaseDetails {
-  // On-demand data for PhaseGroupListVC
-  // Query 3 - PhaseGroupsById
-  var phaseGroups: [PhaseGroup]?
-}
+// Complete Phase data ('PhaseDetails') is just [PhaseGroup]

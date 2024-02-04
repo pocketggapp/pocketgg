@@ -63,6 +63,10 @@
 		DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178642B6EF32900579360 /* AllStandingsView.swift */; };
 		DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178662B6EF42F00579360 /* AllStandingsViewModel.swift */; };
 		DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178682B6F45EA00579360 /* AllStandingRowView.swift */; };
+		DA91786C2B6FEFC400579360 /* PhaseGroupListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91786B2B6FEFC400579360 /* PhaseGroupListView.swift */; };
+		DA91786F2B6FEFF600579360 /* PhaseGroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91786E2B6FEFF600579360 /* PhaseGroupListViewModel.swift */; };
+		DA9178712B6FF5D000579360 /* Phase.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA9178702B6FF5D000579360 /* Phase.graphql */; };
+		DA9178732B6FF79A00579360 /* StartggService+Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178722B6FF79A00579360 /* StartggService+Phase.swift */; };
 		DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
@@ -155,6 +159,10 @@
 		DA9178642B6EF32900579360 /* AllStandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStandingsView.swift; sourceTree = "<group>"; };
 		DA9178662B6EF42F00579360 /* AllStandingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStandingsViewModel.swift; sourceTree = "<group>"; };
 		DA9178682B6F45EA00579360 /* AllStandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStandingRowView.swift; sourceTree = "<group>"; };
+		DA91786B2B6FEFC400579360 /* PhaseGroupListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupListView.swift; sourceTree = "<group>"; };
+		DA91786E2B6FEFF600579360 /* PhaseGroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupListViewModel.swift; sourceTree = "<group>"; };
+		DA9178702B6FF5D000579360 /* Phase.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Phase.graphql; sourceTree = "<group>"; };
+		DA9178722B6FF79A00579360 /* StartggService+Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Phase.swift"; sourceTree = "<group>"; };
 		DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -207,6 +215,7 @@
 			children = (
 				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
 				DA0E59852B6D5AEF0031A5A1 /* Event.graphql */,
+				DA9178702B6FF5D000579360 /* Phase.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -247,6 +256,7 @@
 				DA15EC692B5A3C86003FD258 /* StartggService+Home.swift */,
 				DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */,
 				DA0E59822B6D5A930031A5A1 /* StartggService+Event.swift */,
+				DA9178722B6FF79A00579360 /* StartggService+Phase.swift */,
 				DA15EC662B5A3AC5003FD258 /* Apollo */,
 				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
@@ -337,6 +347,7 @@
 				DA65D66F2AB64A7500EF18E0 /* Home */,
 				DADD99A82AE0C6B300ED35FC /* Tournament */,
 				DA789D9F2B66C490009B9799 /* Event */,
+				DA91786D2B6FEFD100579360 /* Phase */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -347,10 +358,10 @@
 				DA65D6632AB6253500EF18E0 /* Tournament.swift */,
 				DAC4E94B2B4B95FB00B356A0 /* Event.swift */,
 				DA0E597C2B6D58520031A5A1 /* Phase.swift */,
+				DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */,
 				DAC4E94D2B4B96B700B356A0 /* Entrant.swift */,
 				DA2723A02B5B451C002FF875 /* Stream.swift */,
 				DA2723A82B5C5509002FF875 /* Location.swift */,
-				DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -448,6 +459,22 @@
 			path = Standings;
 			sourceTree = "<group>";
 		};
+		DA91786A2B6FEFA200579360 /* Phase */ = {
+			isa = PBXGroup;
+			children = (
+				DA91786B2B6FEFC400579360 /* PhaseGroupListView.swift */,
+			);
+			path = Phase;
+			sourceTree = "<group>";
+		};
+		DA91786D2B6FEFD100579360 /* Phase */ = {
+			isa = PBXGroup;
+			children = (
+				DA91786E2B6FEFF600579360 /* PhaseGroupListViewModel.swift */,
+			);
+			path = Phase;
+			sourceTree = "<group>";
+		};
 		DABFF2692AB794CE0053614D /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +520,7 @@
 				DA65D66D2AB64A4700EF18E0 /* Home */,
 				DADD99A52AE0BA8B00ED35FC /* Tournament */,
 				DA789D9C2B66C315009B9799 /* Event */,
+				DA91786A2B6FEFA200579360 /* Phase */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
 				DA15EC5B2B5A2A51003FD258 /* Components */,
 				DAF117A92B4F875000D39F65 /* Placeholder */,
@@ -604,7 +632,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					DA46B18F2A5E564B00814252 = {
 						CreatedOnToolsVersion = 14.2;
@@ -646,6 +674,7 @@
 				DA0E59862B6D5AEF0031A5A1 /* Event.graphql in Resources */,
 				DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */,
 				DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */,
+				DA9178712B6FF5D000579360 /* Phase.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +698,7 @@
 				DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */,
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
 				DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */,
+				DA9178732B6FF79A00579360 /* StartggService+Phase.swift in Sources */,
 				DA9178612B6ED69F00579360 /* TopStandingsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
@@ -695,6 +725,7 @@
 				DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */,
 				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
 				DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */,
+				DA91786C2B6FEFC400579360 /* PhaseGroupListView.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
@@ -725,6 +756,7 @@
 				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
 				DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */,
 				DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */,
+				DA91786F2B6FEFF600579360 /* PhaseGroupListViewModel.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,
 				DA4DDBCD2B65662F00F3131E /* ContactInfoView.swift in Sources */,
@@ -791,6 +823,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -851,6 +884,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
