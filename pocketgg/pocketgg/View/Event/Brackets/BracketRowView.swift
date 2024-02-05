@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BracketRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  private var name: String?
+  private let name: String?
   
   init(name: String?) {
     self.name = name

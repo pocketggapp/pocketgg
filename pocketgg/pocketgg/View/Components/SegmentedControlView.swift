@@ -3,6 +3,7 @@ import SwiftUI
 struct SegmentedControlView: View {
   @Namespace var animation
   @Binding private var selected: String
+  
   private let sections: [String]
   private let feedbackGenerator = UISelectionFeedbackGenerator()
   

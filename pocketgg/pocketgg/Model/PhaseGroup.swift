@@ -11,7 +11,7 @@ struct PhaseGroup: Identifiable, Hashable {
 
 struct PhaseGroupDetails {
   let bracketType: String?
-  let progressionsOut: [Int]
+  let progressionsOut: Set<Int>
   let standings: [Standing]
   let matches: [PhaseGroupSet]
 }

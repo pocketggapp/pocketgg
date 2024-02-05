@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TopStandingsView: View {
   @Binding private var state: EventViewState
+  
   private let reloadEvent: (() -> Void)
   
   init(state: Binding<EventViewState>, reloadEvent: @escaping () -> Void) {

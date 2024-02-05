@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LocationView: View {
   @Binding private var state: TournamentViewState
+  
   private let tournamentID: Int
   private let reloadTournament: (() -> Void)
   

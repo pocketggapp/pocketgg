@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ErrorStateView: View {
   @ScaledMetric private var scale: CGFloat = 1
+  
   private let subtitle: String
   private let reload: (() -> Void)
   

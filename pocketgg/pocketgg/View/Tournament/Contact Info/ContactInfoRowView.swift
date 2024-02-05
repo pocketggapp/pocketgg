@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContactInfoRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
+  
   private let contactInfo: String
   private let contactType: String
   

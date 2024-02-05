@@ -2,6 +2,7 @@ import SwiftUI
 
 struct EventsView: View {
   @Binding private var state: TournamentViewState
+  
   private let reloadTournament: (() -> Void)
   
   init(state: Binding<TournamentViewState>, reloadTournament: @escaping () -> Void) {

@@ -11,6 +11,7 @@ enum TournamentLocationViewState {
 struct TournamentLocationView: View {
   @StateObject private var viewModel: TournamentLocationViewModel
   @State private var image: UIImage? = nil
+  
   private let location: Location
   
   init(tournamentID: Int, location: Location) {

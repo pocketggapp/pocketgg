@@ -1,15 +1,25 @@
 import SwiftUI
 
-struct AllStandingRowView: View {
+struct StandingRowView: View {
   private let standing: Standing
+  private let progressed: Bool
   
-  init(standing: Standing) {
+  init(standing: Standing, progressed: Bool) {
     self.standing = standing
+    self.progressed = progressed
   }
   
   var body: some View {
-    standingTextView
-      .font(.body)
+    HStack {
+      standingTextView
+      
+      Spacer()
+      
+      if progressed {
+        Text("Progressed")
+          .foregroundColor(.gray)
+      }
+    }
   }
   
   private var standingTextView: some View {
@@ -27,7 +37,8 @@ struct AllStandingRowView: View {
 }
 
 #Preview {
-  AllStandingRowView(
-    standing: MockStartggService.createStanding(id: 1)
+  StandingRowView(
+    standing: MockStartggService.createStanding(id: 1),
+    progressed: true
   )
 }

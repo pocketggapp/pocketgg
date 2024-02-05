@@ -9,6 +9,7 @@ enum AsyncImageViewState {
 
 struct AsyncImageView: View {
   @StateObject private var viewModel: AsyncImageViewModel
+  
   private let imageURL: String?
   private let cornerRadius: CGFloat
   private let placeholderImageName: String

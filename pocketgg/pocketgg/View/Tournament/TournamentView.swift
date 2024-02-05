@@ -4,7 +4,8 @@ import MapKit
 struct TournamentView: View {
   @StateObject private var viewModel: TournamentViewModel
   @State private var selected: String
-  private var tournament: Tournament
+  
+  private let tournament: Tournament
   
   init(
     tournament: Tournament,

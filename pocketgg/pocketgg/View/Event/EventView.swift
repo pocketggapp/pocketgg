@@ -2,7 +2,6 @@ import SwiftUI
 
 struct EventView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  
   @StateObject private var viewModel: EventViewModel
   @State private var selected: String
   

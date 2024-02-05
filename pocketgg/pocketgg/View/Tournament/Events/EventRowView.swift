@@ -2,7 +2,8 @@ import SwiftUI
 
 struct EventRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  private var event: Event
+  
+  private let event: Event
   
   init(event: Event) {
     self.event = event

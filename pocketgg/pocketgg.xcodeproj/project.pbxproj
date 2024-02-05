@@ -49,6 +49,8 @@
 		DA789DA12B66C4AB009B9799 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA789DA02B66C4AB009B9799 /* EventViewModel.swift */; };
 		DA7949CE2B70198700D68EA4 /* PhaseGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949CD2B70198700D68EA4 /* PhaseGroupView.swift */; };
 		DA7949D02B70199E00D68EA4 /* PhaseGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949CF2B70199E00D68EA4 /* PhaseGroupViewModel.swift */; };
+		DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D22B705C9B00D68EA4 /* StandingsView.swift */; };
+		DA7949D52B707CE400D68EA4 /* StandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D42B707CE400D68EA4 /* StandingRowView.swift */; };
 		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
 		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
@@ -146,6 +148,8 @@
 		DA789DA02B66C4AB009B9799 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		DA7949CD2B70198700D68EA4 /* PhaseGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupView.swift; sourceTree = "<group>"; };
 		DA7949CF2B70199E00D68EA4 /* PhaseGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupViewModel.swift; sourceTree = "<group>"; };
+		DA7949D22B705C9B00D68EA4 /* StandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsView.swift; sourceTree = "<group>"; };
+		DA7949D42B707CE400D68EA4 /* StandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingRowView.swift; sourceTree = "<group>"; };
 		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
@@ -434,6 +438,15 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		DA7949D12B705C7C00D68EA4 /* Standings */ = {
+			isa = PBXGroup;
+			children = (
+				DA7949D22B705C9B00D68EA4 /* StandingsView.swift */,
+				DA7949D42B707CE400D68EA4 /* StandingRowView.swift */,
+			);
+			path = Standings;
+			sourceTree = "<group>";
+		};
 		DA8D00B02ACA36200093FC49 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +481,7 @@
 			children = (
 				DA91786B2B6FEFC400579360 /* PhaseGroupListView.swift */,
 				DA7949CD2B70198700D68EA4 /* PhaseGroupView.swift */,
+				DA7949D12B705C7C00D68EA4 /* Standings */,
 			);
 			path = Phase;
 			sourceTree = "<group>";
@@ -718,8 +732,10 @@
 				DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */,
 				DA0E59832B6D5A930031A5A1 /* StartggService+Event.swift in Sources */,
 				DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */,
+				DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */,
 				DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */,
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
+				DA7949D52B707CE400D68EA4 /* StandingRowView.swift in Sources */,
 				DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */,
 				DA6926672AD1E2AB0086B92A /* LocationPreferenceView.swift in Sources */,
 				DA15EC6C2B5A3CAE003FD258 /* StartggService+Tournament.swift in Sources */,

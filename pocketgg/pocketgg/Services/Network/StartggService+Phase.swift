@@ -44,9 +44,9 @@ extension StartggService {
             return
           }
           
-          var progressionsOut = [Int]()
+          var progressionsOut = Set<Int>()
           if let nodes = phaseGroup.progressionsOut {
-            progressionsOut = nodes.compactMap { $0?.originPlacement }
+            progressionsOut = Set(nodes.compactMap { $0?.originPlacement })
           }
           
           var standings = [Standing]()
@@ -58,7 +58,7 @@ extension StartggService {
           if let nodes = phaseGroup.sets?.nodes {
             matches = nodes.compactMap {
               guard let id = Int($0?.id ?? "nil") else { return nil }
-              var phaseGroupSet = PhaseGroupSet(
+              return PhaseGroupSet(
                 id: id,
                 state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue,
                 roundNum: $0?.round ?? 0,
@@ -74,7 +74,6 @@ extension StartggService {
                   slots: $0?.slots
                 )
               )
-              return phaseGroupSet
             }
           }
           

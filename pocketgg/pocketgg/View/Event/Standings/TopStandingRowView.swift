@@ -2,7 +2,8 @@ import SwiftUI
 
 struct TopStandingRowView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  private var standing: Standing
+  
+  private let standing: Standing
   
   init(standing: Standing) {
     self.standing = standing

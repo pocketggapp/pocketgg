@@ -34,7 +34,9 @@ struct PhaseGroupView: View {
       
       switch selected {
       case "Standings":
-        EmptyView()
+        StandingsView(state: $viewModel.state) {
+          reloadPhaseGroup()
+        }
       case "Matches":
         EmptyView()
       case "Bracket":
@@ -58,6 +60,18 @@ struct PhaseGroupView: View {
       }
     }
     .navigationTitle(title)
+  }
+  
+  // MARK: Reload Phase Group
+  
+  private func reloadPhaseGroup() {
+    Task {
+      if phaseGroup == nil {
+        await viewModel.fetchSinglePhaseGroup(refreshed: true)
+      } else {
+        await viewModel.fetchPhaseGroup(refreshed: true)
+      }
+    }
   }
 }
 
