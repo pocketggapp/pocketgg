@@ -24,13 +24,8 @@ struct TournamentView: View {
   var body: some View {
     ScrollView(.vertical) {
       VStack(alignment: .leading) {
-        TournamentHeaderView(
-          name: tournament.name,
-          imageURL: tournament.imageURL,
-          date: tournament.date,
-          location: tournament.location
-        )
-        .padding()
+        TournamentHeaderView(tournament: tournament)
+          .padding()
         
         SegmentedControlView(
           selected: $selected,
@@ -81,10 +76,8 @@ struct TournamentView: View {
 }
 
 #Preview {
-  let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
-  let date = "Jul 21 - Jul 23, 2023"
   return TournamentView(
-    tournament: Tournament(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
+    tournament: MockStartggService.createTournament(id: 0),
     service: MockStartggService()
   )
 }

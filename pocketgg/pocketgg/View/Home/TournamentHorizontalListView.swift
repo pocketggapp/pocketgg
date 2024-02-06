@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TournamentHorizontalListView: View {
   var tournamentsGroup: TournamentsGroup
-
+  
   var body: some View {
     VStack(alignment: .leading) {
       HStack {
@@ -26,35 +26,26 @@ struct TournamentHorizontalListView: View {
           Spacer()
           ForEach(tournamentsGroup.tournaments) { tournament in
             NavigationLink(value: tournament) {
-              TournamentTileView(
-                imageURL: tournament.imageURL,
-                name: tournament.name,
-                date: tournament.date
-              )
-              .contextMenu {
-                Button {
-                  // TODO: Open tournament
-                } label: {
-                  Label("Open", systemImage: "rectangle.portrait.and.arrow.right.fill")
+              TournamentTileView(tournament: tournament)
+                .contextMenu {
+                  Button {
+                    // TODO: Open tournament
+                  } label: {
+                    Label("Open", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                  }
+                  
+                  Button {
+                    // TODO: Pin/unpin tournament
+                  } label: {
+                    // TODO: Change text/image based on whether the tournament is already pinned or not
+                    Label("Pin", systemImage: "pin.fill")
+                  }
+                } preview: {
+                  // BUG: When the tournament name is too long, the padding of the context menu preview is incorrect
+                  //      and the tournament name is forced into only 1 line
+                  TournamentHeaderView(tournament: tournament)
+                    .padding()
                 }
-                
-                Button {
-                  // TODO: Pin/unpin tournament
-                } label: {
-                  // TODO: Change text/image based on whether the tournament is already pinned or not
-                  Label("Pin", systemImage: "pin.fill")
-                }
-              } preview: {
-                // BUG: When the tournament name is too long, the padding of the context menu preview is incorrect
-                //      and the tournament name is forced into only 1 line
-                TournamentHeaderView(
-                  name: tournament.name,
-                  imageURL: tournament.imageURL,
-                  date: tournament.date,
-                  location: tournament.location
-                )
-                .padding()
-              }
             }
             .buttonStyle(.plain)
           }
@@ -66,13 +57,11 @@ struct TournamentHorizontalListView: View {
 }
 
 #Preview {
-  let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
-  let date = "Jul 21 - Jul 23, 2023"
   return TournamentHorizontalListView(
     tournamentsGroup: TournamentsGroup(name: "Test Group", tournaments: [
-      Tournament(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
-      Tournament(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
-      Tournament(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere")
+      MockStartggService.createTournament(id: 0),
+      MockStartggService.createTournament(id: 1),
+      MockStartggService.createTournament(id: 2),
     ])
   )
 }

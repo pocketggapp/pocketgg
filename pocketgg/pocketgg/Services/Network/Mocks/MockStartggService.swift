@@ -1,11 +1,9 @@
 final class MockStartggService: StartggServiceType {
   func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament] {
-    let image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s"
-    let date = "Jul 21 - Jul 23, 2023"
-    return [
-      Tournament(id: 0, name: "Tournament 0", imageURL: image, date: date, location: "Somewhere"),
-      Tournament(id: 1, name: "Tournament 1", imageURL: image, date: date, location: "Somewhere"),
-      Tournament(id: 2, name: "Tournament 2", imageURL: image, date: date, location: "Somewhere"),
+    [
+      MockStartggService.createTournament(id: 0),
+      MockStartggService.createTournament(id: 1),
+      MockStartggService.createTournament(id: 2),
     ]
   }
   
@@ -38,6 +36,16 @@ final class MockStartggService: StartggServiceType {
   }
   
   // MARK: Mock Data
+  
+  static func createTournament(id: Int) -> Tournament {
+    Tournament(
+      id: id,
+      name: "Tournament \(id)",
+      imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s",
+      date: "Jul 21 - Jul 23, 2023",
+      location: "Somewhere"
+    )
+  }
   
   static func createEntrant(id: Int) -> Entrant {
     Entrant(id: id, name: "Mang0", teamName: "C9")
