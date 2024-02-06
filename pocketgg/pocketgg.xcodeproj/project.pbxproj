@@ -94,6 +94,7 @@
 		DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B52B50E2FF00D39F65 /* EventRowView.swift */; };
 		DAF340712B717FAE00379688 /* MatchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340702B717FAE00379688 /* MatchRowView.swift */; };
 		DAF340732B71976B00379688 /* PhaseGroupSetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340722B71976B00379688 /* PhaseGroupSetService.swift */; };
+		DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340762B72A23A00379688 /* EliminationSetView.swift */; };
 		DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */; };
 		DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */; };
 /* End PBXBuildFile section */
@@ -198,6 +199,7 @@
 		DAF117B52B50E2FF00D39F65 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 		DAF340702B717FAE00379688 /* MatchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowView.swift; sourceTree = "<group>"; };
 		DAF340722B71976B00379688 /* PhaseGroupSetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetService.swift; sourceTree = "<group>"; };
+		DAF340762B72A23A00379688 /* EliminationSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationSetView.swift; sourceTree = "<group>"; };
 		DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentLocationView.swift; sourceTree = "<group>"; };
 		DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -498,6 +500,7 @@
 				DA7949CD2B70198700D68EA4 /* PhaseGroupView.swift */,
 				DA7949D12B705C7C00D68EA4 /* Standings */,
 				DA7949D62B70B1A500D68EA4 /* Matches */,
+				DAF340742B729F1B00379688 /* Bracket */,
 			);
 			path = Phase;
 			sourceTree = "<group>";
@@ -606,6 +609,22 @@
 				DA2723A42B5B4A79002FF875 /* StreamRowView.swift */,
 			);
 			path = Streams;
+			sourceTree = "<group>";
+		};
+		DAF340742B729F1B00379688 /* Bracket */ = {
+			isa = PBXGroup;
+			children = (
+				DAF340752B72A03900379688 /* Elimination */,
+			);
+			path = Bracket;
+			sourceTree = "<group>";
+		};
+		DAF340752B72A03900379688 /* Elimination */ = {
+			isa = PBXGroup;
+			children = (
+				DAF340762B72A23A00379688 /* EliminationSetView.swift */,
+			);
+			path = Elimination;
 			sourceTree = "<group>";
 		};
 		DAF8FF9E2B5E17AE0070BD49 /* Contact Info */ = {
@@ -732,6 +751,7 @@
 				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
 				DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
+				DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */,
 				DAF340712B717FAE00379688 /* MatchRowView.swift in Sources */,
 				DA15EC602B5A2DE2003FD258 /* MockStartggService.swift in Sources */,
 				DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */,

@@ -71,7 +71,7 @@ extension StartggService {
                 id: id,
                 state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue.capitalized,
                 roundNum: $0?.round ?? 0,
-                identifier: $0?.identifier ?? "",
+                identifier: $0?.identifier,
                 outcome: outcome,
                 fullRoundText: $0?.fullRoundText,
                 prevRoundIDs: $0?.slots?.compactMap {

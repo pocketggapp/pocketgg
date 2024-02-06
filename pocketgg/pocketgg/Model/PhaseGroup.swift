@@ -29,7 +29,7 @@ struct PhaseGroupSet: Identifiable, Hashable {
   let id: Int
   let state: String
   var roundNum: Int // Not defined as constant because in the case of a grand finals reset, this property can be incremented to resolve any issues
-  let identifier: String
+  let identifier: String?
   let outcome: Outcome
   let fullRoundText: String?
   let prevRoundIDs: [Int]?
