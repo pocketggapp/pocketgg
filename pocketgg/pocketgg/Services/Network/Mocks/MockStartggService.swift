@@ -95,10 +95,26 @@ final class MockStartggService: StartggServiceType {
   
   static func createPhaseGroupDetails() -> PhaseGroupDetails {
     PhaseGroupDetails(
-      bracketType: nil, // TODO: Complete
+      bracketType: "DOUBLE_ELIMINATION",
       progressionsOut: [],
-      standings: [],
-      matches: []
+      standings: createStandings(),
+      matches: [createPhaseGroupSet()]
+    )
+  }
+  
+  static func createPhaseGroupSet() -> PhaseGroupSet {
+    PhaseGroupSet(
+      id: 0,
+      state: "Completed",
+      roundNum: 3,
+      identifier: "A",
+      outcome: .entrant0Won,
+      fullRoundText: "Grand Final",
+      prevRoundIDs: [1, 2],
+      entrants: [
+        PhaseGroupSetEntrant(entrant: createEntrant(id: 0), score: "3"),
+        PhaseGroupSetEntrant(entrant: createEntrant(id: 1), score: "2")
+      ]
     )
   }
   

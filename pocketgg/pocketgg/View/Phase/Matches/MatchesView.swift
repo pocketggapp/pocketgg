@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StandingsView: View {
+struct MatchesView: View {
   @Binding private var state: PhaseGroupViewState
   
   private let reloadPhaseGroup: (() -> Void)
@@ -15,25 +15,19 @@ struct StandingsView: View {
       switch state {
       case .uninitialized, .loading:
         ForEach(1..<20) { _ in
-          Text("Standing Placeholder")
+          Text("Match Placeholder")
             .redacted(reason: .placeholder)
         }
       case .loaded(let phaseGroupDetails):
-        if let standings = phaseGroupDetails?.standings, !standings.isEmpty {
-          ForEach(standings) {
-            StandingRowView(
-              standing: $0,
-              progressed: entrantProgressed(
-                placement: $0.placement,
-                progressionsOut: phaseGroupDetails?.progressionsOut
-              )
-            )
+        if let matches = phaseGroupDetails?.matches, !matches.isEmpty {
+          ForEach(matches) {
+            MatchRowView(phaseGroupSet: $0)
           }
         } else {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
-            title: "No Standings",
-            subtitle: "There are currently no standings for this phase group"
+            title: "No Matches",
+            subtitle: "There are currently no matches in this phase group"
           )
         }
       case .error:
@@ -44,15 +38,10 @@ struct StandingsView: View {
     }
     .listStyle(.insetGrouped)
   }
-  
-  private func entrantProgressed(placement: Int?, progressionsOut: Set<Int>?) -> Bool {
-    guard let placement, let progressionsOut else { return false }
-    return progressionsOut.contains(placement)
-  }
 }
 
 #Preview {
-  StandingsView(
+  return MatchesView(
     state: .constant(.loaded(MockStartggService.createPhaseGroupDetails())),
     reloadPhaseGroup: { }
   )

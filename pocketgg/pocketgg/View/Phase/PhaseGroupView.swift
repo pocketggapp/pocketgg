@@ -38,7 +38,9 @@ struct PhaseGroupView: View {
           reloadPhaseGroup()
         }
       case "Matches":
-        EmptyView()
+        MatchesView(state: $viewModel.state) {
+          reloadPhaseGroup()
+        }
       case "Bracket":
         EmptyView()
       default:

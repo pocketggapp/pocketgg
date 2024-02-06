@@ -58,21 +58,27 @@ extension StartggService {
           if let nodes = phaseGroup.sets?.nodes {
             matches = nodes.compactMap {
               guard let id = Int($0?.id ?? "nil") else { return nil }
+              let entrants = EntrantService.getEntrantsForSet(
+                displayScore: $0?.displayScore,
+                winnerID: $0?.winnerId,
+                slots: $0?.slots
+              )
+              let outcome = PhaseGroupSetService.getSetOutcome(
+                score0: entrants?[safe: 0]?.score,
+                score1: entrants?[safe: 1]?.score
+              )
               return PhaseGroupSet(
                 id: id,
-                state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue,
+                state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue.capitalized,
                 roundNum: $0?.round ?? 0,
                 identifier: $0?.identifier ?? "",
+                outcome: outcome,
                 fullRoundText: $0?.fullRoundText,
                 prevRoundIDs: $0?.slots?.compactMap {
                   guard let prevRoundID = $0?.prereqId else { return nil }
                   return Int(prevRoundID)
                 },
-                entrants: EntrantService.getEntrantsForSet(
-                  displayScore: $0?.displayScore,
-                  winnerID: $0?.winnerId,
-                  slots: $0?.slots
-                )
+                entrants: entrants
               )
             }
           }
