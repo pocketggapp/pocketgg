@@ -53,7 +53,9 @@ struct EliminationBracketLayout: Layout {
     
     // Width
     let highestNumRounds = getHighestNumRounds(for: subviews.compactMap { $0[PhaseGroupSetValue.self] })
-    let width = CGFloat(highestNumRounds) * setViewSize.width + CGFloat((highestNumRounds - 1) * 50) + 2 * EliminationBracketLayout.bracketMargin
+    let width = CGFloat(highestNumRounds) * setViewSize.width +
+                CGFloat(highestNumRounds - 1) * setViewSize.height +
+                2 * EliminationBracketLayout.bracketMargin
     
     return CGSize(width: width, height: height)
   }
@@ -100,21 +102,21 @@ struct EliminationBracketLayout: Layout {
     yPosition = layoutSets(
       xOrigin: xPosition,
       yOrigin: yPosition,
-      subviews: upperBracketSubviews,
+      setViews: upperBracketSubviews,
       roundLabels: upperBracketRoundLabels,
       pathViews: setPathViews
     )
     yPosition = layoutSets(
       xOrigin: xPosition,
       yOrigin: yPosition,
-      subviews: lowerBracketSubviews,
+      setViews: lowerBracketSubviews,
       roundLabels: lowerBracketRoundLabels,
       pathViews: setPathViews
     )
     _ = layoutSets(
       xOrigin: xPosition,
       yOrigin: yPosition,
-      subviews: otherBracketSubviews,
+      setViews: otherBracketSubviews,
       roundLabels: otherBracketRoundLabels,
       pathViews: setPathViews
     )
@@ -129,16 +131,15 @@ private extension EliminationBracketLayout {
   }
   
   static let bracketMargin: CGFloat = 50
-  static let xSetSpacing: CGFloat = 50
   
   func layoutSets(
     xOrigin: CGFloat,
     yOrigin: CGFloat,
-    subviews: [LayoutSubviews.Element],
+    setViews: [LayoutSubviews.Element],
     roundLabels: [LayoutSubviews.Element],
     pathViews: [LayoutSubviews.Element]
   ) -> CGFloat {
-    guard !subviews.isEmpty else { return yOrigin }
+    guard !setViews.isEmpty else { return yOrigin }
     
     /// The x position of where the the SetView is going to be added in the BracketView
     var xPosition = xOrigin
@@ -148,7 +149,7 @@ private extension EliminationBracketLayout {
     var prevRoundNum: Int?
     
     /// An array describing how many sets belong to each round
-    let setDistribution = getDistribution(for: subviews.compactMap { $0[PhaseGroupSetValue.self] })
+    let setDistribution = getDistribution(for: setViews.compactMap { $0[PhaseGroupSetValue.self] })
     
     /// The most number of sets per round out of all the rounds
     guard let max = setDistribution.max() else { return yOrigin }
@@ -173,17 +174,18 @@ private extension EliminationBracketLayout {
     
     // Iterate through all of the sets
     // If !firstRoundHasMostSets, ignore the sets before the round with the most number of sets
-    for subview in subviews {
-      guard let set = subview[PhaseGroupSetValue.self] else { continue }
+    for setView in setViews {
+      guard let set = setView[PhaseGroupSetValue.self] else { continue }
       guard let roundLabel = roundLabels.first(where: { $0[PhaseGroupRoundLabel.self]?.id == set.roundNum }) else { continue }
       
-      let setSize = subview.sizeThatFits(.unspecified)
+      let setSize = setView.sizeThatFits(.unspecified)
       let roundLabelSize = roundLabel.sizeThatFits(.unspecified)
+      let xSetSpacing = setSize.height
       
       // Preparation for if we reach a new round of sets
       if let prevRoundNum = prevRoundNum,
          set.roundNum != prevRoundNum {
-        xPosition += setSize.width + EliminationBracketLayout.xSetSpacing
+        xPosition += setSize.width + xSetSpacing
         roundIndex += 1
       }
       
@@ -236,15 +238,15 @@ private extension EliminationBracketLayout {
             yPosition = prevYPositions[0]
             let pathView = pathViews.first { $0[PhaseGroupSetPathID.self] == set.id }
             pathView?.place(
-              at: .init(x: xPosition - EliminationBracketLayout.xSetSpacing, y: prevYPositions[0]),
-              proposal: .init(width: EliminationBracketLayout.xSetSpacing, height: setSize.height)
+              at: .init(x: xPosition - xSetSpacing, y: prevYPositions[0]),
+              proposal: .init(width: xSetSpacing, height: setSize.height)
             )
           case 2:
             yPosition = floor((prevYPositions[0] + prevYPositions[1]) / 2)
             let pathView = pathViews.first { $0[PhaseGroupSetPathID.self] == set.id }
             pathView?.place(
-              at: .init(x: xPosition - EliminationBracketLayout.xSetSpacing, y: min(prevYPositions[0], prevYPositions[1])),
-              proposal: .init(width: EliminationBracketLayout.xSetSpacing, height: abs(prevYPositions[0] - prevYPositions[1]) + setSize.height)
+              at: .init(x: xPosition - xSetSpacing, y: min(prevYPositions[0], prevYPositions[1])),
+              proposal: .init(width: xSetSpacing, height: abs(prevYPositions[0] - prevYPositions[1]) + setSize.height)
             )
           default:
             #if DEBUG
@@ -260,20 +262,28 @@ private extension EliminationBracketLayout {
           prevRoundInfo.append(SetInfo(yPosition: yPosition, id: set.id, prevRoundIDs: set.prevRoundIDs))
           let pathView = pathViews.first { $0[PhaseGroupSetPathID.self] == set.id }
           pathView?.place(
-            at: .init(x: xPosition - EliminationBracketLayout.xSetSpacing, y: yPosition),
-            proposal: .init(width: EliminationBracketLayout.xSetSpacing, height: setSize.height)
+            at: .init(x: xPosition - xSetSpacing, y: yPosition),
+            proposal: .init(width: xSetSpacing, height: setSize.height)
           )
         }
+      }
+      // Lay out the pathViews for the sets in the first round (or second round if the first round has fewer sets)
+      else {
+        let pathView = pathViews.first { $0[PhaseGroupSetPathID.self] == set.id }
+        pathView?.place(
+          at: .init(x: xPosition - xSetSpacing, y: yPosition),
+          proposal: .init(width: xSetSpacing, height: setSize.height)
+        )
       }
       
       // Add the set to the BracketView at the calculated position
       if firstRoundHasMostSets || (!firstRoundHasMostSets && roundIndex >= maxIndex) {
-        subview.place(at: .init(x: xPosition, y: yPosition), proposal: .init(subview.sizeThatFits(.unspecified)))
+        setView.place(at: .init(x: xPosition, y: yPosition), proposal: .init(setView.sizeThatFits(.unspecified)))
         if yPosition + setSize.height * 2 > nextBracketYPosition {
           nextBracketYPosition = yPosition + setSize.height * 2
         }
       } else {
-        leftoverSets.append(subview)
+        leftoverSets.append(setView)
       }
       prevRoundNum = set.roundNum
     }
@@ -284,15 +294,18 @@ private extension EliminationBracketLayout {
       // Lay out the remaining sets from right to left
       leftoverSets.reverse()
       // Reset the x position to the round whose sets will be added first
-      xPosition = xOrigin + (CGFloat(maxIndex) - 1) * (leftoverSets[0].sizeThatFits(.unspecified).width + EliminationBracketLayout.xSetSpacing)
+      // setSize.height represents the xSetSpacing between sets
+      let setSize = leftoverSets[0].sizeThatFits(.unspecified)
+      xPosition = xOrigin + (CGFloat(maxIndex) - 1) * (setSize.width + setSize.height)
       
       for subview in leftoverSets {
         guard let set = subview[PhaseGroupSetValue.self] else { continue }
         let setHeight = subview.sizeThatFits(.unspecified).height
+        let xSetSpacing = setHeight
         
         // Update the x position upon reaching a new round
         if let prevRoundNum = prevRoundNum, prevRoundNum != set.roundNum {
-          xPosition -= (subview.sizeThatFits(.unspecified).width + EliminationBracketLayout.xSetSpacing)
+          xPosition -= (subview.sizeThatFits(.unspecified).width + xSetSpacing)
         }
         
         // Get the y position of the set that the current set is a prerequisite for
@@ -304,8 +317,8 @@ private extension EliminationBracketLayout {
         
         let pathView = pathViews.first { $0[PhaseGroupSetPathID.self] == set.id }
         pathView?.place(
-          at: .init(x: xPosition + EliminationBracketLayout.xSetSpacing, y: yPosition),
-          proposal: .init(width: EliminationBracketLayout.xSetSpacing, height: setHeight)
+          at: .init(x: xPosition + xSetSpacing, y: yPosition),
+          proposal: .init(width: xSetSpacing, height: setHeight)
         )
         
         subview.place(at: .init(x: xPosition, y: yPosition), proposal: .init(subview.sizeThatFits(.unspecified)))

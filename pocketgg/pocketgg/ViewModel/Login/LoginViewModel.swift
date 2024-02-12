@@ -13,13 +13,12 @@ final class LoginViewModel: ObservableObject {
   
   // MARK: Log In
   
+  @MainActor
   func logIn() async {
     do {
       let tokenResponse = try await oAuthService.webAuthAsync()
       try await oAuthService.saveTokens(tokenResponse)
-      await MainActor.run {
-        loggedInSuccessfully = true
-      }
+      loggedInSuccessfully = true
     } catch {
       alertMessage = error.localizedDescription
       showingAlert = true

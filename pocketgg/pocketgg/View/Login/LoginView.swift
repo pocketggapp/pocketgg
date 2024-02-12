@@ -15,21 +15,18 @@ struct LoginView: View {
   }
   
   var body: some View {
-    VStack(alignment: .center, spacing: 32) {
-      HStack {
+    VStack {
+      Spacer()
+      
         Image("tournament-red")
           .resizable()
           .frame(width: LoginConstants.imageLength, height: LoginConstants.imageLength)
-        
-        Text("pocket.gg")
-          .font(.largeTitle)
-      }
       
-      VStack(alignment: .center, spacing: 16) {
-        Text("A video game tournament companion app, powered by start.gg")
-          .multilineTextAlignment(.center)
+      VStack(spacing: 10) {
+        Text("pocketgg")
+          .font(.largeTitle.weight(.bold))
         
-        Text("Keep up with tournament results, view entire brackets effortlessly, and discover new tournaments.")
+        Text("A video game tournament companion app, powered by start.gg")
           .multilineTextAlignment(.center)
       }
       

@@ -14,7 +14,7 @@ struct EliminationSetPathView: Shape {
       path.move(to: CGPoint(x: rect.minX, y: rect.maxY / 2))
       path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY / 2))
     } else if numPrecedingSets == 2 {
-      let offset = rect.maxY / 6
+      let offset = rect.width / 2
       // 1
       path.move(to: CGPoint(x: rect.minX, y: offset))
       path.addLine(to: CGPoint(x: rect.width / 2, y: offset))
