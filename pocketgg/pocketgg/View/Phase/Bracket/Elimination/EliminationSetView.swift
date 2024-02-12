@@ -36,12 +36,12 @@ struct EliminationSetView: View {
       .background(Color(uiColor: UIColor.secondarySystemBackground))
       .clipShape(RoundedRectangle(cornerRadius: 5))
       .padding(.leading, 12.5 * scale)
-      .frame(width: 225 * scale, height: 50 * scale)
+      .frame(width: 225 * scale)
       
       ZStack {
         Color(uiColor: UIColor.systemGray3)
         
-        Text(phaseGroupSet.identifier ?? "")
+        Text(phaseGroupSet.identifier)
           .foregroundColor(.white)
           .fixedSize()
       }
@@ -58,14 +58,17 @@ struct EliminationSetView: View {
       if let teamName = phaseGroupSet.entrants?[safe: num]?.entrant?.teamName {
         HStack(spacing: 5) {
           Text(teamName)
+            .lineLimit(1)
             .foregroundColor(.gray)
-            .frame(minWidth: (200/7) * scale)
+            .frame(minWidth: 30 * scale)
           
           Text(name)
+            .lineLimit(1)
             .layoutPriority(1)
         }
       } else {
         Text(name)
+          .lineLimit(1)
       }
     } else {
       Text("_")
@@ -74,6 +77,7 @@ struct EliminationSetView: View {
   
   private func getScoreTextView(_ num: Int) -> some View {
     Text(phaseGroupSet.entrants?[safe: num]?.score ?? "-")
+      .lineLimit(1)
       .frame(minWidth: 30 * scale)
       .padding(.vertical, 5)
       .padding(.horizontal, 10)

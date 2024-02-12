@@ -28,6 +28,10 @@
 		DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA46B19A2A5E564C00814252 /* Preview Assets.xcassets */; };
 		DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46B19C2A5E564C00814252 /* Persistence.swift */; };
 		DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA46B19E2A5E564C00814252 /* pocketgg.xcdatamodeld */; };
+		DA475EE42B78190B007100A6 /* EliminationRoundLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475EE32B78190B007100A6 /* EliminationRoundLabelView.swift */; };
+		DA475EE62B782C94007100A6 /* EliminationSetPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475EE52B782C94007100A6 /* EliminationSetPathView.swift */; };
+		DA475EE82B794A8E007100A6 /* EliminationBracketLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475EE72B794A8E007100A6 /* EliminationBracketLayout.swift */; };
+		DA475EEA2B798A9C007100A6 /* ScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA475EE92B798A9C007100A6 /* ScrollViewWrapper.swift */; };
 		DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBC52B655F6600F3131E /* StreamsView.swift */; };
 		DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBC82B65639D00F3131E /* EventsView.swift */; };
 		DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBCA2B6564B800F3131E /* LocationView.swift */; };
@@ -95,6 +99,7 @@
 		DAF340712B717FAE00379688 /* MatchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340702B717FAE00379688 /* MatchRowView.swift */; };
 		DAF340732B71976B00379688 /* PhaseGroupSetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340722B71976B00379688 /* PhaseGroupSetService.swift */; };
 		DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340762B72A23A00379688 /* EliminationSetView.swift */; };
+		DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340782B72D35600379688 /* EliminationBracketView.swift */; };
 		DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */; };
 		DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */; };
 /* End PBXBuildFile section */
@@ -133,6 +138,10 @@
 		DA46B19C2A5E564C00814252 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA46B19F2A5E564C00814252 /* pocketgg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pocketgg.xcdatamodel; sourceTree = "<group>"; };
 		DA46B1A52A5E564C00814252 /* pocketggTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pocketggTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA475EE32B78190B007100A6 /* EliminationRoundLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationRoundLabelView.swift; sourceTree = "<group>"; };
+		DA475EE52B782C94007100A6 /* EliminationSetPathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationSetPathView.swift; sourceTree = "<group>"; };
+		DA475EE72B794A8E007100A6 /* EliminationBracketLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationBracketLayout.swift; sourceTree = "<group>"; };
+		DA475EE92B798A9C007100A6 /* ScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWrapper.swift; sourceTree = "<group>"; };
 		DA4DDBC52B655F6600F3131E /* StreamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamsView.swift; sourceTree = "<group>"; };
 		DA4DDBC82B65639D00F3131E /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		DA4DDBCA2B6564B800F3131E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -200,6 +209,7 @@
 		DAF340702B717FAE00379688 /* MatchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowView.swift; sourceTree = "<group>"; };
 		DAF340722B71976B00379688 /* PhaseGroupSetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetService.swift; sourceTree = "<group>"; };
 		DAF340762B72A23A00379688 /* EliminationSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationSetView.swift; sourceTree = "<group>"; };
+		DAF340782B72D35600379688 /* EliminationBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationBracketView.swift; sourceTree = "<group>"; };
 		DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentLocationView.swift; sourceTree = "<group>"; };
 		DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -614,6 +624,7 @@
 		DAF340742B729F1B00379688 /* Bracket */ = {
 			isa = PBXGroup;
 			children = (
+				DA475EE92B798A9C007100A6 /* ScrollViewWrapper.swift */,
 				DAF340752B72A03900379688 /* Elimination */,
 			);
 			path = Bracket;
@@ -623,6 +634,10 @@
 			isa = PBXGroup;
 			children = (
 				DAF340762B72A23A00379688 /* EliminationSetView.swift */,
+				DA475EE52B782C94007100A6 /* EliminationSetPathView.swift */,
+				DA475EE32B78190B007100A6 /* EliminationRoundLabelView.swift */,
+				DAF340782B72D35600379688 /* EliminationBracketView.swift */,
+				DA475EE72B794A8E007100A6 /* EliminationBracketLayout.swift */,
 			);
 			path = Elimination;
 			sourceTree = "<group>";
@@ -748,6 +763,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA475EE42B78190B007100A6 /* EliminationRoundLabelView.swift in Sources */,
 				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
 				DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
@@ -765,6 +781,7 @@
 				DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */,
 				DA7949CE2B70198700D68EA4 /* PhaseGroupView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
+				DA475EEA2B798A9C007100A6 /* ScrollViewWrapper.swift in Sources */,
 				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,
 				DADF343F2B54CB960020C29D /* ImageService.swift in Sources */,
@@ -772,6 +789,7 @@
 				DA0E59832B6D5A930031A5A1 /* StartggService+Event.swift in Sources */,
 				DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */,
 				DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */,
+				DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */,
 				DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */,
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
 				DA7949D52B707CE400D68EA4 /* StandingRowView.swift in Sources */,
@@ -794,6 +812,7 @@
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
 				DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */,
 				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
+				DA475EE82B794A8E007100A6 /* EliminationBracketLayout.swift in Sources */,
 				DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */,
 				DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */,
 				DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */,
@@ -819,6 +838,7 @@
 				DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */,
 				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
 				DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */,
+				DA475EE62B782C94007100A6 /* EliminationSetPathView.swift in Sources */,
 				DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */,
 				DA91786F2B6FEFF600579360 /* PhaseGroupListViewModel.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,

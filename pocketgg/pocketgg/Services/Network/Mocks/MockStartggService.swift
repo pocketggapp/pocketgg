@@ -93,7 +93,7 @@ final class MockStartggService: StartggServiceType {
       state: "COMPLETED",
       numPhaseGroups: 1,
       numEntrants: 8,
-      bracketType: "SINGLE_ELIMINATION"
+      bracketType: .singleElimination
     )
   }
   
@@ -103,10 +103,19 @@ final class MockStartggService: StartggServiceType {
   
   static func createPhaseGroupDetails() -> PhaseGroupDetails {
     PhaseGroupDetails(
-      bracketType: "DOUBLE_ELIMINATION",
+      bracketType: .doubleElimination,
       progressionsOut: [],
       standings: createStandings(),
-      matches: [createPhaseGroupSet()]
+      matches: [createPhaseGroupSet()],
+      roundLabels: [createRoundLabel()],
+      phaseGroupSetRounds: [:]
+    )
+  }
+  
+  static func createRoundLabel() -> PhaseGroupDetails.RoundLabel {
+    PhaseGroupDetails.RoundLabel(
+      id: 1,
+      text: "Grand Final"
     )
   }
   

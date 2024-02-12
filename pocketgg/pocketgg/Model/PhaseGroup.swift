@@ -1,4 +1,5 @@
 import Foundation
+import StartggAPI
 
 /// A pool within a certain phase
 ///
@@ -13,10 +14,17 @@ struct PhaseGroup: Identifiable, Hashable {
 ///
 /// Used by **PhaseGroupView**
 struct PhaseGroupDetails {
-  let bracketType: String?
+  let bracketType: BracketType?
   let progressionsOut: Set<Int>
   let standings: [Standing]
   let matches: [PhaseGroupSet]
+  let roundLabels: [RoundLabel]
+  let phaseGroupSetRounds: [Int: Int]
+  
+  struct RoundLabel: Identifiable {
+    var id: Int // roundNum
+    let text: String
+  }
 }
 
 struct Standing: Identifiable, Hashable {
@@ -29,10 +37,10 @@ struct PhaseGroupSet: Identifiable, Hashable {
   let id: Int
   let state: String
   var roundNum: Int // Not defined as constant because in the case of a grand finals reset, this property can be incremented to resolve any issues
-  let identifier: String?
+  let identifier: String
   let outcome: Outcome
   let fullRoundText: String?
-  let prevRoundIDs: [Int]?
+  let prevRoundIDs: [Int]
   let entrants: [PhaseGroupSetEntrant]?
   
   enum Outcome {

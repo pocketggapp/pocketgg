@@ -14,7 +14,7 @@ struct MatchRowView: View {
           Text(phaseGroupSet.fullRoundText ?? "")
             .font(.headline)
           
-          Text("Match \(phaseGroupSet.identifier ?? "") • \(phaseGroupSet.state)")
+          Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
             .font(.subheadline)
         }
         Spacer()

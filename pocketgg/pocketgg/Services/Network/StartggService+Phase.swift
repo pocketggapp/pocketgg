@@ -36,7 +36,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: PhaseGroupQuery(id: .some(String(id)))
-      ) { result in
+      ) { [weak self] result in
         switch result {
         case .success(let graphQLResult):
           guard let phaseGroup = graphQLResult.data?.phaseGroup else {
@@ -71,28 +71,92 @@ extension StartggService {
                 id: id,
                 state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue.capitalized,
                 roundNum: $0?.round ?? 0,
-                identifier: $0?.identifier,
+                identifier: $0?.identifier ?? "",
                 outcome: outcome,
                 fullRoundText: $0?.fullRoundText,
                 prevRoundIDs: $0?.slots?.compactMap {
                   guard let prevRoundID = $0?.prereqId else { return nil }
                   return Int(prevRoundID)
-                },
+                } ?? [],
                 entrants: entrants
               )
             }
           }
           
+          if let normalizedSets = self?.normalizeSets(matches: matches, bracketType: phaseGroup.bracketType?.value) {
+            matches = normalizedSets
+          }
+          
+          let roundLabels = self?.generateRoundLabels(matches: matches, bracketType: phaseGroup.bracketType?.value) ?? []
+          
+          var phaseGroupSetRounds = [Int: Int]()
+          for match in matches {
+            if phaseGroupSetRounds[match.id] == nil {
+              phaseGroupSetRounds[match.id] = match.roundNum
+            }
+          }
+          
           continuation.resume(returning: PhaseGroupDetails(
-            bracketType: phaseGroup.bracketType?.rawValue,
+            bracketType: phaseGroup.bracketType?.value,
             progressionsOut: progressionsOut,
             standings: standings,
-            matches: matches)
+            matches: matches,
+            roundLabels: roundLabels,
+            phaseGroupSetRounds: phaseGroupSetRounds)
           )
         case .failure(let error):
           continuation.resume(throwing: error)
         }
       }
     }
+  }
+  
+  /// Sort the sets by identifier, and if a grand finals reset set exists, increment its roundNum
+  private func normalizeSets(matches: [PhaseGroupSet], bracketType: BracketType?) -> [PhaseGroupSet]? {
+    switch bracketType {
+    case .singleElimination, .doubleElimination:
+      // First sort the sets by the number of characters in their identifier
+      // Then sort the the sets by their identifier's alphabetical order
+      var sets = matches.sorted {
+        if $0.identifier.count != $1.identifier.count {
+          return $0.identifier.count < $1.identifier.count
+        } else {
+          return $0.identifier < $1.identifier
+        }
+      }
+      
+      // In the case of a grand finals reset, the 2nd grand finals may have the same roundNum as the 1st grand finals set
+      // Therefore, if a set is detected with identical previous round IDs (meaning that the set is a grand finals reset), increment the roundNum
+      for (i, set) in sets.enumerated() {
+        guard set.prevRoundIDs.count == 2 else { continue }
+        if set.prevRoundIDs[0] == set.prevRoundIDs[1] {
+          sets[i].roundNum += 1
+        }
+      }
+      
+      return sets
+    default: break
+    }
+    return nil
+  }
+  
+  /// Generate all of the round labels for a bracket (eg. Winners Round 1)
+  private func generateRoundLabels(matches: [PhaseGroupSet], bracketType: BracketType?) -> [PhaseGroupDetails.RoundLabel] {
+    switch bracketType {
+    case .singleElimination, .doubleElimination:
+      var roundNums = Set<Int>()
+      var roundLabels = [PhaseGroupDetails.RoundLabel]()
+      
+      for match in matches {
+        if !roundNums.contains(match.roundNum) {
+          roundLabels.append(.init(id: match.roundNum, text: match.fullRoundText ?? ""))
+          roundNums.insert(match.roundNum)
+        }
+      }
+      
+      return roundLabels
+    default: break
+    }
+    return []
   }
 }

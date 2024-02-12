@@ -25,7 +25,7 @@ extension StartggService {
                 state: $0?.state?.rawValue,
                 numPhaseGroups: $0?.groupCount,
                 numEntrants: $0?.numSeeds,
-                bracketType: $0?.bracketType?.rawValue
+                bracketType: $0?.bracketType?.value
               )
             }
           }
