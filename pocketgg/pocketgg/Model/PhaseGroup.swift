@@ -17,9 +17,11 @@ struct PhaseGroupDetails {
   let bracketType: BracketType?
   let progressionsOut: Set<Int>
   let standings: [Standing]
-  let matches: [PhaseGroupSet]
-  let roundLabels: [RoundLabel]
-  let phaseGroupSetRounds: [Int: Int]
+  // Not constant because if 90 sets are returned, this property can appended to with additional sets
+  var matches: [PhaseGroupSet]
+  // Initialized as empty, then populated in PhaseGroupViewModel
+  var roundLabels = [RoundLabel]()
+  var phaseGroupSetRounds = [Int: Int]()
   
   struct RoundLabel: Identifiable {
     var id: Int // roundNum

@@ -357,6 +357,13 @@
 			path = pocketggTests;
 			sourceTree = "<group>";
 		};
+		DA475EEB2B7AA851007100A6 /* Round Robin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Round Robin";
+			sourceTree = "<group>";
+		};
 		DA4DDBC72B65638D00F3131E /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +633,7 @@
 			children = (
 				DA475EE92B798A9C007100A6 /* ScrollViewWrapper.swift */,
 				DAF340752B72A03900379688 /* Elimination */,
+				DA475EEB2B7AA851007100A6 /* Round Robin */,
 			);
 			path = Bracket;
 			sourceTree = "<group>";

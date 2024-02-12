@@ -9,6 +9,7 @@ protocol StartggServiceType {
   func getEventStandings(id: Int, page: Int) async throws -> [Standing]?
   func getPhaseGroups(id: Int, numPhaseGroups: Int) async throws -> [PhaseGroup]?
   func getPhaseGroupDetails(id: Int) async throws -> PhaseGroupDetails?
+  func getRemainingPhaseGroupSets(id: Int, pageNum: Int) async throws -> [PhaseGroupSet]
 }
 
 class StartggService: StartggServiceType {

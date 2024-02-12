@@ -74,10 +74,62 @@ final class EntrantService {
     )
   }
   
+  /// Used by **getPhaseGroupDetails / PhaseGroupView**
   static func getEntrantsForSet(
     displayScore: String?,
     winnerID: Int?,
     slots: [PhaseGroupQuery.Data.PhaseGroup.Sets.Node.Slot?]?
+  ) -> [PhaseGroupSetEntrant]? {
+    guard let slots = slots else { return nil }
+    
+    let entrantsInfo = slots.compactMap { slot -> (entrant: Entrant, fullName: String)? in
+      if let participants = slot?.entrant?.participants, participants.count == 1 {
+        let entrantName = slot?.entrant?.participants?[0]?.gamerTag
+        let teamName = getTeamName(combined: slot?.entrant?.name, entrantName: entrantName)
+        let entrant = Entrant(id: Int(slot?.entrant?.id ?? "nil"), name: entrantName, teamName: teamName)
+        return (entrant: entrant, fullName: slot?.entrant?.name ?? "")
+      }
+      
+      return (entrant: Entrant(id: Int(slot?.entrant?.id ?? "nil"), name: slot?.entrant?.name, teamName: nil),
+              fullName: slot?.entrant?.name ?? "")
+    }
+    
+    guard let displayScore = displayScore else {
+      return entrantsInfo.map { PhaseGroupSetEntrant(entrant: $0.entrant, score: nil) }
+    }
+    
+    if displayScore == "DQ" {
+      guard let winnerID = winnerID else {
+        return entrantsInfo.map { PhaseGroupSetEntrant(entrant: $0.entrant, score: nil) }
+      }
+      return entrantsInfo.map {
+        guard let entrantID = $0.entrant.id else {
+          return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
+        }
+        return PhaseGroupSetEntrant(entrant: $0.entrant, score: entrantID == winnerID ? "✓" : "DQ")
+      }
+    }
+    
+    let entrantStrings = displayScore.components(separatedBy: " - ")
+    return entrantsInfo.map {
+      for entrantString in entrantStrings where entrantString.contains($0.fullName) {
+        guard let index = entrantString.lastIndex(of: " ") else {
+          return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
+        }
+        return PhaseGroupSetEntrant(
+          entrant: $0.entrant,
+          score: String(entrantString[index...]).trimmingCharacters(in: .whitespacesAndNewlines)
+        )
+      }
+      return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
+    }
+  }
+  
+  /// Used by **getRemainingPhaseGroupSets / PhaseGroupView**
+  static func getEntrantsForSet2(
+    displayScore: String?,
+    winnerID: Int?,
+    slots: [PhaseGroupSetsPageQuery.Data.PhaseGroup.Sets.Node.Slot?]?
   ) -> [PhaseGroupSetEntrant]? {
     guard let slots = slots else { return nil }
     

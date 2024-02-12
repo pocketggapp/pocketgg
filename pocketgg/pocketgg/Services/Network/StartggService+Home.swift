@@ -69,7 +69,13 @@ extension StartggService {
             date: "Never",
             location: "Somewhere"
           ))
-          
+          tournaments.append(Tournament(
+            id: 109112,
+            name: "UWaterloo Arcadian 6",
+            imageURL: nil,
+            date: "Never",
+            location: "Somewhere"
+          ))
           
           continuation.resume(returning: tournaments)
         case .failure(let error):

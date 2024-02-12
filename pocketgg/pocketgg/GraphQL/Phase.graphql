@@ -56,3 +56,29 @@ query PhaseGroup($id: ID) {
     }
   }
 }
+
+query PhaseGroupSetsPage($id: ID, $page: Int) {
+  phaseGroup(id: $id) {
+    sets(page: $page, perPage: 90) {
+      nodes {
+        id
+        state
+        round
+        identifier
+        fullRoundText
+        displayScore
+        winnerId
+        slots {
+          prereqId
+          entrant {
+            id
+            name
+            participants {
+              gamerTag
+            }
+          }
+        }
+      }
+    }
+  }
+}

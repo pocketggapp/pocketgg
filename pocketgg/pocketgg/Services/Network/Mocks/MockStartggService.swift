@@ -35,6 +35,10 @@ final class MockStartggService: StartggServiceType {
     MockStartggService.createPhaseGroupDetails()
   }
   
+  func getRemainingPhaseGroupSets(id: Int, pageNum: Int) async throws -> [PhaseGroupSet] {
+    [MockStartggService.createPhaseGroupSet()]
+  }
+  
   // MARK: Mock Data
   
   static func createTournament(id: Int) -> Tournament {
