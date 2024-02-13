@@ -97,6 +97,7 @@ final class PhaseGroupViewModel: ObservableObject {
     }
     
     // Sort the sets by identifier and increment the grand final reset's roundNum (if it exists)
+    // TODO: Maybe move this logic to right before the EliminationBracketView is created, as the 'Matches' section prefers the old ordering
     if let normalizedSets = PhaseGroupSetService.normalizeSets(sets: sets, bracketType: phaseGroupDetails?.bracketType) {
       phaseGroupDetails?.matches = normalizedSets
     }

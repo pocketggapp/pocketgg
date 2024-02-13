@@ -43,6 +43,7 @@ query TournamentDetails($id: ID) {
       }) {
         nodes {
           entrant {
+            id
             name
             participants {
               gamerTag

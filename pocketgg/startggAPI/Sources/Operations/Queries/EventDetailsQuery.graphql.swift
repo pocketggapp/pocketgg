@@ -7,7 +7,7 @@ public class EventDetailsQuery: GraphQLQuery {
   public static let operationName: String = "EventDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query EventDetails($id: ID) { event(id: $id) { __typename phases { __typename id name state groupCount numSeeds bracketType } standings(query: {perPage: 8}) { __typename nodes { __typename placement entrant { __typename name participants { __typename gamerTag } } } } } }"#
+      #"query EventDetails($id: ID) { event(id: $id) { __typename phases { __typename id name state groupCount numSeeds bracketType } standings(query: {perPage: 8}) { __typename nodes { __typename placement entrant { __typename id name participants { __typename gamerTag } } } } } }"#
     ))
 
   public var id: GraphQLNullable<ID>
@@ -123,10 +123,12 @@ public class EventDetailsQuery: GraphQLQuery {
             public static var __parentType: ApolloAPI.ParentType { StartggAPI.Objects.Entrant }
             public static var __selections: [ApolloAPI.Selection] { [
               .field("__typename", String.self),
+              .field("id", StartggAPI.ID?.self),
               .field("name", String?.self),
               .field("participants", [Participant?]?.self),
             ] }
 
+            public var id: StartggAPI.ID? { __data["id"] }
             /// The entrant name as it appears in bracket: gamerTag of the participant or team name
             public var name: String? { __data["name"] }
             public var participants: [Participant?]? { __data["participants"] }

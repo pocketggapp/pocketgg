@@ -7,7 +7,7 @@ public class TournamentDetailsQuery: GraphQLQuery {
   public static let operationName: String = "TournamentDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType slug } }"#
+      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename id name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType slug } }"#
     ))
 
   public var id: GraphQLNullable<ID>
@@ -141,10 +141,12 @@ public class TournamentDetailsQuery: GraphQLQuery {
               public static var __parentType: ApolloAPI.ParentType { StartggAPI.Objects.Entrant }
               public static var __selections: [ApolloAPI.Selection] { [
                 .field("__typename", String.self),
+                .field("id", StartggAPI.ID?.self),
                 .field("name", String?.self),
                 .field("participants", [Participant?]?.self),
               ] }
 
+              public var id: StartggAPI.ID? { __data["id"] }
               /// The entrant name as it appears in bracket: gamerTag of the participant or team name
               public var name: String? { __data["name"] }
               public var participants: [Participant?]? { __data["participants"] }

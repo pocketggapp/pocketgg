@@ -42,7 +42,7 @@ struct PhaseGroupView: View {
           reloadPhaseGroup()
         }
       case "Bracket":
-        EliminationBracketView(state: $viewModel.state) {
+        BracketView(state: $viewModel.state) {
           reloadPhaseGroup()
         }
       default:

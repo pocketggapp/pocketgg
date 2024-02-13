@@ -4,21 +4,24 @@ final class EntrantService {
   static func getEventWinner(_ event: TournamentDetailsQuery.Data.Tournament.Event?) -> Entrant? {
     guard let event else { return nil }
     
-    if let participants = event.standings?.nodes?[safe: 0]??.entrant?.participants, participants.count == 1 {
+    guard let entrant = event.standings?.nodes?[safe: 0]??.entrant else { return nil }
+    guard let id = Int(entrant.id ?? "nil") else { return nil }
+    
+    if let participants = entrant.participants, participants.count == 1 {
       let teamName = getTeamName(
         combined: event.standings?.nodes?[safe: 0]??.entrant?.name,
         entrantName: participants[0]?.gamerTag
       )
       return Entrant(
-        id: nil,
+        id: id,
         name: participants[0]?.gamerTag,
         teamName: teamName
       )
     }
     
     return Entrant(
-      id: nil,
-      name: event.standings?.nodes?[safe: 0]??.entrant?.name,
+      id: id,
+      name: entrant.name,
       teamName: nil
     )
   }
@@ -26,16 +29,17 @@ final class EntrantService {
   /// Used by **getEventDetails / EventView**
   static func getEntrantAndStanding(_ standing: EventDetailsQuery.Data.Event.Standings.Node?) -> Standing? {
     guard let standing else { return nil }
+    guard let id = Int(standing.entrant?.id ?? "nil") else { return nil }
     
     if let participants = standing.entrant?.participants, participants.count == 1 {
       let entrantName = standing.entrant?.participants?[0]?.gamerTag
       let teamName = getTeamName(combined: standing.entrant?.name, entrantName: entrantName)
-      let entrant = Entrant(id: nil, name: entrantName, teamName: teamName)
+      let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
       return Standing(entrant: entrant, placement: standing.placement)
     }
     
     return Standing(
-      entrant: Entrant(id: nil, name: standing.entrant?.name, teamName: nil),
+      entrant: Entrant(id: id, name: standing.entrant?.name, teamName: nil),
       placement: standing.placement
     )
   }
@@ -43,16 +47,17 @@ final class EntrantService {
   /// Used by **getEventStandings / AllStandingsView**
   static func getEntrantAndStanding2(_ standing: EventStandingsQuery.Data.Event.Standings.Node?) -> Standing? {
     guard let standing = standing else { return nil }
+    guard let id = Int(standing.entrant?.id ?? "nil") else { return nil }
     
     if let participants = standing.entrant?.participants, participants.count == 1 {
       let entrantName = standing.entrant?.participants?[0]?.gamerTag
       let teamName = getTeamName(combined: standing.entrant?.name, entrantName: entrantName)
-      let entrant = Entrant(id: nil, name: entrantName, teamName: teamName)
+      let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
       return Standing(entrant: entrant, placement: standing.placement)
     }
     
     return Standing(
-      entrant: Entrant(id: nil, name: standing.entrant?.name, teamName: nil),
+      entrant: Entrant(id: id, name: standing.entrant?.name, teamName: nil),
       placement: standing.placement
     )
   }
@@ -60,16 +65,17 @@ final class EntrantService {
   /// Used by **getPhaseGroupDetails / PhaseGroupView**
   static func getEntrantAndStanding3(_ standing: PhaseGroupQuery.Data.PhaseGroup.Standings.Node?) -> Standing? {
     guard let standing = standing else { return nil }
+    guard let id = Int(standing.entrant?.id ?? "nil") else { return nil }
     
     if let participants = standing.entrant?.participants, participants.count == 1 {
       let entrantName = standing.entrant?.participants?[0]?.gamerTag
       let teamName = getTeamName(combined: standing.entrant?.name, entrantName: entrantName)
-      let entrant = Entrant(id: nil, name: entrantName, teamName: teamName)
+      let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
       return Standing(entrant: entrant, placement: standing.placement)
     }
     
     return Standing(
-      entrant: Entrant(id: nil, name: standing.entrant?.name, teamName: nil),
+      entrant: Entrant(id: id, name: standing.entrant?.name, teamName: nil),
       placement: standing.placement
     )
   }
@@ -83,15 +89,16 @@ final class EntrantService {
     guard let slots = slots else { return nil }
     
     let entrantsInfo = slots.compactMap { slot -> (entrant: Entrant, fullName: String)? in
+      guard let id = Int(slot?.entrant?.id ?? "nil") else { return nil }
+      
       if let participants = slot?.entrant?.participants, participants.count == 1 {
-        let entrantName = slot?.entrant?.participants?[0]?.gamerTag
+        let entrantName = participants[0]?.gamerTag
         let teamName = getTeamName(combined: slot?.entrant?.name, entrantName: entrantName)
-        let entrant = Entrant(id: Int(slot?.entrant?.id ?? "nil"), name: entrantName, teamName: teamName)
+        let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
         return (entrant: entrant, fullName: slot?.entrant?.name ?? "")
       }
       
-      return (entrant: Entrant(id: Int(slot?.entrant?.id ?? "nil"), name: slot?.entrant?.name, teamName: nil),
-              fullName: slot?.entrant?.name ?? "")
+      return (entrant: Entrant(id: id, name: slot?.entrant?.name, teamName: nil), fullName: slot?.entrant?.name ?? "")
     }
     
     guard let displayScore = displayScore else {
@@ -99,14 +106,11 @@ final class EntrantService {
     }
     
     if displayScore == "DQ" {
-      guard let winnerID = winnerID else {
+      guard let winnerID else {
         return entrantsInfo.map { PhaseGroupSetEntrant(entrant: $0.entrant, score: nil) }
       }
       return entrantsInfo.map {
-        guard let entrantID = $0.entrant.id else {
-          return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
-        }
-        return PhaseGroupSetEntrant(entrant: $0.entrant, score: entrantID == winnerID ? "✓" : "DQ")
+        PhaseGroupSetEntrant(entrant: $0.entrant, score: $0.entrant.id == winnerID ? "✓" : "DQ")
       }
     }
     
@@ -134,15 +138,16 @@ final class EntrantService {
     guard let slots = slots else { return nil }
     
     let entrantsInfo = slots.compactMap { slot -> (entrant: Entrant, fullName: String)? in
+      guard let id = Int(slot?.entrant?.id ?? "nil") else { return nil }
+      
       if let participants = slot?.entrant?.participants, participants.count == 1 {
-        let entrantName = slot?.entrant?.participants?[0]?.gamerTag
+        let entrantName = participants[0]?.gamerTag
         let teamName = getTeamName(combined: slot?.entrant?.name, entrantName: entrantName)
-        let entrant = Entrant(id: Int(slot?.entrant?.id ?? "nil"), name: entrantName, teamName: teamName)
+        let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
         return (entrant: entrant, fullName: slot?.entrant?.name ?? "")
       }
       
-      return (entrant: Entrant(id: Int(slot?.entrant?.id ?? "nil"), name: slot?.entrant?.name, teamName: nil),
-              fullName: slot?.entrant?.name ?? "")
+      return (entrant: Entrant(id: id, name: slot?.entrant?.name, teamName: nil), fullName: slot?.entrant?.name ?? "")
     }
     
     guard let displayScore = displayScore else {
@@ -150,14 +155,11 @@ final class EntrantService {
     }
     
     if displayScore == "DQ" {
-      guard let winnerID = winnerID else {
+      guard let winnerID else {
         return entrantsInfo.map { PhaseGroupSetEntrant(entrant: $0.entrant, score: nil) }
       }
       return entrantsInfo.map {
-        guard let entrantID = $0.entrant.id else {
-          return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
-        }
-        return PhaseGroupSetEntrant(entrant: $0.entrant, score: entrantID == winnerID ? "✓" : "DQ")
+        PhaseGroupSetEntrant(entrant: $0.entrant, score: $0.entrant.id == winnerID ? "✓" : "DQ")
       }
     }
     

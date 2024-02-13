@@ -1,47 +1,35 @@
 import SwiftUI
 
 struct EliminationBracketView: View {
-  @Binding private var state: PhaseGroupViewState
+  private let phaseGroupSets: [PhaseGroupSet]
+  private let roundLabels: [PhaseGroupDetails.RoundLabel]
+  private let phaseGroupSetRounds: [Int: Int]
   
-  private let reloadPhaseGroup: (() -> Void)
-  
-  init(state: Binding<PhaseGroupViewState>, reloadPhaseGroup: @escaping () -> Void) {
-    self._state = state
-    self.reloadPhaseGroup = reloadPhaseGroup
+  init(
+    phaseGroupSets: [PhaseGroupSet],
+    roundLabels: [PhaseGroupDetails.RoundLabel],
+    phaseGroupSetRounds: [Int : Int]
+  ) {
+    self.phaseGroupSets = phaseGroupSets
+    self.roundLabels = roundLabels
+    self.phaseGroupSetRounds = phaseGroupSetRounds
   }
   
   var body: some View {
-    switch state {
-    case .uninitialized, .loading:
-      EmptyView()
-    case .loaded(let phaseGroupDetails):
-      if let sets = phaseGroupDetails?.matches, !sets.isEmpty {
-        ScrollViewWrapper {
-          EliminationBracketLayout {
-            ForEach(sets) {
-              EliminationSetView(phaseGroupSet: $0)
-                .layoutValue(key: PhaseGroupSetValue.self, value: $0)
-            }
-            ForEach(phaseGroupDetails?.roundLabels ?? []) {
-              EliminationRoundLabelView(roundLabel: $0)
-                .layoutValue(key: PhaseGroupRoundLabel.self, value: $0)
-            }
-            ForEach(sets) {
-              setPathView(for: $0, phaseGroupSetRounds: phaseGroupDetails?.phaseGroupSetRounds ?? [:])
-                .layoutValue(key: PhaseGroupSetPathID.self, value: $0.id)
-            }
-          }
+    ScrollViewWrapper {
+      EliminationBracketLayout {
+        ForEach(phaseGroupSets) {
+          EliminationSetView(phaseGroupSet: $0)
+            .layoutValue(key: PhaseGroupSetValue.self, value: $0)
         }
-      } else {
-        EmptyStateView(
-          systemImageName: "questionmark.app.dashed",
-          title: "No Sets",
-          subtitle: "There are currently no sets in this phase group"
-        )
-      }
-    case .error:
-      ErrorStateView(subtitle: "There was an error loading this phase group") {
-        reloadPhaseGroup()
+        ForEach(roundLabels) {
+          EliminationRoundLabelView(roundLabel: $0)
+            .layoutValue(key: PhaseGroupRoundLabel.self, value: $0)
+        }
+        ForEach(phaseGroupSets) {
+          setPathView(for: $0, phaseGroupSetRounds: phaseGroupSetRounds)
+            .layoutValue(key: PhaseGroupSetPathID.self, value: $0.id)
+        }
       }
     }
   }
@@ -89,7 +77,8 @@ struct EliminationBracketView: View {
 
 #Preview {
   return EliminationBracketView(
-    state: .constant(.loaded(MockStartggService.createPhaseGroupDetails())),
-    reloadPhaseGroup: { }
+    phaseGroupSets: [MockStartggService.createPhaseGroupSet()],
+    roundLabels: [],
+    phaseGroupSetRounds: [:]
   )
 }

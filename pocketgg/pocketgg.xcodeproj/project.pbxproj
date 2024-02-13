@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA053A432B7AF32900A6803A /* RoundRobinBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA053A422B7AF32900A6803A /* RoundRobinBracketView.swift */; };
+		DA053A452B7AF3B100A6803A /* RoundRobinSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA053A442B7AF3B100A6803A /* RoundRobinSetView.swift */; };
+		DA053A492B7B183000A6803A /* BracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA053A482B7B183000A6803A /* BracketView.swift */; };
+		DA053A4B2B7BC1B100A6803A /* RoundRobinEntrantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA053A4A2B7BC1B100A6803A /* RoundRobinEntrantView.swift */; };
+		DA053A4D2B7BD76E00A6803A /* RoundRobinScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA053A4C2B7BD76E00A6803A /* RoundRobinScoreView.swift */; };
 		DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */; };
 		DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E597C2B6D58520031A5A1 /* Phase.swift */; };
 		DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */; };
@@ -115,6 +120,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA053A422B7AF32900A6803A /* RoundRobinBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinBracketView.swift; sourceTree = "<group>"; };
+		DA053A442B7AF3B100A6803A /* RoundRobinSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinSetView.swift; sourceTree = "<group>"; };
+		DA053A482B7B183000A6803A /* BracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketView.swift; sourceTree = "<group>"; };
+		DA053A4A2B7BC1B100A6803A /* RoundRobinEntrantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinEntrantView.swift; sourceTree = "<group>"; };
+		DA053A4C2B7BD76E00A6803A /* RoundRobinScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinScoreView.swift; sourceTree = "<group>"; };
 		DA0A431F2B5784A800622BF1 /* TournamentTilePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTilePlaceholderView.swift; sourceTree = "<group>"; };
 		DA0E597C2B6D58520031A5A1 /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
 		DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroup.swift; sourceTree = "<group>"; };
@@ -360,6 +370,10 @@
 		DA475EEB2B7AA851007100A6 /* Round Robin */ = {
 			isa = PBXGroup;
 			children = (
+				DA053A442B7AF3B100A6803A /* RoundRobinSetView.swift */,
+				DA053A4A2B7BC1B100A6803A /* RoundRobinEntrantView.swift */,
+				DA053A4C2B7BD76E00A6803A /* RoundRobinScoreView.swift */,
+				DA053A422B7AF32900A6803A /* RoundRobinBracketView.swift */,
 			);
 			path = "Round Robin";
 			sourceTree = "<group>";
@@ -631,6 +645,7 @@
 		DAF340742B729F1B00379688 /* Bracket */ = {
 			isa = PBXGroup;
 			children = (
+				DA053A482B7B183000A6803A /* BracketView.swift */,
 				DA475EE92B798A9C007100A6 /* ScrollViewWrapper.swift */,
 				DAF340752B72A03900379688 /* Elimination */,
 				DA475EEB2B7AA851007100A6 /* Round Robin */,
@@ -775,6 +790,7 @@
 				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
 				DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
+				DA053A4B2B7BC1B100A6803A /* RoundRobinEntrantView.swift in Sources */,
 				DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */,
 				DAF340712B717FAE00379688 /* MatchRowView.swift in Sources */,
 				DA15EC602B5A2DE2003FD258 /* MockStartggService.swift in Sources */,
@@ -782,6 +798,7 @@
 				DA65D66C2AB6302700EF18E0 /* TournamentTileView.swift in Sources */,
 				DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */,
 				DA9178732B6FF79A00579360 /* StartggService+Phase.swift in Sources */,
+				DA053A432B7AF32900A6803A /* RoundRobinBracketView.swift in Sources */,
 				DA9178612B6ED69F00579360 /* TopStandingsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
@@ -797,6 +814,7 @@
 				DA0E59832B6D5A930031A5A1 /* StartggService+Event.swift in Sources */,
 				DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */,
 				DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */,
+				DA053A492B7B183000A6803A /* BracketView.swift in Sources */,
 				DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */,
 				DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */,
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
@@ -807,6 +825,7 @@
 				DAC4E94E2B4B96B700B356A0 /* Entrant.swift in Sources */,
 				DA9178572B6E9B3F00579360 /* EventHeaderView.swift in Sources */,
 				DA91785F2B6ECF7300579360 /* TextPlaceholderView.swift in Sources */,
+				DA053A452B7AF3B100A6803A /* RoundRobinSetView.swift in Sources */,
 				DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */,
 				DAF340732B71976B00379688 /* PhaseGroupSetService.swift in Sources */,
 				DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */,
@@ -824,6 +843,7 @@
 				DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */,
 				DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */,
 				DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */,
+				DA053A4D2B7BD76E00A6803A /* RoundRobinScoreView.swift in Sources */,
 				DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */,
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
 				DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */,

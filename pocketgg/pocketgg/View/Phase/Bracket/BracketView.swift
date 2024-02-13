@@ -1,0 +1,54 @@
+import SwiftUI
+
+struct BracketView: View {
+  @Binding private var state: PhaseGroupViewState
+  
+  private let reloadPhaseGroup: (() -> Void)
+  
+  init(state: Binding<PhaseGroupViewState>, reloadPhaseGroup: @escaping () -> Void) {
+    self._state = state
+    self.reloadPhaseGroup = reloadPhaseGroup
+  }
+  
+  var body: some View {
+    switch state {
+    case .uninitialized, .loading:
+      EmptyView() // TODO: Bracket loading placeholder view
+    case .loaded(let phaseGroupDetails):
+      if let sets = phaseGroupDetails?.matches, !sets.isEmpty {
+        switch phaseGroupDetails?.bracketType {
+        case .singleElimination, .doubleElimination:
+          EliminationBracketView(
+            phaseGroupSets: sets,
+            roundLabels: phaseGroupDetails?.roundLabels ?? [],
+            phaseGroupSetRounds: phaseGroupDetails?.phaseGroupSetRounds ?? [:]
+          )
+        case .roundRobin:
+          RoundRobinBracketView(
+            phaseGroupSets: sets,
+            entrants: phaseGroupDetails?.standings.compactMap { $0.entrant } ?? []
+          )
+        default:
+          EmptyView() // TODO: Unsupported bracket type view
+        }
+      } else {
+        EmptyStateView(
+          systemImageName: "questionmark.app.dashed",
+          title: "No Sets",
+          subtitle: "There are currently no sets in this phase group"
+        )
+      }
+    case .error:
+      ErrorStateView(subtitle: "There was an error loading this bracket") {
+        reloadPhaseGroup()
+      }
+    }
+  }
+}
+
+#Preview {
+  return BracketView(
+    state: .constant(.loaded(MockStartggService.createPhaseGroupDetails())),
+    reloadPhaseGroup: { }
+  )
+}
