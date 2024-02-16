@@ -21,14 +21,14 @@ struct EmptyStateView: View {
           .resizable()
           .scaledToFit()
           .frame(width: 75 * scale, height: 75 * scale)
+          .fontWeight(.light)
         
         VStack {
           Text("**\(title)**")
-            .font(.title)
+            .font(.title2)
             .multilineTextAlignment(.center)
           
           Text(subtitle)
-            .font(.title3)
             .multilineTextAlignment(.center)
         }
       }
@@ -42,6 +42,6 @@ struct EmptyStateView: View {
   EmptyStateView(
     systemImageName: "questionmark.app.dashed",
     title: "No Events",
-    subtitle: "There are currently no events for this tournament"
+    subtitle: "There are currently no events for this tournament adfsdasfadsf"
   )
 }

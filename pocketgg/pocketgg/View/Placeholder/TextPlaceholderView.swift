@@ -11,5 +11,5 @@ struct TextPlaceholderView: View {
 }
 
 #Preview {
-  TournamentsPlaceholderView()
+  TextPlaceholderView()
 }

@@ -90,6 +90,8 @@
 		DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */; };
 		DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
+		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
+		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
 		DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */; };
 		DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AD2AE1C33300ED35FC /* TournamentView.swift */; };
 		DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */; };
@@ -107,6 +109,10 @@
 		DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340782B72D35600379688 /* EliminationBracketView.swift */; };
 		DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */; };
 		DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */; };
+		DAFB42D62B7C813500F84E42 /* PhaseGroupSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB42D52B7C813500F84E42 /* PhaseGroupSetViewModel.swift */; };
+		DAFB42D82B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB42D72B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift */; };
+		DAFB42DA2B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB42D92B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift */; };
+		DAFB42DE2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB42DD2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +211,8 @@
 		DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantService.swift; sourceTree = "<group>"; };
 		DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
+		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
+		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
 		DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHeaderView.swift; sourceTree = "<group>"; };
 		DADD99AD2AE1C33300ED35FC /* TournamentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentView.swift; sourceTree = "<group>"; };
 		DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewModel.swift; sourceTree = "<group>"; };
@@ -222,6 +230,10 @@
 		DAF340782B72D35600379688 /* EliminationBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationBracketView.swift; sourceTree = "<group>"; };
 		DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentLocationView.swift; sourceTree = "<group>"; };
 		DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPlaceholderView.swift; sourceTree = "<group>"; };
+		DAFB42D52B7C813500F84E42 /* PhaseGroupSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetViewModel.swift; sourceTree = "<group>"; };
+		DAFB42D72B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWithCaptionPlaceholderView.swift; sourceTree = "<group>"; };
+		DAFB42D92B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+PhaseGroupSet.swift"; sourceTree = "<group>"; };
+		DAFB42DD2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetGameRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +264,7 @@
 				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
 				DA0E59852B6D5AEF0031A5A1 /* Event.graphql */,
 				DA9178702B6FF5D000579360 /* Phase.graphql */,
+				DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -293,6 +306,7 @@
 				DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */,
 				DA0E59822B6D5A930031A5A1 /* StartggService+Event.swift */,
 				DA9178722B6FF79A00579360 /* StartggService+Phase.swift */,
+				DAFB42D92B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift */,
 				DA15EC662B5A3AC5003FD258 /* Apollo */,
 				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
@@ -395,6 +409,7 @@
 				DADD99A82AE0C6B300ED35FC /* Tournament */,
 				DA789D9F2B66C490009B9799 /* Event */,
 				DA91786D2B6FEFD100579360 /* Phase */,
+				DAFB42D42B7C811800F84E42 /* PhaseGroupSet */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -584,6 +599,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DADCB9DB2B7C514D0093023D /* PhaseGroupSet */ = {
+			isa = PBXGroup;
+			children = (
+				DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */,
+				DAFB42DD2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift */,
+			);
+			path = PhaseGroupSet;
+			sourceTree = "<group>";
+		};
 		DADCFECF2A5F96F000A98C0D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +616,7 @@
 				DADD99A52AE0BA8B00ED35FC /* Tournament */,
 				DA789D9C2B66C315009B9799 /* Event */,
 				DA91786A2B6FEFA200579360 /* Phase */,
+				DADCB9DB2B7C514D0093023D /* PhaseGroupSet */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
 				DA15EC5B2B5A2A51003FD258 /* Components */,
 				DAF117A92B4F875000D39F65 /* Placeholder */,
@@ -629,6 +654,7 @@
 				DA2723A22B5B469A002FF875 /* StreamPlaceholderView.swift */,
 				DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */,
 				DA91785E2B6ECF7300579360 /* TextPlaceholderView.swift */,
+				DAFB42D72B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift */,
 			);
 			path = Placeholder;
 			sourceTree = "<group>";
@@ -672,6 +698,14 @@
 				DAE36C322B6204440037B45D /* ContactInfoRowView.swift */,
 			);
 			path = "Contact Info";
+			sourceTree = "<group>";
+		};
+		DAFB42D42B7C811800F84E42 /* PhaseGroupSet */ = {
+			isa = PBXGroup;
+			children = (
+				DAFB42D52B7C813500F84E42 /* PhaseGroupSetViewModel.swift */,
+			);
+			path = PhaseGroupSet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -765,6 +799,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */,
 				DA0E59862B6D5AEF0031A5A1 /* Event.graphql in Resources */,
 				DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */,
 				DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */,
@@ -811,6 +846,7 @@
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,
 				DADF343F2B54CB960020C29D /* ImageService.swift in Sources */,
 				DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */,
+				DAFB42D62B7C813500F84E42 /* PhaseGroupSetViewModel.swift in Sources */,
 				DA0E59832B6D5A930031A5A1 /* StartggService+Event.swift in Sources */,
 				DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */,
 				DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */,
@@ -836,11 +872,14 @@
 				DA91786C2B6FEFC400579360 /* PhaseGroupListView.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
+				DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
 				DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */,
 				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
+				DAFB42DA2B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift in Sources */,
 				DA475EE82B794A8E007100A6 /* EliminationBracketLayout.swift in Sources */,
 				DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */,
+				DAFB42DE2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift in Sources */,
 				DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */,
 				DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */,
 				DA053A4D2B7BD76E00A6803A /* RoundRobinScoreView.swift in Sources */,
@@ -851,6 +890,7 @@
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
 				DA7949D02B70199E00D68EA4 /* PhaseGroupViewModel.swift in Sources */,
 				DA9178632B6ED7F600579360 /* TopStandingRowView.swift in Sources */,
+				DAFB42D82B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift in Sources */,
 				DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */,
 				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
 				DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */,

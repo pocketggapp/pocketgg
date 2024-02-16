@@ -3,6 +3,7 @@ import SwiftUI
 struct PhaseGroupView: View {
   @StateObject private var viewModel: PhaseGroupViewModel
   @State private var selected: String
+  @State private var selectedPhaseGroupSet: PhaseGroupSet?
   
   private let phaseGroup: PhaseGroup?
   private let title: String
@@ -38,11 +39,11 @@ struct PhaseGroupView: View {
           reloadPhaseGroup()
         }
       case "Matches":
-        MatchesView(state: $viewModel.state) {
+        MatchesView(state: $viewModel.state, selectedMatch: $selectedPhaseGroupSet) {
           reloadPhaseGroup()
         }
       case "Bracket":
-        BracketView(state: $viewModel.state) {
+        BracketView(state: $viewModel.state, selectedSet: $selectedPhaseGroupSet) {
           reloadPhaseGroup()
         }
       default:
@@ -62,6 +63,19 @@ struct PhaseGroupView: View {
       } else {
         await viewModel.fetchPhaseGroup(refreshed: true)
       }
+    }
+    .sheet(item: $selectedPhaseGroupSet) { set in
+      VStack(alignment: .trailing) {
+        Button {
+          selectedPhaseGroupSet = nil
+        } label: {
+          Text("Done")
+            .font(.headline)
+        }
+        PhaseGroupSetView(phaseGroupSet: set)
+      }
+      .padding()
+      .presentationDetents([.medium, .large])
     }
     .navigationTitle(title)
   }

@@ -19,21 +19,20 @@ struct ErrorStateView: View {
           .resizable()
           .scaledToFit()
           .frame(width: 75 * scale, height: 75 * scale)
+          .fontWeight(.light)
         
         VStack {
           Text("**Error**")
-            .font(.title)
+            .font(.title2)
             .multilineTextAlignment(.center)
           
           Text(subtitle)
-            .font(.title3)
             .multilineTextAlignment(.center)
           
           Button {
             reload()
           } label: {
             Text("Reload")
-              .font(.body)
               .padding(5)
           }
           .buttonStyle(.borderedProminent)

@@ -2,11 +2,17 @@ import SwiftUI
 
 struct MatchesView: View {
   @Binding private var state: PhaseGroupViewState
+  @Binding private var selectedMatch: PhaseGroupSet?
   
   private let reloadPhaseGroup: (() -> Void)
   
-  init(state: Binding<PhaseGroupViewState>, reloadPhaseGroup: @escaping () -> Void) {
+  init(
+    state: Binding<PhaseGroupViewState>,
+    selectedMatch: Binding<PhaseGroupSet?>,
+    reloadPhaseGroup: @escaping () -> Void
+  ) {
     self._state = state
+    self._selectedMatch = selectedMatch
     self.reloadPhaseGroup = reloadPhaseGroup
   }
   
@@ -15,13 +21,19 @@ struct MatchesView: View {
       switch state {
       case .uninitialized, .loading:
         ForEach(1..<20) { _ in
+          // TODO: Make match placeholder view
           Text("Match Placeholder")
             .redacted(reason: .placeholder)
         }
       case .loaded(let phaseGroupDetails):
         if let matches = phaseGroupDetails?.matches, !matches.isEmpty {
-          ForEach(matches) {
-            MatchRowView(phaseGroupSet: $0)
+          ForEach(matches) { match in
+            Button {
+              selectedMatch = match
+            } label: {
+              MatchRowView(phaseGroupSet: match)
+            }
+            .buttonStyle(.plain)
           }
         } else {
           EmptyStateView(
@@ -43,6 +55,7 @@ struct MatchesView: View {
 #Preview {
   return MatchesView(
     state: .constant(.loaded(MockStartggService.createPhaseGroupDetails())),
+    selectedMatch: .constant(nil),
     reloadPhaseGroup: { }
   )
 }

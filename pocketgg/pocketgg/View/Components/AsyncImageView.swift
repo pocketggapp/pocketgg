@@ -43,6 +43,7 @@ struct AsyncImageView: View {
         .resizable()
         .scaledToFit()
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        .fontWeight(.light)
     }
   }
 }

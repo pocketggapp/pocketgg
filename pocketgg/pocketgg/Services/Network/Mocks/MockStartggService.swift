@@ -39,6 +39,14 @@ final class MockStartggService: StartggServiceType {
     [MockStartggService.createPhaseGroupSet()]
   }
   
+  func getPhaseGroupSetGames(id: Int) async throws -> [PhaseGroupSetGame] {
+    [
+      MockStartggService.createPhaseGroupGame(id: 0),
+      MockStartggService.createPhaseGroupGame(id: 1),
+      MockStartggService.createPhaseGroupGame(id: 2)
+    ]
+  }
+  
   // MARK: Mock Data
   
   static func createTournament(id: Int) -> Tournament {
@@ -136,6 +144,15 @@ final class MockStartggService: StartggServiceType {
         PhaseGroupSetEntrant(entrant: createEntrant(id: 0), score: "3"),
         PhaseGroupSetEntrant(entrant: createEntrant(id: 1), score: "2")
       ]
+    )
+  }
+  
+  static func createPhaseGroupGame(id: Int) -> PhaseGroupSetGame {
+    PhaseGroupSetGame(
+      id: id,
+      gameNum: 1,
+      winnerID: 0,
+      stageName: "Yoshi's Story"
     )
   }
   

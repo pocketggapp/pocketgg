@@ -1,15 +1,19 @@
 import SwiftUI
 
 struct RoundRobinBracketView: View {
+  @Binding private var selectedSet: PhaseGroupSet?
+  
   private let phaseGroupSets: [PhaseGroupSet]
   private let entrants: [Entrant]
   
   static let setWidth: CGFloat = 120
   
   init(
+    selectedSet: Binding<PhaseGroupSet?>,
     phaseGroupSets: [PhaseGroupSet],
     entrants: [Entrant]
   ) {
+    self._selectedSet = selectedSet
     self.phaseGroupSets = phaseGroupSets
     self.entrants = entrants
   }
@@ -33,6 +37,9 @@ struct RoundRobinBracketView: View {
             ForEach(entrants) { entrant1 in
               if let set = roundRobinSet(for: entrant0, and: entrant1) {
                 RoundRobinSetView(phaseGroupSet: set, entrantID: entrant0.id)
+                  .onTapGesture {
+                    selectedSet = set
+                  }
               } else {
                 Color(uiColor: .secondarySystemBackground)
                   .gridCellUnsizedAxes([.horizontal, .vertical])
@@ -114,6 +121,7 @@ struct RoundRobinBracketView: View {
 
 #Preview {
   return RoundRobinBracketView(
+    selectedSet: .constant(nil),
     phaseGroupSets: [MockStartggService.createPhaseGroupSet()],
     entrants: [
       MockStartggService.createEntrant(id: 0),

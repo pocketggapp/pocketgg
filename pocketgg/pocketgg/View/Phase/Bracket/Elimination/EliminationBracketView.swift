@@ -1,15 +1,19 @@
 import SwiftUI
 
 struct EliminationBracketView: View {
+  @Binding private var selectedSet: PhaseGroupSet?
+  
   private let phaseGroupSets: [PhaseGroupSet]
   private let roundLabels: [PhaseGroupDetails.RoundLabel]
   private let phaseGroupSetRounds: [Int: Int]
   
   init(
+    selectedSet: Binding<PhaseGroupSet?>,
     phaseGroupSets: [PhaseGroupSet],
     roundLabels: [PhaseGroupDetails.RoundLabel],
     phaseGroupSetRounds: [Int : Int]
   ) {
+    self._selectedSet = selectedSet
     self.phaseGroupSets = phaseGroupSets
     self.roundLabels = roundLabels
     self.phaseGroupSetRounds = phaseGroupSetRounds
@@ -18,9 +22,12 @@ struct EliminationBracketView: View {
   var body: some View {
     ScrollViewWrapper {
       EliminationBracketLayout {
-        ForEach(phaseGroupSets) {
-          EliminationSetView(phaseGroupSet: $0)
-            .layoutValue(key: PhaseGroupSetValue.self, value: $0)
+        ForEach(phaseGroupSets) { phaseGroupSet in
+          EliminationSetView(phaseGroupSet: phaseGroupSet)
+            .onTapGesture {
+              selectedSet = phaseGroupSet
+            }
+            .layoutValue(key: PhaseGroupSetValue.self, value: phaseGroupSet)
         }
         ForEach(roundLabels) {
           EliminationRoundLabelView(roundLabel: $0)
@@ -77,6 +84,7 @@ struct EliminationBracketView: View {
 
 #Preview {
   return EliminationBracketView(
+    selectedSet: .constant(nil),
     phaseGroupSets: [MockStartggService.createPhaseGroupSet()],
     roundLabels: [],
     phaseGroupSetRounds: [:]

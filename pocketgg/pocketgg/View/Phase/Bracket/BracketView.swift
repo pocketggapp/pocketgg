@@ -2,11 +2,13 @@ import SwiftUI
 
 struct BracketView: View {
   @Binding private var state: PhaseGroupViewState
+  @Binding private var selectedSet: PhaseGroupSet?
   
   private let reloadPhaseGroup: (() -> Void)
   
-  init(state: Binding<PhaseGroupViewState>, reloadPhaseGroup: @escaping () -> Void) {
+  init(state: Binding<PhaseGroupViewState>, selectedSet: Binding<PhaseGroupSet?>, reloadPhaseGroup: @escaping () -> Void) {
     self._state = state
+    self._selectedSet = selectedSet
     self.reloadPhaseGroup = reloadPhaseGroup
   }
   
@@ -19,12 +21,14 @@ struct BracketView: View {
         switch phaseGroupDetails?.bracketType {
         case .singleElimination, .doubleElimination:
           EliminationBracketView(
+            selectedSet: $selectedSet,
             phaseGroupSets: sets,
             roundLabels: phaseGroupDetails?.roundLabels ?? [],
             phaseGroupSetRounds: phaseGroupDetails?.phaseGroupSetRounds ?? [:]
           )
         case .roundRobin:
           RoundRobinBracketView(
+            selectedSet: $selectedSet,
             phaseGroupSets: sets,
             entrants: phaseGroupDetails?.standings.compactMap { $0.entrant } ?? []
           )
@@ -49,6 +53,7 @@ struct BracketView: View {
 #Preview {
   return BracketView(
     state: .constant(.loaded(MockStartggService.createPhaseGroupDetails())),
+    selectedSet: .constant(nil),
     reloadPhaseGroup: { }
   )
 }

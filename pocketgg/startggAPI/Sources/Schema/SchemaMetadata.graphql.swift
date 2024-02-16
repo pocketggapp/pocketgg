@@ -41,6 +41,8 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "SetConnection": return StartggAPI.Objects.SetConnection
     case "Set": return StartggAPI.Objects.Set
     case "SetSlot": return StartggAPI.Objects.SetSlot
+    case "Game": return StartggAPI.Objects.Game
+    case "Stage": return StartggAPI.Objects.Stage
     default: return nil
     }
   }

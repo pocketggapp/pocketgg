@@ -56,3 +56,10 @@ struct PhaseGroupSetEntrant: Hashable {
   let entrant: Entrant?
   let score: String?
 }
+
+struct PhaseGroupSetGame: Identifiable {
+  let id: Int
+  let gameNum: Int?
+  let winnerID: Int?
+  let stageName: String?
+}

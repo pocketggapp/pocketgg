@@ -28,6 +28,7 @@ struct ContactInfoRowView: View {
           .resizable()
           .scaledToFit()
           .frame(width: 44 * scale, height: 44 * scale)
+          .fontWeight(.light)
         
         Text(contactInfo)
           .font(.body)

@@ -1,0 +1,12 @@
+query PhaseGroupSetGames($id: ID!) {
+  set(id: $id) {
+    games {
+      id
+      orderNum
+      winnerId
+      stage {
+        name
+      }
+    }
+  }
+}
