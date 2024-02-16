@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TournamentHeaderView: View {
   @ScaledMetric private var scale: CGFloat = 1
+  @Environment(\.dynamicTypeSize) private var dynamicTypeSize
   
   private let tournament: Tournament
   
@@ -10,7 +11,11 @@ struct TournamentHeaderView: View {
   }
   
   var body: some View {
-    HStack(alignment: .top) {
+    let layout = dynamicTypeSize <= .accessibility2
+      ? AnyLayout(HStackLayout(alignment: .top))
+      : AnyLayout(VStackLayout(alignment: .leading))
+    
+    layout {
       AsyncImageView(
         imageURL: tournament.imageURL,
         cornerRadius: 10

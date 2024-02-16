@@ -6,7 +6,11 @@ struct BracketView: View {
   
   private let reloadPhaseGroup: (() -> Void)
   
-  init(state: Binding<PhaseGroupViewState>, selectedSet: Binding<PhaseGroupSet?>, reloadPhaseGroup: @escaping () -> Void) {
+  init(
+    state: Binding<PhaseGroupViewState>,
+    selectedSet: Binding<PhaseGroupSet?>,
+    reloadPhaseGroup: @escaping () -> Void
+  ) {
     self._state = state
     self._selectedSet = selectedSet
     self.reloadPhaseGroup = reloadPhaseGroup
@@ -33,7 +37,11 @@ struct BracketView: View {
             entrants: phaseGroupDetails?.standings.compactMap { $0.entrant } ?? []
           )
         default:
-          EmptyView() // TODO: Unsupported bracket type view
+          EmptyStateView(
+            systemImageName: "questionmark.app.dashed",
+            title: "Unsupported Bracket Type (\(phaseGroupDetails?.bracketType?.rawValue ?? ""))",
+            subtitle: "This type of bracket is currently not supported"
+          )
         }
       } else {
         EmptyStateView(

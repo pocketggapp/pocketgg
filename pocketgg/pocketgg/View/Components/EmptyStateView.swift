@@ -24,8 +24,8 @@ struct EmptyStateView: View {
           .fontWeight(.light)
         
         VStack {
-          Text("**\(title)**")
-            .font(.title2)
+          Text(title)
+            .font(.title2.weight(.bold))
             .multilineTextAlignment(.center)
           
           Text(subtitle)

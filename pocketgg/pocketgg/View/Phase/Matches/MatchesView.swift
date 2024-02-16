@@ -20,10 +20,8 @@ struct MatchesView: View {
     List {
       switch state {
       case .uninitialized, .loading:
-        ForEach(1..<20) { _ in
-          // TODO: Make match placeholder view
-          Text("Match Placeholder")
-            .redacted(reason: .placeholder)
+        ForEach(0..<10) { _ in
+          MatchRowPlaceholderView()
         }
       case .loaded(let phaseGroupDetails):
         if let matches = phaseGroupDetails?.matches, !matches.isEmpty {

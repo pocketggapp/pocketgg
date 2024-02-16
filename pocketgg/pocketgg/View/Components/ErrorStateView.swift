@@ -22,8 +22,8 @@ struct ErrorStateView: View {
           .fontWeight(.light)
         
         VStack {
-          Text("**Error**")
-            .font(.title2)
+          Text("Error")
+            .font(.title2.weight(.bold))
             .multilineTextAlignment(.center)
           
           Text(subtitle)
