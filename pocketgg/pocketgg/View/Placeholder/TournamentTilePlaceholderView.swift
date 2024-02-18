@@ -7,20 +7,19 @@ struct TournamentTilePlaceholderView: View {
     VStack(alignment: .leading) {
       Rectangle()
         .fill(Color(.placeholder))
-        .frame(width: 150 * scale, height: 150 * scale)
+        .frame(width: 300 * scale, height: 176 * scale)
         .clipShape(RoundedRectangle(cornerRadius: 10))
       
-      Text("The Big House 6")
-        .font(.headline)
-        .lineLimit(2)
-        .multilineTextAlignment(.leading)
-      
-      Text("Oct 7, 2019 - Oct 9, 2016")
-        .font(.subheadline)
-        .multilineTextAlignment(.leading)
+      VStack(alignment: .leading, spacing: 5) {
+        Text("The Big House 6")
+          .font(.title2.bold())
+          .lineLimit(1)
+        
+        Text("Oct 7, 2019 - Oct 9, 2016")
+        
+        Text("Dearborn, MI, USA")
+      }
     }
-    .aspectRatio(0.6, contentMode: .fit)
-    .frame(width: 150 * scale)
     .redacted(reason: .placeholder)
   }
 }

@@ -11,24 +11,33 @@ struct TournamentTileView: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      AsyncImageView(
-        imageURL: tournament.logoImageURL,
-        cornerRadius: 10
+      AsyncBannerImageView(
+        imageURL: tournament.bannerImageURL,
+        imageRatio: tournament.bannerImageRatio
       )
-      .frame(width: 150 * scale, height: 150 * scale)
-      .clipped()
+      .aspectRatio(1.7, contentMode: .fill)
+      .frame(width: 300 * scale)
+      .clipShape(RoundedRectangle(cornerRadius: 10))
       
-      Text(tournament.name ?? "")
-        .font(.headline)
-        .lineLimit(2)
-        .multilineTextAlignment(.leading)
-      
-      Text(tournament.date ?? "")
-        .font(.subheadline)
-        .multilineTextAlignment(.leading)
+      VStack(alignment: .leading, spacing: 5) {
+        Text(tournament.name ?? "")
+          .font(.title2.bold())
+          .lineLimit(1)
+        
+        HStack {
+          Image(systemName: "calendar")
+          Text(tournament.date ?? "")
+            .lineLimit(1)
+        }
+        
+        HStack {
+          Image(systemName: "mappin.and.ellipse")
+          Text(tournament.location)
+            .lineLimit(1)
+        }
+      }
     }
-    .aspectRatio(0.6, contentMode: .fit)
-    .frame(width: 150 * scale)
+    .frame(width: 300 * scale)
   }
 }
 

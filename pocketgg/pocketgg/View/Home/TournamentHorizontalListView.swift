@@ -7,7 +7,7 @@ struct TournamentHorizontalListView: View {
     VStack(alignment: .leading) {
       HStack {
         Text(tournamentsGroup.name)
-          .font(.headline)
+          .font(.title2.bold())
         
         Spacer()
         

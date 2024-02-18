@@ -6,7 +6,7 @@ struct TournamentsPlaceholderView: View {
     VStack(alignment: .leading) {
       HStack {
         Text("Super Smash Bros. Melee")
-          .font(.headline)
+          .font(.title2)
         
         Spacer()
       }

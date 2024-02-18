@@ -33,10 +33,9 @@ struct ProfileHeaderView: View {
           
           VStack(alignment: .leading, spacing: 5) {
             userTextView()
-              .font(.title3.bold())
+              .font(.title2.bold())
             
             Text(profile.bio ?? "")
-              .font(.caption)
           }
         }
         .padding(.top, 100 * scale)
