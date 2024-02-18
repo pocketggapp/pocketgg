@@ -27,4 +27,8 @@ struct TournamentDetails {
   let streams: [Stream]
   let location: Location?
   let contact: (info: String?, type: String?)
+  let organizer: Entrant?
+  let slug: String?
+  let registrationOpen: Bool
+  let registrationCloseDate: String
 }

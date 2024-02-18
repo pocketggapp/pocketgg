@@ -66,11 +66,26 @@ extension StartggService {
           
           let contactInfo = (tournament.primaryContact, tournament.primaryContactType)
           
+          var organizer: Entrant?
+          if let id = Int(tournament.owner?.id ?? "nil") {
+            organizer = Entrant(
+              id: id,
+              name: tournament.owner?.player?.gamerTag,
+              teamName: tournament.owner?.player?.prefix
+            )
+          }
+          
+          let registrationCloseDate = DateFormatter.shared.dateFromTimestamp(tournament.registrationClosesAt)
+          
           continuation.resume(returning: TournamentDetails(
             events: events,
             streams: streams,
             location: location,
-            contact: contactInfo
+            contact: contactInfo,
+            organizer: organizer,
+            slug: tournament.slug,
+            registrationOpen: tournament.isRegistrationOpen ?? false,
+            registrationCloseDate: registrationCloseDate
           ))
         case .failure(let error):
           continuation.resume(throwing: error)

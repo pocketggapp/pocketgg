@@ -11,7 +11,6 @@ struct StreamPlaceholderView: View {
         .clipShape(RoundedRectangle(cornerRadius: 5))
       
       Text("VGBootCamp & EvenMatchupGaming")
-        .font(.body)
     }
     .redacted(reason: .placeholder)
   }

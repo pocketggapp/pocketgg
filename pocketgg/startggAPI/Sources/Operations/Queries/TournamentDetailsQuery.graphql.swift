@@ -7,7 +7,7 @@ public class TournamentDetailsQuery: GraphQLQuery {
   public static let operationName: String = "TournamentDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename id name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType slug } }"#
+      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename id name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType owner { __typename id player { __typename gamerTag prefix } } slug } }"#
     ))
 
   public var id: GraphQLNullable<ID>
@@ -50,6 +50,7 @@ public class TournamentDetailsQuery: GraphQLQuery {
         .field("registrationClosesAt", StartggAPI.Timestamp?.self),
         .field("primaryContact", String?.self),
         .field("primaryContactType", String?.self),
+        .field("owner", Owner?.self),
         .field("slug", String?.self),
       ] }
 
@@ -65,6 +66,8 @@ public class TournamentDetailsQuery: GraphQLQuery {
       public var registrationClosesAt: StartggAPI.Timestamp? { __data["registrationClosesAt"] }
       public var primaryContact: String? { __data["primaryContact"] }
       public var primaryContactType: String? { __data["primaryContactType"] }
+      /// The user who created the tournament
+      public var owner: Owner? { __data["owner"] }
       /// The slug used to form the url
       public var slug: String? { __data["slug"] }
 
@@ -228,6 +231,43 @@ public class TournamentDetailsQuery: GraphQLQuery {
         public var streamLogo: String? { __data["streamLogo"] }
         public var streamSource: GraphQLEnum<StartggAPI.StreamSource>? { __data["streamSource"] }
         public var streamId: String? { __data["streamId"] }
+      }
+
+      /// Tournament.Owner
+      ///
+      /// Parent Type: `User`
+      public struct Owner: StartggAPI.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: ApolloAPI.ParentType { StartggAPI.Objects.User }
+        public static var __selections: [ApolloAPI.Selection] { [
+          .field("__typename", String.self),
+          .field("id", StartggAPI.ID?.self),
+          .field("player", Player?.self),
+        ] }
+
+        public var id: StartggAPI.ID? { __data["id"] }
+        /// player for user
+        public var player: Player? { __data["player"] }
+
+        /// Tournament.Owner.Player
+        ///
+        /// Parent Type: `Player`
+        public struct Player: StartggAPI.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { StartggAPI.Objects.Player }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("gamerTag", String?.self),
+            .field("prefix", String?.self),
+          ] }
+
+          public var gamerTag: String? { __data["gamerTag"] }
+          public var prefix: String? { __data["prefix"] }
+        }
       }
     }
   }

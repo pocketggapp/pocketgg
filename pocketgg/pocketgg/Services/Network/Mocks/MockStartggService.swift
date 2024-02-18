@@ -8,12 +8,7 @@ final class MockStartggService: StartggServiceType {
   }
   
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
-    TournamentDetails(
-      events: [MockStartggService.createEvent()],
-      streams: [MockStartggService.createStream()],
-      location: MockStartggService.createLocation(),
-      contact: MockStartggService.createContactInfo()
-    )
+    MockStartggService.createTournamentDetails()
   }
   
   func getEventDetails(id: Int) async throws -> EventDetails? {
@@ -62,6 +57,19 @@ final class MockStartggService: StartggServiceType {
       logoImageURL: "https://images.start.gg/images/tournament/517161/image-23d5e280287897018400cb92f524f686.png?ehk=jUpg17LnBumX5JR%2By90B%2F%2BmoxVMeuB2PsdLV10nzguM%3D&ehkOptimized=9SqBHvCIRjjHB3GPMiPodAUVfFG6ySpMFWKmVT5bJNo%3D",
       bannerImageURL: "https://images.start.gg/images/tournament/517161/image-0e0b12a3ec7e661d87fcace5bde6af8e.png?ehk=OAilT7NsdhAxr0l3V%2FQVlq98RQ30rQo%2FVtoX359s6xg%3D&ehkOptimized=wtK4P7FHj0USwucEiggox6TuToYVTLF4iXIq%2BSIUlYQ%3D",
       bannerImageRatio: 4
+    )
+  }
+  
+  static func createTournamentDetails() -> TournamentDetails {
+    TournamentDetails(
+      events: [MockStartggService.createEvent()],
+      streams: [MockStartggService.createStream()],
+      location: MockStartggService.createLocation(),
+      contact: MockStartggService.createContactInfo(),
+      organizer: MockStartggService.createEntrant(id: 0),
+      slug: "tournament/the-big-house-6",
+      registrationOpen: false,
+      registrationCloseDate: "January 1, 1970"
     )
   }
   

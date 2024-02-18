@@ -43,14 +43,8 @@ struct EventsView: View {
 }
 
 #Preview {
-  let tournamentDetails = TournamentDetails(
-    events: [MockStartggService.createEvent()],
-    streams: [],
-    location: nil,
-    contact: (nil, nil)
-  )
-  return EventsView(
-    state: .constant(.loaded(tournamentDetails)),
+  EventsView(
+    state: .constant(.loaded(MockStartggService.createTournamentDetails())),
     reloadTournament: { }
   )
 }

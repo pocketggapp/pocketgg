@@ -44,14 +44,8 @@ struct LocationView: View {
 }
 
 #Preview {
-  let tournamentDetails = TournamentDetails(
-    events: [],
-    streams: [],
-    location: MockStartggService.createLocation(),
-    contact: (nil, nil)
-  )
-  return LocationView(
-    state: .constant(.loaded(tournamentDetails)),
+  LocationView(
+    state: .constant(.loaded(MockStartggService.createTournamentDetails())),
     tournamentID: 1,
     reloadTournament: { }
   )

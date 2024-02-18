@@ -40,7 +40,7 @@
 		DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBC52B655F6600F3131E /* StreamsView.swift */; };
 		DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBC82B65639D00F3131E /* EventsView.swift */; };
 		DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBCA2B6564B800F3131E /* LocationView.swift */; };
-		DA4DDBCD2B65662F00F3131E /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBCC2B65662F00F3131E /* ContactInfoView.swift */; };
+		DA4DDBCD2B65662F00F3131E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBCC2B65662F00F3131E /* InfoView.swift */; };
 		DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65B2AB618B100EF18E0 /* SettingsView.swift */; };
 		DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65D2AB61AE300EF18E0 /* HomeView.swift */; };
 		DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */; };
@@ -98,6 +98,10 @@
 		DAD125292B815937005CECB6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125282B815937005CECB6 /* Profile.swift */; };
 		DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */; };
 		DAD1252D2B82600E005CECB6 /* TournamentContextMenuPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252C2B82600E005CECB6 /* TournamentContextMenuPreview.swift */; };
+		DAD125302B828F54005CECB6 /* FollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252F2B828F54005CECB6 /* FollowingView.swift */; };
+		DAD125322B82B48D005CECB6 /* TournamentOrganizerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */; };
+		DAD125342B82BA0F005CECB6 /* InfoPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */; };
+		DAD125362B82BD39005CECB6 /* RegistrationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
 		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
 		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
@@ -170,7 +174,7 @@
 		DA4DDBC52B655F6600F3131E /* StreamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamsView.swift; sourceTree = "<group>"; };
 		DA4DDBC82B65639D00F3131E /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		DA4DDBCA2B6564B800F3131E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
-		DA4DDBCC2B65662F00F3131E /* ContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoView.swift; sourceTree = "<group>"; };
+		DA4DDBCC2B65662F00F3131E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		DA65D65B2AB618B100EF18E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA65D65D2AB61AE300EF18E0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -228,6 +232,10 @@
 		DAD125282B815937005CECB6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBannerImageView.swift; sourceTree = "<group>"; };
 		DAD1252C2B82600E005CECB6 /* TournamentContextMenuPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentContextMenuPreview.swift; sourceTree = "<group>"; };
+		DAD1252F2B828F54005CECB6 /* FollowingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingView.swift; sourceTree = "<group>"; };
+		DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentOrganizerRowView.swift; sourceTree = "<group>"; };
+		DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlaceholderView.swift; sourceTree = "<group>"; };
+		DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRowView.swift; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
 		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
 		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
@@ -629,6 +637,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		DAD1252E2B828F03005CECB6 /* Following */ = {
+			isa = PBXGroup;
+			children = (
+				DAD1252F2B828F54005CECB6 /* FollowingView.swift */,
+			);
+			path = Following;
+			sourceTree = "<group>";
+		};
 		DAD2BCD92ADB2D520088BA96 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +673,7 @@
 				DA789D9C2B66C315009B9799 /* Event */,
 				DA91786A2B6FEFA200579360 /* Phase */,
 				DADCB9DB2B7C514D0093023D /* PhaseGroupSet */,
+				DAD1252E2B828F03005CECB6 /* Following */,
 				DAD1251C2B802ABA005CECB6 /* Profile */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
 				DA15EC5B2B5A2A51003FD258 /* Components */,
@@ -674,7 +691,7 @@
 				DA4DDBC72B65638D00F3131E /* Events */,
 				DAF117B42B50E2DA00D39F65 /* Streams */,
 				DA15EC582B5A28BC003FD258 /* Location */,
-				DAF8FF9E2B5E17AE0070BD49 /* Contact Info */,
+				DAF8FF9E2B5E17AE0070BD49 /* Info */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -698,6 +715,7 @@
 				DA91785E2B6ECF7300579360 /* TextPlaceholderView.swift */,
 				DAFB42D72B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift */,
 				DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */,
+				DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */,
 			);
 			path = Placeholder;
 			sourceTree = "<group>";
@@ -734,13 +752,15 @@
 			path = Elimination;
 			sourceTree = "<group>";
 		};
-		DAF8FF9E2B5E17AE0070BD49 /* Contact Info */ = {
+		DAF8FF9E2B5E17AE0070BD49 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				DA4DDBCC2B65662F00F3131E /* ContactInfoView.swift */,
+				DA4DDBCC2B65662F00F3131E /* InfoView.swift */,
 				DAE36C322B6204440037B45D /* ContactInfoRowView.swift */,
+				DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */,
+				DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */,
 			);
-			path = "Contact Info";
+			path = Info;
 			sourceTree = "<group>";
 		};
 		DAFB42D42B7C811800F84E42 /* PhaseGroupSet */ = {
@@ -865,6 +885,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD125342B82BA0F005CECB6 /* InfoPlaceholderView.swift in Sources */,
 				DA475EE42B78190B007100A6 /* EliminationRoundLabelView.swift in Sources */,
 				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
 				DAD125292B815937005CECB6 /* Profile.swift in Sources */,
@@ -899,6 +920,7 @@
 				DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */,
 				DA053A492B7B183000A6803A /* BracketView.swift in Sources */,
 				DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */,
+				DAD125302B828F54005CECB6 /* FollowingView.swift in Sources */,
 				DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */,
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
 				DAD1252D2B82600E005CECB6 /* TournamentContextMenuPreview.swift in Sources */,
@@ -907,6 +929,7 @@
 				DA6926672AD1E2AB0086B92A /* LocationPreferenceView.swift in Sources */,
 				DA15EC6C2B5A3CAE003FD258 /* StartggService+Tournament.swift in Sources */,
 				DAC4E94E2B4B96B700B356A0 /* Entrant.swift in Sources */,
+				DAD125322B82B48D005CECB6 /* TournamentOrganizerRowView.swift in Sources */,
 				DA9178572B6E9B3F00579360 /* EventHeaderView.swift in Sources */,
 				DA91785F2B6ECF7300579360 /* TextPlaceholderView.swift in Sources */,
 				DA053A452B7AF3B100A6803A /* RoundRobinSetView.swift in Sources */,
@@ -915,6 +938,7 @@
 				DAD125272B815906005CECB6 /* StartggService+Profile.swift in Sources */,
 				DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
+				DAD125362B82BD39005CECB6 /* RegistrationRowView.swift in Sources */,
 				DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */,
 				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
 				DAD1251E2B802ACE005CECB6 /* ProfileView.swift in Sources */,
@@ -962,7 +986,7 @@
 				DA91786F2B6FEFF600579360 /* PhaseGroupListViewModel.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,
-				DA4DDBCD2B65662F00F3131E /* ContactInfoView.swift in Sources */,
+				DA4DDBCD2B65662F00F3131E /* InfoView.swift in Sources */,
 				DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */,
 				DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */,
 				DAD125202B806DE5005CECB6 /* ProfileHeaderView.swift in Sources */,

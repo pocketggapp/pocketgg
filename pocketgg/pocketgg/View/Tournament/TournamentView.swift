@@ -28,7 +28,7 @@ struct TournamentView: View {
         
         SegmentedControlView(
           selected: $selected,
-          sections: ["Events", "Streams", "Location", "Contact Info"]
+          sections: ["Events", "Streams", "Location", "Info"]
         )
         
         switch selected {
@@ -44,8 +44,8 @@ struct TournamentView: View {
           LocationView(state: $viewModel.state, tournamentID: tournament.id) {
             reloadTournament()
           }
-        case "Contact Info":
-          ContactInfoView(state: $viewModel.state) {
+        case "Info":
+          InfoView(state: $viewModel.state) {
             reloadTournament()
           }
         default:

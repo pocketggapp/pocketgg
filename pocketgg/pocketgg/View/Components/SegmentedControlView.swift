@@ -58,7 +58,7 @@ private struct SegmentedControlViewStyle: ButtonStyle {
   struct ContainerView: View {
     @State var selected = "Events"
     var body: some View {
-      SegmentedControlView(selected: $selected, sections: ["Events", "Streams", "Location", "Contact Info"])
+      SegmentedControlView(selected: $selected, sections: ["Events", "Streams", "Location", "Info"])
     }
   }
   return ContainerView()

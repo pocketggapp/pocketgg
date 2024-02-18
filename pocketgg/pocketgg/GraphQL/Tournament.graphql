@@ -69,6 +69,13 @@ query TournamentDetails($id: ID) {
     registrationClosesAt
     primaryContact
     primaryContactType
+    owner {
+      id
+      player {
+        gamerTag
+        prefix
+      }
+    }
     slug
   }
 }

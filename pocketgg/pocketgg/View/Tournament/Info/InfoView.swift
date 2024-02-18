@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContactInfoView: View {
+struct InfoView: View {
   @Binding private var state: TournamentViewState
   
   private let reloadTournament: (() -> Void)
@@ -11,21 +11,25 @@ struct ContactInfoView: View {
   }
   
   var body: some View {
-    VStack {
+    VStack(spacing: 32) {
       switch state {
       case .uninitialized, .loading:
-        LocationPlaceholderView()
+        ForEach(0..<3) { _ in
+          InfoPlaceholderView()
+        }
       case .loaded(let tournamentDetails):
         if let contactInfo = tournamentDetails?.contact.info,
            let contactType = tournamentDetails?.contact.type {
           ContactInfoRowView(contactInfo: contactInfo, contactType: contactType)
-        } else {
-          EmptyStateView(
-            systemImageName: "person.fill.questionmark",
-            title: "No Contact Info",
-            subtitle: "There is currently no contact info for this tournament"
-          )
         }
+        if let organizer = tournamentDetails?.organizer {
+          TournamentOrganizerRowView(tournamentOrganizer: organizer)
+        }
+        RegistrationRowView(
+          tournamentSlug: tournamentDetails?.slug,
+          registrationOpen: tournamentDetails?.registrationOpen ?? false,
+          registrationCloseDate: tournamentDetails?.registrationCloseDate ?? ""
+        )
       case .error:
         ErrorStateView(subtitle: "There was an error loading this tournament") {
           reloadTournament()
@@ -37,14 +41,8 @@ struct ContactInfoView: View {
 }
 
 #Preview {
-  let tournamentDetails = TournamentDetails(
-    events: [],
-    streams: [],
-    location: nil,
-    contact: MockStartggService.createContactInfo()
-  )
-  return ContactInfoView(
-    state: .constant(.loaded(tournamentDetails)),
+  InfoView(
+    state: .constant(.loaded(MockStartggService.createTournamentDetails())),
     reloadTournament: { }
   )
 }

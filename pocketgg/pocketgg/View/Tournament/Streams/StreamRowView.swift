@@ -29,6 +29,9 @@ struct StreamRowView: View {
             .font(.body)
           
           Spacer()
+          
+          Image(systemName: "chevron.right")
+            .foregroundColor(.gray)
         }
       }
     }
