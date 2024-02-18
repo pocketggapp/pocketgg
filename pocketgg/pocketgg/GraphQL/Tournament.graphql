@@ -1,9 +1,3 @@
-query CurrentUserID {
-  currentUser {
-    id
-  }
-}
-
 query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
   tournaments(query: {
     perPage: 50

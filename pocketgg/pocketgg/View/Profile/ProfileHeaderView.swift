@@ -1,0 +1,67 @@
+import SwiftUI
+
+struct ProfileHeaderView: View {
+  @ScaledMetric private var scale: CGFloat = 1
+  @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+  
+  private let profile: Profile
+  
+  init(profile: Profile) {
+    self.profile = profile
+  }
+  
+  var body: some View {
+    GeometryReader { proxy in
+      ZStack(alignment: .topLeading) {
+        AsyncBannerImageView(
+          imageURL: profile.bannerImageURL,
+          imageRatio: profile.bannerImageRatio
+        )
+        .frame(width: proxy.size.width, height: 150 * scale)
+        .clipped()
+        
+        VStack(alignment: .leading) {
+          AsyncImageView(
+            imageURL: profile.profileImageURL,
+            cornerRadius: 10
+          )
+          .frame(width: 100 * scale, height: 100 * scale)
+          .clipped()
+          .overlay(
+            RoundedRectangle(cornerRadius: 10)
+              .stroke(Color(uiColor: .systemBackground), lineWidth: 2)
+          )
+          
+          VStack(alignment: .leading, spacing: 5) {
+            userTextView()
+              .font(.title3.bold())
+            
+            Text(profile.bio ?? "")
+              .font(.caption)
+          }
+        }
+        .padding(.top, 100 * scale)
+        .padding(.leading, 16)
+      }
+    }
+  }
+  
+  @ViewBuilder
+  private func userTextView() -> some View {
+    if let name = profile.name {
+      if let teamName = profile.teamName {
+        Text(teamName).foregroundColor(.gray) + Text(" ") + Text(name)
+      } else {
+        Text(name)
+      }
+    } else {
+      Text("Guest")
+    }
+  }
+}
+
+#Preview {
+  ProfileHeaderView(
+    profile: MockStartggService.createProfile()
+  )
+}

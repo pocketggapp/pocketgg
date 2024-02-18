@@ -90,6 +90,13 @@
 		DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */; };
 		DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */; };
 		DAD1251B2B80250E005CECB6 /* MatchRowPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */; };
+		DAD1251E2B802ACE005CECB6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251D2B802ACE005CECB6 /* ProfileView.swift */; };
+		DAD125202B806DE5005CECB6 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251F2B806DE5005CECB6 /* ProfileHeaderView.swift */; };
+		DAD125222B806FC5005CECB6 /* Profile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DAD125212B806FC5005CECB6 /* Profile.graphql */; };
+		DAD125252B815857005CECB6 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125242B815857005CECB6 /* ProfileViewModel.swift */; };
+		DAD125272B815906005CECB6 /* StartggService+Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125262B815906005CECB6 /* StartggService+Profile.swift */; };
+		DAD125292B815937005CECB6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125282B815937005CECB6 /* Profile.swift */; };
+		DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
 		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
 		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
@@ -212,6 +219,13 @@
 		DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantService.swift; sourceTree = "<group>"; };
 		DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowPlaceholderView.swift; sourceTree = "<group>"; };
+		DAD1251D2B802ACE005CECB6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DAD1251F2B806DE5005CECB6 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		DAD125212B806FC5005CECB6 /* Profile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Profile.graphql; sourceTree = "<group>"; };
+		DAD125242B815857005CECB6 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		DAD125262B815906005CECB6 /* StartggService+Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Profile.swift"; sourceTree = "<group>"; };
+		DAD125282B815937005CECB6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBannerImageView.swift; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
 		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
 		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
@@ -267,6 +281,7 @@
 				DA0E59852B6D5AEF0031A5A1 /* Event.graphql */,
 				DA9178702B6FF5D000579360 /* Phase.graphql */,
 				DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */,
+				DAD125212B806FC5005CECB6 /* Profile.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -287,6 +302,7 @@
 				DA91785A2B6E9DAA00579360 /* ErrorStateView.swift */,
 				DA8D00B32ACA6D800093FC49 /* LoadingView.swift */,
 				DADF343C2B54CAF50020C29D /* AsyncImageView.swift */,
+				DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */,
 				DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */,
 			);
 			path = Components;
@@ -309,6 +325,7 @@
 				DA0E59822B6D5A930031A5A1 /* StartggService+Event.swift */,
 				DA9178722B6FF79A00579360 /* StartggService+Phase.swift */,
 				DAFB42D92B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift */,
+				DAD125262B815906005CECB6 /* StartggService+Profile.swift */,
 				DA15EC662B5A3AC5003FD258 /* Apollo */,
 				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
@@ -412,6 +429,7 @@
 				DA789D9F2B66C490009B9799 /* Event */,
 				DA91786D2B6FEFD100579360 /* Phase */,
 				DAFB42D42B7C811800F84E42 /* PhaseGroupSet */,
+				DAD125232B815848005CECB6 /* Profile */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -426,6 +444,7 @@
 				DAC4E94D2B4B96B700B356A0 /* Entrant.swift */,
 				DA2723A02B5B451C002FF875 /* Stream.swift */,
 				DA2723A82B5C5509002FF875 /* Location.swift */,
+				DAD125282B815937005CECB6 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,6 +610,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		DAD1251C2B802ABA005CECB6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DAD1251D2B802ACE005CECB6 /* ProfileView.swift */,
+				DAD1251F2B806DE5005CECB6 /* ProfileHeaderView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DAD125232B815848005CECB6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DAD125242B815857005CECB6 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		DAD2BCD92ADB2D520088BA96 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +655,7 @@
 				DA789D9C2B66C315009B9799 /* Event */,
 				DA91786A2B6FEFA200579360 /* Phase */,
 				DADCB9DB2B7C514D0093023D /* PhaseGroupSet */,
+				DAD1251C2B802ABA005CECB6 /* Profile */,
 				DA65D66E2AB64A5C00EF18E0 /* Settings */,
 				DA15EC5B2B5A2A51003FD258 /* Components */,
 				DAF117A92B4F875000D39F65 /* Placeholder */,
@@ -805,6 +842,7 @@
 				DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */,
 				DA0E59862B6D5AEF0031A5A1 /* Event.graphql in Resources */,
 				DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */,
+				DAD125222B806FC5005CECB6 /* Profile.graphql in Resources */,
 				DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */,
 				DA9178712B6FF5D000579360 /* Phase.graphql in Resources */,
 			);
@@ -826,8 +864,10 @@
 			files = (
 				DA475EE42B78190B007100A6 /* EliminationRoundLabelView.swift in Sources */,
 				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
+				DAD125292B815937005CECB6 /* Profile.swift in Sources */,
 				DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
+				DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */,
 				DA053A4B2B7BC1B100A6803A /* RoundRobinEntrantView.swift in Sources */,
 				DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */,
 				DAF340712B717FAE00379688 /* MatchRowView.swift in Sources */,
@@ -868,10 +908,12 @@
 				DA053A452B7AF3B100A6803A /* RoundRobinSetView.swift in Sources */,
 				DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */,
 				DAF340732B71976B00379688 /* PhaseGroupSetService.swift in Sources */,
+				DAD125272B815906005CECB6 /* StartggService+Profile.swift in Sources */,
 				DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */,
 				DA46B19D2A5E564C00814252 /* Persistence.swift in Sources */,
 				DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */,
 				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
+				DAD1251E2B802ACE005CECB6 /* ProfileView.swift in Sources */,
 				DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */,
 				DA91786C2B6FEFC400579360 /* PhaseGroupListView.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
@@ -907,6 +949,7 @@
 				DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */,
 				DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */,
 				DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */,
+				DAD125252B815857005CECB6 /* ProfileViewModel.swift in Sources */,
 				DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */,
 				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
 				DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */,
@@ -918,6 +961,7 @@
 				DA4DDBCD2B65662F00F3131E /* ContactInfoView.swift in Sources */,
 				DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */,
 				DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */,
+				DAD125202B806DE5005CECB6 /* ProfileHeaderView.swift in Sources */,
 				DA2723A92B5C5509002FF875 /* Location.swift in Sources */,
 				DA91785B2B6E9DAA00579360 /* ErrorStateView.swift in Sources */,
 			);

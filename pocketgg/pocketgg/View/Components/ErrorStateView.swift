@@ -14,20 +14,21 @@ struct ErrorStateView: View {
   var body: some View {
     HStack {
       Spacer()
-      VStack {
+      VStack(spacing: 16) {
         Image(systemName: "exclamationmark.circle")
           .resizable()
           .scaledToFit()
           .frame(width: 75 * scale, height: 75 * scale)
           .fontWeight(.light)
         
-        VStack {
+        VStack(spacing: 5) {
           Text("Error")
-            .font(.title2.weight(.bold))
+            .font(.title2.bold())
             .multilineTextAlignment(.center)
           
           Text(subtitle)
             .multilineTextAlignment(.center)
+            .foregroundColor(.gray)
           
           Button {
             reload()
@@ -37,6 +38,7 @@ struct ErrorStateView: View {
           }
           .buttonStyle(.borderedProminent)
           .tint(.red)
+          .padding(.top)
         }
       }
       Spacer()

@@ -24,7 +24,7 @@ struct LoginView: View {
       
       VStack(spacing: 10) {
         Text("pocketgg")
-          .font(.largeTitle.weight(.bold))
+          .font(.largeTitle.bold())
         
         Text("A video game tournament companion app, powered by start.gg")
           .multilineTextAlignment(.center)

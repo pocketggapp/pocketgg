@@ -16,20 +16,21 @@ struct EmptyStateView: View {
   var body: some View {
     HStack {
       Spacer()
-      VStack {
+      VStack(spacing: 16) {
         Image(systemName: systemImageName)
           .resizable()
           .scaledToFit()
           .frame(width: 75 * scale, height: 75 * scale)
           .fontWeight(.light)
         
-        VStack {
+        VStack(spacing: 5) {
           Text(title)
-            .font(.title2.weight(.bold))
+            .font(.title2.bold())
             .multilineTextAlignment(.center)
           
           Text(subtitle)
             .multilineTextAlignment(.center)
+            .foregroundColor(.gray)
         }
       }
       Spacer()
@@ -42,6 +43,6 @@ struct EmptyStateView: View {
   EmptyStateView(
     systemImageName: "questionmark.app.dashed",
     title: "No Events",
-    subtitle: "There are currently no events for this tournament adfsdasfadsf"
+    subtitle: "There are currently no events for this tournament"
   )
 }

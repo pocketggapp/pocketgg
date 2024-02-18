@@ -24,9 +24,10 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     switch typename {
     case "Query": return StartggAPI.Objects.Query
     case "User": return StartggAPI.Objects.User
+    case "Player": return StartggAPI.Objects.Player
+    case "Image": return StartggAPI.Objects.Image
     case "TournamentConnection": return StartggAPI.Objects.TournamentConnection
     case "Tournament": return StartggAPI.Objects.Tournament
-    case "Image": return StartggAPI.Objects.Image
     case "Event": return StartggAPI.Objects.Event
     case "StandingConnection": return StartggAPI.Objects.StandingConnection
     case "Standing": return StartggAPI.Objects.Standing

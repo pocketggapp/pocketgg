@@ -1,0 +1,21 @@
+query CurrentUserID {
+  currentUser {
+    id
+  }
+}
+
+query CurrentUser {
+  currentUser {
+    id
+    bio
+    player {
+      prefix
+      gamerTag
+    }
+    images {
+      type
+      url
+      ratio
+    }
+  }
+}
