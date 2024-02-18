@@ -25,7 +25,6 @@ struct TournamentView: View {
     ScrollView(.vertical) {
       VStack(alignment: .leading) {
         TournamentHeaderView(tournament: tournament)
-          .padding()
         
         SegmentedControlView(
           selected: $selected,

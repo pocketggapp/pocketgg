@@ -22,7 +22,9 @@ extension StartggService {
             let end = DateFormatter.shared.dateFromTimestamp($0?.endAt)
             let date = start == end ? start : "\(start) - \(end)"
             
-            let logoURL = $0?.images?.first(where: { $0?.type ?? "" == "profile" })??.url
+            let logoURL = $0?.images?.first(where: { $0?.type == "profile" })??.url
+            let bannerImageURL = $0?.images?.first { $0?.type == "banner" }??.url
+            let bannerImageRatio = $0?.images?.first { $0?.type == "banner" }??.ratio
             
             var location = ""
             var components = [String]()
@@ -48,9 +50,11 @@ extension StartggService {
             return Tournament(
               id: id,
               name: $0?.name,
-              imageURL: logoURL,
               date: date,
-              location: location
+              location: location,
+              logoImageURL: logoURL,
+              bannerImageURL: bannerImageURL,
+              bannerImageRatio: bannerImageRatio
             )
           }
           
@@ -58,23 +62,29 @@ extension StartggService {
           tournaments.append(Tournament(
             id: 548572,
             name: "Big House 11",
-            imageURL: nil,
             date: "Never",
-            location: "Somewhere"
+            location: "Somewhere",
+            logoImageURL: nil,
+            bannerImageURL: nil,
+            bannerImageRatio: nil
           ))
           tournaments.append(Tournament(
             id: 628538,
             name: "Test tournament",
-            imageURL: nil,
             date: "Never",
-            location: "Somewhere"
+            location: "Somewhere",
+            logoImageURL: nil,
+            bannerImageURL: nil,
+            bannerImageRatio: nil
           ))
           tournaments.append(Tournament(
             id: 109112,
             name: "UWaterloo Arcadian 6",
-            imageURL: nil,
             date: "Never",
-            location: "Somewhere"
+            location: "Somewhere",
+            logoImageURL: nil,
+            bannerImageURL: nil,
+            bannerImageRatio: nil
           ))
           
           continuation.resume(returning: tournaments)

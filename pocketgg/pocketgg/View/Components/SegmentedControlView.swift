@@ -22,7 +22,7 @@ struct SegmentedControlView: View {
           } label: {
             VStack {
               Text(section)
-                .font(.subheadline)
+              
               ZStack {
                 Rectangle()
                   .fill(Color.clear)

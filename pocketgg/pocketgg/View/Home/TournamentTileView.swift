@@ -12,7 +12,7 @@ struct TournamentTileView: View {
   var body: some View {
     VStack(alignment: .leading) {
       AsyncImageView(
-        imageURL: tournament.imageURL,
+        imageURL: tournament.logoImageURL,
         cornerRadius: 10
       )
       .frame(width: 150 * scale, height: 150 * scale)

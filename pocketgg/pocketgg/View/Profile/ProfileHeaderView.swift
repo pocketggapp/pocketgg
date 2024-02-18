@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
   @ScaledMetric private var scale: CGFloat = 1
-  @Environment(\.dynamicTypeSize) private var dynamicTypeSize
   
   private let profile: Profile
   

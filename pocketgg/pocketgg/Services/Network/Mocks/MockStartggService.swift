@@ -57,9 +57,11 @@ final class MockStartggService: StartggServiceType {
     Tournament(
       id: id,
       name: "Tournament \(id)",
-      imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTySOlAWdNB8bEx9-r6y9ZK8rco9ptzwHUzm2XcNI0gcQ&s",
       date: "Jul 21 - Jul 23, 2023",
-      location: "Somewhere"
+      location: "Somewhere",
+      logoImageURL: "https://images.start.gg/images/tournament/517161/image-23d5e280287897018400cb92f524f686.png?ehk=jUpg17LnBumX5JR%2By90B%2F%2BmoxVMeuB2PsdLV10nzguM%3D&ehkOptimized=9SqBHvCIRjjHB3GPMiPodAUVfFG6ySpMFWKmVT5bJNo%3D",
+      bannerImageURL: "https://images.start.gg/images/tournament/517161/image-0e0b12a3ec7e661d87fcace5bde6af8e.png?ehk=OAilT7NsdhAxr0l3V%2FQVlq98RQ30rQo%2FVtoX359s6xg%3D&ehkOptimized=wtK4P7FHj0USwucEiggox6TuToYVTLF4iXIq%2BSIUlYQ%3D",
+      bannerImageRatio: 4
     )
   }
   

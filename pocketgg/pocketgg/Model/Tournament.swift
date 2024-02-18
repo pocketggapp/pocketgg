@@ -6,9 +6,11 @@ import Foundation
 struct Tournament: Identifiable, Hashable {
   let id: Int
   let name: String?
-  let imageURL: String?
   let date: String?
   let location: String
+  let logoImageURL: String?
+  let bannerImageURL: String?
+  let bannerImageRatio: Double?
 }
 
 struct TournamentsGroup: Identifiable {
