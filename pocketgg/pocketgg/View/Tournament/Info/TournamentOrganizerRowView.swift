@@ -22,7 +22,7 @@ struct TournamentOrganizerRowView: View {
           Color(UIColor.systemBackground)
           
           HStack {
-            Image(systemName: "person.fill")
+            Image(systemName: "person")
               .resizable()
               .scaledToFit()
               .frame(width: 44 * scale, height: 44 * scale)

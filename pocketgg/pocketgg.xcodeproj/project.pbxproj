@@ -102,6 +102,7 @@
 		DAD125322B82B48D005CECB6 /* TournamentOrganizerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */; };
 		DAD125342B82BA0F005CECB6 /* InfoPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */; };
 		DAD125362B82BD39005CECB6 /* RegistrationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */; };
+		DAD125382B852D74005CECB6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125372B852D74005CECB6 /* AboutView.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
 		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
 		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
@@ -236,6 +237,7 @@
 		DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentOrganizerRowView.swift; sourceTree = "<group>"; };
 		DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlaceholderView.swift; sourceTree = "<group>"; };
 		DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRowView.swift; sourceTree = "<group>"; };
+		DAD125372B852D74005CECB6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
 		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
 		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				DA65D65B2AB618B100EF18E0 /* SettingsView.swift */,
+				DAD125372B852D74005CECB6 /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
 				DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */,
 				DA789D9E2B66C324009B9799 /* EventView.swift in Sources */,
+				DAD125382B852D74005CECB6 /* AboutView.swift in Sources */,
 				DA46B1A02A5E564C00814252 /* pocketgg.xcdatamodeld in Sources */,
 				DA7949D02B70199E00D68EA4 /* PhaseGroupViewModel.swift in Sources */,
 				DA9178632B6ED7F600579360 /* TopStandingRowView.swift in Sources */,

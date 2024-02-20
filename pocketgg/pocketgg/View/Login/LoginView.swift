@@ -1,9 +1,5 @@
 import SwiftUI
 
-private enum LoginConstants {
-  static let imageLength: CGFloat = 100
-}
-
 struct LoginView: View {
   @EnvironmentObject private var appRootManager: AppRootManager
   @StateObject private var viewModel: LoginViewModel
@@ -18,9 +14,9 @@ struct LoginView: View {
     VStack {
       Spacer()
       
-        Image("tournament-red")
-          .resizable()
-          .frame(width: LoginConstants.imageLength, height: LoginConstants.imageLength)
+      Image("tournament-red")
+        .resizable()
+        .frame(width: 100, height: 100)
       
       VStack(spacing: 10) {
         Text("pocketgg")
