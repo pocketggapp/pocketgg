@@ -11,6 +11,8 @@ struct pocketggApp: App {
     WindowGroup {
       Group {
         switch appRootManager.currentRoot {
+        case .startup:
+          AppStartupView()
         case .login:
           LoginView()
         case .home:

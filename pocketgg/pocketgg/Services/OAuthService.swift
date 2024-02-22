@@ -165,20 +165,29 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
       if let response = try? decoder.decode(AccessTokenResponse.self, from: data) {
         return response
       } else {
+        #if DEBUG
+        print("Unable to decode response in OAuthService.requestTokens():")
+        print(String(data: data, encoding: .utf8) as Any)
+        #endif
         throw OAuthError.invalidData
       }
     } catch {
-      throw OAuthError.dataTaskError(error.localizedDescription)
+      switch error {
+      case OAuthError.invalidData:
+        throw error
+      default:
+        #if DEBUG
+        print("Data Task error in OAuthService.requestTokens():")
+        print(error.localizedDescription)
+        #endif
+        throw OAuthError.dataTaskError(error.localizedDescription)
+      }
     }
   }
   
   // MARK: Save Tokens
   
   func saveTokens(_ response: AccessTokenResponse) async throws {
-    // By default, tokens expire in 604800 seconds (7 days)
-    // Try to get a new access token once every day
-    userDefaults.set(Date(), forKey: Constants.accessTokenLastRefreshed)
-    
     return try await withCheckedThrowingContinuation { continuation in
       do {
         try KeychainService.upsertToken(response.accessToken, .accessToken)
@@ -188,6 +197,10 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
         return
       }
 
+      // By default, tokens expire in 604800 seconds (7 days)
+      // Try to get a new access token once every day
+      userDefaults.set(Date(), forKey: Constants.accessTokenLastRefreshed)
+      
       StartggService.shared.updateApolloClient()
       continuation.resume()
     }

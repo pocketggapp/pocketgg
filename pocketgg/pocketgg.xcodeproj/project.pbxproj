@@ -103,6 +103,7 @@
 		DAD125342B82BA0F005CECB6 /* InfoPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */; };
 		DAD125362B82BD39005CECB6 /* RegistrationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */; };
 		DAD125382B852D74005CECB6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125372B852D74005CECB6 /* AboutView.swift */; };
+		DAD1253A2B854654005CECB6 /* AppStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125392B854654005CECB6 /* AppStartupView.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
 		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
 		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
@@ -113,6 +114,8 @@
 		DADF343F2B54CB960020C29D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF343E2B54CB960020C29D /* ImageService.swift */; };
 		DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */; };
 		DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE36C322B6204440037B45D /* ContactInfoRowView.swift */; };
+		DAEADFC62B86F23600369C16 /* AppStartupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */; };
+		DAEADFC82B86F29900369C16 /* AppStartupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */; };
 		DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */; };
 		DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */; };
 		DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */; };
@@ -238,6 +241,7 @@
 		DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlaceholderView.swift; sourceTree = "<group>"; };
 		DAD125352B82BD39005CECB6 /* RegistrationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRowView.swift; sourceTree = "<group>"; };
 		DAD125372B852D74005CECB6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		DAD125392B854654005CECB6 /* AppStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupView.swift; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
 		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
 		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 		DADF343E2B54CB960020C29D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 		DAE36C322B6204440037B45D /* ContactInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRowView.swift; sourceTree = "<group>"; };
+		DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupViewModel.swift; sourceTree = "<group>"; };
+		DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupViewModelTests.swift; sourceTree = "<group>"; };
 		DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				DA15EC612B5A3750003FD258 /* LoginViewModelTests.swift */,
+				DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */,
 				DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */,
 			);
 			path = pocketggTests;
@@ -598,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				DABFF26A2AB794E20053614D /* LoginView.swift */,
+				DAD125392B854654005CECB6 /* AppStartupView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -606,6 +614,7 @@
 			isa = PBXGroup;
 			children = (
 				DABFF26E2AB906DC0053614D /* LoginViewModel.swift */,
+				DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -894,6 +903,7 @@
 				DAD125292B815937005CECB6 /* Profile.swift in Sources */,
 				DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
+				DAEADFC62B86F23600369C16 /* AppStartupViewModel.swift in Sources */,
 				DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */,
 				DA053A4B2B7BC1B100A6803A /* RoundRobinEntrantView.swift in Sources */,
 				DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */,
@@ -962,6 +972,7 @@
 				DA053A4D2B7BD76E00A6803A /* RoundRobinScoreView.swift in Sources */,
 				DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */,
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
+				DAD1253A2B854654005CECB6 /* AppStartupView.swift in Sources */,
 				DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */,
 				DA789D9E2B66C324009B9799 /* EventView.swift in Sources */,
 				DAD125382B852D74005CECB6 /* AboutView.swift in Sources */,
@@ -1003,6 +1014,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEADFC82B86F29900369C16 /* AppStartupViewModelTests.swift in Sources */,
 				DA15EC622B5A3750003FD258 /* LoginViewModelTests.swift in Sources */,
 				DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */,
 			);

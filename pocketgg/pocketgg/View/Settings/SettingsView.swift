@@ -100,15 +100,19 @@ struct SettingsView: View {
       .frame(width: 30 * scale, height: 30 * scale)
   }
   
+  /// Clear the access token, refresh token, and navigate to LoginView
   private func logOut() {
     do {
       try KeychainService.deleteToken(.accessToken)
       try KeychainService.deleteToken(.refreshToken)
-      UserDefaults.standard.removeObject(forKey: Constants.accessTokenLastRefreshed)
-      appRootManager.currentRoot = .login
     } catch {
+      #if DEBUG
       print(error)
+      #endif
     }
+    
+    UserDefaults.standard.removeObject(forKey: Constants.accessTokenLastRefreshed)
+    appRootManager.currentRoot = .login
   }
 }
 

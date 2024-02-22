@@ -3,64 +3,26 @@ import XCTest
 
 final class HomeViewModelTests: XCTestCase {
   private var sut: HomeViewModel!
-  private var userDefaults: UserDefaults!
   
   override func setUpWithError() throws {
-    userDefaults = UserDefaults(suiteName: #file)
-    userDefaults.removePersistentDomain(forName: #file)
-    
-    sut = HomeViewModel(
-      oAuthService: MockOAuthService(),
-      service: MockStartggService(),
-      userDefaults: userDefaults
-    )
+    sut = HomeViewModel(service: MockStartggService())
   }
   
   override func tearDownWithError() throws {
     sut = nil
   }
   
-  func testTournamentFetch() async {
+  func testFetchTournaments() async {
     await sut.fetchTournaments()
-    
-    XCTAssertTrue(sut.didAttemptTokenRefresh)
-    // TODO: Test sut.state
-  }
-  
-  func testTournamentFetchWithPreviousAccessToken() async {
-    guard let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
-      XCTFail("Could not create Date() object for 'yesterday'")
-      return
+    switch sut.state {
+    case .loaded(let tournamentGroups):
+      XCTAssertEqual(tournamentGroups.first?.tournaments, [
+        MockStartggService.createTournament(id: 0),
+        MockStartggService.createTournament(id: 1),
+        MockStartggService.createTournament(id: 2),
+      ])
+    default:
+      XCTFail()
     }
-    userDefaults.set(yesterday, forKey: Constants.accessTokenLastRefreshed)
-    sut = HomeViewModel(
-      oAuthService: MockOAuthService(),
-      service: MockStartggService(),
-      userDefaults: userDefaults
-    )
-    
-    await sut.fetchTournaments()
-    
-    XCTAssertTrue(sut.didAttemptTokenRefresh)
-    // TODO: Test sut.state
-  }
-  
-  
-  func testTournamentFetchWithoutAccessTokenRefresh() async {
-    userDefaults.set(Date(), forKey: Constants.accessTokenLastRefreshed)
-    sut = HomeViewModel(
-      oAuthService: MockOAuthService(),
-      service: MockStartggService(),
-      userDefaults: userDefaults
-    )
-    
-    await sut.fetchTournaments()
-    
-    XCTAssertFalse(sut.didAttemptTokenRefresh)
-    // TODO: Test sut.state
-  }
-  
-  func testTournamentFetchWithOldAccessToken() async {
-    // TODO: Move user back to LoginView
   }
 }

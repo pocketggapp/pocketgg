@@ -4,12 +4,9 @@ struct HomeView: View {
   @StateObject private var viewModel: HomeViewModel
   @State private var showingEditView = false
   
-  init(
-    oAuthService: OAuthServiceType = OAuthService.shared,
-    service: StartggServiceType = StartggService.shared
-  ) {
+  init(service: StartggServiceType = StartggService.shared) {
     self._viewModel = StateObject(wrappedValue: {
-      HomeViewModel(oAuthService: oAuthService, service: service)
+      HomeViewModel(service: service)
     }())
   }
 
@@ -61,7 +58,6 @@ struct HomeView: View {
 
 #Preview {
   HomeView(
-    oAuthService: MockOAuthService(),
     service: MockStartggService()
   )
 }
