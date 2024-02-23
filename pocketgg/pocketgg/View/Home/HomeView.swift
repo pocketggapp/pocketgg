@@ -2,7 +2,6 @@ import SwiftUI
 
 struct HomeView: View {
   @StateObject private var viewModel: HomeViewModel
-  @State private var showingEditView = false
   
   init(service: StartggServiceType = StartggService.shared) {
     self._viewModel = StateObject(wrappedValue: {
@@ -40,18 +39,6 @@ struct HomeView: View {
           tournament: tournament
         )
       }
-      .toolbar {
-        ToolbarItem(placement: .topBarTrailing) {
-          Button("Edit") {
-            showingEditView = true
-          }
-        }
-      }
-    }
-    .sheet(isPresented: $showingEditView) {
-      print("EDIT HOME DISMISSED")
-    } content: {
-      EditHomeView()
     }
   }
 }

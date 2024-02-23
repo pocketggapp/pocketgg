@@ -28,39 +28,27 @@ struct AboutView: View {
       }
       
       Section {
-        Button {
-          openSFSafariVC(urlString: "https://developer.start.gg/docs/intro")
-        } label: {
-          HStack {
-            settingsRowView(imageName: "server.rack")
-            Text("start.gg GraphQL API")
-          }
-        }
-        .buttonStyle(.plain)
+        aboutRowView(
+          text: "start.gg GraphQL API",
+          url: "https://developer.start.gg/docs/intro",
+          imageName: "server.rack"
+        )
       }
       
       Section {
-        Button {
-          openSFSafariVC(urlString: "https://www.apollographql.com/docs/ios")
-        } label: {
-          HStack {
-            settingsRowView(imageName: "a.circle")
-            Text("Apollo iOS")
-          }
-        }
-        .buttonStyle(.plain)
+        aboutRowView(
+          text: "Apollo iOS",
+          url: "https://www.apollographql.com/docs/ios",
+          imageName: "a.circle"
+        )
       }
       
       Section {
-        Button {
-          openSFSafariVC(urlString: "https://gabrielsiu.com/pocketgg")
-        } label: {
-          HStack {
-            settingsRowView(imageName: "hand.raised")
-            Text("Privacy Policy")
-          }
-        }
-        .buttonStyle(.plain)
+        aboutRowView(
+          text: "Privacy Policy",
+          url: "https://gabrielsiu.com/pocketgg",
+          imageName: "hand.raised"
+        )
       }
     }
     .listStyle(.insetGrouped)
@@ -90,10 +78,30 @@ struct AboutView: View {
     return "Version " + appVersion
   }
   
-  private func settingsRowView(imageName: String) -> some View {
-    Image(systemName: imageName)
-      .foregroundColor(.red)
-      .frame(width: 30 * scale, height: 30 * scale)
+  private func aboutRowView(
+    text: String,
+    url: String,
+    imageName: String
+  ) -> some View {
+    Button {
+      openSFSafariVC(urlString: url)
+    } label: {
+      ZStack {
+        Color(UIColor.systemBackground)
+        
+        HStack {
+          Image(systemName: imageName)
+            .foregroundColor(.red)
+            .frame(width: 30 * scale, height: 30 * scale)
+          Text(text)
+          Spacer()
+        }
+      }
+      .padding(.leading)
+      
+    }
+    .buttonStyle(.plain)
+    .listRowInsets(EdgeInsets())
   }
 }
 

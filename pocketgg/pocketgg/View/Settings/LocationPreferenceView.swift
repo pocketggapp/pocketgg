@@ -1,7 +1,13 @@
 import SwiftUI
 
 struct LocationPreferenceView: View {
-  @StateObject private var viewModel = LocationPreferenceViewModel()
+  @StateObject private var viewModel: LocationPreferenceViewModel
+  
+  init() {
+    self._viewModel = StateObject(wrappedValue: {
+      LocationPreferenceViewModel()
+    }())
+  }
   
   var body: some View {
     List {

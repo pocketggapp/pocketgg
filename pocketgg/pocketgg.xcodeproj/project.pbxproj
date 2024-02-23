@@ -51,7 +51,6 @@
 		DA65D6742AB6522D00EF18E0 /* ApolloAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6732AB6522D00EF18E0 /* ApolloAPI */; };
 		DA65D6762AB6522D00EF18E0 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D6752AB6522D00EF18E0 /* ApolloWebSocket */; };
 		DA65D67C2AB6746F00EF18E0 /* StartggAPI in Frameworks */ = {isa = PBXBuildFile; productRef = DA65D67B2AB6746F00EF18E0 /* StartggAPI */; };
-		DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926632AD1DDFA0086B92A /* EditHomeView.swift */; };
 		DA6926672AD1E2AB0086B92A /* LocationPreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */; };
 		DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */; };
 		DA789D9E2B66C324009B9799 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA789D9D2B66C324009B9799 /* EventView.swift */; };
@@ -187,7 +186,6 @@
 		DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTileView.swift; sourceTree = "<group>"; };
 		DA65D6772AB673A000EF18E0 /* Tournament.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; name = Tournament.graphql; path = pocketgg/GraphQL/Tournament.graphql; sourceTree = SOURCE_ROOT; };
 		DA65D6792AB6744400EF18E0 /* startggAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = startggAPI; sourceTree = "<group>"; };
-		DA6926632AD1DDFA0086B92A /* EditHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeView.swift; sourceTree = "<group>"; };
 		DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreferenceView.swift; sourceTree = "<group>"; };
 		DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreferenceViewModel.swift; sourceTree = "<group>"; };
 		DA789D9D2B66C324009B9799 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
@@ -449,6 +447,7 @@
 				DA91786D2B6FEFD100579360 /* Phase */,
 				DAFB42D42B7C811800F84E42 /* PhaseGroupSet */,
 				DAD125232B815848005CECB6 /* Profile */,
+				DAEADFC92B88513700369C16 /* Settings */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -474,8 +473,6 @@
 				DA65D65D2AB61AE300EF18E0 /* HomeView.swift */,
 				DA65D6692AB625E100EF18E0 /* TournamentHorizontalListView.swift */,
 				DA65D66B2AB6302700EF18E0 /* TournamentTileView.swift */,
-				DA6926632AD1DDFA0086B92A /* EditHomeView.swift */,
-				DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -484,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				DA65D65B2AB618B100EF18E0 /* SettingsView.swift */,
+				DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */,
 				DAD125372B852D74005CECB6 /* AboutView.swift */,
 			);
 			path = Settings;
@@ -493,7 +491,6 @@
 			isa = PBXGroup;
 			children = (
 				DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */,
-				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -714,6 +711,14 @@
 				DADD99AF2AE1C34400ED35FC /* TournamentViewModel.swift */,
 			);
 			path = Tournament;
+			sourceTree = "<group>";
+		};
+		DAEADFC92B88513700369C16 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DAF117A92B4F875000D39F65 /* Placeholder */ = {
@@ -938,7 +943,6 @@
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
 				DAD1252D2B82600E005CECB6 /* TournamentContextMenuPreview.swift in Sources */,
 				DA7949D52B707CE400D68EA4 /* StandingRowView.swift in Sources */,
-				DA6926642AD1DDFA0086B92A /* EditHomeView.swift in Sources */,
 				DA6926672AD1E2AB0086B92A /* LocationPreferenceView.swift in Sources */,
 				DA15EC6C2B5A3CAE003FD258 /* StartggService+Tournament.swift in Sources */,
 				DAC4E94E2B4B96B700B356A0 /* Entrant.swift in Sources */,
