@@ -60,6 +60,7 @@
 		DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D22B705C9B00D68EA4 /* StandingsView.swift */; };
 		DA7949D52B707CE400D68EA4 /* StandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D42B707CE400D68EA4 /* StandingRowView.swift */; };
 		DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D72B70B1B900D68EA4 /* MatchesView.swift */; };
+		DA88FA6F2B891A00006892BD /* Home.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA88FA6E2B891A00006892BD /* Home.graphql */; };
 		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
 		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
@@ -195,6 +196,7 @@
 		DA7949D22B705C9B00D68EA4 /* StandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsView.swift; sourceTree = "<group>"; };
 		DA7949D42B707CE400D68EA4 /* StandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingRowView.swift; sourceTree = "<group>"; };
 		DA7949D72B70B1B900D68EA4 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
+		DA88FA6E2B891A00006892BD /* Home.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Home.graphql; sourceTree = "<group>"; };
 		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
 		DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		DA0E59842B6D5ACE0031A5A1 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				DA88FA6E2B891A00006892BD /* Home.graphql */,
 				DA65D6772AB673A000EF18E0 /* Tournament.graphql */,
 				DA0E59852B6D5AEF0031A5A1 /* Event.graphql */,
 				DA9178702B6FF5D000579360 /* Phase.graphql */,
@@ -880,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */,
+				DA88FA6F2B891A00006892BD /* Home.graphql in Resources */,
 				DA0E59862B6D5AEF0031A5A1 /* Event.graphql in Resources */,
 				DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */,
 				DAD125222B806FC5005CECB6 /* Profile.graphql in Resources */,

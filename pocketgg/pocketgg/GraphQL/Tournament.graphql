@@ -1,31 +1,3 @@
-query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
-  tournaments(query: {
-    perPage: 50
-    page: $pageNum
-    sortBy: "startAt asc"
-    filter: {
-      videogameIds: $gameIDs
-      staffPicks: true
-    }
-  }) {
-    nodes {
-      id
-      name
-      startAt
-      endAt
-      isOnline
-      city
-      addrState
-      countryCode
-      images {
-        url
-        type
-        ratio
-      }
-    }
-  }
-}
-
 query TournamentDetails($id: ID) {
   tournament(id: $id) {
     events {

@@ -1,10 +1,14 @@
 final class MockStartggService: StartggServiceType {
   func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament] {
-    [
-      MockStartggService.createTournament(id: 0),
-      MockStartggService.createTournament(id: 1),
-      MockStartggService.createTournament(id: 2),
-    ]
+    [MockStartggService.createTournament(id: 0)]
+  }
+  
+  func getTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament] {
+    [MockStartggService.createTournament(id: 0)]
+  }
+  
+  func getTournamentsNearLocation(pageNum: Int, perPage: Int, gameIDs: [Int], coordinates: String, radius: String) async throws -> [Tournament] {
+    [MockStartggService.createTournament(id: 0)]
   }
   
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
