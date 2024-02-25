@@ -82,6 +82,12 @@
 		DA9178712B6FF5D000579360 /* Phase.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA9178702B6FF5D000579360 /* Phase.graphql */; };
 		DA9178732B6FF79A00579360 /* StartggService+Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178722B6FF79A00579360 /* StartggService+Phase.swift */; };
 		DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */; };
+		DAB992222B8AA1FF00F99BD6 /* VideoGame.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DAB992212B8AA1FF00F99BD6 /* VideoGame.graphql */; };
+		DAB992242B8AA35300F99BD6 /* VideoGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992232B8AA35300F99BD6 /* VideoGamesView.swift */; };
+		DAB992262B8AADFB00F99BD6 /* VideoGameSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992252B8AADFB00F99BD6 /* VideoGameSearchView.swift */; };
+		DAB992282B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */; };
+		DAB9922A2B8AEE8100F99BD6 /* VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992292B8AEE8100F99BD6 /* VideoGame.swift */; };
+		DAB9922C2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9922B2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
 		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
@@ -219,6 +225,12 @@
 		DA9178702B6FF5D000579360 /* Phase.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Phase.graphql; sourceTree = "<group>"; };
 		DA9178722B6FF79A00579360 /* StartggService+Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Phase.swift"; sourceTree = "<group>"; };
 		DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		DAB992212B8AA1FF00F99BD6 /* VideoGame.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = VideoGame.graphql; sourceTree = "<group>"; };
+		DAB992232B8AA35300F99BD6 /* VideoGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamesView.swift; sourceTree = "<group>"; };
+		DAB992252B8AADFB00F99BD6 /* VideoGameSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGameSearchView.swift; sourceTree = "<group>"; };
+		DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGameSearchViewModel.swift; sourceTree = "<group>"; };
+		DAB992292B8AEE8100F99BD6 /* VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGame.swift; sourceTree = "<group>"; };
+		DAB9922B2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+VideoGame.swift"; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +313,7 @@
 				DA9178702B6FF5D000579360 /* Phase.graphql */,
 				DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */,
 				DAD125212B806FC5005CECB6 /* Profile.graphql */,
+				DAB992212B8AA1FF00F99BD6 /* VideoGame.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -345,6 +358,7 @@
 				DA9178722B6FF79A00579360 /* StartggService+Phase.swift */,
 				DAFB42D92B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift */,
 				DAD125262B815906005CECB6 /* StartggService+Profile.swift */,
+				DAB9922B2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift */,
 				DA15EC662B5A3AC5003FD258 /* Apollo */,
 				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
@@ -466,6 +480,7 @@
 				DA2723A02B5B451C002FF875 /* Stream.swift */,
 				DA2723A82B5C5509002FF875 /* Location.swift */,
 				DAD125282B815937005CECB6 /* Profile.swift */,
+				DAB992292B8AEE8100F99BD6 /* VideoGame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,6 +499,8 @@
 			isa = PBXGroup;
 			children = (
 				DA65D65B2AB618B100EF18E0 /* SettingsView.swift */,
+				DAB992232B8AA35300F99BD6 /* VideoGamesView.swift */,
+				DAB992252B8AADFB00F99BD6 /* VideoGameSearchView.swift */,
 				DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */,
 				DAD125372B852D74005CECB6 /* AboutView.swift */,
 			);
@@ -720,6 +737,7 @@
 			isa = PBXGroup;
 			children = (
 				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
+				DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -889,6 +907,7 @@
 				DAD125222B806FC5005CECB6 /* Profile.graphql in Resources */,
 				DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */,
 				DA9178712B6FF5D000579360 /* Phase.graphql in Resources */,
+				DAB992222B8AA1FF00F99BD6 /* VideoGame.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,9 +927,11 @@
 			files = (
 				DAD125342B82BA0F005CECB6 /* InfoPlaceholderView.swift in Sources */,
 				DA475EE42B78190B007100A6 /* EliminationRoundLabelView.swift in Sources */,
+				DAB992262B8AADFB00F99BD6 /* VideoGameSearchView.swift in Sources */,
 				DAF117B62B50E2FF00D39F65 /* EventRowView.swift in Sources */,
 				DAD125292B815937005CECB6 /* Profile.swift in Sources */,
 				DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */,
+				DAB9922C2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift in Sources */,
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
 				DAEADFC62B86F23600369C16 /* AppStartupViewModel.swift in Sources */,
 				DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */,
@@ -965,6 +986,7 @@
 				DAD1251E2B802ACE005CECB6 /* ProfileView.swift in Sources */,
 				DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */,
 				DA91786C2B6FEFC400579360 /* PhaseGroupListView.swift in Sources */,
+				DAB992282B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
 				DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */,
@@ -992,6 +1014,7 @@
 				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
 				DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */,
 				DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */,
+				DAB992242B8AA35300F99BD6 /* VideoGamesView.swift in Sources */,
 				DA789DA12B66C4AB009B9799 /* EventViewModel.swift in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
 				DA91785D2B6EBFC500579360 /* BracketRowView.swift in Sources */,
@@ -1003,6 +1026,7 @@
 				DAD125252B815857005CECB6 /* ProfileViewModel.swift in Sources */,
 				DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */,
 				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
+				DAB9922A2B8AEE8100F99BD6 /* VideoGame.swift in Sources */,
 				DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */,
 				DA475EE62B782C94007100A6 /* EliminationSetPathView.swift in Sources */,
 				DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */,

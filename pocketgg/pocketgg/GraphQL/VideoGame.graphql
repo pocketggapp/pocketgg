@@ -1,0 +1,14 @@
+query VideoGames($name: String, $pageNum: Int) {
+  videogames(query: {
+    perPage: 50,
+    page: $pageNum,
+    filter: {
+      name: $name
+    }
+  }) {
+    nodes {
+      name
+      id
+    }
+  }
+}

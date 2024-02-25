@@ -14,6 +14,7 @@ protocol StartggServiceType {
   func getRemainingPhaseGroupSets(id: Int, pageNum: Int) async throws -> [PhaseGroupSet]
   func getPhaseGroupSetGames(id: Int) async throws -> [PhaseGroupSetGame]
   func getCurrentUserProfile() async throws -> Profile?
+  func getVideoGames(name: String, page: Int) async throws -> [VideoGame]?
 }
 
 class StartggService: StartggServiceType {

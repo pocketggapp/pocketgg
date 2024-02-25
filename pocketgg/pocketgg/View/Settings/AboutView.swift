@@ -86,22 +86,14 @@ struct AboutView: View {
     Button {
       openSFSafariVC(urlString: url)
     } label: {
-      ZStack {
-        Color(UIColor.systemBackground)
-        
-        HStack {
-          Image(systemName: imageName)
-            .foregroundColor(.red)
-            .frame(width: 30 * scale, height: 30 * scale)
-          Text(text)
-          Spacer()
-        }
+      HStack {
+        Image(systemName: imageName)
+          .foregroundColor(.red)
+          .frame(width: 30 * scale, height: 30 * scale)
+        Text(text)
+          .foregroundColor(Color(uiColor: .label))
       }
-      .padding(.leading)
-      
     }
-    .buttonStyle(.plain)
-    .listRowInsets(EdgeInsets())
   }
 }
 

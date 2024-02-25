@@ -36,6 +36,7 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Streams": return StartggAPI.Objects.Streams
     case "Phase": return StartggAPI.Objects.Phase
     case "TournamentConnection": return StartggAPI.Objects.TournamentConnection
+    case "VideogameConnection": return StartggAPI.Objects.VideogameConnection
     case "PhaseGroupConnection": return StartggAPI.Objects.PhaseGroupConnection
     case "PhaseGroup": return StartggAPI.Objects.PhaseGroup
     case "Progression": return StartggAPI.Objects.Progression

@@ -85,6 +85,8 @@ struct SettingsView: View {
       .navigationTitle("Settings")
       .navigationDestination(for: Int.self) {
         switch $0 {
+        case 0:
+          VideoGamesView()
         case 1:
           LocationPreferenceView()
         case 7:

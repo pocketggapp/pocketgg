@@ -22,8 +22,8 @@ struct HomeView: View {
             ForEach(tournamentGroups) { tournamentGroup in
               TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
             }
-          case .error(let error):
-            Text(error)
+          case .error:
+            EmptyView() // TODO: Home error view
           }
         }
       }
