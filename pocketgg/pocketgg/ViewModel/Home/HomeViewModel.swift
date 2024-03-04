@@ -10,12 +10,19 @@ enum HomeViewState {
 
 final class HomeViewModel: ObservableObject {
   @Published var state: HomeViewState
+  @Published var showingOnboardingView: Bool
   
   private let service: StartggServiceType
+  private let userDefaults: UserDefaults
   
-  init(service: StartggServiceType = StartggService.shared) {
+  init(
+    service: StartggServiceType = StartggService.shared,
+    userDefaults: UserDefaults = .standard
+  ) {
     self.state = .uninitialized
+    self.showingOnboardingView = false
     self.service = service
+    self.userDefaults = userDefaults
   }
   
   // MARK: Fetch Tournaments
@@ -36,5 +43,23 @@ final class HomeViewModel: ObservableObject {
     } catch {
       state = .error(error.localizedDescription)
     }
+  }
+  
+  // MARK: Onboarding View
+  
+  func presentOnboardingViewIfNeeded() {
+    switch state {
+    case .uninitialized: break
+    default: return
+    }
+    
+    if userDefaults.string(forKey: Constants.appVersion) != Constants.currentAppVersion {
+      showingOnboardingView = true
+    }
+  }
+  
+  func getOnboardingFlowType() -> OnboardingFlowType? {
+    guard let mostRecentAppVersion = userDefaults.string(forKey: Constants.appVersion) else { return .newUser }
+    return mostRecentAppVersion == Constants.currentAppVersion ? nil : .appUpdate
   }
 }

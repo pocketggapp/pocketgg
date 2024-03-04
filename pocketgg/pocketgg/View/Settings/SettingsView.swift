@@ -3,6 +3,8 @@ import SwiftUI
 struct SettingsView: View {
   @EnvironmentObject private var appRootManager: AppRootManager
   @ScaledMetric private var scale: CGFloat = 1
+  @State private var showingWhatsNewSheet = false
+  @State private var showingLogOutAlert = false
   
   var body: some View {
     NavigationStack {
@@ -31,37 +33,35 @@ struct SettingsView: View {
         }
         
         Section {
-          NavigationLink(value: 3) {
+          Button {
+            showingWhatsNewSheet = true
+          } label: {
             HStack {
-              settingsRowView(imageName: "safari")
-              Text("Website")
-            }
-          }
-          
-          NavigationLink(value: 4) {
-            HStack {
-              settingsRowView(imageName: "box.truck")
-              Text("Roadmap")
+              Image(systemName: "sparkles")
+                .foregroundColor(.red)
+                .frame(width: 30 * scale, height: 30 * scale)
+              Text("What's New")
+                .foregroundColor(Color(uiColor: .label))
             }
           }
         }
         
         Section {
-          NavigationLink(value: 5) {
+          NavigationLink(value: 4) {
             HStack {
               settingsRowView(imageName: "heart")
               Text("Tip Jar")
             }
           }
           
-          NavigationLink(value: 6) {
+          NavigationLink(value: 5) {
             HStack {
               settingsRowView(imageName: "star")
               Text("Write a Review")
             }
           }
           
-          NavigationLink(value: 7) {
+          NavigationLink(value: 6) {
             HStack {
               settingsRowView(imageName: "info.circle")
               Text("About")
@@ -71,7 +71,7 @@ struct SettingsView: View {
         
         Section {
           Button {
-            logOut()
+            showingLogOutAlert = true
           } label: {
             HStack {
               Spacer()
@@ -89,12 +89,26 @@ struct SettingsView: View {
           VideoGamesView()
         case 1:
           LocationPreferenceView()
-        case 7:
+        case 4:
+          TESTCoreDataView()
+        case 6:
           AboutView()
         default:
           EmptyView()
         }
       }
+      .sheet(isPresented: $showingWhatsNewSheet) {
+        OnboardingView(
+          content: OnboardingContentService.createWhatsNewContent(),
+          flowType: .appUpdate
+        )
+      }
+      .alert("Log Out", isPresented: $showingLogOutAlert, actions: {
+        Button("No", role: .cancel) { }
+        Button("Yes") { logOut() }
+      }, message: {
+        Text("Are you sure you want to log out?")
+      })
     }
   }
   

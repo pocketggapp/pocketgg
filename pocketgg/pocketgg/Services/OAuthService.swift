@@ -94,6 +94,7 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
   // MARK: Get Access Token
   
   private func getAccessToken(_ authCode: String) async throws -> AccessTokenResponse {
+    // TODO: Get client secret from on demand resources or CloudKit
     let clientSecret = ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
     
     let parameters: [String: Any] = [

@@ -41,6 +41,14 @@
 		DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBC82B65639D00F3131E /* EventsView.swift */; };
 		DA4DDBCB2B6564B800F3131E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBCA2B6564B800F3131E /* LocationView.swift */; };
 		DA4DDBCD2B65662F00F3131E /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4DDBCC2B65662F00F3131E /* InfoView.swift */; };
+		DA58E8122B93777900AD446A /* OnboardingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8112B93777900AD446A /* OnboardingContent.swift */; };
+		DA58E8142B93799000AD446A /* OnboardingContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8132B93799000AD446A /* OnboardingContentService.swift */; };
+		DA58E8162B93AF9E00AD446A /* ImageSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8152B93AF9E00AD446A /* ImageSlideView.swift */; };
+		DA58E8182B93AFB000AD446A /* SelectionSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */; };
+		DA58E81A2B93B22100AD446A /* MockOnboardingContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8192B93B22100AD446A /* MockOnboardingContentService.swift */; };
+		DA58E81E2B954E2400AD446A /* VideoGamePreferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */; };
+		DA58E8202B9550C300AD446A /* TESTCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */; };
+		DA58E8252B9644DD00AD446A /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */; };
 		DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65B2AB618B100EF18E0 /* SettingsView.swift */; };
 		DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65D2AB61AE300EF18E0 /* HomeView.swift */; };
 		DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */; };
@@ -81,6 +89,7 @@
 		DA91786F2B6FEFF600579360 /* PhaseGroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91786E2B6FEFF600579360 /* PhaseGroupListViewModel.swift */; };
 		DA9178712B6FF5D000579360 /* Phase.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA9178702B6FF5D000579360 /* Phase.graphql */; };
 		DA9178732B6FF79A00579360 /* StartggService+Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178722B6FF79A00579360 /* StartggService+Phase.swift */; };
+		DAA3BE622B928B990088804C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA3BE612B928B990088804C /* OnboardingView.swift */; };
 		DAA9E36F2B5ADA640066E3B4 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */; };
 		DAB992222B8AA1FF00F99BD6 /* VideoGame.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DAB992212B8AA1FF00F99BD6 /* VideoGame.graphql */; };
 		DAB992242B8AA35300F99BD6 /* VideoGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992232B8AA35300F99BD6 /* VideoGamesView.swift */; };
@@ -88,6 +97,8 @@
 		DAB992282B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */; };
 		DAB9922A2B8AEE8100F99BD6 /* VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992292B8AEE8100F99BD6 /* VideoGame.swift */; };
 		DAB9922C2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB9922B2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift */; };
+		DAB992302B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAB9922E2B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld */; };
+		DAB992322B8C1BE100F99BD6 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992312B8C1BE100F99BD6 /* CoreDataService.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
 		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
@@ -185,6 +196,14 @@
 		DA4DDBC82B65639D00F3131E /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
 		DA4DDBCA2B6564B800F3131E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		DA4DDBCC2B65662F00F3131E /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		DA58E8112B93777900AD446A /* OnboardingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContent.swift; sourceTree = "<group>"; };
+		DA58E8132B93799000AD446A /* OnboardingContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContentService.swift; sourceTree = "<group>"; };
+		DA58E8152B93AF9E00AD446A /* ImageSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlideView.swift; sourceTree = "<group>"; };
+		DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSlideView.swift; sourceTree = "<group>"; };
+		DA58E8192B93B22100AD446A /* MockOnboardingContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOnboardingContentService.swift; sourceTree = "<group>"; };
+		DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamePreferenceService.swift; sourceTree = "<group>"; };
+		DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTCoreDataView.swift; sourceTree = "<group>"; };
+		DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DA65D65B2AB618B100EF18E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA65D65D2AB61AE300EF18E0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -224,6 +243,7 @@
 		DA91786E2B6FEFF600579360 /* PhaseGroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupListViewModel.swift; sourceTree = "<group>"; };
 		DA9178702B6FF5D000579360 /* Phase.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Phase.graphql; sourceTree = "<group>"; };
 		DA9178722B6FF79A00579360 /* StartggService+Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Phase.swift"; sourceTree = "<group>"; };
+		DAA3BE612B928B990088804C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DAA9E36E2B5ADA640066E3B4 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DAB992212B8AA1FF00F99BD6 /* VideoGame.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = VideoGame.graphql; sourceTree = "<group>"; };
 		DAB992232B8AA35300F99BD6 /* VideoGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamesView.swift; sourceTree = "<group>"; };
@@ -231,6 +251,8 @@
 		DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGameSearchViewModel.swift; sourceTree = "<group>"; };
 		DAB992292B8AEE8100F99BD6 /* VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGame.swift; sourceTree = "<group>"; };
 		DAB9922B2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+VideoGame.swift"; sourceTree = "<group>"; };
+		DAB9922F2B8C195F00F99BD6 /* PocketggContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketggContainer.xcdatamodel; sourceTree = "<group>"; };
+		DAB992312B8C1BE100F99BD6 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -345,6 +367,7 @@
 			children = (
 				DA15EC5D2B5A2DD8003FD258 /* MockOAuthService.swift */,
 				DA15EC5F2B5A2DE2003FD258 /* MockStartggService.swift */,
+				DA58E8192B93B22100AD446A /* MockOnboardingContentService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -360,7 +383,6 @@
 				DAD125262B815906005CECB6 /* StartggService+Profile.swift */,
 				DAB9922B2B8AEF2D00F99BD6 /* StartggService+VideoGame.swift */,
 				DA15EC662B5A3AC5003FD258 /* Apollo */,
-				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -401,6 +423,7 @@
 				DADCFECF2A5F96F000A98C0D /* View */,
 				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
 				DABFF2702AB90F880053614D /* Services */,
+				DAB9922D2B8C192E00F99BD6 /* Core Data */,
 				DA8D00B02ACA36200093FC49 /* Utilities */,
 				DA0E59842B6D5ACE0031A5A1 /* GraphQL */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
@@ -454,10 +477,19 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		DA58E8232B9644CA00AD446A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		DA65D65F2AB61EB800EF18E0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				DABFF26D2AB906D30053614D /* Login */,
+				DA58E8232B9644CA00AD446A /* Onboarding */,
 				DA65D66F2AB64A7500EF18E0 /* Home */,
 				DADD99A82AE0C6B300ED35FC /* Tournament */,
 				DA789D9F2B66C490009B9799 /* Event */,
@@ -481,6 +513,7 @@
 				DA2723A82B5C5509002FF875 /* Location.swift */,
 				DAD125282B815937005CECB6 /* Profile.swift */,
 				DAB992292B8AEE8100F99BD6 /* VideoGame.swift */,
+				DA58E8112B93777900AD446A /* OnboardingContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -618,6 +651,25 @@
 			path = Phase;
 			sourceTree = "<group>";
 		};
+		DAA3BE602B928B840088804C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DAA3BE612B928B990088804C /* OnboardingView.swift */,
+				DA58E8152B93AF9E00AD446A /* ImageSlideView.swift */,
+				DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */,
+				DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DAB9922D2B8C192E00F99BD6 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				DAB9922E2B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		DABFF2692AB794CE0053614D /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,7 +696,11 @@
 				DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */,
 				DADF343E2B54CB960020C29D /* ImageService.swift */,
 				DAF340722B71976B00379688 /* PhaseGroupSetService.swift */,
+				DAB992312B8C1BE100F99BD6 /* CoreDataService.swift */,
+				DA58E8132B93799000AD446A /* OnboardingContentService.swift */,
+				DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */,
 				DA15EC632B5A3A83003FD258 /* Network */,
+				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -697,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				DABFF2692AB794CE0053614D /* Login */,
+				DAA3BE602B928B840088804C /* Onboarding */,
 				DA65D66D2AB64A4700EF18E0 /* Home */,
 				DADD99A52AE0BA8B00ED35FC /* Tournament */,
 				DA789D9C2B66C315009B9799 /* Event */,
@@ -935,6 +992,7 @@
 				DA65D6642AB6253500EF18E0 /* Tournament.swift in Sources */,
 				DAEADFC62B86F23600369C16 /* AppStartupViewModel.swift in Sources */,
 				DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */,
+				DAB992302B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld in Sources */,
 				DA053A4B2B7BC1B100A6803A /* RoundRobinEntrantView.swift in Sources */,
 				DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */,
 				DAF340712B717FAE00379688 /* MatchRowView.swift in Sources */,
@@ -944,12 +1002,14 @@
 				DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */,
 				DA9178732B6FF79A00579360 /* StartggService+Phase.swift in Sources */,
 				DA053A432B7AF32900A6803A /* RoundRobinBracketView.swift in Sources */,
+				DAB992322B8C1BE100F99BD6 /* CoreDataService.swift in Sources */,
 				DA9178612B6ED69F00579360 /* TopStandingsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */,
 				DA7949CE2B70198700D68EA4 /* PhaseGroupView.swift in Sources */,
+				DA58E8202B9550C300AD446A /* TESTCoreDataView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA475EEA2B798A9C007100A6 /* ScrollViewWrapper.swift in Sources */,
 				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
@@ -961,6 +1021,7 @@
 				DAD1251B2B80250E005CECB6 /* MatchRowPlaceholderView.swift in Sources */,
 				DA4DDBC62B655F6600F3131E /* StreamsView.swift in Sources */,
 				DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */,
+				DA58E8162B93AF9E00AD446A /* ImageSlideView.swift in Sources */,
 				DA053A492B7B183000A6803A /* BracketView.swift in Sources */,
 				DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */,
 				DAD125302B828F54005CECB6 /* FollowingView.swift in Sources */,
@@ -999,7 +1060,10 @@
 				DAFB42DE2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift in Sources */,
 				DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */,
 				DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */,
+				DA58E8142B93799000AD446A /* OnboardingContentService.swift in Sources */,
+				DA58E81A2B93B22100AD446A /* MockOnboardingContentService.swift in Sources */,
 				DA053A4D2B7BD76E00A6803A /* RoundRobinScoreView.swift in Sources */,
+				DA58E8182B93AFB000AD446A /* SelectionSlideView.swift in Sources */,
 				DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */,
 				DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */,
 				DAD1253A2B854654005CECB6 /* AppStartupView.swift in Sources */,
@@ -1020,11 +1084,13 @@
 				DA91785D2B6EBFC500579360 /* BracketRowView.swift in Sources */,
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,
+				DA58E8252B9644DD00AD446A /* OnboardingViewModel.swift in Sources */,
 				DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */,
 				DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */,
 				DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */,
 				DAD125252B815857005CECB6 /* ProfileViewModel.swift in Sources */,
 				DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */,
+				DAA3BE622B928B990088804C /* OnboardingView.swift in Sources */,
 				DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */,
 				DAB9922A2B8AEE8100F99BD6 /* VideoGame.swift in Sources */,
 				DA9178692B6F45EA00579360 /* AllStandingRowView.swift in Sources */,
@@ -1033,11 +1099,13 @@
 				DA91786F2B6FEFF600579360 /* PhaseGroupListViewModel.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,
+				DA58E81E2B954E2400AD446A /* VideoGamePreferenceService.swift in Sources */,
 				DA4DDBCD2B65662F00F3131E /* InfoView.swift in Sources */,
 				DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */,
 				DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */,
 				DAD125202B806DE5005CECB6 /* ProfileHeaderView.swift in Sources */,
 				DA2723A92B5C5509002FF875 /* Location.swift in Sources */,
+				DA58E8122B93777900AD446A /* OnboardingContent.swift in Sources */,
 				DA91785B2B6E9DAA00579360 /* ErrorStateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1365,6 +1433,16 @@
 			);
 			currentVersion = DA46B19F2A5E564C00814252 /* pocketgg.xcdatamodel */;
 			path = pocketgg.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		DAB9922E2B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DAB9922F2B8C195F00F99BD6 /* PocketggContainer.xcdatamodel */,
+			);
+			currentVersion = DAB9922F2B8C195F00F99BD6 /* PocketggContainer.xcdatamodel */;
+			path = PocketggContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
