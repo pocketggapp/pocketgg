@@ -50,7 +50,7 @@ final class MockStartggService: StartggServiceType {
     MockStartggService.createProfile()
   }
   
-  func getVideoGames(name: String, page: Int) async throws -> [VideoGame]? {
+  func getVideoGames(name: String, page: Int, accumulatedVideoGameIDs: Set<Int>) async throws -> [VideoGame]? {
     [MockStartggService.createVideoGame()]
   }
   

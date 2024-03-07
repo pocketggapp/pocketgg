@@ -13,19 +13,9 @@ final class VideoGamePreferenceService {
     coreDataService.save()
   }
   
-  static func getVideoGames(coreDataService: CoreDataService = .shared) -> [VideoGame] {
-    let request = NSFetchRequest<VideoGameEntity>(entityName: "VideoGameEntity")
-    
-    do {
-      let videoGameEntities = try coreDataService.context.fetch(request)
-      return videoGameEntities.compactMap {
-        guard let name = $0.name else { return nil }
-        return VideoGame(id: Int($0.id), name: name)
-      }
-    } catch let error {
-      print("Error getting sets: \(error)")
-      return []
-    }
+  static func getVideoGames(coreDataService: CoreDataService = .shared) throws -> [VideoGameEntity] {
+    let request = NSFetchRequest<VideoGameEntity>(entityName: "VideoGameEntity")    
+    return try coreDataService.context.fetch(request)
   }
   
   static func deleteAllVideoGames(coreDataService: CoreDataService = .shared) {

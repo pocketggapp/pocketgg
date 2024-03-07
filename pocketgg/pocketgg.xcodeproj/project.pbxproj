@@ -49,6 +49,7 @@
 		DA58E81E2B954E2400AD446A /* VideoGamePreferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */; };
 		DA58E8202B9550C300AD446A /* TESTCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */; };
 		DA58E8252B9644DD00AD446A /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */; };
+		DA58E8272B965F8F00AD446A /* VideoGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8262B965F8F00AD446A /* VideoGamesViewModel.swift */; };
 		DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65B2AB618B100EF18E0 /* SettingsView.swift */; };
 		DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65D2AB61AE300EF18E0 /* HomeView.swift */; };
 		DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */; };
@@ -204,6 +205,7 @@
 		DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamePreferenceService.swift; sourceTree = "<group>"; };
 		DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTCoreDataView.swift; sourceTree = "<group>"; };
 		DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		DA58E8262B965F8F00AD446A /* VideoGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamesViewModel.swift; sourceTree = "<group>"; };
 		DA65D65B2AB618B100EF18E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DA65D65D2AB61AE300EF18E0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DA65D6602AB61EC900EF18E0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -794,6 +796,7 @@
 			isa = PBXGroup;
 			children = (
 				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
+				DA58E8262B965F8F00AD446A /* VideoGamesViewModel.swift */,
 				DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */,
 			);
 			path = Settings;
@@ -1078,6 +1081,7 @@
 				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
 				DA2723A52B5B4A79002FF875 /* StreamRowView.swift in Sources */,
 				DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */,
+				DA58E8272B965F8F00AD446A /* VideoGamesViewModel.swift in Sources */,
 				DAB992242B8AA35300F99BD6 /* VideoGamesView.swift in Sources */,
 				DA789DA12B66C4AB009B9799 /* EventViewModel.swift in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,

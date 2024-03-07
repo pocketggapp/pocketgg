@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 enum VideoGameSearchViewState {
   case uninitialized
@@ -10,21 +11,27 @@ enum VideoGameSearchViewState {
 final class VideoGameSearchViewModel: ObservableObject {
   @Published var state: VideoGameSearchViewState
   @Published var searchText = ""
-  @Published var enabledVideoGameIDs: Set<Int>
+  
+  private var coreDataService: CoreDataService
+  private var enabledVideoGames: [VideoGameEntity]
   
   private let service: StartggServiceType
   private var accumulatedVideoGames: [VideoGame]
+  /// Ensures no duplicate video games are returned by the start.gg videogames query, which happens when the last page has less than 50 results
+  private var accumulatedVideoGameIDs: Set<Int>
   private var currentVideoGamesPage: Int
   var noMoreVideoGames: Bool
   
   init(
-    enabledVideoGameIDs: Set<Int>,
-    service: StartggServiceType = StartggService.shared
+    service: StartggServiceType = StartggService.shared,
+    coreDataService: CoreDataService = .shared
   ) {
+    self.coreDataService = coreDataService
+    self.enabledVideoGames = []
     self.state = .uninitialized
-    self.enabledVideoGameIDs = enabledVideoGameIDs
     self.service = service
     self.accumulatedVideoGames = []
+    self.accumulatedVideoGameIDs = []
     self.currentVideoGamesPage = 1
     self.noMoreVideoGames = false
   }
@@ -36,6 +43,7 @@ final class VideoGameSearchViewModel: ObservableObject {
     if newSearch {
       state = .loading
       accumulatedVideoGames.removeAll(keepingCapacity: true)
+      accumulatedVideoGameIDs.removeAll(keepingCapacity: true)
       currentVideoGamesPage = 1
       noMoreVideoGames = false
     }
@@ -45,11 +53,20 @@ final class VideoGameSearchViewModel: ObservableObject {
     if noMoreVideoGames { return }
     
     do {
-      let videoGames = try await service.getVideoGames(name: searchText, page: currentVideoGamesPage)
+      let videoGames = try await service.getVideoGames(
+        name: searchText,
+        page: currentVideoGamesPage,
+        accumulatedVideoGameIDs: accumulatedVideoGameIDs
+      )
+      
       guard let videoGames else {
         state = .loaded(accumulatedVideoGames)
         noMoreVideoGames = true
         return
+      }
+      
+      for videoGame in videoGames {
+        accumulatedVideoGameIDs.insert(videoGame.id)
       }
       
       if !videoGames.isEmpty {
@@ -67,15 +84,45 @@ final class VideoGameSearchViewModel: ObservableObject {
     }
   }
   
-  func videoGameTapped(id: Int) {
-    if enabledVideoGameIDs.contains(id) {
-      enabledVideoGameIDs.remove(id)
-    } else {
-      enabledVideoGameIDs.insert(id)
+  // MARK: Enabled Video Games
+  
+  func getEnabledVideoGames(refreshed: Bool = false) {
+    if !refreshed {
+      switch state {
+      case .uninitialized: break
+      default: return
+      }
+    }
+    
+    do {
+      enabledVideoGames = try VideoGamePreferenceService.getVideoGames()
+    } catch {
+      #if DEBUG
+      print(error.localizedDescription)
+      #endif
     }
   }
   
-  func setContainsID(_ id: Int) -> Bool {
-    enabledVideoGameIDs.contains(id)
+  func videoGameTapped(_ videoGame: VideoGame) {
+    if let index = enabledVideoGames.firstIndex(where: { $0.id == videoGame.id }) {
+      // Delete existing video game entity
+      let videoGameEntity = enabledVideoGames[index]
+      coreDataService.context.delete(videoGameEntity)
+    } else {
+      // Add video game entity
+      let videoGameEntity = VideoGameEntity(context: coreDataService.context)
+      videoGameEntity.id = Int64(videoGame.id)
+      videoGameEntity.name = videoGame.name
+    }
+    // Save the change in Core Data
+    coreDataService.save()
+    // Refresh the list of video game entities from Core Data
+    getEnabledVideoGames(refreshed: true)
+    // Refresh the VideoGameSearchViewState to update the change in VideoGameSearchView
+    state = .loaded(accumulatedVideoGames)
+  }
+  
+  func videoGameEnabled(_ id: Int) -> Bool {
+    enabledVideoGames.contains(where: { $0.id == id })
   }
 }

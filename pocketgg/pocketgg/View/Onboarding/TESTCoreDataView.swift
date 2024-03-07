@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct TESTCoreDataView: View {
   @StateObject private var viewModel: TESTCoreDataViewModel
@@ -12,7 +13,7 @@ struct TESTCoreDataView: View {
     VStack {
       Text("Games:")
       ForEach(viewModel.games) {
-        Text("\($0.name) \($0.id)")
+        Text("\($0.name ?? "") \($0.id)")
       }
       
       Button {
@@ -42,14 +43,19 @@ struct TESTCoreDataView: View {
 }
 
 final class TESTCoreDataViewModel: ObservableObject {
-  @Published var games: [VideoGame]
+  @Published var games: [VideoGameEntity]
   
   init() {
     self.games = []
   }
   
   func getGames() {
-    games = VideoGamePreferenceService.getVideoGames()
+    do {
+      games = try VideoGamePreferenceService.getVideoGames()
+    } catch {
+      print(error)
+    }
+    
   }
   
   func deleteGames() {

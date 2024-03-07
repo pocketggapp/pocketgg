@@ -1,15 +1,43 @@
 import SwiftUI
 
 struct VideoGamesView: View {
-  @State private var enabledGames = ["Test1", "Test2", "Test3"]
+  @StateObject private var viewModel: VideoGamesViewModel
+  
+  init() {
+    self._viewModel = StateObject(wrappedValue: {
+      VideoGamesViewModel()
+    }())
+  }
   
   var body: some View {
     List {
       Section {
-        ForEach(enabledGames, id: \.self) { game in
-          Text(game)
+        switch viewModel.state {
+        case .uninitialized, .loading:
+          ForEach(0..<20) { _ in
+            Text("Video Game Placeholder")
+              .redacted(reason: .placeholder)
+          }
+        case .loaded(let videoGames):
+          if !videoGames.isEmpty {
+            ForEach(videoGames) {
+              Text($0.name ?? "")
+            }
+            .onDelete(perform: viewModel.deleteVideoGame)
+          } else {
+            EmptyStateView(
+              systemImageName: "gamecontroller",
+              title: "No Video Games",
+              subtitle: "Select your favorite video games to see tournaments that feature those games"
+            )
+          }
+        case .error:
+          ErrorStateView(subtitle: "There was an error loading your saved video games") {
+            Task {
+              viewModel.getSavedVideoGames()
+            }
+          }
         }
-        .onDelete(perform: delete)
       } header: {
         Text("Enabled Games")
       }
@@ -27,12 +55,11 @@ struct VideoGamesView: View {
       }
     }
     .listStyle(.insetGrouped)
+    .task {
+      viewModel.getSavedVideoGames()
+    }
     .toolbar { EditButton() }
     .navigationTitle("Video Game Selection")
-  }
-  
-  private func delete(at offsets: IndexSet) {
-    
   }
 }
 

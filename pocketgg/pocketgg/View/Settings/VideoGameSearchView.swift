@@ -8,7 +8,6 @@ struct VideoGameSearchView: View {
   ) {
     self._viewModel = StateObject(wrappedValue: {
       VideoGameSearchViewModel(
-        enabledVideoGameIDs: [], // TODO: Pass in set of enabled video games
         service: service
       )
     }())
@@ -47,13 +46,13 @@ struct VideoGameSearchView: View {
         if !videoGames.isEmpty {
           ForEach(videoGames) { videoGame in
             Button {
-              viewModel.videoGameTapped(id: videoGame.id)
+              viewModel.videoGameTapped(videoGame)
             } label: {
               HStack {
                 Text(videoGame.name)
                   .foregroundColor(Color(uiColor: .label))
                 Spacer()
-                if viewModel.setContainsID(videoGame.id) {
+                if viewModel.videoGameEnabled(videoGame.id) {
                   Image(systemName: "checkmark")
                     .foregroundColor(.red)
                 }
@@ -86,6 +85,9 @@ struct VideoGameSearchView: View {
       }
     }
     .listStyle(.insetGrouped)
+    .task {
+      viewModel.getEnabledVideoGames()
+    }
     .scrollDismissesKeyboard(.immediately)
   }
 }
