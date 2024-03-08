@@ -14,10 +14,17 @@ final class VideoGamesViewModel: ObservableObject {
   private var coreDataService: CoreDataService
   private var enabledVideoGames: [VideoGameEntity]
   
+  private var sentVideoGamesChangedNotification: Bool
+  
   init(coreDataService: CoreDataService = .shared) {
     self.state = .uninitialized
     self.coreDataService = coreDataService
     self.enabledVideoGames = []
+    self.sentVideoGamesChangedNotification = false
+  }
+  
+  func resetVideoGamesChangedNotification() {
+    sentVideoGamesChangedNotification = false
   }
   
   // MARK: Get Saved Video Games
@@ -47,5 +54,10 @@ final class VideoGamesViewModel: ObservableObject {
     coreDataService.save()
     // Refresh the VideoGamesViewState to update the change in VideoGamesView
     state = .loaded(enabledVideoGames)
+    
+    if !sentVideoGamesChangedNotification {
+      NotificationCenter.default.post(name: Notification.Name(Constants.videoGamesChanged), object: nil)
+      sentVideoGamesChangedNotification = true
+    }
   }
 }

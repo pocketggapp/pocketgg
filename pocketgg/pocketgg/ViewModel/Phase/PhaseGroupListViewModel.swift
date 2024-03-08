@@ -32,7 +32,7 @@ final class PhaseGroupListViewModel: ObservableObject {
       components.append("\(numPools) pools")
     }
     if let bracketType = phase.bracketType {
-      components.append(bracketType.rawValue.replacingOccurrences(of: "_", with: " ").capitalized)
+      components.append(bracketType.rawValue.replacingOccurrences(of: "_", with: " ").localizedCapitalized)
     }
     for component in components {
       if !text.isEmpty {

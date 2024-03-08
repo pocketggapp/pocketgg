@@ -22,6 +22,8 @@ final class VideoGameSearchViewModel: ObservableObject {
   private var currentVideoGamesPage: Int
   var noMoreVideoGames: Bool
   
+  private var sentVideoGamesChangedNotification: Bool
+  
   init(
     service: StartggServiceType = StartggService.shared,
     coreDataService: CoreDataService = .shared
@@ -34,6 +36,11 @@ final class VideoGameSearchViewModel: ObservableObject {
     self.accumulatedVideoGameIDs = []
     self.currentVideoGamesPage = 1
     self.noMoreVideoGames = false
+    self.sentVideoGamesChangedNotification = false
+  }
+  
+  func resetVideoGamesChangedNotification() {
+    sentVideoGamesChangedNotification = false
   }
   
   // MARK: Fetch Video Games
@@ -120,6 +127,11 @@ final class VideoGameSearchViewModel: ObservableObject {
     getEnabledVideoGames(refreshed: true)
     // Refresh the VideoGameSearchViewState to update the change in VideoGameSearchView
     state = .loaded(accumulatedVideoGames)
+    
+    if !sentVideoGamesChangedNotification {
+      NotificationCenter.default.post(name: Notification.Name(Constants.videoGamesChanged), object: nil)
+      sentVideoGamesChangedNotification = true
+    }
   }
   
   func videoGameEnabled(_ id: Int) -> Bool {

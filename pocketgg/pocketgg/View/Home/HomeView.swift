@@ -27,6 +27,9 @@ struct HomeView: View {
           }
         }
       }
+      .onReceive(NotificationCenter.default.publisher(for: Notification.Name(Constants.videoGamesChanged))) { _ in
+        viewModel.videoGamesChanged = true
+      }
       .task {
         // TODO: Refresh pinned tournaments, video games, without .uninitialzied check
         await viewModel.fetchTournaments()

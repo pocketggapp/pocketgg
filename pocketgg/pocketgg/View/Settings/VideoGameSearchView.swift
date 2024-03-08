@@ -88,6 +88,9 @@ struct VideoGameSearchView: View {
     .task {
       viewModel.getEnabledVideoGames()
     }
+    .onAppear {
+      viewModel.resetVideoGamesChangedNotification()
+    }
     .scrollDismissesKeyboard(.immediately)
   }
 }
