@@ -75,6 +75,7 @@
 		DA8D00AF2AC9E68F0093FC49 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00AE2AC9E68F0093FC49 /* AppRootManager.swift */; };
 		DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B12ACA362E0093FC49 /* Constants.swift */; };
 		DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00B32ACA6D800093FC49 /* LoadingView.swift */; };
+		DA8E8BEB2B9B6A9E003DBB3F /* RearrangeSectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8E8BEA2B9B6A9E003DBB3F /* RearrangeSectionsView.swift */; };
 		DA9178552B6E99BE00579360 /* BracketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178542B6E99BE00579360 /* BracketsView.swift */; };
 		DA9178572B6E9B3F00579360 /* EventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178562B6E9B3F00579360 /* EventHeaderView.swift */; };
 		DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9178582B6E9D9B00579360 /* EmptyStateView.swift */; };
@@ -123,6 +124,8 @@
 		DAD125382B852D74005CECB6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125372B852D74005CECB6 /* AboutView.swift */; };
 		DAD1253A2B854654005CECB6 /* AppStartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125392B854654005CECB6 /* AppStartupView.swift */; };
 		DAD2BCDB2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */; };
+		DADA22012B9CEE1A00442E0C /* HomeViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA22002B9CEE1A00442E0C /* HomeViewSection.swift */; };
+		DADA22032B9CEEB100442E0C /* RearrangeSectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA22022B9CEEB100442E0C /* RearrangeSectionsViewModel.swift */; };
 		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
 		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
 		DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */; };
@@ -230,6 +233,7 @@
 		DA8D00B12ACA362E0093FC49 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA8D00B32ACA6D800093FC49 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		DA8D00EB2ACB4D820093FC49 /* pocketgg.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pocketgg.entitlements; sourceTree = "<group>"; };
+		DA8E8BEA2B9B6A9E003DBB3F /* RearrangeSectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeSectionsView.swift; sourceTree = "<group>"; };
 		DA9178542B6E99BE00579360 /* BracketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketsView.swift; sourceTree = "<group>"; };
 		DA9178562B6E9B3F00579360 /* EventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderView.swift; sourceTree = "<group>"; };
 		DA9178582B6E9D9B00579360 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 		DAD125372B852D74005CECB6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		DAD125392B854654005CECB6 /* AppStartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupView.swift; sourceTree = "<group>"; };
 		DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+FromTimestamp.swift"; sourceTree = "<group>"; };
+		DADA22002B9CEE1A00442E0C /* HomeViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSection.swift; sourceTree = "<group>"; };
+		DADA22022B9CEEB100442E0C /* RearrangeSectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeSectionsViewModel.swift; sourceTree = "<group>"; };
 		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
 		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
 		DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHeaderView.swift; sourceTree = "<group>"; };
@@ -516,6 +522,7 @@
 				DAD125282B815937005CECB6 /* Profile.swift */,
 				DAB992292B8AEE8100F99BD6 /* VideoGame.swift */,
 				DA58E8112B93777900AD446A /* OnboardingContent.swift */,
+				DADA22002B9CEE1A00442E0C /* HomeViewSection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -537,6 +544,7 @@
 				DAB992232B8AA35300F99BD6 /* VideoGamesView.swift */,
 				DAB992252B8AADFB00F99BD6 /* VideoGameSearchView.swift */,
 				DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */,
+				DA8E8BEA2B9B6A9E003DBB3F /* RearrangeSectionsView.swift */,
 				DAD125372B852D74005CECB6 /* AboutView.swift */,
 			);
 			path = Settings;
@@ -795,9 +803,10 @@
 		DAEADFC92B88513700369C16 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
 				DA58E8262B965F8F00AD446A /* VideoGamesViewModel.swift */,
 				DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */,
+				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
+				DADA22022B9CEEB100442E0C /* RearrangeSectionsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1047,6 +1056,7 @@
 				DAD125362B82BD39005CECB6 /* RegistrationRowView.swift in Sources */,
 				DA0E597D2B6D58520031A5A1 /* Phase.swift in Sources */,
 				DADF343D2B54CAF50020C29D /* AsyncImageView.swift in Sources */,
+				DADA22032B9CEEB100442E0C /* RearrangeSectionsViewModel.swift in Sources */,
 				DAD1251E2B802ACE005CECB6 /* ProfileView.swift in Sources */,
 				DA9178652B6EF32900579360 /* AllStandingsView.swift in Sources */,
 				DA91786C2B6FEFC400579360 /* PhaseGroupListView.swift in Sources */,
@@ -1055,6 +1065,7 @@
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
 				DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
+				DA8E8BEB2B9B6A9E003DBB3F /* RearrangeSectionsView.swift in Sources */,
 				DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */,
 				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
 				DAFB42DA2B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift in Sources */,
@@ -1089,6 +1100,7 @@
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,
 				DA46B1962A5E564B00814252 /* ContentView.swift in Sources */,
 				DA58E8252B9644DD00AD446A /* OnboardingViewModel.swift in Sources */,
+				DADA22012B9CEE1A00442E0C /* HomeViewSection.swift in Sources */,
 				DA46B1942A5E564B00814252 /* pocketggApp.swift in Sources */,
 				DA8D00B42ACA6D800093FC49 /* LoadingView.swift in Sources */,
 				DA9178592B6E9D9B00579360 /* EmptyStateView.swift in Sources */,
@@ -1265,6 +1277,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pocketgg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pocket.gg;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use your location to find tournaments near your area";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1300,6 +1313,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pocketgg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pocket.gg;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use your location to find tournaments near your area";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

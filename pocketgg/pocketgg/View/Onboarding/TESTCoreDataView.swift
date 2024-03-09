@@ -13,7 +13,14 @@ struct TESTCoreDataView: View {
     VStack {
       Text("Games:")
       ForEach(viewModel.games) {
-        Text("\($0.name ?? "") \($0.id)")
+        Text("\($0.name ?? "INVALID NAME") \($0.id)")
+      }
+      
+      Text("Layout:")
+      HStack {
+        ForEach(viewModel.layout, id: \.self) { afsd in
+          Text("\(afsd)")
+        }
       }
       
       Button {
@@ -38,15 +45,36 @@ struct TESTCoreDataView: View {
       } label: {
         Text("DELETE USERDEFAULT APP VERSION")
       }
+      
+      Button {
+        viewModel.getLayout()
+      } label: {
+        Text("GET LAYOUT")
+      }
+      
+      Button {
+        let games = viewModel.games.map { Int($0.id) }
+        UserDefaults.standard.set([-1, -2, -3] + games, forKey: Constants.homeViewSections)
+      } label: {
+        Text("SET LAYOUT TO DEFAULT + VIDEO GAMES")
+      }
+      
+      Button {
+        UserDefaults.standard.removeObject(forKey: Constants.homeViewSections)
+      } label: {
+        Text("DELETE LAYOUT")
+      }
     }
   }
 }
 
 final class TESTCoreDataViewModel: ObservableObject {
   @Published var games: [VideoGameEntity]
+  @Published var layout: [Int]
   
   init() {
     self.games = []
+    self.layout = []
   }
   
   func getGames() {
@@ -55,7 +83,10 @@ final class TESTCoreDataViewModel: ObservableObject {
     } catch {
       print(error)
     }
-    
+  }
+  
+  func getLayout() {
+    layout = UserDefaults.standard.array(forKey: Constants.homeViewSections) as? [Int] ?? [-69]
   }
   
   func deleteGames() {

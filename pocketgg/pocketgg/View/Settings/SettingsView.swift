@@ -89,6 +89,8 @@ struct SettingsView: View {
           VideoGamesView()
         case 1:
           LocationPreferenceView()
+        case 2:
+          RearrangeSectionsView()
         case 4:
           TESTCoreDataView()
         case 6:

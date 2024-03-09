@@ -12,8 +12,9 @@ final class VideoGameSearchViewModel: ObservableObject {
   @Published var state: VideoGameSearchViewState
   @Published var searchText = ""
   
-  private var coreDataService: CoreDataService
+  private let coreDataService: CoreDataService
   private var enabledVideoGames: [VideoGameEntity]
+  private let userDefaults: UserDefaults
   
   private let service: StartggServiceType
   private var accumulatedVideoGames: [VideoGame]
@@ -26,11 +27,13 @@ final class VideoGameSearchViewModel: ObservableObject {
   
   init(
     service: StartggServiceType = StartggService.shared,
-    coreDataService: CoreDataService = .shared
+    coreDataService: CoreDataService = .shared,
+    userDefaults: UserDefaults = .standard
   ) {
+    self.state = .uninitialized
     self.coreDataService = coreDataService
     self.enabledVideoGames = []
-    self.state = .uninitialized
+    self.userDefaults = userDefaults
     self.service = service
     self.accumulatedVideoGames = []
     self.accumulatedVideoGameIDs = []
@@ -113,7 +116,7 @@ final class VideoGameSearchViewModel: ObservableObject {
   func videoGameTapped(_ videoGame: VideoGame) {
     if let index = enabledVideoGames.firstIndex(where: { $0.id == videoGame.id }) {
       // Delete existing video game entity
-      let videoGameEntity = enabledVideoGames[index]
+      let videoGameEntity = enabledVideoGames.remove(at: index)
       coreDataService.context.delete(videoGameEntity)
     } else {
       // Add video game entity
@@ -128,6 +131,8 @@ final class VideoGameSearchViewModel: ObservableObject {
     // Refresh the VideoGameSearchViewState to update the change in VideoGameSearchView
     state = .loaded(accumulatedVideoGames)
     
+    updateHomeViewSections(id: videoGame.id)
+    
     if !sentVideoGamesChangedNotification {
       NotificationCenter.default.post(name: Notification.Name(Constants.videoGamesChanged), object: nil)
       sentVideoGamesChangedNotification = true
@@ -136,5 +141,17 @@ final class VideoGameSearchViewModel: ObservableObject {
   
   func videoGameEnabled(_ id: Int) -> Bool {
     enabledVideoGames.contains(where: { $0.id == id })
+  }
+  
+  private func updateHomeViewSections(id: Int) {
+    var homeViewSections = userDefaults.array(forKey: Constants.homeViewSections) as? [Int] ?? []
+    
+    if let sectionIndex = homeViewSections.firstIndex(where: { $0 == id }) {
+      homeViewSections.remove(at: sectionIndex)
+    } else {
+      homeViewSections.append(id)
+    }
+    
+    userDefaults.set(homeViewSections, forKey: Constants.homeViewSections)
   }
 }
