@@ -1,7 +1,7 @@
 /// Preview of Event data
 ///
 /// Used by **TournamentView**
-struct Event: Identifiable, Hashable {
+struct Event: Hashable {
   let id: Int
   let name: String?
   let state: String?

@@ -21,7 +21,7 @@ struct StandingsView: View {
       case .loaded(let phaseGroupDetails):
         // TODO: Add ability to get more standings, similar to AllStandingsView
         if let standings = phaseGroupDetails?.standings, !standings.isEmpty {
-          ForEach(standings) {
+          ForEach(standings, id: \.id) {
             StandingRowView(
               standing: $0,
               progressed: entrantProgressed(

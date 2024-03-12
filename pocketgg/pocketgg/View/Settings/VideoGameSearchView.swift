@@ -44,7 +44,7 @@ struct VideoGameSearchView: View {
         }
       case .loaded(let videoGames):
         if !videoGames.isEmpty {
-          ForEach(videoGames) { videoGame in
+          ForEach(videoGames, id: \.id) { videoGame in
             Button {
               viewModel.videoGameTapped(videoGame)
             } label: {

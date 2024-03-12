@@ -29,7 +29,7 @@ struct EliminationBracketView: View {
             }
             .layoutValue(key: PhaseGroupSetValue.self, value: phaseGroupSet)
         }
-        ForEach(roundLabels) {
+        ForEach(roundLabels, id: \.id) {
           EliminationRoundLabelView(roundLabel: $0)
             .layoutValue(key: PhaseGroupRoundLabel.self, value: $0)
         }

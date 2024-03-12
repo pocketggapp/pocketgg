@@ -3,7 +3,7 @@ import Foundation
 /// Preview of Tournament data
 ///
 /// Used by **HomeView**
-struct Tournament: Identifiable, Hashable {
+struct Tournament: Hashable {
   let id: Int
   let name: String?
   let date: String?
@@ -13,7 +13,7 @@ struct Tournament: Identifiable, Hashable {
   let bannerImageRatio: Double?
 }
 
-struct TournamentsGroup: Identifiable {
+struct TournamentsGroup {
   let id = UUID()
   let name: String
   let tournaments: [Tournament]

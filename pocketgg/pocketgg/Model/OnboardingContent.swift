@@ -10,7 +10,7 @@ enum OnboardingContentType {
   case selection
 }
 
-struct OnboardingContent: Identifiable, Hashable {
+struct OnboardingContent: Hashable {
   let id: Int
   let title: String
   let subtitle: String

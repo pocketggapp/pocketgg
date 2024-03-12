@@ -32,8 +32,4 @@ final class OnboardingViewModel: ObservableObject {
     guard currentSlideIndex < content.count - 1 else { return }
     currentSlideIndex += 1
   }
-  
-  func setMostRecentAppVersion() {
-    userDefaults.set(Constants.currentAppVersion, forKey: Constants.appVersion)
-  }
 }

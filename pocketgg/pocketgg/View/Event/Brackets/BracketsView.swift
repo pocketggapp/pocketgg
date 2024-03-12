@@ -18,7 +18,7 @@ struct BracketsView: View {
         }
       case .loaded(let eventDetails):
         if let brackets = eventDetails?.phases, !brackets.isEmpty {
-          ForEach(brackets) { bracket in
+          ForEach(brackets, id: \.id) { bracket in
             NavigationLink(value: bracket) {
               BracketRowView(name: bracket.name)
             }

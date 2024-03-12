@@ -35,7 +35,7 @@ struct PhaseGroupSetView: View {
             }
           case .loaded(let games):
             if !games.isEmpty {
-              ForEach(games) {
+              ForEach(games, id: \.id) {
                 PhaseGroupSetGameRowView(
                   game: $0,
                   setEntrants: phaseGroupSet.entrants?.compactMap { $0.entrant } ?? []

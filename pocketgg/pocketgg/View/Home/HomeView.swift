@@ -19,11 +19,15 @@ struct HomeView: View {
             TournamentsPlaceholderView()
             TournamentsPlaceholderView()
           case .loaded(let tournamentGroups):
-            ForEach(tournamentGroups) { tournamentGroup in
+            ForEach(tournamentGroups, id: \.id) { tournamentGroup in
               TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
             }
           case .error:
-            EmptyView() // TODO: Home error view
+            ErrorStateView(subtitle: "There was an error loading your tournaments") {
+              Task {
+                await viewModel.fetchTournaments(refreshed: true)
+              }
+            }
           }
         }
       }

@@ -24,17 +24,17 @@ struct RoundRobinBracketView: View {
         // Top Row of Entrant Names
         GridRow {
           Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
-          ForEach(entrants) {
+          ForEach(entrants, id: \.id) {
             RoundRobinEntrantView(entrant: $0)
           }
           Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
         }
         
-        ForEach(entrants) { entrant0 in
+        ForEach(entrants, id: \.id) { entrant0 in
           GridRow {
             RoundRobinEntrantView(entrant: entrant0)
             
-            ForEach(entrants) { entrant1 in
+            ForEach(entrants, id: \.id) { entrant1 in
               if let set = roundRobinSet(for: entrant0, and: entrant1) {
                 RoundRobinSetView(phaseGroupSet: set, entrantID: entrant0.id)
                   .onTapGesture {

@@ -19,7 +19,7 @@ struct TopStandingsView: View {
         }
       case .loaded(let eventDetails):
         if let standings = eventDetails?.topStandings, !standings.isEmpty {
-          ForEach(standings) { standing in
+          ForEach(standings, id: \.id) { standing in
             TopStandingRowView(standing: standing)
           }
           

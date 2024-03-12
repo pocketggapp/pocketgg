@@ -1,7 +1,7 @@
 import Foundation
 
 /// An external service where the tournament is streamed, and can be viewed online
-struct Stream: Identifiable, Hashable {
+struct Stream: Hashable {
   let id = UUID()
   let name: String?
   let logoUrl: String?

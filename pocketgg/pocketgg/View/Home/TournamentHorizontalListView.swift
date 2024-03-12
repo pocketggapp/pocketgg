@@ -24,7 +24,7 @@ struct TournamentHorizontalListView: View {
       ScrollView(.horizontal, showsIndicators: true) {
         HStack(alignment: .top) {
           Spacer()
-          ForEach(tournamentsGroup.tournaments) { tournament in
+          ForEach(tournamentsGroup.tournaments, id: \.id) { tournament in
             NavigationLink(value: tournament) {
               TournamentTileView(tournament: tournament)
                 .contextMenu {

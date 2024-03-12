@@ -26,7 +26,7 @@ struct AllStandingsView: View {
             .redacted(reason: .placeholder)
         }
       case .loaded(let standings):
-        ForEach(standings) {
+        ForEach(standings, id: \.id) {
           AllStandingRowView(standing: $0)
         }
         

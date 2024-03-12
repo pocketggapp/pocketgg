@@ -79,11 +79,18 @@ struct OnboardingView: View {
   }
   
   private func finishOnboardingFlow(saveGames: Bool = true) {
-    viewModel.setMostRecentAppVersion()
-    
-    if flowType == .newUser, saveGames {
-      VideoGamePreferenceService.saveVideoGames(gameIDs: selectedGameIDs)
+    switch flowType {
+    case .newUser:
+      var savedGameIDs = [Int]()
+      if saveGames {
+        VideoGamePreferenceService.saveVideoGames(gameIDs: selectedGameIDs)
+        savedGameIDs = Array(selectedGameIDs)
+      }
+      AppDataService.newUserOnboarding(homeViewSections: savedGameIDs)
+    case .appUpdate:
+      AppDataService.appV2Migration()
     }
+    
     dismiss()
   }
 }

@@ -4,7 +4,7 @@ import StartggAPI
 /// A pool within a certain phase
 ///
 /// Eg: R1 Pools can have many phase groups, whereas Top 8 only has 1. Used by **PhaseGroupListView**
-struct PhaseGroup: Identifiable, Hashable {
+struct PhaseGroup: Hashable {
   let id: Int
   let name: String?
   let state: String?
@@ -23,13 +23,13 @@ struct PhaseGroupDetails {
   var roundLabels = [RoundLabel]()
   var phaseGroupSetRounds = [Int: Int]()
   
-  struct RoundLabel: Identifiable {
+  struct RoundLabel {
     var id: Int // roundNum
     let text: String
   }
 }
 
-struct Standing: Identifiable, Hashable {
+struct Standing: Hashable {
   let id = UUID()
   let entrant: Entrant?
   let placement: Int?
@@ -57,7 +57,7 @@ struct PhaseGroupSetEntrant: Hashable {
   let score: String?
 }
 
-struct PhaseGroupSetGame: Identifiable {
+struct PhaseGroupSetGame {
   let id: Int
   let gameNum: Int?
   let winnerID: Int?

@@ -19,7 +19,7 @@ struct EventsView: View {
         }
       case .loaded(let tournamentDetails):
         if let events = tournamentDetails?.events, !events.isEmpty {
-          ForEach(events) { event in
+          ForEach(events, id: \.id) { event in
             NavigationLink(value: event) {
               EventRowView(event: event)
             }

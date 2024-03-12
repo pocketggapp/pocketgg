@@ -15,7 +15,7 @@ struct SelectionSlideView: View {
   
   var body: some View {
     VStack {
-      List(content.videoGames ?? [], selection: $selectedItemIDs) {
+      List(content.videoGames ?? [], id: \.id, selection: $selectedItemIDs) {
         Text($0.name)
       }
       .listStyle(.plain)

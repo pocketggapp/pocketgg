@@ -38,7 +38,7 @@ struct PhaseGroupListView: View {
         }
       case .loaded(let phaseGroups):
         if let phaseGroups, !phaseGroups.isEmpty {
-          ForEach(phaseGroups) { phaseGroup in
+          ForEach(phaseGroups, id: \.id) { phaseGroup in
             NavigationLink(value: phaseGroup) {
               HStack {
                 Text("Pool \(phaseGroup.name ?? "")")

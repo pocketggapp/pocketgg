@@ -19,7 +19,7 @@ struct StreamsView: View {
         }
       case .loaded(let tournamentDetails):
         if let streams = tournamentDetails?.streams, !streams.isEmpty {
-          ForEach(streams) { stream in
+          ForEach(streams, id: \.id) { stream in
             StreamRowView(stream: stream)
           }
         } else {
