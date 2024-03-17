@@ -58,10 +58,6 @@ struct TournamentHorizontalListView: View {
 
 #Preview {
   return TournamentHorizontalListView(
-    tournamentsGroup: TournamentsGroup(name: "Test Group", tournaments: [
-      MockStartggService.createTournament(id: 0),
-      MockStartggService.createTournament(id: 1),
-      MockStartggService.createTournament(id: 2),
-    ])
+    tournamentsGroup: MockStartggService.createTournamentsGroup()
   )
 }

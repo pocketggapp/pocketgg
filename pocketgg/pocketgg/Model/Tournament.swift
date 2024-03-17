@@ -14,7 +14,7 @@ struct Tournament: Hashable {
 }
 
 struct TournamentsGroup {
-  let id = UUID()
+  let id: Int
   let name: String
   let tournaments: [Tournament]
 }

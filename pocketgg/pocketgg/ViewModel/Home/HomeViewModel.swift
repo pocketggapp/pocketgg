@@ -58,35 +58,56 @@ final class HomeViewModel: ObservableObject {
       return
     }
     
-    // TODO: Batch network calls:
-    // each pinned tournament (by id)
-    // featured tournaments
-    // upcoming tournaments
-    // each enabled video game
-    
-    async let featuredTournaments = homeViewLayout.contains(-2)
-      ? TournamentsGroup(name: "Featured", tournaments: service.getFeaturedTournaments(pageNum: 1, gameIDs: [1]))
-      : nil
-    async let upcomingTournaments = homeViewLayout.contains(-3)
-      ? TournamentsGroup(name: "Upcoming", tournaments: service.getUpcomingTournaments(pageNum: 1, gameIDs: [1]))
-      : nil
-    
     do {
-      let tournamentGroups = try await [featuredTournaments, upcomingTournaments]
-      let sortedTournamentGroups = homeViewLayout.compactMap {
-        switch $0 {
-        case -2:
-          return tournamentGroups[safe: 0] ?? nil
-        case -3:
-          return tournamentGroups[safe: 1] ?? nil
-        default:
-          return nil
+      try await withThrowingTaskGroup(of: TournamentsGroup.self) { [weak self] taskGroup in
+        guard let self else {
+          self?.state = .error
+          #if DEBUG
+          print("HomeViewModel: self is nil while fetching tournaments")
+          #endif
+          return
         }
+        
+        for sectionID in homeViewLayout {
+          // TODO: Each pinned tournament
+          taskGroup.addTask {
+            switch sectionID {
+            case -2:
+              return try await TournamentsGroup(
+                id: sectionID,
+                name: "Featured",
+                tournaments: self.service.getFeaturedTournaments(pageNum: 1, gameIDs: [1]) // TODO: Make this call load only 10
+              )
+            case -3:
+              return try await TournamentsGroup(
+                id: sectionID,
+                name: "Upcoming",
+                tournaments: self.service.getUpcomingTournaments(pageNum: 1, gameIDs: [1])
+              )
+            default:
+              return try await TournamentsGroup(
+                id: sectionID,
+                name: videoGames.first(where: { $0.id == sectionID })?.name ?? "",
+                tournaments: self.service.getTournaments(pageNum: 1, perPage: 10, gameIDs: [sectionID])
+              )
+            }
+          }
+        }
+        
+        var tournamentGroups = [TournamentsGroup]()
+        while let tournamentsGroup = try await taskGroup.next() {
+          tournamentGroups.append(tournamentsGroup)
+        }
+        
+        let sortedTournamentGroups = homeViewLayout.compactMap { sectionID in
+          tournamentGroups.first(where: { $0.id == sectionID })
+        }
+        
+        state = .loaded(sortedTournamentGroups)
       }
-      
-      state = .loaded(sortedTournamentGroups)
     } catch {
       state = .error
+      // TODO: Figure out why this is failing on the first load
       #if DEBUG
       print("HomeViewModel: \(error)")
       #endif

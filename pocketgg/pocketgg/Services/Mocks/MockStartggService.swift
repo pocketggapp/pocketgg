@@ -60,6 +60,14 @@ final class MockStartggService: StartggServiceType {
   
   // MARK: Mock Data
   
+  static func createTournamentsGroup() -> TournamentsGroup {
+    TournamentsGroup(
+      id: -2,
+      name: "Featured",
+      tournaments: [createTournament(id: 0)]
+    )
+  }
+  
   static func createTournament(id: Int) -> Tournament {
     Tournament(
       id: id,
