@@ -89,7 +89,7 @@ struct VideoGameSearchView: View {
       viewModel.getEnabledVideoGames()
     }
     .onAppear {
-      viewModel.resetVideoGamesChangedNotification()
+      viewModel.resetHomeViewRefreshNotification()
     }
     .scrollDismissesKeyboard(.immediately)
   }

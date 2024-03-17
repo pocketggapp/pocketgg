@@ -127,6 +127,7 @@
 		DADA22012B9CEE1A00442E0C /* HomeViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA22002B9CEE1A00442E0C /* HomeViewSection.swift */; };
 		DADA22032B9CEEB100442E0C /* RearrangeSectionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA22022B9CEEB100442E0C /* RearrangeSectionsViewModel.swift */; };
 		DADA22072BA118E800442E0C /* AppDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA22062BA118E800442E0C /* AppDataService.swift */; };
+		DADA22092BA24ED300442E0C /* ProfileHeaderPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADA22082BA24ED300442E0C /* ProfileHeaderPlaceholderView.swift */; };
 		DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */; };
 		DADCB9DF2B7C6C960093023D /* PhaseGroupSet.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */; };
 		DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */; };
@@ -287,6 +288,7 @@
 		DADA22002B9CEE1A00442E0C /* HomeViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewSection.swift; sourceTree = "<group>"; };
 		DADA22022B9CEEB100442E0C /* RearrangeSectionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeSectionsViewModel.swift; sourceTree = "<group>"; };
 		DADA22062BA118E800442E0C /* AppDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataService.swift; sourceTree = "<group>"; };
+		DADA22082BA24ED300442E0C /* ProfileHeaderPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderPlaceholderView.swift; sourceTree = "<group>"; };
 		DADCB9DC2B7C51F00093023D /* PhaseGroupSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetView.swift; sourceTree = "<group>"; };
 		DADCB9DE2B7C6C960093023D /* PhaseGroupSet.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhaseGroupSet.graphql; sourceTree = "<group>"; };
 		DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentHeaderView.swift; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 				DAFB42D72B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift */,
 				DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */,
 				DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */,
+				DADA22082BA24ED300442E0C /* ProfileHeaderPlaceholderView.swift */,
 			);
 			path = Placeholder;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
 				DA8E8BEB2B9B6A9E003DBB3F /* RearrangeSectionsView.swift in Sources */,
 				DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */,
+				DADA22092BA24ED300442E0C /* ProfileHeaderPlaceholderView.swift in Sources */,
 				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
 				DAFB42DA2B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift in Sources */,
 				DA475EE82B794A8E007100A6 /* EliminationBracketLayout.swift in Sources */,

@@ -59,7 +59,7 @@ struct VideoGamesView: View {
       viewModel.getSavedVideoGames()
     }
     .onAppear {
-      viewModel.resetVideoGamesChangedNotification()
+      viewModel.resetHomeViewRefreshNotification()
     }
     .toolbar { EditButton() }
     .navigationTitle("Video Game Selection")

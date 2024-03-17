@@ -32,7 +32,7 @@ struct ProfileHeaderView: View {
           )
           
           VStack(alignment: .leading, spacing: 5) {
-            userTextView()
+            UserTextView()
               .font(.title2.bold())
             
             Text(profile.bio ?? "")
@@ -45,7 +45,7 @@ struct ProfileHeaderView: View {
   }
   
   @ViewBuilder
-  private func userTextView() -> some View {
+  private func UserTextView() -> some View {
     if let name = profile.name {
       if let teamName = profile.teamName {
         Text(teamName).foregroundColor(.gray) + Text(" ") + Text(name)

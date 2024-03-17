@@ -18,14 +18,14 @@ struct PhaseGroupSetGameRowView: View {
     VStack(alignment: .leading) {
       Text("Game \(game.gameNum ?? 0): \(game.stageName ?? "")")
       
-      winnerTextView()
+      WinnerTextView()
         .font(.caption)
     }
     .frame(height: 44 * scale)
   }
   
   @ViewBuilder
-  private func winnerTextView() -> some View {
+  private func WinnerTextView() -> some View {
     if let winnerID = game.winnerID,
        let winner = setEntrants.first(where: { $0.id == winnerID }),
        let name = winner.name {

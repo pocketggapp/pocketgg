@@ -15,7 +15,7 @@ final class VideoGamesViewModel: ObservableObject {
   private var enabledVideoGames: [VideoGameEntity]
   private let userDefaults: UserDefaults
   
-  private var sentVideoGamesChangedNotification: Bool
+  private var sentHomeViewRefreshNotification: Bool
   
   init(
     coreDataService: CoreDataService = .shared,
@@ -25,11 +25,11 @@ final class VideoGamesViewModel: ObservableObject {
     self.coreDataService = coreDataService
     self.enabledVideoGames = []
     self.userDefaults = userDefaults
-    self.sentVideoGamesChangedNotification = false
+    self.sentHomeViewRefreshNotification = false
   }
   
-  func resetVideoGamesChangedNotification() {
-    sentVideoGamesChangedNotification = false
+  func resetHomeViewRefreshNotification() {
+    sentHomeViewRefreshNotification = false
   }
   
   // MARK: Get Saved Video Games
@@ -63,9 +63,9 @@ final class VideoGamesViewModel: ObservableObject {
     
     updateHomeViewSections(id: id)
     
-    if !sentVideoGamesChangedNotification {
-      NotificationCenter.default.post(name: Notification.Name(Constants.videoGamesChanged), object: nil)
-      sentVideoGamesChangedNotification = true
+    if !sentHomeViewRefreshNotification {
+      NotificationCenter.default.post(name: Notification.Name(Constants.refreshHomeView), object: nil)
+      sentHomeViewRefreshNotification = true
     }
   }
   

@@ -13,22 +13,22 @@ struct EliminationSetView: View {
     ZStack(alignment: .leading) {
       VStack(alignment: .leading, spacing: 0) {
         HStack {
-          getEntrantTextView(0)
+          EntrantTextView(0)
             .font(phaseGroupSet.outcome == .entrant0Won ? .headline : .body)
           
           Spacer()
           
-          getScoreTextView(0)
+          ScoreTextView(0)
             .background(phaseGroupSet.outcome == .entrant0Won ? .green : .gray)
         }
         
         HStack {
-          getEntrantTextView(1)
+          EntrantTextView(1)
             .font(phaseGroupSet.outcome == .entrant1Won ? .headline : .body)
           
           Spacer()
           
-          getScoreTextView(1)
+          ScoreTextView(1)
             .background(phaseGroupSet.outcome == .entrant1Won ? .green : .gray)
         }
       }
@@ -53,7 +53,7 @@ struct EliminationSetView: View {
   // MARK: Private Helpers
   
   @ViewBuilder
-  private func getEntrantTextView(_ num: Int) -> some View {
+  private func EntrantTextView(_ num: Int) -> some View {
     if let name = phaseGroupSet.entrants?[safe: num]?.entrant?.name {
       if let teamName = phaseGroupSet.entrants?[safe: num]?.entrant?.teamName {
         HStack(spacing: 5) {
@@ -75,7 +75,7 @@ struct EliminationSetView: View {
     }
   }
   
-  private func getScoreTextView(_ num: Int) -> some View {
+  private func ScoreTextView(_ num: Int) -> some View {
     Text(phaseGroupSet.entrants?[safe: num]?.score ?? "-")
       .lineLimit(1)
       .frame(minWidth: 30 * scale)

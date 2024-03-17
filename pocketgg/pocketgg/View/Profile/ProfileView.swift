@@ -16,7 +16,7 @@ struct ProfileView: View {
       VStack {
         switch viewModel.state {
         case .uninitialized, .loading:
-          EmptyView() // TODO: Profile loading view
+          ProfileHeaderPlaceholderView()
         case .loaded(let profile):
           if let profile {
             ProfileHeaderView(

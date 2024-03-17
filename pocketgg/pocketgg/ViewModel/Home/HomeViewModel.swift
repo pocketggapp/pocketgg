@@ -5,7 +5,8 @@ enum HomeViewState {
   case uninitialized
   case loading
   case loaded([TournamentsGroup])
-  case error(String)
+  case noSections
+  case error
 }
 
 final class HomeViewModel: ObservableObject {
@@ -15,7 +16,8 @@ final class HomeViewModel: ObservableObject {
   private let service: StartggServiceType
   private let userDefaults: UserDefaults
   
-  var videoGamesChanged = false
+  /// HomeView needs to be refreshed if a video game was added/removed, the HomeView layout was edited, or a tournament was pinned/unpinned
+  var needsRefresh = false
   
   init(
     service: StartggServiceType = StartggService.shared,
@@ -36,8 +38,8 @@ final class HomeViewModel: ObservableObject {
       case .uninitialized:
         break
       default:
-        if videoGamesChanged {
-          videoGamesChanged = false
+        if needsRefresh {
+          needsRefresh = false
           break
         } else {
           return
@@ -45,23 +47,55 @@ final class HomeViewModel: ObservableObject {
       }
     }
     
-    let videoGame = getSavedVideoGames()
-    // TODO: Also get order of home screen sections, and map those to tournamnetggroups
-    
     state = .loading
+    
+    let videoGames = getSavedVideoGames()
+    let pinnedTournamentIDs = userDefaults.array(forKey: Constants.pinnedTournamentIDs) as? [Int] ?? []
+    let homeViewLayout = userDefaults.array(forKey: Constants.homeViewSections) as? [Int] ?? []
+    
+    guard !homeViewLayout.isEmpty else {
+      state = .noSections
+      return
+    }
+    
+    // TODO: Batch network calls:
+    // each pinned tournament (by id)
+    // featured tournaments
+    // upcoming tournaments
+    // each enabled video game
+    
+    async let featuredTournaments = homeViewLayout.contains(-2)
+      ? TournamentsGroup(name: "Featured", tournaments: service.getFeaturedTournaments(pageNum: 1, gameIDs: [1]))
+      : nil
+    async let upcomingTournaments = homeViewLayout.contains(-3)
+      ? TournamentsGroup(name: "Upcoming", tournaments: service.getUpcomingTournaments(pageNum: 1, gameIDs: [1]))
+      : nil
+    
     do {
-      let tournaments = try await service.getFeaturedTournaments(pageNum: 1, gameIDs: [1])
-      state = .loaded([TournamentsGroup(name: "Featured", tournaments: tournaments)])
+      let tournamentGroups = try await [featuredTournaments, upcomingTournaments]
+      let sortedTournamentGroups = homeViewLayout.compactMap {
+        switch $0 {
+        case -2:
+          return tournamentGroups[safe: 0] ?? nil
+        case -3:
+          return tournamentGroups[safe: 1] ?? nil
+        default:
+          return nil
+        }
+      }
+      
+      state = .loaded(sortedTournamentGroups)
     } catch {
-      state = .error(error.localizedDescription)
+      state = .error
+      #if DEBUG
+      print("HomeViewModel: \(error)")
+      #endif
     }
   }
   
   // MARK: Get Saved Video Games
   
   private func getSavedVideoGames() -> [VideoGame] {
-    // Don't check for uninitialized state; this method should be called every time HomeView appears (via .task)
-    // to account for any changes
     do {
       let videoGameEntities = try VideoGamePreferenceService.getVideoGames()
       return videoGameEntities.compactMap { entity -> VideoGame? in

@@ -22,6 +22,12 @@ struct HomeView: View {
             ForEach(tournamentGroups, id: \.id) { tournamentGroup in
               TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
             }
+          case .noSections:
+            EmptyStateView(
+              systemImageName: "questionmark.app.dashed",
+              title: "No Video Games Enabled",
+              subtitle: "Select video games in the app settings to see tournaments that feature those games"
+            )
           case .error:
             ErrorStateView(subtitle: "There was an error loading your tournaments") {
               Task {
@@ -31,11 +37,10 @@ struct HomeView: View {
           }
         }
       }
-      .onReceive(NotificationCenter.default.publisher(for: Notification.Name(Constants.videoGamesChanged))) { _ in
-        viewModel.videoGamesChanged = true
+      .onReceive(NotificationCenter.default.publisher(for: Notification.Name(Constants.refreshHomeView))) { _ in
+        viewModel.needsRefresh = true
       }
       .task {
-        // TODO: Refresh pinned tournaments, video games, without .uninitialzied check
         await viewModel.fetchTournaments()
       }
       .refreshable {

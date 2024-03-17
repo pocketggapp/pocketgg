@@ -39,7 +39,7 @@ struct RearrangeSectionsView: View {
     }
     .onAppear {
       viewModel.initializeSections()
-      viewModel.resetVideoGamesChangedNotification()
+      viewModel.resetHomeViewRefreshNotification()
     }
     .navigationTitle("Rearrange Sections")
   }

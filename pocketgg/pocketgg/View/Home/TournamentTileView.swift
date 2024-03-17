@@ -15,8 +15,7 @@ struct TournamentTileView: View {
         imageURL: tournament.bannerImageURL,
         imageRatio: tournament.bannerImageRatio
       )
-      .aspectRatio(1.7, contentMode: .fill)
-      .frame(width: 300 * scale)
+      .frame(width: 300 * scale, height: 175 * scale)
       .clipShape(RoundedRectangle(cornerRadius: 10))
       
       VStack(alignment: .leading, spacing: 5) {

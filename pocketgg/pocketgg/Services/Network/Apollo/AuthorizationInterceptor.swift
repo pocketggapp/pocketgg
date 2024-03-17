@@ -16,8 +16,9 @@ class AuthorizationInterceptor: ApolloInterceptor {
       accessToken = try KeychainService.getToken(.accessToken)
       request.addHeader(name: "authorization", value: "Bearer \(accessToken)")
     } catch {
-      // TODO: Handle error
-      print(error)
+      #if DEBUG
+      print("AuthorizationInterceptor: \(error)")
+      #endif
     }
 
     chain.proceedAsync(request: request, response: response, interceptor: self, completion: completion)

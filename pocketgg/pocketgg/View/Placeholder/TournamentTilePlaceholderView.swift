@@ -7,7 +7,7 @@ struct TournamentTilePlaceholderView: View {
     VStack(alignment: .leading) {
       Rectangle()
         .fill(Color(.placeholder))
-        .frame(width: 300 * scale, height: 176 * scale)
+        .frame(width: 300 * scale, height: 175 * scale)
         .clipShape(RoundedRectangle(cornerRadius: 10))
       
       VStack(alignment: .leading, spacing: 5) {

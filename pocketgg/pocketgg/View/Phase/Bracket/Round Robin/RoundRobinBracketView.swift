@@ -55,11 +55,11 @@ struct RoundRobinBracketView: View {
   
   private func roundRobinSet(for entrant0: Entrant, and entrant1: Entrant) -> PhaseGroupSet? {
     guard entrant0.id != entrant1.id else { return nil }
-    // TODO: Make cleaner
+    
     return phaseGroupSets.first {
       $0.entrants?.compactMap { info -> Bool? in
         guard let id = info.entrant?.id else { return nil }
-        if id == entrant0.id{
+        if id == entrant0.id {
           return true
         } else if id == entrant1.id {
           return true

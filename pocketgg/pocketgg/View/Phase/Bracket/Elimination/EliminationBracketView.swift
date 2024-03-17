@@ -34,7 +34,7 @@ struct EliminationBracketView: View {
             .layoutValue(key: PhaseGroupRoundLabel.self, value: $0)
         }
         ForEach(phaseGroupSets) {
-          setPathView(for: $0, phaseGroupSetRounds: phaseGroupSetRounds)
+          SetPathView(for: $0, phaseGroupSetRounds: phaseGroupSetRounds)
             .layoutValue(key: PhaseGroupSetPathID.self, value: $0.id)
         }
       }
@@ -42,7 +42,7 @@ struct EliminationBracketView: View {
   }
   
   @ViewBuilder
-  private func setPathView(for set: PhaseGroupSet, phaseGroupSetRounds: [Int: Int]) -> some View {
+  private func SetPathView(for set: PhaseGroupSet, phaseGroupSetRounds: [Int: Int]) -> some View {
     let round1Num = phaseGroupSetRounds[set.prevRoundIDs[0]]
     let round2Num = phaseGroupSetRounds[set.prevRoundIDs[1]]
     

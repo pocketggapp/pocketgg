@@ -26,6 +26,34 @@ query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
   }
 }
 
+query UpcomingTournaments($pageNum: Int, $gameIDs: [ID]) {
+  tournaments(query: {
+    perPage: 50
+    page: $pageNum
+    sortBy: "startAt asc"
+    filter: {
+      upcoming: true
+      videogameIds: $gameIDs
+    }
+  }) {
+    nodes {
+      id
+      name
+      startAt
+      endAt
+      isOnline
+      city
+      addrState
+      countryCode
+      images {
+        url
+        type
+        ratio
+      }
+    }
+  }
+}
+
 query Tournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) {
   tournaments(query: {
     perPage: $perPage

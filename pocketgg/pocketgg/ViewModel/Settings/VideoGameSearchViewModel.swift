@@ -23,7 +23,7 @@ final class VideoGameSearchViewModel: ObservableObject {
   private var currentVideoGamesPage: Int
   var noMoreVideoGames: Bool
   
-  private var sentVideoGamesChangedNotification: Bool
+  private var sentHomeViewRefreshNotification: Bool
   
   init(
     service: StartggServiceType = StartggService.shared,
@@ -39,11 +39,11 @@ final class VideoGameSearchViewModel: ObservableObject {
     self.accumulatedVideoGameIDs = []
     self.currentVideoGamesPage = 1
     self.noMoreVideoGames = false
-    self.sentVideoGamesChangedNotification = false
+    self.sentHomeViewRefreshNotification = false
   }
   
-  func resetVideoGamesChangedNotification() {
-    sentVideoGamesChangedNotification = false
+  func resetHomeViewRefreshNotification() {
+    sentHomeViewRefreshNotification = false
   }
   
   // MARK: Fetch Video Games
@@ -133,9 +133,9 @@ final class VideoGameSearchViewModel: ObservableObject {
     
     updateHomeViewSections(id: videoGame.id)
     
-    if !sentVideoGamesChangedNotification {
-      NotificationCenter.default.post(name: Notification.Name(Constants.videoGamesChanged), object: nil)
-      sentVideoGamesChangedNotification = true
+    if !sentHomeViewRefreshNotification {
+      NotificationCenter.default.post(name: Notification.Name(Constants.refreshHomeView), object: nil)
+      sentHomeViewRefreshNotification = true
     }
   }
   
