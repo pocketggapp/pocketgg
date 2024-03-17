@@ -7,22 +7,26 @@ public class UpcomingTournamentsQuery: GraphQLQuery {
   public static let operationName: String = "UpcomingTournaments"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query UpcomingTournaments($pageNum: Int, $gameIDs: [ID]) { tournaments( query: {perPage: 50, page: $pageNum, sortBy: "startAt asc", filter: {upcoming: true, videogameIds: $gameIDs}} ) { __typename nodes { __typename id name startAt endAt isOnline city addrState countryCode images { __typename url type ratio } } } }"#
+      #"query UpcomingTournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) { tournaments( query: {perPage: $perPage, page: $pageNum, sortBy: "startAt asc", filter: {upcoming: true, videogameIds: $gameIDs}} ) { __typename nodes { __typename id name startAt endAt isOnline city addrState countryCode images { __typename url type ratio } } } }"#
     ))
 
   public var pageNum: GraphQLNullable<Int>
+  public var perPage: GraphQLNullable<Int>
   public var gameIDs: GraphQLNullable<[ID?]>
 
   public init(
     pageNum: GraphQLNullable<Int>,
+    perPage: GraphQLNullable<Int>,
     gameIDs: GraphQLNullable<[ID?]>
   ) {
     self.pageNum = pageNum
+    self.perPage = perPage
     self.gameIDs = gameIDs
   }
 
   public var __variables: Variables? { [
     "pageNum": pageNum,
+    "perPage": perPage,
     "gameIDs": gameIDs
   ] }
 
@@ -33,7 +37,7 @@ public class UpcomingTournamentsQuery: GraphQLQuery {
     public static var __parentType: ApolloAPI.ParentType { StartggAPI.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
       .field("tournaments", Tournaments?.self, arguments: ["query": [
-        "perPage": 50,
+        "perPage": .variable("perPage"),
         "page": .variable("pageNum"),
         "sortBy": "startAt asc",
         "filter": [

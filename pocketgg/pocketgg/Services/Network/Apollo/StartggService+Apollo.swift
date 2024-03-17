@@ -3,8 +3,8 @@ import Apollo
 import StartggAPI
 
 protocol StartggServiceType {
-  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament]
-  func getUpcomingTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament]
+  func getFeaturedTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament]
+  func getUpcomingTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament]
   func getTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament]
   func getTournamentsNearLocation(pageNum: Int, perPage: Int, gameIDs: [Int], coordinates: String, radius: String) async throws -> [Tournament]
   func getTournamentDetails(id: Int) async throws -> TournamentDetails?

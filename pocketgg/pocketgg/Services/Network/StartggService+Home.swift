@@ -2,10 +2,14 @@ import Foundation
 import StartggAPI
 
 extension StartggService {
-  func getFeaturedTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament] {
+  func getFeaturedTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: FeaturedTournamentsQuery(pageNum: .some(pageNum), gameIDs: .some(gameIDs.map { String($0) }))
+        query: FeaturedTournamentsQuery(
+          pageNum: .some(pageNum),
+          perPage: .some(perPage),
+          gameIDs: .some(gameIDs.map { String($0) })
+        )
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -95,10 +99,14 @@ extension StartggService {
     }
   }
   
-  func getUpcomingTournaments(pageNum: Int, gameIDs: [Int]) async throws -> [Tournament] {
+  func getUpcomingTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: UpcomingTournamentsQuery(pageNum: .some(pageNum), gameIDs: .some(gameIDs.map { String($0) }))
+        query: UpcomingTournamentsQuery(
+          pageNum: .some(pageNum),
+          perPage: .some(perPage),
+          gameIDs: .some(gameIDs.map { String($0) })
+        )
       ) { result in
         switch result {
         case .success(let graphQLResult):

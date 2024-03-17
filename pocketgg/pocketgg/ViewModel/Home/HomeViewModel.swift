@@ -76,13 +76,13 @@ final class HomeViewModel: ObservableObject {
               return try await TournamentsGroup(
                 id: sectionID,
                 name: "Featured",
-                tournaments: self.service.getFeaturedTournaments(pageNum: 1, gameIDs: [1]) // TODO: Make this call load only 10
+                tournaments: self.service.getFeaturedTournaments(pageNum: 1, perPage: 10, gameIDs: videoGames.map { $0.id })
               )
             case -3:
               return try await TournamentsGroup(
                 id: sectionID,
                 name: "Upcoming",
-                tournaments: self.service.getUpcomingTournaments(pageNum: 1, gameIDs: [1])
+                tournaments: self.service.getUpcomingTournaments(pageNum: 1, perPage: 10, gameIDs: videoGames.map { $0.id })
               )
             default:
               return try await TournamentsGroup(

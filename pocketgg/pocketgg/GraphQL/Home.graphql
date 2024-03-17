@@ -1,6 +1,6 @@
-query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
+query FeaturedTournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) {
   tournaments(query: {
-    perPage: 50
+    perPage: $perPage
     page: $pageNum
     sortBy: "startAt asc"
     filter: {
@@ -26,9 +26,9 @@ query FeaturedTournaments($pageNum: Int, $gameIDs: [ID]) {
   }
 }
 
-query UpcomingTournaments($pageNum: Int, $gameIDs: [ID]) {
+query UpcomingTournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) {
   tournaments(query: {
-    perPage: 50
+    perPage: $perPage
     page: $pageNum
     sortBy: "startAt asc"
     filter: {
