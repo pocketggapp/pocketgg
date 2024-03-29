@@ -2,6 +2,64 @@ import Foundation
 import StartggAPI
 
 extension StartggService {
+  func getTournament(id: Int) async throws -> Tournament? {
+    return try await withCheckedThrowingContinuation { continuation in
+      apollo.fetch(
+        query: TournamentQuery(id: .some(String(id)))
+      ) { result in
+        switch result {
+        case .success(let graphQLResult):
+          guard let tournament = graphQLResult.data?.tournament,
+                let id = Int(tournament.id ?? "nil") else {
+            continuation.resume(returning: nil)
+            return
+          }
+          
+          let start = DateFormatter.shared.dateFromTimestamp(tournament.startAt)
+          let end = DateFormatter.shared.dateFromTimestamp(tournament.endAt)
+          let date = start == end ? start : "\(start) - \(end)"
+          
+          let logoURL = tournament.images?.first(where: { $0?.type == "profile" })??.url
+          let bannerImageURL = tournament.images?.first { $0?.type == "banner" }??.url
+          let bannerImageRatio = tournament.images?.first { $0?.type == "banner" }??.ratio
+          
+          var location = ""
+          var components = [String]()
+          if let city = tournament.city {
+            components.append(city)
+          }
+          if let addrState = tournament.addrState {
+            components.append(addrState)
+          }
+          if let countryCode = tournament.countryCode {
+            components.append(countryCode)
+          }
+          for component in components {
+            if !location.isEmpty {
+              location += ", "
+            }
+            location += component
+          }
+          if location.isEmpty, let isOnline = tournament.isOnline, isOnline {
+            location = "Online"
+          }
+          
+          continuation.resume(returning: Tournament(
+            id: id,
+            name: tournament.name,
+            date: date,
+            location: location,
+            logoImageURL: logoURL,
+            bannerImageURL: bannerImageURL,
+            bannerImageRatio: bannerImageRatio
+          ))
+        case .failure(let error):
+          continuation.resume(throwing: error)
+        }
+      }
+    }
+  }
+  
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(

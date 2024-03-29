@@ -59,6 +59,26 @@ struct TournamentView: View {
     .refreshable {
       await viewModel.fetchTournament(refreshed: true)
     }
+    .toolbar {
+      ToolbarItemGroup(placement: .topBarTrailing) {
+        Menu {
+          Button {
+            viewModel.toggleTournamentPinStatus()
+          } label: {
+            Label(
+              viewModel.isPinned ? "Unpin" : "Pin",
+              systemImage: viewModel.isPinned ? "pin.slash.fill" : "pin.fill"
+            )
+          }
+          
+          if let tournamentURL = viewModel.tournamentURL {
+            ShareLink(item: tournamentURL)
+          }
+        } label: {
+          Image(systemName: "ellipsis.circle")
+        }
+      }
+    }
     .navigationTitle(tournament.name ?? "")
     .navigationDestination(for: Event.self) { event in
       EventView(event: event)

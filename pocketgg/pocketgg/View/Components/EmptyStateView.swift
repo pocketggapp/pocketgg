@@ -6,11 +6,18 @@ struct EmptyStateView: View {
   private let systemImageName: String
   private let title: String
   private let subtitle: String
+  private let showVerticalPadding: Bool
   
-  init(systemImageName: String, title: String, subtitle: String) {
+  init(
+    systemImageName: String,
+    title: String,
+    subtitle: String,
+    showVerticalPadding: Bool = true
+  ) {
     self.systemImageName = systemImageName
     self.title = title
     self.subtitle = subtitle
+    self.showVerticalPadding = showVerticalPadding
   }
   
   var body: some View {
@@ -35,7 +42,7 @@ struct EmptyStateView: View {
       }
       Spacer()
     }
-    .padding(.vertical, 64)
+    .padding(.vertical, showVerticalPadding ? 64 : 0)
   }
 }
 

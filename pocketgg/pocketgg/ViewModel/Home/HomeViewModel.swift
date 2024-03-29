@@ -69,18 +69,23 @@ final class HomeViewModel: ObservableObject {
         }
         
         for sectionID in homeViewLayout {
-          // TODO: Each pinned tournament
           taskGroup.addTask {
             switch sectionID {
+            case -1:
+              return try await TournamentsGroup(
+                id: -1,
+                name: "Pinned",
+                tournaments: self.fetchPinnedTournaments(IDs: pinnedTournamentIDs)
+              )
             case -2:
               return try await TournamentsGroup(
-                id: sectionID,
+                id: -2,
                 name: "Featured",
                 tournaments: self.service.getFeaturedTournaments(pageNum: 1, perPage: 10, gameIDs: videoGames.map { $0.id })
               )
             case -3:
               return try await TournamentsGroup(
-                id: sectionID,
+                id: -3,
                 name: "Upcoming",
                 tournaments: self.service.getUpcomingTournaments(pageNum: 1, perPage: 10, gameIDs: videoGames.map { $0.id })
               )
@@ -111,6 +116,32 @@ final class HomeViewModel: ObservableObject {
       #if DEBUG
       print("HomeViewModel: \(error)")
       #endif
+    }
+  }
+  
+  private func fetchPinnedTournaments(IDs: [Int]) async throws -> [Tournament] {
+    try await withThrowingTaskGroup(of: Tournament?.self) { [weak self] taskGroup in
+      guard let self else {
+        #if DEBUG
+        print("HomeViewModel: self is nil while fetching pinned tournaments")
+        #endif
+        return []
+      }
+      
+      for id in IDs {
+        taskGroup.addTask {
+          return try await self.service.getTournament(id: id)
+        }
+      }
+      
+      var tournaments = [Tournament?]()
+      while let tournament = try await taskGroup.next() {
+        tournaments.append(tournament)
+      }
+      
+      return IDs.compactMap { id in
+        tournaments.first(where: { $0?.id == id }) ?? nil
+      }
     }
   }
   

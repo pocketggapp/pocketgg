@@ -1,3 +1,21 @@
+query Tournament($id: ID) {
+  tournament(id: $id) {
+    id
+    name
+    startAt
+    endAt
+    isOnline
+    city
+    addrState
+    countryCode
+    images {
+      url
+      type
+      ratio
+    }
+  }
+}
+
 query TournamentDetails($id: ID) {
   tournament(id: $id) {
     events {
