@@ -21,4 +21,12 @@ final class PinnedTournamentService {
     }
     userDefaults.set(pinnedTournamentIDs, forKey: Constants.pinnedTournamentIDs)
   }
+  
+  static func savePinnedTournaments(
+    _ tournaments: [Tournament],
+    userDefaults: UserDefaults = .standard
+  ) {
+    let tournamentIDs = tournaments.map { $0.id }
+    userDefaults.set(tournamentIDs, forKey: Constants.pinnedTournamentIDs)
+  }
 }

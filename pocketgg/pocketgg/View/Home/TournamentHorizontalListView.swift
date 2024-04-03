@@ -1,7 +1,19 @@
 import SwiftUI
 
 struct TournamentHorizontalListView: View {
-  var tournamentsGroup: TournamentsGroup
+  @State private var showingEditPinnedTournamentsView: Bool
+  
+  private let tournamentsGroup: TournamentsGroup
+  private let reloadHome: (() -> Void)
+  
+  init(
+    tournamentsGroup: TournamentsGroup,
+    reloadHome: @escaping () -> Void
+  ) {
+    self.tournamentsGroup = tournamentsGroup
+    self.reloadHome = reloadHome
+    self._showingEditPinnedTournamentsView = State(initialValue: false)
+  }
   
   var body: some View {
     VStack(alignment: .leading) {
@@ -11,13 +23,7 @@ struct TournamentHorizontalListView: View {
         
         Spacer()
         
-        if tournamentsGroup.tournaments.count > 10 {
-          Button {
-            // TODO: Launch list of tournaments
-          } label: {
-            Text("View all")
-          }
-        }
+        HeaderButtonView()
       }
       .padding([.horizontal])
       
@@ -62,11 +68,37 @@ struct TournamentHorizontalListView: View {
         )
       }
     }
+    .sheet(isPresented: $showingEditPinnedTournamentsView, onDismiss: {
+      reloadHome()
+    }, content: {
+      EditPinnedTournamentsView(tournamentsGroup.tournaments)
+    })
+  }
+  
+  @ViewBuilder
+  private func HeaderButtonView() -> some View {
+    switch tournamentsGroup.id {
+    case -1:
+      Button {
+        showingEditPinnedTournamentsView = true
+      } label: {
+        Text("Edit")
+      }
+    default:
+      if tournamentsGroup.tournaments.count >= 10 {
+        Button {
+          // TODO: Launch list of tournaments
+        } label: {
+          Text("View all")
+        }
+      }
+    }
   }
 }
 
 #Preview {
   return TournamentHorizontalListView(
-    tournamentsGroup: MockStartggService.createTournamentsGroup()
+    tournamentsGroup: MockStartggService.createTournamentsGroup(),
+    reloadHome: { }
   )
 }

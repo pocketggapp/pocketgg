@@ -19,8 +19,12 @@ struct HomeView: View {
             TournamentsPlaceholderView()
             TournamentsPlaceholderView()
           case .loaded(let tournamentGroups):
-            ForEach(tournamentGroups, id: \.id) { tournamentGroup in
-              TournamentHorizontalListView(tournamentsGroup: tournamentGroup)
+            ForEach(tournamentGroups, id: \.id) {
+              TournamentHorizontalListView(tournamentsGroup: $0) {
+                Task {
+                  await viewModel.fetchTournaments()
+                }
+              }
             }
           case .noSections:
             EmptyStateView(
