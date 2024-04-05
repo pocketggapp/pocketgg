@@ -13,7 +13,7 @@ struct Tournament: Hashable {
   let bannerImageRatio: Double?
 }
 
-struct TournamentsGroup {
+struct TournamentsGroup: Hashable {
   let id: Int
   let name: String
   let tournaments: [Tournament]

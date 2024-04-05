@@ -63,9 +63,13 @@ struct HomeView: View {
         )
       }
       .navigationTitle("Tournaments")
-      .navigationDestination(for: Tournament.self) { tournament in
-        TournamentView(
-          tournament: tournament
+      .navigationDestination(for: Tournament.self) {
+        TournamentView(tournament: $0)
+      }
+      .navigationDestination(for: TournamentsGroup.self) {
+        TournamentListView(
+          title: $0.name,
+          sectionID: $0.id
         )
       }
     }

@@ -86,9 +86,7 @@ struct TournamentHorizontalListView: View {
       }
     default:
       if tournamentsGroup.tournaments.count >= 10 {
-        Button {
-          // TODO: Launch list of tournaments
-        } label: {
+        NavigationLink(value: tournamentsGroup) {
           Text("View all")
         }
       }
