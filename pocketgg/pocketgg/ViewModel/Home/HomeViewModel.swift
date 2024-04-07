@@ -87,13 +87,13 @@ final class HomeViewModel: ObservableObject {
               return try await TournamentsGroup(
                 id: -3,
                 name: "Upcoming",
-                tournaments: self.service.getUpcomingTournaments(pageNum: 1, perPage: 10, gameIDs: videoGames.map { $0.id })
+                tournaments: self.fetchUpcomingTournaments(gameIDs: videoGames.map { $0.id })
               )
             default:
               return try await TournamentsGroup(
                 id: sectionID,
                 name: videoGames.first(where: { $0.id == sectionID })?.name ?? "",
-                tournaments: self.service.getTournaments(pageNum: 1, perPage: 10, gameIDs: [sectionID])
+                tournaments: self.fetchUpcomingTournaments(gameIDs: [sectionID])
               )
             }
           }
@@ -145,6 +145,24 @@ final class HomeViewModel: ObservableObject {
     }
   }
   
+  private func fetchUpcomingTournaments(gameIDs: [Int]) async throws -> [Tournament] {
+    if let location = getLocation() {
+      return try await service.getUpcomingTournamentsNearLocation(
+        pageNum: 1,
+        perPage: 10,
+        gameIDs: gameIDs,
+        coordinates: location.coordinates,
+        radius: location.radius
+      )
+    } else {
+      return try await service.getUpcomingTournaments(
+        pageNum: 1,
+        perPage: 10,
+        gameIDs: gameIDs
+      )
+    }
+  }
+  
   // MARK: Get Saved Video Games
   
   private func getSavedVideoGames() -> [VideoGame] {
@@ -160,6 +178,18 @@ final class HomeViewModel: ObservableObject {
       #endif
       return []
     }
+  }
+  
+  // MARK: Get Location Preference
+  
+  private func getLocation() -> (coordinates: String, radius: String)? {
+    guard userDefaults.bool(forKey: Constants.locationEnabled) else { return nil }
+    guard let coordinates = userDefaults.string(forKey: Constants.locationCoordinates), !coordinates.isEmpty else { return nil }
+    var radius = userDefaults.string(forKey: Constants.locationDistance) ?? "50"
+    if radius.isEmpty { radius = "50" }
+    var unit = userDefaults.string(forKey: Constants.locationDistanceUnit) ?? "mi"
+    if unit.isEmpty { unit = "mi" }
+    return (coordinates, radius + unit)
   }
   
   // MARK: Onboarding View

@@ -54,35 +54,7 @@ query UpcomingTournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) {
   }
 }
 
-query Tournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) {
-  tournaments(query: {
-    perPage: $perPage
-    page: $pageNum
-    sortBy: "startAt asc"
-    filter: {
-      upcoming: true
-      videogameIds: $gameIDs
-    }
-  }) {
-    nodes {
-      id
-      name
-      startAt
-      endAt
-      isOnline
-      city
-      addrState
-      countryCode
-      images {
-        url
-        type
-        ratio
-      }
-    }
-  }
-}
-
-query TournamentsNearLocation($pageNum: Int, $perPage: Int, $gameIDs: [ID], $coordinates: String, $radius: String) {
+query UpcomingTournamentsNearLocation($pageNum: Int, $perPage: Int, $gameIDs: [ID], $coordinates: String, $radius: String) {
   tournaments(query: {
     perPage: $perPage
     page: $pageNum

@@ -2,11 +2,17 @@ import SwiftUI
 import CoreLocation
 
 final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-  @AppStorage("locationEnabled") var locationEnabled: Bool = false
-  @AppStorage("locationCoordinates") var locationCoordinates: String = ""
-  @AppStorage("locationString") var locationString: String = ""
-  @AppStorage("locationDistance") var locationDistance: String = ""
-  @AppStorage("locationDistanceUnit") var locationDistanceUnit: String = "mi"
+  /// Whether or not the user has enabled location preference
+  @AppStorage(Constants.locationEnabled) var locationEnabled: Bool = false
+  /// A string representation of the user's location in latitude and longitude (eg. "37.7873589, -122.408227")
+  @AppStorage(Constants.locationCoordinates) var locationCoordinates: String = ""
+  /// A string representing the city and country of the user's location (eg. "San Francisco, United States")
+  @AppStorage(Constants.locationString) var locationString: String = ""
+  /// A string representing a distance radius that tournaments should be found within (eg. "50")
+  /// If empty, 50 should be used as a default value
+  @AppStorage(Constants.locationDistance) var locationDistance: String = ""
+  /// A string representing the distance unit ("mi" or "km")
+  @AppStorage(Constants.locationDistanceUnit) var locationDistanceUnit: String = "mi"
   
   @Published var gettingLocation = false
   @Published var usingLocation = false
@@ -27,6 +33,7 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
     
     // Initialize published variables
     usingLocation = locationEnabled
+    coordinatesString = locationCoordinates
     cityCountryString = locationString
     distanceString = locationDistance
     selectedDistanceUnit = locationDistanceUnit
@@ -41,10 +48,6 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
       locationDistanceUnit = selectedDistanceUnit
     } else {
       locationEnabled = false
-      locationCoordinates = ""
-      locationString = ""
-      locationDistance = ""
-      locationDistanceUnit = "mi"
     }
   }
   
@@ -70,7 +73,6 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
     if city == nil, let country { return country }
     if country == nil, let city { return city }
     guard let city, let country else { return "" }
-    
     
     return city + ", " + country
   }

@@ -3,11 +3,11 @@
 
 @_exported import ApolloAPI
 
-public class TournamentsNearLocationQuery: GraphQLQuery {
-  public static let operationName: String = "TournamentsNearLocation"
+public class UpcomingTournamentsNearLocationQuery: GraphQLQuery {
+  public static let operationName: String = "UpcomingTournamentsNearLocation"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query TournamentsNearLocation($pageNum: Int, $perPage: Int, $gameIDs: [ID], $coordinates: String, $radius: String) { tournaments( query: {perPage: $perPage, page: $pageNum, sortBy: "startAt asc", filter: {upcoming: true, videogameIds: $gameIDs, location: {distanceFrom: $coordinates, distance: $radius}}} ) { __typename nodes { __typename id name startAt endAt isOnline city addrState countryCode images { __typename url type ratio } } } }"#
+      #"query UpcomingTournamentsNearLocation($pageNum: Int, $perPage: Int, $gameIDs: [ID], $coordinates: String, $radius: String) { tournaments( query: {perPage: $perPage, page: $pageNum, sortBy: "startAt asc", filter: {upcoming: true, videogameIds: $gameIDs, location: {distanceFrom: $coordinates, distance: $radius}}} ) { __typename nodes { __typename id name startAt endAt isOnline city addrState countryCode images { __typename url type ratio } } } }"#
     ))
 
   public var pageNum: GraphQLNullable<Int>

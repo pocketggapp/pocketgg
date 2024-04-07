@@ -73,7 +73,7 @@ final class TournamentListViewModel: ObservableObject {
           gameIDs: videoGameIDs
         )
       default:
-        tournaments = try await service.getTournaments(
+        tournaments = try await service.getUpcomingTournaments(
           pageNum: currentTournamentsPage,
           perPage: numTournamentsToLoad,
           gameIDs: [sectionID]

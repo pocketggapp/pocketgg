@@ -46,7 +46,7 @@ final class EntrantService {
   
   /// Used by **getEventStandings / AllStandingsView**
   static func getEntrantAndStanding2(_ standing: EventStandingsQuery.Data.Event.Standings.Node?) -> Standing? {
-    guard let standing = standing else { return nil }
+    guard let standing else { return nil }
     guard let id = Int(standing.entrant?.id ?? "nil") else { return nil }
     
     if let participants = standing.entrant?.participants, participants.count == 1 {
@@ -64,7 +64,7 @@ final class EntrantService {
   
   /// Used by **getPhaseGroupDetails / PhaseGroupView**
   static func getEntrantAndStanding3(_ standing: PhaseGroupQuery.Data.PhaseGroup.Standings.Node?) -> Standing? {
-    guard let standing = standing else { return nil }
+    guard let standing else { return nil }
     guard let id = Int(standing.entrant?.id ?? "nil") else { return nil }
     
     if let participants = standing.entrant?.participants, participants.count == 1 {

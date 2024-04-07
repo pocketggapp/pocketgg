@@ -1,4 +1,5 @@
 import Foundation
+import StartggAPI
 
 /// Preview of Tournament data
 ///
@@ -31,4 +32,22 @@ struct TournamentDetails {
   let slug: String?
   let registrationOpen: Bool
   let registrationCloseDate: String
+}
+
+struct TournamentNode {
+  let id: ID?
+  let name: String?
+  let startAt: Timestamp?
+  let endAt: Timestamp?
+  let isOnline: Bool?
+  let city: String?
+  let addrState: String?
+  let countryCode: String?
+  let images: [Image?]?
+  
+  struct Image {
+    let url: String?
+    let type: String?
+    let ratio: Double?
+  }
 }

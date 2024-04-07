@@ -4,6 +4,11 @@ enum Constants {
   static let appVersion = "appVersion"
   static let homeViewSections = "homeViewSections"
   static let pinnedTournamentIDs = "pinnedTournamentIDs"
+  static let locationEnabled = "locationEnabled"
+  static let locationCoordinates = "locationCoordinates"
+  static let locationString = "locationString"
+  static let locationDistance = "locationDistance"
+  static let locationDistanceUnit = "locationDistanceUnit"
   
   // NotificationCenter
   static let refreshHomeView = "refreshHomeView"
