@@ -12,6 +12,7 @@ final class TournamentListViewModel: ObservableObject {
   private let sectionID: Int
   private var videoGameIDs: [Int]
   
+  private let userDefaults: UserDefaults
   private let service: StartggServiceType
   private let numTournamentsToLoad: Int
   private var accumulatedTournaments: [Tournament]
@@ -20,11 +21,13 @@ final class TournamentListViewModel: ObservableObject {
   
   init(
     sectionID: Int,
-    service: StartggServiceType = StartggService.shared
+    service: StartggServiceType = StartggService.shared,
+    userDefaults: UserDefaults = .standard
   ) {
     self.state = .uninitialized
     self.sectionID = sectionID
     self.videoGameIDs = []
+    self.userDefaults = userDefaults
     self.service = service
     self.numTournamentsToLoad = max(20, 2 * Int(max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / 100))
     self.accumulatedTournaments = []
@@ -67,17 +70,9 @@ final class TournamentListViewModel: ObservableObject {
           gameIDs: videoGameIDs
         )
       case -3:
-        tournaments = try await service.getUpcomingTournaments(
-          pageNum: currentTournamentsPage,
-          perPage: numTournamentsToLoad,
-          gameIDs: videoGameIDs
-        )
+        tournaments = try await fetchUpcomingTournaments(gameIDs: videoGameIDs)
       default:
-        tournaments = try await service.getUpcomingTournaments(
-          pageNum: currentTournamentsPage,
-          perPage: numTournamentsToLoad,
-          gameIDs: [sectionID]
-        )
+        tournaments = try await fetchUpcomingTournaments(gameIDs: [sectionID])
       }
       
       if !tournaments.isEmpty {
@@ -95,6 +90,24 @@ final class TournamentListViewModel: ObservableObject {
     }
   }
   
+  private func fetchUpcomingTournaments(gameIDs: [Int]) async throws -> [Tournament] {
+    if let location = getLocation() {
+      return try await service.getUpcomingTournamentsNearLocation(
+        pageNum: currentTournamentsPage,
+        perPage: numTournamentsToLoad,
+        gameIDs: gameIDs,
+        coordinates: location.coordinates,
+        radius: location.radius
+      )
+    } else {
+      return try await service.getUpcomingTournaments(
+        pageNum: currentTournamentsPage,
+        perPage: numTournamentsToLoad,
+        gameIDs: gameIDs
+      )
+    }
+  }
+  
   // MARK: Get Saved Video Games
   
   private func getSavedVideoGameIDs() -> [Int] {
@@ -107,5 +120,17 @@ final class TournamentListViewModel: ObservableObject {
       #endif
       return []
     }
+  }
+  
+  // MARK: Get Location Preference
+  
+  private func getLocation() -> (coordinates: String, radius: String)? {
+    guard userDefaults.bool(forKey: Constants.locationEnabled) else { return nil }
+    guard let coordinates = userDefaults.string(forKey: Constants.locationCoordinates), !coordinates.isEmpty else { return nil }
+    var radius = userDefaults.string(forKey: Constants.locationDistance) ?? "50"
+    if radius.isEmpty { radius = "50" }
+    var unit = userDefaults.string(forKey: Constants.locationDistanceUnit) ?? "mi"
+    if unit.isEmpty { unit = "mi" }
+    return (coordinates, radius + unit)
   }
 }

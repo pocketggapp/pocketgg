@@ -41,6 +41,10 @@ struct LocationPreferenceView: View {
           }
         }
       }
+      
+      Section { } footer: {
+        Text("Set your location to only load tournaments in your area. Featured tournaments and searching for tournaments do not take your location into account.")
+      }
     }
     .navigationTitle("Location")
     .onDisappear {

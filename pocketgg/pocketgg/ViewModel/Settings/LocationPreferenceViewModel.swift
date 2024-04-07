@@ -92,6 +92,7 @@ extension LocationPreferenceViewModel {
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     switch manager.authorizationStatus {
     case .authorizedAlways, .authorizedWhenInUse:
+      gettingLocation = true
       manager.requestLocation()
     default: return
     }
