@@ -54,6 +54,8 @@ struct OnboardingView: View {
               content: $0,
               selectedItemIDs: $selectedGameIDs
             )
+          case .location:
+            OnboardingLocationView(content: $0)
           }
         }
       }

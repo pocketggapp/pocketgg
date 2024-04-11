@@ -60,6 +60,7 @@ struct LocationPreferenceView: View {
     }, message: {
       Text(viewModel.error?.localizedDescription ?? "")
     })
+    .scrollDismissesKeyboard(.immediately)
   }
 }
 

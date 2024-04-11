@@ -18,7 +18,7 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
   @Published var usingLocation = false
   @Published var cityCountryString = ""
   @Published var distanceString = ""
-  @Published var selectedDistanceUnit = ""
+  @Published var selectedDistanceUnit = "mi"
   
   @Published var showingAlert = false
   @Published var error: Error?

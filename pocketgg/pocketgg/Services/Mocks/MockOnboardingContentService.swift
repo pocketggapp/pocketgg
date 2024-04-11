@@ -23,4 +23,15 @@ final class MockOnboardingContentService {
       videoGames: VideoGamePreferenceService.getRecommendedGames()
     )
   }
+  
+  static func createLocationSlideContent() -> OnboardingContent {
+    OnboardingContent(
+      id: 2,
+      title: "Discover your local scene",
+      subtitle: "Enable location services to allow pocketgg to find tournaments in your area. You can adjust the exact radius later in the app settings.",
+      type: .location,
+      imageName: nil,
+      videoGames: nil
+    )
+  }
 }

@@ -8,6 +8,7 @@ enum OnboardingFlowType {
 enum OnboardingContentType {
   case image
   case selection
+  case location
 }
 
 struct OnboardingContent: Hashable {
