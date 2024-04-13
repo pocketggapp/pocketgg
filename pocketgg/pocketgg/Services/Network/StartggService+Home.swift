@@ -171,7 +171,7 @@ extension StartggService {
   
   // MARK: Convert Tournament Nodes
   
-  private static func convertTournamentNodes(_ nodes: [TournamentNode]) -> [Tournament] {
+  static func convertTournamentNodes(_ nodes: [TournamentNode]) -> [Tournament] {
     return nodes.compactMap {
       guard let id = Int($0.id ?? "nil") else { return nil }
       

@@ -72,6 +72,15 @@ struct HomeView: View {
           sectionID: $0.id
         )
       }
+      .navigationDestination(for: Event.self) { event in
+        EventView(event: event)
+      }
+      .navigationDestination(for: Entrant.self) {
+        UserAdminTournamentListView(
+          title: $0.teamName != nil ? "\($0.teamName ?? "") \($0.name ?? "")" : $0.name ?? "",
+          userID: $0.id
+        )
+      }
     }
   }
 }

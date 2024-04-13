@@ -1,0 +1,27 @@
+query UserAdminTournaments($id: ID, $pageNum: Int, $perPage: Int) {
+  user(id: $id) {
+    tournaments(
+      query: {
+        perPage: $perPage
+        page: $pageNum
+        filter: { tournamentView: "admin" }
+      }
+    ) {
+      nodes {
+        id
+        name
+        startAt
+        endAt
+        isOnline
+        city
+        addrState
+        countryCode
+        images {
+          url
+          type
+          ratio
+        }
+      }
+    }
+  }
+}

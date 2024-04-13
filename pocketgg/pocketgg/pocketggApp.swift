@@ -2,7 +2,6 @@ import SwiftUI
 
 @main
 struct pocketggApp: App {
-  let persistenceController = PersistenceController.shared
   @StateObject private var appRootManager = AppRootManager()
   
   private let oAuthService = OAuthService()

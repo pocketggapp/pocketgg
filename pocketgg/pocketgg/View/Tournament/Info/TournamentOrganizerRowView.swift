@@ -14,10 +14,7 @@ struct TournamentOrganizerRowView: View {
       Text("Tournament Organizer")
         .font(.title3.bold())
       
-      Button {
-        // TODO: Open list of tournaments by TO
-        print("Open list of tournaments by TO")
-      } label: {
+      NavigationLink(value: tournamentOrganizer) {
         ZStack {
           Color(UIColor.systemBackground)
           

@@ -80,9 +80,6 @@ struct TournamentView: View {
       }
     }
     .navigationTitle(tournament.name ?? "")
-    .navigationDestination(for: Event.self) { event in
-      EventView(event: event)
-    }
   }
   
   // MARK: Reload Tournament

@@ -71,9 +71,9 @@ struct VideoGameSearchView: View {
           }
         } else {
           EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
+            systemImageName: "magnifyingglass",
             title: "No Search Results",
-            subtitle: "Check your spelling or try another search term"
+            subtitle: "Check the spelling or try a new search."
           )
         }
       case .error:

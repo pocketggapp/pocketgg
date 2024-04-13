@@ -33,9 +33,10 @@ final class AppDataService {
     userDefaults.set(mainVCSections, forKey: Constants.homeViewSections)
     
     // Migrate saved video games from saved objects to Core Data
+    let propertyListDecoder = PropertyListDecoder()
     if let data = userDefaults.data(forKey: "preferredVideoGames") {
       do {
-        let videoGames = try PropertyListDecoder().decode([VideoGame].self, from: data)
+        let videoGames = try propertyListDecoder.decode([VideoGame].self, from: data)
         
         for videoGame in videoGames {
           let videoGameEntity = VideoGameEntity(context: coreDataService.context)
@@ -50,9 +51,31 @@ final class AppDataService {
       }
     }
     
+    // Migrate saved tournament organizers from saved objects to Core Data
+    if let data = userDefaults.data(forKey: "tournamentOrganizersFollowed") {
+      do {
+        let followedTOs = try propertyListDecoder.decode([TournamentOrganizer].self, from: data)
+        
+        for tournamentOrganizer in followedTOs {
+          let tournamentOrganizerEntity = TournamentOrganizerEntity(context: coreDataService.context)
+          tournamentOrganizerEntity.id = Int64(tournamentOrganizer.id)
+          tournamentOrganizerEntity.name = tournamentOrganizer.name
+          tournamentOrganizerEntity.prefix = tournamentOrganizer.prefix
+          tournamentOrganizerEntity.customName = tournamentOrganizer.customName
+          tournamentOrganizerEntity.customPrefix = tournamentOrganizer.customPrefix
+          coreDataService.save()
+        }
+      } catch {
+        #if DEBUG
+        print(error.localizedDescription)
+        #endif
+      }
+    }
+    
     // Remove deprecated UserDefaults objects
     userDefaults.removeObject(forKey: "mainVCSections")
     userDefaults.removeObject(forKey: "preferredVideoGames")
+    userDefaults.removeObject(forKey: "tournamentOrganizersFollowed")
     userDefaults.removeObject(forKey: "firebaseEnabled")
     
     // Set the current app version
