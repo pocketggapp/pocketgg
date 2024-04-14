@@ -7,12 +7,12 @@ struct UserAdminTournamentListView: View {
   
   init(
     title: String,
-    userID: Int,
+    user: Entrant,
     service: StartggServiceType = StartggService.shared
   ) {
     self._viewModel = StateObject(wrappedValue: {
       UserAdminTournamentListViewModel(
-        userID: userID,
+        user: user,
         service: service
       )
     }())
@@ -55,6 +55,13 @@ struct UserAdminTournamentListView: View {
     .refreshable {
       await viewModel.fetchTournaments(refreshed: true)
     }
+    .toolbar {
+      ToolbarItemGroup(placement: .topBarTrailing) {
+        Button(viewModel.isFollowed ? "Unfollow" : "Follow") {
+          viewModel.toggleTournamentOrganizerFollowedStatus()
+        }
+      }
+    }
     .navigationTitle(title)
   }
 }
@@ -62,7 +69,7 @@ struct UserAdminTournamentListView: View {
 #Preview {
   UserAdminTournamentListView(
     title: "C9 Mang0",
-    userID: 0,
+    user: MockStartggService.createEntrant(id: 0),
     service: MockStartggService()
   )
 }

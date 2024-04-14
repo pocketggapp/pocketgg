@@ -16,6 +16,11 @@ struct TESTCoreDataView: View {
         Text("\($0.name ?? "INVALID NAME") \($0.id)")
       }
       
+      Text("TOs:")
+      ForEach(viewModel.tos) {
+        Text("\($0.name ?? "INVALID NAME") \($0.id)")
+      }
+      
       Text("Layout:")
       HStack {
         ForEach(viewModel.layout, id: \.self) { afsd in
@@ -32,6 +37,17 @@ struct TESTCoreDataView: View {
         viewModel.deleteGames()
       } label: {
         Text("DELETE GAMES")
+      }
+      
+      Button {
+        viewModel.getTOs()
+      } label: {
+        Text("GET TOs")
+      }
+      Button {
+        viewModel.deleteTOs()
+      } label: {
+        Text("DELETE TOs")
       }
       
       Button {
@@ -70,16 +86,26 @@ struct TESTCoreDataView: View {
 
 final class TESTCoreDataViewModel: ObservableObject {
   @Published var games: [VideoGameEntity]
+  @Published var tos: [TournamentOrganizerEntity]
   @Published var layout: [Int]
   
   init() {
     self.games = []
+    self.tos = []
     self.layout = []
   }
   
   func getGames() {
     do {
       games = try VideoGamePreferenceService.getVideoGames()
+    } catch {
+      print(error)
+    }
+  }
+  
+  func getTOs() {
+    do {
+      tos = try FollowedTOsService.getTournamentOrganizers()
     } catch {
       print(error)
     }
@@ -92,5 +118,10 @@ final class TESTCoreDataViewModel: ObservableObject {
   func deleteGames() {
     VideoGamePreferenceService.deleteAllVideoGames()
     getGames()
+  }
+  
+  func deleteTOs() {
+    FollowedTOsService.deleteAllTournamentOrganizers()
+    getTOs()
   }
 }

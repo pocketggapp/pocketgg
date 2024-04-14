@@ -22,14 +22,14 @@ final class VideoGamePreferenceService {
     let request = NSFetchRequest<VideoGameEntity>(entityName: "VideoGameEntity")
     
     do {
-      let videoGameEntities = try coreDataService.context.fetch(request)
-      for entity in videoGameEntities {
+      let entities = try coreDataService.context.fetch(request)
+      for entity in entities {
         coreDataService.context.delete(entity)
       }
       coreDataService.save()
       
     } catch let error {
-      print("Error getting sets: \(error)")
+      print("Error getting video game entities: \(error)")
     }
   }
   

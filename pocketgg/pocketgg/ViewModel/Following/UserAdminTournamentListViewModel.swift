@@ -8,8 +8,9 @@ enum UserAdminTournamentListViewState {
 
 final class UserAdminTournamentListViewModel: ObservableObject {
   @Published var state: UserAdminTournamentListViewState
+  @Published var isFollowed: Bool
   
-  private let userID: Int
+  private let user: Entrant
   
   private let service: StartggServiceType
   private let numTournamentsToLoad: Int
@@ -18,16 +19,25 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   var noMoreTournaments: Bool
   
   init(
-    userID: Int,
+    user: Entrant,
     service: StartggServiceType = StartggService.shared
   ) {
     self.state = .uninitialized
-    self.userID = userID
+    self.user = user
     self.service = service
     self.numTournamentsToLoad = max(20, 2 * Int(max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / 100))
     self.accumulatedTournaments = []
     self.currentTournamentsPage = 1
     self.noMoreTournaments = false
+    
+    do {
+      self.isFollowed = try FollowedTOsService.tournamentOrganizerIsFollowed(id: user.id)
+    } catch {
+      #if DEBUG
+      print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
+      #endif
+      self.isFollowed = false
+    }
   }
   
   // MARK: Fetch Tournaments
@@ -55,7 +65,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
     
     do {
       let tournaments = try await service.getUserAdminTournaments(
-        userID: userID,
+        userID: user.id,
         pageNum: currentTournamentsPage,
         perPage: numTournamentsToLoad
       )
@@ -72,6 +82,17 @@ final class UserAdminTournamentListViewModel: ObservableObject {
       #if DEBUG
       print(error.localizedDescription)
       #endif
+    }
+  }
+  
+  func toggleTournamentOrganizerFollowedStatus() {
+    do {
+      self.isFollowed = try FollowedTOsService.toggleTournamentOrganizerFollowedStatus(tournamentOrganizer: user)
+    } catch {
+      #if DEBUG
+      print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
+      #endif
+      self.isFollowed = false
     }
   }
 }
