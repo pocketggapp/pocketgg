@@ -18,6 +18,8 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   private var currentTournamentsPage: Int
   var noMoreTournaments: Bool
   
+  private var sentFollowingViewRefreshNotification: Bool
+  
   init(
     user: Entrant,
     service: StartggServiceType = StartggService.shared
@@ -29,6 +31,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
     self.accumulatedTournaments = []
     self.currentTournamentsPage = 1
     self.noMoreTournaments = false
+    self.sentFollowingViewRefreshNotification = false
     
     do {
       self.isFollowed = try FollowedTOsService.tournamentOrganizerIsFollowed(id: user.id)
@@ -88,11 +91,19 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   func toggleTournamentOrganizerFollowedStatus() {
     do {
       self.isFollowed = try FollowedTOsService.toggleTournamentOrganizerFollowedStatus(tournamentOrganizer: user)
+      if !sentFollowingViewRefreshNotification {
+        NotificationCenter.default.post(name: Notification.Name(Constants.refreshFollowingView), object: nil)
+        sentFollowingViewRefreshNotification = true
+      }
     } catch {
       #if DEBUG
       print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
       #endif
       self.isFollowed = false
     }
+  }
+  
+  func resetFollowingViewRefreshNotification() {
+    sentFollowingViewRefreshNotification = false
   }
 }

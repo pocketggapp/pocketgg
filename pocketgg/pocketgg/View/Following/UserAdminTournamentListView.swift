@@ -52,13 +52,25 @@ struct UserAdminTournamentListView: View {
     .task {
       await viewModel.fetchTournaments()
     }
+    .onAppear {
+      viewModel.resetFollowingViewRefreshNotification()
+    }
     .refreshable {
       await viewModel.fetchTournaments(refreshed: true)
     }
     .toolbar {
       ToolbarItemGroup(placement: .topBarTrailing) {
-        Button(viewModel.isFollowed ? "Unfollow" : "Follow") {
-          viewModel.toggleTournamentOrganizerFollowedStatus()
+        Menu {
+          Button {
+            viewModel.toggleTournamentOrganizerFollowedStatus()
+          } label: {
+            Label(
+              viewModel.isFollowed ? "Unfollow" : "Follow",
+              systemImage: viewModel.isFollowed ? "person.fill.badge.minus" : "person.fill.badge.plus"
+            )
+          }
+        } label: {
+          Image(systemName: "ellipsis.circle")
         }
       }
     }

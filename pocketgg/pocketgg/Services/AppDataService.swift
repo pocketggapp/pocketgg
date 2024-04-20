@@ -65,6 +65,9 @@ final class AppDataService {
           tournamentOrganizerEntity.customPrefix = tournamentOrganizer.customPrefix
           coreDataService.save()
         }
+        
+        let followedTournamentOrganizerIDs = followedTOs.map { $0.id }
+        userDefaults.set(followedTournamentOrganizerIDs, forKey: Constants.followedTournamentOrganizerIDs)
       } catch {
         #if DEBUG
         print(error.localizedDescription)

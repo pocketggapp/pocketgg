@@ -18,6 +18,7 @@ final class VideoGamePreferenceService {
     return try coreDataService.context.fetch(request)
   }
   
+  // TODO: Delete along with TESTCoreDataView
   static func deleteAllVideoGames(coreDataService: CoreDataService = .shared) {
     let request = NSFetchRequest<VideoGameEntity>(entityName: "VideoGameEntity")
     

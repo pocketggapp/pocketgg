@@ -10,22 +10,23 @@ final class RearrangeSectionsViewModel: ObservableObject {
   @Published var disabledSections: [HomeViewSection]
   
   private var state: RearrangeSectionsViewState
-  private let coreDataService: CoreDataService
   private let userDefaults: UserDefaults
+  private let coreDataService: CoreDataService
+  
   private var enabledVideoGames: [VideoGameEntity]
   private var homeViewLayout: [Int]
   
   private var sentHomeViewRefreshNotification: Bool
   
   init(
-    coreDataService: CoreDataService = .shared,
-    userDefaults: UserDefaults = .standard
+    userDefaults: UserDefaults = .standard,
+    coreDataService: CoreDataService = .shared
   ) {
     self.state = .uninitialized
     self.enabledSections = []
     self.disabledSections = []
-    self.coreDataService = coreDataService
     self.userDefaults = userDefaults
+    self.coreDataService = coreDataService
     self.enabledVideoGames = []
     self.homeViewLayout = []
     self.sentHomeViewRefreshNotification = false
@@ -88,7 +89,7 @@ final class RearrangeSectionsViewModel: ObservableObject {
   }
   
   func updateHomeViewLayout() {
-    UserDefaults.standard.set(enabledSections.map { $0.id }, forKey: Constants.homeViewSections)
+    userDefaults.set(enabledSections.map { $0.id }, forKey: Constants.homeViewSections)
     
     if !sentHomeViewRefreshNotification {
       NotificationCenter.default.post(name: Notification.Name(Constants.refreshHomeView), object: nil)

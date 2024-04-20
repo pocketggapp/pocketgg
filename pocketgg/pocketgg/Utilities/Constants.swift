@@ -9,9 +9,11 @@ enum Constants {
   static let locationString = "locationString"
   static let locationDistance = "locationDistance"
   static let locationDistanceUnit = "locationDistanceUnit"
+  static let followedTournamentOrganizerIDs = "followedTournamentOrganizerIDs"
   
   // NotificationCenter
   static let refreshHomeView = "refreshHomeView"
+  static let refreshFollowingView = "refreshFollowingView"
   
   /// Hardcoded backup in case the call to Bundle.main.infoDictionary?["CFBundleShortVersionString"] somehow fails
   static let currentAppVersion = "2.0"
