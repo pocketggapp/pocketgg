@@ -10,6 +10,14 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   @Published var state: UserAdminTournamentListViewState
   @Published var isFollowed: Bool
   
+  @Published var customName: String
+  @Published var customPrefix: String
+  @Published var navigationTitle: String
+  
+  private let coreDataService: CoreDataService
+  private var oldName: String /// The name of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
+  private var oldPrefix: String /// The prefix of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
+  
   private let user: Entrant
   
   private let service: StartggServiceType
@@ -22,11 +30,13 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   
   init(
     user: Entrant,
-    service: StartggServiceType = StartggService.shared
+    service: StartggServiceType = StartggService.shared,
+    coreDataService: CoreDataService = .shared
   ) {
     self.state = .uninitialized
     self.user = user
     self.service = service
+    self.coreDataService = coreDataService
     self.numTournamentsToLoad = max(20, 2 * Int(max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / 100))
     self.accumulatedTournaments = []
     self.currentTournamentsPage = 1
@@ -35,11 +45,42 @@ final class UserAdminTournamentListViewModel: ObservableObject {
     
     do {
       self.isFollowed = try FollowedTOsService.tournamentOrganizerIsFollowed(id: user.id)
+      
+      let tournamentOrganizerEntities = try FollowedTOsService.getTournamentOrganizers()
+      if let entity = tournamentOrganizerEntities.first(where: { $0.id == user.id }) {
+        self.customName = entity.customName ?? ""
+        self.customPrefix = entity.customPrefix ?? ""
+        self.oldName = entity.customName ?? ""
+        self.oldPrefix = entity.customPrefix ?? ""
+        if let customName = entity.customName, let customPrefix = entity.customPrefix, !customName.isEmpty, !customPrefix.isEmpty {
+          self.navigationTitle = "\(customPrefix) \(customName)"
+        } else if let customName = entity.customName, !customName.isEmpty {
+          self.navigationTitle = customName
+        } else if let customPrefix = entity.customPrefix, !customPrefix.isEmpty {
+          self.navigationTitle = customPrefix
+        } else {
+          let formattedName = user.formattedName()
+          self.navigationTitle = "\(formattedName.prefix) \(formattedName.name)"
+        }
+      } else {
+        self.customName = ""
+        self.customPrefix = ""
+        self.oldName = user.name ?? ""
+        self.oldPrefix = user.teamName ?? ""
+        let formattedName = user.formattedName()
+        self.navigationTitle = "\(formattedName.prefix) \(formattedName.name)"
+      }
     } catch {
       #if DEBUG
       print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
       #endif
       self.isFollowed = false
+      self.customName = ""
+      self.customPrefix = ""
+      self.oldName = user.name ?? ""
+      self.oldPrefix = user.teamName ?? ""
+      let formattedName = user.formattedName()
+      self.navigationTitle = "\(formattedName.prefix) \(formattedName.name)"
     }
   }
   
@@ -88,13 +129,12 @@ final class UserAdminTournamentListViewModel: ObservableObject {
     }
   }
   
+  // MARK: Toggle Followed Status
+  
   func toggleTournamentOrganizerFollowedStatus() {
     do {
       self.isFollowed = try FollowedTOsService.toggleTournamentOrganizerFollowedStatus(tournamentOrganizer: user)
-      if !sentFollowingViewRefreshNotification {
-        NotificationCenter.default.post(name: Notification.Name(Constants.refreshFollowingView), object: nil)
-        sentFollowingViewRefreshNotification = true
-      }
+      sendFollowingViewRefreshNotification()
     } catch {
       #if DEBUG
       print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
@@ -103,7 +143,53 @@ final class UserAdminTournamentListViewModel: ObservableObject {
     }
   }
   
+  // MARK: Rename
+  
+  func renameTournamentOrganizer() {
+    do {
+      try FollowedTOsService.renameTournamentOrganizer(
+        id: user.id,
+        customName: customName,
+        customPrefix: customPrefix
+      )
+      navigationTitle = getNavigationTitle()
+      sendFollowingViewRefreshNotification()
+      
+      oldName = customName
+      oldPrefix = customPrefix
+    } catch {
+      #if DEBUG
+      print("UserAdminTournamentListViewModel: Rename TO failed")
+      #endif
+    }
+  }
+  
+  func cancelTournamentOrganizerRename() {
+    customName = oldName
+    customPrefix = oldPrefix
+    navigationTitle = getNavigationTitle()
+  }
+  
+  func getNavigationTitle() -> String {
+    if !customName.isEmpty, !customPrefix.isEmpty {
+      return "\(customPrefix) \(customName)"
+    } else if !customName.isEmpty {
+      return customName
+    } else if !customPrefix.isEmpty {
+      return customPrefix
+    } else {
+      let formattedName = user.formattedName()
+      return "\(formattedName.prefix) \(formattedName.name)"
+    }
+  }
+  
   func resetFollowingViewRefreshNotification() {
     sentFollowingViewRefreshNotification = false
+  }
+  
+  private func sendFollowingViewRefreshNotification() {
+    guard !sentFollowingViewRefreshNotification else { return }
+    NotificationCenter.default.post(name: Notification.Name(Constants.refreshFollowingView), object: nil)
+    sentFollowingViewRefreshNotification = true
   }
 }

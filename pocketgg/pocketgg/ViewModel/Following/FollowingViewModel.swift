@@ -13,7 +13,7 @@ final class FollowingViewModel: ObservableObject {
   private let userDefaults: UserDefaults
   private let coreDataService: CoreDataService
   
-  /// FollowingView needs to be refreshed if a tournament organizer is followed/unfollowed
+  /// FollowingView needs to be refreshed if a tournament organizer is followed/unfollowed or renamed
   var needsRefresh = false
   
   private var tournamentOrganizerEntities: [TournamentOrganizerEntity]

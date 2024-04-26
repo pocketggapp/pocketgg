@@ -20,8 +20,10 @@ struct FollowingView: View {
           }
         case .loaded:
           if !viewModel.tournamentOrganizers.isEmpty {
-            ForEach(viewModel.tournamentOrganizers, id: \.id) {
-              Text($0.name ?? "")
+            ForEach(viewModel.tournamentOrganizers, id: \.id) { tournamentOrganizer in
+              NavigationLink(value: tournamentOrganizer) {
+                OrganizerTextView(tournamentOrganizer)
+              }
             }
             .onMove(perform: viewModel.moveTournamentOrganizer)
             .onDelete(perform: viewModel.deleteTournamentOrganizer)
@@ -46,7 +48,17 @@ struct FollowingView: View {
       }
       .toolbar { EditButton() }
       .navigationTitle("Following")
+      .navigationDestination(for: TournamentOrganizer.self) {
+        UserAdminTournamentListView(
+          user: Entrant(id: $0.id, name: $0.name, teamName: $0.prefix)
+        )
+      }
     }
+  }
+  
+  private func OrganizerTextView(_ tournamentOrganizer: TournamentOrganizer) -> some View {
+    let formattedName = tournamentOrganizer.formattedName()
+    return Text("\(formattedName.prefix) ").foregroundColor(.gray) + Text(formattedName.name)
   }
 }
 

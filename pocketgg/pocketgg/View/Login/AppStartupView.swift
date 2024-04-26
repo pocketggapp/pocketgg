@@ -34,7 +34,7 @@ struct AppStartupView: View {
         refreshAccessToken()
       }
       .alert("Your session has expired", isPresented: $showingExpiredTokenAlert, actions: {
-        Button("Ok", role: .cancel) { logOut() }
+        Button("OK", role: .cancel) { logOut() }
       }, message: {
         Text("Please log in via start.gg again.")
       })

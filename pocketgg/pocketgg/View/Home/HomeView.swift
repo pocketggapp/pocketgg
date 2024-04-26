@@ -76,10 +76,7 @@ struct HomeView: View {
         EventView(event: event)
       }
       .navigationDestination(for: Entrant.self) {
-        UserAdminTournamentListView(
-          title: $0.teamName != nil ? "\($0.teamName ?? "") \($0.name ?? "")" : $0.name ?? "",
-          user: $0
-        )
+        UserAdminTournamentListView(user: $0)
       }
     }
   }

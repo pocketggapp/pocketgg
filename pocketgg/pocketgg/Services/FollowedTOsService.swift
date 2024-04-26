@@ -50,6 +50,22 @@ final class FollowedTOsService {
     }
   }
   
+  static func renameTournamentOrganizer(
+    id: Int,
+    customName: String?,
+    customPrefix: String?,
+    coreDataService: CoreDataService = .shared
+  ) throws {
+    let tournamentOrganizerEntities = try getTournamentOrganizers()
+    
+    if let entity = tournamentOrganizerEntities.first(where: { $0.id == id }) {
+      entity.customName = customName
+      entity.customPrefix = customPrefix
+      // Save the change in Core Data
+      coreDataService.save()
+    }
+  }
+  
   static func getTournamentOrganizers(coreDataService: CoreDataService = .shared) throws -> [TournamentOrganizerEntity] {
     let request = NSFetchRequest<TournamentOrganizerEntity>(entityName: "TournamentOrganizerEntity")
     return try coreDataService.context.fetch(request)
