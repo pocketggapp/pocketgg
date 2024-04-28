@@ -12,9 +12,7 @@ final class ProfileViewModel: ObservableObject {
   
   private let service: StartggServiceType
   
-  init(
-    service: StartggServiceType = StartggService.shared
-  ) {
+  init(service: StartggServiceType = StartggService.shared) {
     self.state = .uninitialized
     self.service = service
   }

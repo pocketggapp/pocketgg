@@ -102,6 +102,8 @@
 		DAB992302B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAB9922E2B8C195F00F99BD6 /* PocketggContainer.xcdatamodeld */; };
 		DAB992322B8C1BE100F99BD6 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB992312B8C1BE100F99BD6 /* CoreDataService.swift */; };
 		DABD24A42BDDDD4E0087122E /* ProfilePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A32BDDDD4E0087122E /* ProfilePlaceholderView.swift */; };
+		DABD24A62BDE9F800087122E /* CurrentUserTournamentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */; };
+		DABD24A82BDE9FD00087122E /* CurrentUserTournamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */; };
 		DABEC6682BCAC34100A3991E /* UserAdminTournamentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6672BCAC34100A3991E /* UserAdminTournamentListView.swift */; };
 		DABEC66A2BCAC50500A3991E /* StartggService+Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6692BCAC50500A3991E /* StartggService+Following.swift */; };
 		DABEC66D2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC66C2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift */; };
@@ -275,6 +277,8 @@
 		DAB9922F2B8C195F00F99BD6 /* PocketggContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PocketggContainer.xcdatamodel; sourceTree = "<group>"; };
 		DAB992312B8C1BE100F99BD6 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		DABD24A32BDDDD4E0087122E /* ProfilePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePlaceholderView.swift; sourceTree = "<group>"; };
+		DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserTournamentsViewModel.swift; sourceTree = "<group>"; };
+		DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserTournamentsView.swift; sourceTree = "<group>"; };
 		DABEC6672BCAC34100A3991E /* UserAdminTournamentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdminTournamentListView.swift; sourceTree = "<group>"; };
 		DABEC6692BCAC50500A3991E /* StartggService+Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Following.swift"; sourceTree = "<group>"; };
 		DABEC66C2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdminTournamentListViewModel.swift; sourceTree = "<group>"; };
@@ -769,6 +773,7 @@
 			children = (
 				DAD1251D2B802ACE005CECB6 /* ProfileView.swift */,
 				DAD1251F2B806DE5005CECB6 /* ProfileHeaderView.swift */,
+				DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD125242B815857005CECB6 /* ProfileViewModel.swift */,
+				DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1126,6 +1132,7 @@
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
 				DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
+				DABD24A62BDE9F800087122E /* CurrentUserTournamentsViewModel.swift in Sources */,
 				DA8E8BEB2B9B6A9E003DBB3F /* RearrangeSectionsView.swift in Sources */,
 				DADD99AE2AE1C33300ED35FC /* TournamentView.swift in Sources */,
 				DADA22092BA24ED300442E0C /* ProfileHeaderPlaceholderView.swift in Sources */,
@@ -1183,6 +1190,7 @@
 				DA1D911E2BBF952C00491F40 /* TournamentListViewModel.swift in Sources */,
 				DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */,
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,
+				DABD24A82BDE9FD00087122E /* CurrentUserTournamentsView.swift in Sources */,
 				DA58E81E2B954E2400AD446A /* VideoGamePreferenceService.swift in Sources */,
 				DA4DDBCD2B65662F00F3131E /* InfoView.swift in Sources */,
 				DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */,

@@ -23,8 +23,16 @@ struct ProfileView: View {
               )
               
               VStack(alignment: .leading) {
-                Text("Recent Tournaments")
-                  .font(.title2.bold())
+                HStack {
+                  Text("Recent Tournaments")
+                    .font(.title2.bold())
+                  
+                  Spacer()
+                  
+                  NavigationLink(value: 0) {
+                    Text("View all")
+                  }
+                }
                 
                 ForEach(profile.tournaments, id: \.id) { tournament in
                   NavigationLink(value: tournament) {
@@ -70,6 +78,10 @@ struct ProfileView: View {
       .navigationDestination(for: Tournament.self) {
         TournamentView(tournament: $0)
       }
+      .navigationDestination(for: Int.self) { _ in
+        CurrentUserTournamentsView()
+      }
+      .navigationTitle("Profile")
     }
   }
 }

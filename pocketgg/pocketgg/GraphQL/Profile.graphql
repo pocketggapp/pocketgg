@@ -35,3 +35,30 @@ query CurrentUser {
     }
   }
 }
+
+query CurrentUserTournaments($pageNum: Int, $perPage: Int) {
+  currentUser {
+    tournaments(
+      query: {
+        perPage: $perPage
+        page: $pageNum
+      }
+    ) {
+      nodes {
+        id
+        name
+        startAt
+        endAt
+        isOnline
+        city
+        addrState
+        countryCode
+        images {
+          url
+          type
+          ratio
+        }
+      }
+    }
+  }
+}
