@@ -26,6 +26,7 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "User": return StartggAPI.Objects.User
     case "Player": return StartggAPI.Objects.Player
     case "Image": return StartggAPI.Objects.Image
+    case "TournamentConnection": return StartggAPI.Objects.TournamentConnection
     case "Tournament": return StartggAPI.Objects.Tournament
     case "Event": return StartggAPI.Objects.Event
     case "StandingConnection": return StartggAPI.Objects.StandingConnection
@@ -35,7 +36,6 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Videogame": return StartggAPI.Objects.Videogame
     case "Streams": return StartggAPI.Objects.Streams
     case "Phase": return StartggAPI.Objects.Phase
-    case "TournamentConnection": return StartggAPI.Objects.TournamentConnection
     case "VideogameConnection": return StartggAPI.Objects.VideogameConnection
     case "PhaseGroupConnection": return StartggAPI.Objects.PhaseGroupConnection
     case "PhaseGroup": return StartggAPI.Objects.PhaseGroup

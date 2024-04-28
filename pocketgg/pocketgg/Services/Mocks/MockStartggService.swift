@@ -219,7 +219,8 @@ final class MockStartggService: StartggServiceType {
       bio: "GOAT",
       profileImageURL: "https://images.start.gg/images/user/145926/image-bcf05a5636061eb6dbd6ef236d2509fd.jpg?ehk=yevfvToJS2sH14kgjAeXtBttqUv2WYF5TZg2wFvqw2s%3D&ehkOptimized=%2FoS7V284nkLOgU3kCzm%2FmByOfVsPmgdTLJurzc%2B833c%3D",
       bannerImageURL: "https://images.start.gg/images/user/145926/image-747d2cfda61a2cf1d08699971e4ca989.png?ehk=2yJDN%2FtdJMFV%2FVA1NgU8D6m6r3T85OHo4pmVCdEP5pY%3D&ehkOptimized=szJt7wSUXoRptXhbtcF55NpHXSgPIVjP5FHJKoqsj1k%3D",
-      bannerImageRatio: 4
+      bannerImageRatio: 4,
+      tournaments: [createTournament(id: 0)]
     )
   }
   

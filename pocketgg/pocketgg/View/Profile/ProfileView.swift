@@ -3,39 +3,73 @@ import SwiftUI
 struct ProfileView: View {
   @StateObject private var viewModel: ProfileViewModel
   
-  init(
-    service: StartggServiceType = StartggService.shared
-  ) {
+  init(service: StartggServiceType = StartggService.shared) {
     self._viewModel = StateObject(wrappedValue: {
       ProfileViewModel(service: service)
     }())
   }
   
   var body: some View {
-    ScrollView(.vertical) {
-      VStack {
-        switch viewModel.state {
-        case .uninitialized, .loading:
-          ProfileHeaderPlaceholderView()
-        case .loaded(let profile):
-          if let profile {
-            ProfileHeaderView(
-              profile: profile
-            )
-          } else {
-            EmptyView()
+    NavigationStack {
+      ScrollView(.vertical) {
+        VStack(spacing: 32) {
+          switch viewModel.state {
+          case .uninitialized, .loading:
+            ProfilePlaceholderView()
+          case .loaded(let profile):
+            if let profile {
+              ProfileHeaderView(
+                profile: profile
+              )
+              
+              VStack(alignment: .leading) {
+                Text("Recent Tournaments")
+                  .font(.title2.bold())
+                
+                ForEach(profile.tournaments, id: \.id) { tournament in
+                  NavigationLink(value: tournament) {
+                    ZStack {
+                      Color(UIColor.systemBackground)
+                      
+                      HStack {
+                        TournamentRowView(tournament: tournament)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                          .foregroundColor(.gray)
+                      }
+                    }
+                  }
+                  .buttonStyle(.plain)
+                }
+              }
+              .padding(.horizontal)
+            } else {
+              EmptyStateView(
+                systemImageName: "person.crop.circle",
+                title: "Guest Mode",
+                subtitle: "Log in to view your profile and recent tournaments."
+              )
+            }
+          case .error:
+            ErrorStateView(subtitle: "There was an error loading your profile") {
+              Task {
+                await viewModel.fetchProfile(refreshed: true)
+              }
+            }
           }
-          Spacer()
-        case .error:
-          EmptyView()
         }
       }
-    }
-    .task {
-      await viewModel.fetchProfile()
-    }
-    .refreshable {
-      await viewModel.fetchProfile(refreshed: true)
+      .task {
+        await viewModel.fetchProfile()
+      }
+      .refreshable {
+        await viewModel.fetchProfile(refreshed: true)
+      }
+      .navigationDestination(for: Tournament.self) {
+        TournamentView(tournament: $0)
+      }
     }
   }
 }

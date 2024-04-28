@@ -1,9 +1,3 @@
-query CurrentUserID {
-  currentUser {
-    id
-  }
-}
-
 query CurrentUser {
   currentUser {
     id
@@ -16,6 +10,28 @@ query CurrentUser {
       type
       url
       ratio
+    }
+    tournaments(
+      query: {
+        perPage: 10
+        page: 1
+      }
+    ) {
+      nodes {
+        id
+        name
+        startAt
+        endAt
+        isOnline
+        city
+        addrState
+        countryCode
+        images {
+          url
+          type
+          ratio
+        }
+      }
     }
   }
 }

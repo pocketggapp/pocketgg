@@ -6,4 +6,5 @@ struct Profile {
   let profileImageURL: String?
   let bannerImageURL: String?
   let bannerImageRatio: Double?
+  let tournaments: [Tournament]
 }
