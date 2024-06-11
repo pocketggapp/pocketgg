@@ -40,7 +40,7 @@ struct FollowingView: View {
               title: "No tournament organizers followed",
               subtitle: """
               To follow a tournament organizer, tap the Info section on any tournament page, tap the tournament organizer's name, \
-              tap the \(Image(systemName: "ellipsis.circle")) at the top right, then tap Follow.
+              tap the ellipsis at the top right, then tap Follow.
               """
             )
           }

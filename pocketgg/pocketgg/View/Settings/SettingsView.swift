@@ -47,17 +47,22 @@ struct SettingsView: View {
         }
         
         Section {
-          NavigationLink(value: 4) {
+          Button {
+            launchAppStoreReviewPage()
+          } label: {
             HStack {
-              settingsRowView(imageName: "heart")
-              Text("Tip Jar")
+              Image(systemName: "star")
+                .foregroundColor(.red)
+                .frame(width: 30 * scale, height: 30 * scale)
+              Text("Write a Review")
+                .foregroundColor(Color(uiColor: .label))
             }
           }
           
           NavigationLink(value: 5) {
             HStack {
-              settingsRowView(imageName: "star")
-              Text("Write a Review")
+              settingsRowView(imageName: "heart")
+              Text("Tip Jar")
             }
           }
           
@@ -91,7 +96,7 @@ struct SettingsView: View {
           LocationPreferenceView()
         case 2:
           RearrangeSectionsView()
-        case 4:
+        case 5:
           TipJarView()
         case 6:
           AboutView()
@@ -100,11 +105,10 @@ struct SettingsView: View {
         }
       }
       .sheet(isPresented: $showingWhatsNewSheet) {
-//        OnboardingView(
-//          content: OnboardingContentService.createWhatsNewContent(),
-//          flowType: .appUpdate
-//        )
-        TESTCoreDataView()
+        OnboardingView(
+          content: OnboardingContentService.createWhatsNewContent(),
+          flowType: .appUpdate
+        )
       }
       .alert("Log Out", isPresented: $showingLogOutAlert, actions: {
         Button("No", role: .cancel) { }
@@ -119,6 +123,11 @@ struct SettingsView: View {
     Image(systemName: imageName)
       .foregroundColor(.red)
       .frame(width: 30 * scale, height: 30 * scale)
+  }
+  
+  private func launchAppStoreReviewPage() {
+    guard let url = URL(string: "https://apps.apple.com/app/id1576064097?action=write-review") else { return }
+    UIApplication.shared.open(url)
   }
   
   /// Clear the access token, refresh token, and navigate to LoginView
