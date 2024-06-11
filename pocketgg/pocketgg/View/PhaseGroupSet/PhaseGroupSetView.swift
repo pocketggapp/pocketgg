@@ -45,11 +45,11 @@ struct PhaseGroupSetView: View {
               EmptyStateView(
                 systemImageName: "questionmark.app.dashed",
                 title: "No Games Reported",
-                subtitle: "Once games are reported, the results will display here"
+                subtitle: "Once games are reported, the results will display here."
               )
             }
           case .error:
-            ErrorStateView(subtitle: "There was an error loading this set") {
+            ErrorStateView(subtitle: "There was an error loading this set.") {
               Task {
                 await viewModel.fetchPhaseGroupSet(refreshed: true)
               }

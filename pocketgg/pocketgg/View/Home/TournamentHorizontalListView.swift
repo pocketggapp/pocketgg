@@ -63,7 +63,7 @@ struct TournamentHorizontalListView: View {
         EmptyStateView(
           systemImageName: "questionmark.app.dashed",
           title: tournamentsGroup.id == -1 ? "No Pinned Tournaments" : "No Tournaments",
-          subtitle: tournamentsGroup.id == -1 ? "You have no pinned tournaments" : "No tournaments found for this category",
+          subtitle: tournamentsGroup.id == -1 ? "You have no pinned tournaments." : "No tournaments found for this category.",
           showVerticalPadding: false
         )
       }

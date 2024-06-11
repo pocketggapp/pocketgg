@@ -55,11 +55,11 @@ struct PhaseGroupListView: View {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
             title: "No Pools",
-            subtitle: "There are currently no pools for this phase"
+            subtitle: "There are currently no pools for this phase."
           )
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this phase") {
+        ErrorStateView(subtitle: "There was an error loading this phase.") {
           Task {
             await viewModel.fetchPhaseGroups(refreshed: true)
           }

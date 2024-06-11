@@ -92,7 +92,7 @@ struct SettingsView: View {
         case 2:
           RearrangeSectionsView()
         case 4:
-          TESTCoreDataView()
+          TipJarView()
         case 6:
           AboutView()
         default:
@@ -100,10 +100,11 @@ struct SettingsView: View {
         }
       }
       .sheet(isPresented: $showingWhatsNewSheet) {
-        OnboardingView(
-          content: OnboardingContentService.createWhatsNewContent(),
-          flowType: .appUpdate
-        )
+//        OnboardingView(
+//          content: OnboardingContentService.createWhatsNewContent(),
+//          flowType: .appUpdate
+//        )
+        TESTCoreDataView()
       }
       .alert("Log Out", isPresented: $showingLogOutAlert, actions: {
         Button("No", role: .cancel) { }

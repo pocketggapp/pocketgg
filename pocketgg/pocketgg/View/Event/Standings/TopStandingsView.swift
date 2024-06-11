@@ -40,11 +40,11 @@ struct TopStandingsView: View {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
             title: "No Standings",
-            subtitle: "There are currently no standings for this event"
+            subtitle: "There are currently no standings for this event."
           )
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this event") {
+        ErrorStateView(subtitle: "There was an error loading this event.") {
           reloadEvent()
         }
       }

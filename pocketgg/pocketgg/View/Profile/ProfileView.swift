@@ -61,7 +61,7 @@ struct ProfileView: View {
               )
             }
           case .error:
-            ErrorStateView(subtitle: "There was an error loading your profile") {
+            ErrorStateView(subtitle: "There was an error loading your profile.") {
               Task {
                 await viewModel.fetchProfile(refreshed: true)
               }
@@ -77,6 +77,9 @@ struct ProfileView: View {
       }
       .navigationDestination(for: Tournament.self) {
         TournamentView(tournament: $0)
+      }
+      .navigationDestination(for: Event.self) {
+        EventView(event: $0)
       }
       .navigationDestination(for: Int.self) { _ in
         CurrentUserTournamentsView()

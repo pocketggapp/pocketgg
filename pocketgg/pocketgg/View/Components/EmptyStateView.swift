@@ -29,6 +29,7 @@ struct EmptyStateView: View {
           .scaledToFit()
           .frame(width: 75 * scale, height: 75 * scale)
           .fontWeight(.light)
+          .foregroundColor(Color(.emptyState))
         
         VStack(spacing: 5) {
           Text(title)
@@ -50,6 +51,6 @@ struct EmptyStateView: View {
   EmptyStateView(
     systemImageName: "questionmark.app.dashed",
     title: "No Events",
-    subtitle: "There are currently no events for this tournament"
+    subtitle: "There are currently no events for this tournament."
   )
 }

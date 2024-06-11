@@ -20,20 +20,27 @@ struct FollowingView: View {
           }
         case .loaded:
           if !viewModel.tournamentOrganizers.isEmpty {
-            ForEach(viewModel.tournamentOrganizers, id: \.id) { tournamentOrganizer in
-              NavigationLink(value: tournamentOrganizer) {
-                OrganizerTextView(tournamentOrganizer)
+            Section {
+              ForEach(viewModel.tournamentOrganizers, id: \.id) { tournamentOrganizer in
+                NavigationLink(value: tournamentOrganizer) {
+                  OrganizerTextView(tournamentOrganizer)
+                }
               }
+              .onMove(perform: viewModel.moveTournamentOrganizer)
+              .onDelete(perform: viewModel.deleteTournamentOrganizer)
+            } footer: {
+              Text("""
+                To change a tournament organizer's display name, tap the tournament organizer you want to rename, \
+                tap the \(Image(systemName: "ellipsis.circle")) at the top right, then tap Rename.
+                """)
             }
-            .onMove(perform: viewModel.moveTournamentOrganizer)
-            .onDelete(perform: viewModel.deleteTournamentOrganizer)
           } else {
             EmptyStateView(
               systemImageName: "person.fill.questionmark",
               title: "No tournament organizers followed",
               subtitle: """
               To follow a tournament organizer, tap the Info section on any tournament page, tap the tournament organizer's name, \
-              tap the ellipsis at the top right, then tap Follow.
+              tap the \(Image(systemName: "ellipsis.circle")) at the top right, then tap Follow.
               """
             )
           }

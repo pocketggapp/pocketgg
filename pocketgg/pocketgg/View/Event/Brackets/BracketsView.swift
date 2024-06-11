@@ -28,11 +28,11 @@ struct BracketsView: View {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
             title: "No Brackets",
-            subtitle: "There are currently no brackets for this event"
+            subtitle: "There are currently no brackets for this event."
           )
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this event") {
+        ErrorStateView(subtitle: "There was an error loading this event.") {
           reloadEvent()
         }
       }

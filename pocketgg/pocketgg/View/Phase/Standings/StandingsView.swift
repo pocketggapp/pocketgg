@@ -34,11 +34,11 @@ struct StandingsView: View {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
             title: "No Standings",
-            subtitle: "There are currently no standings for this phase group"
+            subtitle: "There are currently no standings for this phase group."
           )
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this phase group") {
+        ErrorStateView(subtitle: "There was an error loading this phase group.") {
           reloadPhaseGroup()
         }
       }

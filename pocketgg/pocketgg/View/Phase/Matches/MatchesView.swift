@@ -37,11 +37,11 @@ struct MatchesView: View {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
             title: "No Matches",
-            subtitle: "There are currently no matches in this phase group"
+            subtitle: "There are currently no matches in this phase group."
           )
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this phase group") {
+        ErrorStateView(subtitle: "There was an error loading this phase group.") {
           reloadPhaseGroup()
         }
       }

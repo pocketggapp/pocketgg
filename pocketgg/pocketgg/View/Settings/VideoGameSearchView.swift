@@ -35,7 +35,7 @@ struct VideoGameSearchView: View {
         EmptyStateView(
           systemImageName: "magnifyingglass",
           title: "Search for Video Games",
-          subtitle: "Find video games by typing the name of a video game and tapping search"
+          subtitle: "Find video games by typing the name of a video game and tapping search."
         )
       case .loading:
         ForEach(0..<20) { _ in
@@ -77,7 +77,7 @@ struct VideoGameSearchView: View {
           )
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading search results") {
+        ErrorStateView(subtitle: "There was an error loading search results.") {
           Task {
             await viewModel.fetchVideoGames(newSearch: true)
           }

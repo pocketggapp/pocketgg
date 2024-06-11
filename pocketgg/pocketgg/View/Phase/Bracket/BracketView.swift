@@ -47,11 +47,11 @@ struct BracketView: View {
         EmptyStateView(
           systemImageName: "questionmark.app.dashed",
           title: "No Sets",
-          subtitle: "There are currently no sets in this phase group"
+          subtitle: "There are currently no sets in this phase group."
         )
       }
     case .error:
-      ErrorStateView(subtitle: "There was an error loading this bracket") {
+      ErrorStateView(subtitle: "There was an error loading this bracket.") {
         reloadPhaseGroup()
       }
     }

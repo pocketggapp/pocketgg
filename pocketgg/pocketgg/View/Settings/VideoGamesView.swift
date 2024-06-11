@@ -28,11 +28,11 @@ struct VideoGamesView: View {
             EmptyStateView(
               systemImageName: "gamecontroller",
               title: "No Video Games",
-              subtitle: "Select your favorite video games to see tournaments that feature those games"
+              subtitle: "Select your favorite video games to see tournaments that feature those games."
             )
           }
         case .error:
-          ErrorStateView(subtitle: "There was an error loading your saved video games") {
+          ErrorStateView(subtitle: "There was an error loading your saved video games.") {
             Task {
               viewModel.getSavedVideoGames()
             }
