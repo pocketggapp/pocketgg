@@ -15,6 +15,8 @@ final class AppStartupViewModel: ObservableObject {
   func accessTokenPresent() -> Bool {
     do {
       guard try KeychainService.getToken(.accessToken) != "" else { return false }
+      // If an access token is present, update the Apollo client to add the access token to the request header
+      StartggService.shared.updateApolloClient()
       return true
     } catch {
       return false

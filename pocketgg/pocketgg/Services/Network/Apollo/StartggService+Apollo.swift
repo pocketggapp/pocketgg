@@ -23,23 +23,14 @@ protocol StartggServiceType {
 class StartggService: StartggServiceType {
   static let shared = StartggService()
   
-  private(set) lazy var apollo: ApolloClient = {
-    let client = URLSessionClient()
-    let cache = InMemoryNormalizedCache()
-    let store = ApolloStore(cache: cache)
-    let provider = NetworkInterceptorProvider(client: client, store: store)
-    let url = URL(string: "https://api.start.gg/gql/alpha")!
-    let transport = RequestChainNetworkTransport(interceptorProvider: provider, endpointURL: url)
-    return ApolloClient(networkTransport: transport, store: store)
-  }()
+  private(set) var apollo = ApolloClient(url: URL(string: "https://api.start.gg/gql/alpha")!)
   
   func updateApolloClient() {
-    let client = URLSessionClient()
-    let cache = InMemoryNormalizedCache()
-    let store = ApolloStore(cache: cache)
-    let provider = NetworkInterceptorProvider(client: client, store: store)
-    let url = URL(string: "https://api.start.gg/gql/alpha")!
-    let transport = RequestChainNetworkTransport(interceptorProvider: provider, endpointURL: url)
+    let store = ApolloStore(cache: InMemoryNormalizedCache())
+    let transport = RequestChainNetworkTransport(
+      interceptorProvider: NetworkInterceptorProvider(client: URLSessionClient(), store: store),
+      endpointURL: URL(string: "https://api.start.gg/gql/alpha")!
+    )
     apollo = ApolloClient(networkTransport: transport, store: store)
   }
 }

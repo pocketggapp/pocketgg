@@ -112,7 +112,6 @@ final class HomeViewModel: ObservableObject {
       }
     } catch {
       state = .error
-      // TODO: Figure out why this is failing on the first load
       #if DEBUG
       print("HomeViewModel: \(error)")
       #endif
