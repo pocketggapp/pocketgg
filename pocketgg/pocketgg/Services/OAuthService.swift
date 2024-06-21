@@ -116,7 +116,7 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
   // MARK: Refresh Access Token
   
   func refreshAccessToken() async throws -> AccessTokenResponse {
-    let clientSecret = ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
+    let clientSecret = try await getClientSecret()
     var refreshToken = ""
     do {
       refreshToken = try KeychainService.getToken(.refreshToken)
