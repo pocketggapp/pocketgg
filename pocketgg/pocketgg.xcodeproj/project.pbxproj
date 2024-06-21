@@ -127,7 +127,6 @@
 		DAD125272B815906005CECB6 /* StartggService+Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125262B815906005CECB6 /* StartggService+Profile.swift */; };
 		DAD125292B815937005CECB6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125282B815937005CECB6 /* Profile.swift */; };
 		DAD1252B2B816CC8005CECB6 /* AsyncBannerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */; };
-		DAD1252D2B82600E005CECB6 /* TournamentContextMenuPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252C2B82600E005CECB6 /* TournamentContextMenuPreview.swift */; };
 		DAD125302B828F54005CECB6 /* FollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1252F2B828F54005CECB6 /* FollowingView.swift */; };
 		DAD125322B82B48D005CECB6 /* TournamentOrganizerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */; };
 		DAD125342B82BA0F005CECB6 /* InfoPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */; };
@@ -313,7 +312,6 @@
 		DAD125262B815906005CECB6 /* StartggService+Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Profile.swift"; sourceTree = "<group>"; };
 		DAD125282B815937005CECB6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		DAD1252A2B816CC8005CECB6 /* AsyncBannerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncBannerImageView.swift; sourceTree = "<group>"; };
-		DAD1252C2B82600E005CECB6 /* TournamentContextMenuPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentContextMenuPreview.swift; sourceTree = "<group>"; };
 		DAD1252F2B828F54005CECB6 /* FollowingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingView.swift; sourceTree = "<group>"; };
 		DAD125312B82B48D005CECB6 /* TournamentOrganizerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentOrganizerRowView.swift; sourceTree = "<group>"; };
 		DAD125332B82BA0F005CECB6 /* InfoPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlaceholderView.swift; sourceTree = "<group>"; };
@@ -868,7 +866,6 @@
 			children = (
 				DADD99AD2AE1C33300ED35FC /* TournamentView.swift */,
 				DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */,
-				DAD1252C2B82600E005CECB6 /* TournamentContextMenuPreview.swift */,
 				DA4DDBC72B65638D00F3131E /* Events */,
 				DAF117B42B50E2DA00D39F65 /* Streams */,
 				DA15EC582B5A28BC003FD258 /* Location */,
@@ -1160,7 +1157,6 @@
 				DAD125302B828F54005CECB6 /* FollowingView.swift in Sources */,
 				DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */,
 				DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */,
-				DAD1252D2B82600E005CECB6 /* TournamentContextMenuPreview.swift in Sources */,
 				DABD24A42BDDDD4E0087122E /* ProfilePlaceholderView.swift in Sources */,
 				DAF41FB12C25EF7C002C6218 /* TournamentSearchViewModel.swift in Sources */,
 				DADA22072BA118E800442E0C /* AppDataService.swift in Sources */,

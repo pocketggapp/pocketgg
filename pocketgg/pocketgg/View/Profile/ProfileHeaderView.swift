@@ -47,7 +47,7 @@ struct ProfileHeaderView: View {
   @ViewBuilder
   private func UserTextView() -> some View {
     if let name = profile.name {
-      if let teamName = profile.teamName {
+      if let teamName = profile.teamName, !teamName.isEmpty {
         Text(teamName).foregroundColor(.gray) + Text(" ") + Text(name)
       } else {
         Text(name)
