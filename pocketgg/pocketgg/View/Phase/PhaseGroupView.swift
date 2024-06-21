@@ -49,6 +49,8 @@ struct PhaseGroupView: View {
       default:
         EmptyView()
       }
+      
+      Spacer()
     }
     .task {
       if phaseGroup == nil {

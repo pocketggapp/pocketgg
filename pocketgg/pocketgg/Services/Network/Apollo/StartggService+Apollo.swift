@@ -15,6 +15,7 @@ protocol StartggServiceType {
   func getRemainingPhaseGroupSets(id: Int, pageNum: Int) async throws -> [PhaseGroupSet]
   func getPhaseGroupSetGames(id: Int) async throws -> [PhaseGroupSetGame]
   func getUserAdminTournaments(userID: Int, pageNum: Int, perPage: Int) async throws -> [Tournament]
+  func getTournamentsBySearchTerm(name: String, pageNum: Int, perPage: Int) async throws -> [Tournament]
   func getCurrentUserProfile() async throws -> Profile?
   func getCurrentUserTournaments(pageNum: Int, perPage: Int) async throws -> [Tournament]
   func getVideoGames(name: String, page: Int, accumulatedVideoGameIDs: Set<Int>) async throws -> [VideoGame]?

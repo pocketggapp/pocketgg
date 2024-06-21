@@ -40,7 +40,7 @@ struct BracketView: View {
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",
             title: "Unsupported Bracket Type (\(phaseGroupDetails?.bracketType?.rawValue ?? ""))",
-            subtitle: "This type of bracket is currently not supported"
+            subtitle: "This type of bracket is currently not supported."
           )
         }
       } else {

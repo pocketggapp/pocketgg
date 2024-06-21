@@ -7,9 +7,7 @@ struct VideoGameSearchView: View {
     service: StartggServiceType = StartggService.shared
   ) {
     self._viewModel = StateObject(wrappedValue: {
-      VideoGameSearchViewModel(
-        service: service
-      )
+      VideoGameSearchViewModel(service: service)
     }())
   }
   

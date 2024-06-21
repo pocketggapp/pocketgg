@@ -1,0 +1,26 @@
+query TournamentsBySearchTerm($name: String, $pageNum: Int, $perPage: Int) {
+  tournaments(query: {
+    perPage: $perPage
+    page: $pageNum
+    filter: {
+      name: $name,
+      sortByScore: true
+    }
+  }) {
+    nodes {
+      id
+      name
+      startAt
+      endAt
+      isOnline
+      city
+      addrState
+      countryCode
+      images {
+        url
+        type
+        ratio
+      }
+    }
+  }
+}

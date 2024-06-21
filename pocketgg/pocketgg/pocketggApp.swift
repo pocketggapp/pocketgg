@@ -24,6 +24,10 @@ struct pocketggApp: App {
               .tabItem {
                 Label("Following", systemImage: "person.3.fill")
               }
+            TournamentSearchView()
+              .tabItem {
+                Label("Search", systemImage: "magnifyingglass")
+              }
             ProfileView()
               .tabItem {
                 Label("Profile", systemImage: "person.crop.circle")
