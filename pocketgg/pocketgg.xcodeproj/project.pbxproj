@@ -167,6 +167,7 @@
 		DAF340732B71976B00379688 /* PhaseGroupSetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340722B71976B00379688 /* PhaseGroupSetService.swift */; };
 		DAF340772B72A23A00379688 /* EliminationSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340762B72A23A00379688 /* EliminationSetView.swift */; };
 		DAF340792B72D35600379688 /* EliminationBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF340782B72D35600379688 /* EliminationBracketView.swift */; };
+		DAF41FA72C25001A002C6218 /* ClientSecret.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAF41FA62C250019002C6218 /* ClientSecret.txt */; settings = {ASSET_TAGS = (StartggAPI, ); }; };
 		DAF8FF9D2B5D9E190070BD49 /* TournamentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */; };
 		DAF8FFA22B5E1E000070BD49 /* LocationPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */; };
 		DAFB42D62B7C813500F84E42 /* PhaseGroupSetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB42D52B7C813500F84E42 /* PhaseGroupSetViewModel.swift */; };
@@ -300,7 +301,6 @@
 		DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewModel.swift; sourceTree = "<group>"; };
 		DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Purchases.storekit; sourceTree = "<group>"; };
-		DAD09A702BEE85F300506F75 /* Purchases.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Purchases.storekit; path = pocketgg/Purchases/Purchases.storekit; sourceTree = "<group>"; };
 		DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowPlaceholderView.swift; sourceTree = "<group>"; };
 		DAD1251D2B802ACE005CECB6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DAD1251F2B806DE5005CECB6 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -349,6 +349,7 @@
 		DAF340722B71976B00379688 /* PhaseGroupSetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetService.swift; sourceTree = "<group>"; };
 		DAF340762B72A23A00379688 /* EliminationSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationSetView.swift; sourceTree = "<group>"; };
 		DAF340782B72D35600379688 /* EliminationBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EliminationBracketView.swift; sourceTree = "<group>"; };
+		DAF41FA62C250019002C6218 /* ClientSecret.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ClientSecret.txt; sourceTree = "<group>"; };
 		DAF8FF9C2B5D9E190070BD49 /* TournamentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentLocationView.swift; sourceTree = "<group>"; };
 		DAF8FFA12B5E1E000070BD49 /* LocationPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPlaceholderView.swift; sourceTree = "<group>"; };
 		DAFB42D52B7C813500F84E42 /* PhaseGroupSetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSetViewModel.swift; sourceTree = "<group>"; };
@@ -455,7 +456,6 @@
 		DA46B1872A5E564B00814252 = {
 			isa = PBXGroup;
 			children = (
-				DAD09A702BEE85F300506F75 /* Purchases.storekit */,
 				DA46B1922A5E564B00814252 /* pocketgg */,
 				DA46B1A82A5E564C00814252 /* pocketggTests */,
 				DA65D6782AB6744400EF18E0 /* Packages */,
@@ -481,7 +481,6 @@
 				DA65D65F2AB61EB800EF18E0 /* ViewModel */,
 				DABFF2702AB90F880053614D /* Services */,
 				DAB9922D2B8C192E00F99BD6 /* Core Data */,
-				DA96063F2BE998800021CA68 /* Purchases */,
 				DA8D00B02ACA36200093FC49 /* Utilities */,
 				DA0E59842B6D5ACE0031A5A1 /* GraphQL */,
 				DA46B1932A5E564B00814252 /* pocketggApp.swift */,
@@ -671,6 +670,8 @@
 			isa = PBXGroup;
 			children = (
 				DA8D00B12ACA362E0093FC49 /* Constants.swift */,
+				DAF41FA62C250019002C6218 /* ClientSecret.txt */,
+				DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */,
 				DAD2BCD92ADB2D520088BA96 /* Extensions */,
 			);
 			path = Utilities;
@@ -715,14 +716,6 @@
 				DA7949CF2B70199E00D68EA4 /* PhaseGroupViewModel.swift */,
 			);
 			path = Phase;
-			sourceTree = "<group>";
-		};
-		DA96063F2BE998800021CA68 /* Purchases */ = {
-			isa = PBXGroup;
-			children = (
-				DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */,
-			);
-			path = Purchases;
 			sourceTree = "<group>";
 		};
 		DAA3BE602B928B840088804C /* Onboarding */ = {
@@ -1014,6 +1007,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					StartggAPI,
+				);
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
@@ -1061,6 +1057,7 @@
 				DA46B19B2A5E564C00814252 /* Preview Assets.xcassets in Resources */,
 				DAD125222B806FC5005CECB6 /* Profile.graphql in Resources */,
 				DA46B1982A5E564C00814252 /* Assets.xcassets in Resources */,
+				DAF41FA72C25001A002C6218 /* ClientSecret.txt in Resources */,
 				DADB2F652BC9828700B35C9A /* Following.graphql in Resources */,
 				DA9178712B6FF5D000579360 /* Phase.graphql in Resources */,
 				DAB992222B8AA1FF00F99BD6 /* VideoGame.graphql in Resources */,
@@ -1394,6 +1391,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = StartggAPI;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1430,6 +1428,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = StartggAPI;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

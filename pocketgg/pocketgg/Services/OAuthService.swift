@@ -18,6 +18,7 @@ enum OAuthError: Error {
   case dataTaskError(String)
   case noData
   case invalidData
+  case invalidClientSecret
 }
 
 struct AccessTokenResponse: Codable {
@@ -94,8 +95,7 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
   // MARK: Get Access Token
   
   private func getAccessToken(_ authCode: String) async throws -> AccessTokenResponse {
-    // TODO: Get client secret from on demand resources or CloudKit
-    let clientSecret = ProcessInfo.processInfo.environment["CLIENT_SECRET"] ?? ""
+    let clientSecret = try await getClientSecret()
     
     let parameters: [String: Any] = [
       "grant_type": "authorization_code",
@@ -212,6 +212,20 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
     let clientID = OAuthConstants.clientID
     let urlString = "https://start.gg/oauth/authorize?response_type=code&client_id=\(clientID)&scope=user.identity&redirect_uri=\(redirectURI)"
     return URL(string: urlString)!
+  }
+  
+  private func getClientSecret() async throws -> String {
+    let request = NSBundleResourceRequest(tags: ["StartggAPI"])
+    try await request.beginAccessingResources()
+    
+    guard let url = Bundle.main.url(forResource: "ClientSecret", withExtension: "txt"),
+          let secret = String(data: try Data(contentsOf: url), encoding: .utf8) else {
+      request.endAccessingResources()
+      throw OAuthError.invalidClientSecret
+    }
+    
+    request.endAccessingResources()
+    return secret
   }
   
   func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
