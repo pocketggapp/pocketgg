@@ -55,6 +55,11 @@ struct LocationPreferenceView: View {
         LoadingView()
       }
     }
+    .alert("Allow Location Access", isPresented: $viewModel.showingLocationPermissionAlert, actions: {
+      Button("OK", role: .cancel) {}
+    }, message: {
+      Text("To find tournaments in your area, please go to your device's settings and allow location access for pocketgg.")
+    })
     .alert("Error", isPresented: $viewModel.showingAlert, actions: {
       Button("OK", role: .cancel) {}
     }, message: {

@@ -21,6 +21,7 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
   @Published var selectedDistanceUnit = "mi"
   
   @Published var showingAlert = false
+  @Published var showingLocationPermissionAlert = false
   @Published var error: Error?
   
   private let manager = CLLocationManager()
@@ -52,10 +53,14 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
   }
   
   func getCurrentLocation() {
+    gettingLocation = true
+    
     switch manager.authorizationStatus {
     case .authorizedAlways, .authorizedWhenInUse:
-      gettingLocation = true
       manager.requestLocation()
+    case .denied, .restricted:
+      showingLocationPermissionAlert = true
+      gettingLocation = false
     default:
       manager.requestWhenInUseAuthorization()
     }
@@ -90,11 +95,14 @@ extension LocationPreferenceViewModel {
   }
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    // Prevent location from being fetched when LocationPreferenceView is initialized
+    guard gettingLocation else { return }
+    
     switch manager.authorizationStatus {
     case .authorizedAlways, .authorizedWhenInUse:
-      gettingLocation = true
       manager.requestLocation()
-    default: return
+    default:
+      gettingLocation = false
     }
   }
   
