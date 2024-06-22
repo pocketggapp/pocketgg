@@ -23,7 +23,8 @@ struct EventHeaderView: View {
     HStack {
       AsyncImageView(
         imageURL: imageURL,
-        cornerRadius: 5
+        cornerRadius: 5,
+        newSize: .init(width: 54, height: 72)
       )
       .frame(width: 54 * scale, height: 72 * scale)
       .clipped()

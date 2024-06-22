@@ -20,7 +20,8 @@ struct StreamRowView: View {
           AsyncImageView(
             imageURL: stream.logoUrl ?? "",
             cornerRadius: 5,
-            placeholderImageName: "play.tv"
+            placeholderImageName: "play.tv",
+            newSize: .init(width: 44, height: 44)
           )
           .frame(width: 44 * scale, height: 44 * scale)
           .clipped()

@@ -23,7 +23,8 @@ struct ProfileHeaderView: View {
       VStack(alignment: .leading) {
         AsyncImageView(
           imageURL: profile.profileImageURL,
-          cornerRadius: 10
+          cornerRadius: 10,
+          newSize: .init(width: 100, height: 100)
         )
         .frame(width: 100 * scale, height: 100 * scale)
         .clipped()

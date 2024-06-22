@@ -16,7 +16,8 @@ struct EventRowView: View {
       HStack {
         AsyncImageView(
           imageURL: event.videogameImage ?? "",
-          cornerRadius: 5
+          cornerRadius: 5,
+          newSize: .init(width: 33, height: 44)
         )
         .frame(width: 33 * scale, height: 44 * scale)
         .clipped()

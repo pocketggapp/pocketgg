@@ -1,7 +1,6 @@
 import UIKit
 
 final class ImageService {
-
   private static let cache = NSCache<NSString, UIImage>()
   
   static func getImage(imageUrl: String?, newSize: CGSize? = nil) async -> UIImage? {
@@ -34,7 +33,6 @@ final class ImageService {
         }
         saveImageToCache(image: finalImage, with: imageUrl)
         return finalImage
-        
       } catch {
         return nil
       }

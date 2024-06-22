@@ -23,7 +23,8 @@ struct TournamentHeaderView: View {
       VStack(alignment: .leading) {
         AsyncImageView(
           imageURL: tournament.logoImageURL,
-          cornerRadius: 10
+          cornerRadius: 10,
+          newSize: .init(width: 100, height: 100)
         )
         .frame(width: 100 * scale, height: 100 * scale)
         .clipped()

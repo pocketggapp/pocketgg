@@ -10,19 +10,21 @@ enum AsyncImageViewState {
 struct AsyncImageView: View {
   @StateObject private var viewModel: AsyncImageViewModel
   
-  private let imageURL: String?
   private let cornerRadius: CGFloat
   private let placeholderImageName: String
   
   init(
     imageURL: String?,
     cornerRadius: CGFloat,
-    placeholderImageName: String = "gamecontroller"
+    placeholderImageName: String = "gamecontroller",
+    newSize: CGSize? = nil
   ) {
     self._viewModel = StateObject(wrappedValue: {
-      AsyncImageViewModel(imageURL: imageURL)
+      AsyncImageViewModel(
+        imageURL: imageURL,
+        newSize: newSize
+      )
     }())
-    self.imageURL = imageURL
     self.cornerRadius = cornerRadius
     self.placeholderImageName = placeholderImageName
   }
@@ -51,22 +53,22 @@ struct AsyncImageView: View {
 class AsyncImageViewModel: ObservableObject {
   @Published var state: AsyncImageViewState
   
-  init(imageURL: String?) {
+  init(imageURL: String?, newSize: CGSize? = nil) {
     self.state = .uninitialized
     Task {
-      await loadImage(imageURL)
+      await loadImage(url: imageURL, newSize: newSize)
     }
   }
   
   @MainActor
-  func loadImage(_ url: String?) async {
+  func loadImage(url: String?, newSize: CGSize?) async {
     guard let url else {
       state = .error
       return
     }
     
     state = .loading
-    let image = await ImageService.getImage(imageUrl: url)
+    let image = await ImageService.getImage(imageUrl: url, newSize: newSize)
     if let image {
       state = .loaded(image)
     } else {
