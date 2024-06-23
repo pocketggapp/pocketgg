@@ -12,11 +12,13 @@ struct TournamentRowPlaceholderView: View {
       
       VStack(alignment: .leading, spacing: 5) {
         Text("The Big House 6")
-          .font(.title2.bold())
+          .font(.headline)
         
         Text("Oct 7, 2016 - Oct 9, 2016")
+          .font(.subheadline)
         
         Text("Dearborn, MI, USA")
+          .font(.subheadline)
       }
     }
     .redacted(reason: .placeholder)

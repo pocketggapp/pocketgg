@@ -26,17 +26,19 @@ struct TournamentRowView: View {
       
       VStack(alignment: .leading, spacing: 5) {
         Text(tournament.name ?? "")
-          .font(.title2.bold())
+          .font(.headline)
           .lineLimit(2)
         
         HStack {
           Image(systemName: "calendar")
           Text(tournament.date ?? "")
+            .font(.subheadline)
         }
         
         HStack {
           Image(systemName: "mappin.and.ellipse")
           Text(tournament.location)
+            .font(.subheadline)
         }
       }
     }

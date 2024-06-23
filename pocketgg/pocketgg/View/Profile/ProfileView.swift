@@ -75,14 +75,17 @@ struct ProfileView: View {
       .refreshable {
         await viewModel.fetchProfile(refreshed: true)
       }
+      .navigationDestination(for: Int.self) { _ in
+        CurrentUserTournamentsView()
+      }
       .navigationDestination(for: Tournament.self) {
         TournamentView(tournament: $0)
       }
       .navigationDestination(for: Event.self) {
         EventView(event: $0)
       }
-      .navigationDestination(for: Int.self) { _ in
-        CurrentUserTournamentsView()
+      .navigationDestination(for: Entrant.self) {
+        UserAdminTournamentListView(user: $0)
       }
       .navigationTitle("Profile")
     }

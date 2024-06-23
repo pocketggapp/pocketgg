@@ -34,7 +34,7 @@ struct EventHeaderView: View {
           .font(.headline)
         
         subtitleTextView
-          .font(.caption)
+          .font(.subheadline)
       }
       
       Spacer()

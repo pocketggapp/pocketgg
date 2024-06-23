@@ -63,14 +63,14 @@ struct HomeView: View {
         )
       }
       .navigationTitle("Tournaments")
-      .navigationDestination(for: Tournament.self) {
-        TournamentView(tournament: $0)
-      }
       .navigationDestination(for: TournamentsGroup.self) {
         TournamentListView(
           title: $0.name,
           sectionID: $0.id
         )
+      }
+      .navigationDestination(for: Tournament.self) {
+        TournamentView(tournament: $0)
       }
       .navigationDestination(for: Event.self) {
         EventView(event: $0)

@@ -76,6 +76,12 @@ struct TournamentSearchView: View {
       .navigationDestination(for: Tournament.self) {
         TournamentView(tournament: $0)
       }
+      .navigationDestination(for: Event.self) {
+        EventView(event: $0)
+      }
+      .navigationDestination(for: Entrant.self) {
+        UserAdminTournamentListView(user: $0)
+      }
       .navigationTitle("Search")
     }
   }

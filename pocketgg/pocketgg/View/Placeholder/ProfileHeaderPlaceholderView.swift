@@ -12,14 +12,15 @@ struct ProfileHeaderPlaceholderView: View {
       }
       
       VStack(alignment: .leading) {
-        Rectangle()
-          .fill(Color(.placeholder))
-          .frame(width: 100 * scale, height: 100 * scale)
-          .clipShape(RoundedRectangle(cornerRadius: 10))
-          .overlay(
-            RoundedRectangle(cornerRadius: 10)
-              .stroke(Color(uiColor: .systemBackground), lineWidth: 2)
-          )
+        ZStack {
+          RoundedRectangle(cornerRadius: 10)
+            .fill(Color(uiColor: .systemBackground))
+            .frame(width: 104 * scale, height: 104 * scale)
+          
+          RoundedRectangle(cornerRadius: 10)
+            .fill(Color(.placeholder))
+            .frame(width: 100 * scale, height: 100 * scale)
+        }
         
         VStack(alignment: .leading, spacing: 5) {
           Text("C9 Mang0")

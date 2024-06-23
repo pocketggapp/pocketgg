@@ -60,6 +60,15 @@ struct FollowingView: View {
           user: Entrant(id: $0.id, name: $0.name, teamName: $0.prefix)
         )
       }
+      .navigationDestination(for: Tournament.self) {
+        TournamentView(tournament: $0)
+      }
+      .navigationDestination(for: Event.self) {
+        EventView(event: $0)
+      }
+      .navigationDestination(for: Entrant.self) {
+        UserAdminTournamentListView(user: $0)
+      }
     }
   }
   

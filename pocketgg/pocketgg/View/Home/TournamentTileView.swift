@@ -15,28 +15,30 @@ struct TournamentTileView: View {
         imageURL: tournament.bannerImageURL,
         imageRatio: tournament.bannerImageRatio
       )
-      .frame(width: 300 * scale, height: 175 * scale)
+      .frame(width: 250 * scale, height: 125 * scale)
       .clipShape(RoundedRectangle(cornerRadius: 10))
       
       VStack(alignment: .leading, spacing: 5) {
         Text(tournament.name ?? "")
-          .font(.title2.bold())
+          .font(.headline)
           .lineLimit(1)
         
         HStack {
           Image(systemName: "calendar")
           Text(tournament.date ?? "")
+            .font(.subheadline)
             .lineLimit(1)
         }
         
         HStack {
           Image(systemName: "mappin.and.ellipse")
           Text(tournament.location)
+            .font(.subheadline)
             .lineLimit(1)
         }
       }
     }
-    .frame(width: 300 * scale)
+    .frame(width: 250 * scale)
   }
 }
 

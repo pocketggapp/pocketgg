@@ -21,17 +21,19 @@ struct TournamentHeaderView: View {
       }
       
       VStack(alignment: .leading) {
-        AsyncImageView(
-          imageURL: tournament.logoImageURL,
-          cornerRadius: 10,
-          newSize: .init(width: 100, height: 100)
-        )
-        .frame(width: 100 * scale, height: 100 * scale)
-        .clipped()
-        .overlay(
+        ZStack {
           RoundedRectangle(cornerRadius: 10)
-            .stroke(Color(uiColor: .systemBackground), lineWidth: 2)
-        )
+            .fill(Color(uiColor: .systemBackground))
+            .frame(width: 104 * scale, height: 104 * scale)
+          
+          AsyncImageView(
+            imageURL: tournament.logoImageURL,
+            cornerRadius: 10,
+            newSize: .init(width: 100, height: 100)
+          )
+          .frame(width: 100 * scale, height: 100 * scale)
+          .clipped()
+        }
         
         VStack(alignment: .leading, spacing: 5) {
           Text(tournament.name ?? "")
