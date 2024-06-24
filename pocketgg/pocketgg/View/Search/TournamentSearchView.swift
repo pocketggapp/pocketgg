@@ -37,7 +37,7 @@ struct TournamentSearchView: View {
             subtitle: "Find tournaments by typing the name of a tournament and tapping search."
           )
         case .loading:
-          ForEach(1..<20) { _ in
+          ForEach(0..<20) { _ in
             TournamentRowPlaceholderView()
           }
         case .loaded(let tournaments):

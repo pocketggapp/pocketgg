@@ -15,9 +15,9 @@ struct HomeView: View {
         LazyVStack(spacing: 32) {
           switch viewModel.state {
           case .uninitialized, .loading:
-            TournamentsPlaceholderView()
-            TournamentsPlaceholderView()
-            TournamentsPlaceholderView()
+            ForEach(0..<3) { _ in
+              TournamentsPlaceholderView()
+            }
           case .loaded(let tournamentGroups):
             ForEach(tournamentGroups, id: \.id) {
               TournamentHorizontalListView(tournamentsGroup: $0) {

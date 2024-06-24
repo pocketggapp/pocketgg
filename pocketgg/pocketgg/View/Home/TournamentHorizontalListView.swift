@@ -60,10 +60,12 @@ struct TournamentHorizontalListView: View {
   private func HeaderButtonView() -> some View {
     switch tournamentsGroup.id {
     case -1:
-      Button {
-        showingEditPinnedTournamentsView = true
-      } label: {
-        Text("Edit")
+      if !tournamentsGroup.tournaments.isEmpty {
+        Button {
+          showingEditPinnedTournamentsView = true
+        } label: {
+          Text("Edit")
+        }
       }
     default:
       if tournamentsGroup.tournaments.count >= 10 {

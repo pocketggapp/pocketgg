@@ -14,7 +14,7 @@ struct StandingsView: View {
     List {
       switch state {
       case .uninitialized, .loading:
-        ForEach(1..<20) { _ in
+        ForEach(0..<20) { _ in
           Text("Standing Placeholder")
             .redacted(reason: .placeholder)
         }

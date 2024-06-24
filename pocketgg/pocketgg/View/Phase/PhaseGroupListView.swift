@@ -32,7 +32,7 @@ struct PhaseGroupListView: View {
       
       switch viewModel.state {
       case .uninitialized, .loading:
-        ForEach(1..<20) { _ in
+        ForEach(0..<20) { _ in
           Text("Phase Placeholder")
             .redacted(reason: .placeholder)
         }

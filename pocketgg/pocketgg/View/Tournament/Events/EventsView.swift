@@ -14,7 +14,7 @@ struct EventsView: View {
     VStack {
       switch state {
       case .uninitialized, .loading:
-        ForEach(1..<10) { _ in
+        ForEach(0..<10) { _ in
           EventPlaceholderView()
         }
       case .loaded(let tournamentDetails):

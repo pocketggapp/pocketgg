@@ -14,7 +14,7 @@ struct StreamsView: View {
     VStack {
       switch state {
       case .uninitialized, .loading:
-        ForEach(1..<10) { _ in
+        ForEach(0..<10) { _ in
           StreamPlaceholderView()
         }
       case .loaded(let tournamentDetails):
