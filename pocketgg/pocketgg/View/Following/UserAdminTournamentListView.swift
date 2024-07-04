@@ -27,19 +27,27 @@ struct UserAdminTournamentListView: View {
           TournamentRowPlaceholderView()
         }
       case .loaded(let tournaments):
-        ForEach(tournaments, id: \.id) { tournament in
-          NavigationLink(value: tournament) {
-            TournamentRowView(tournament: tournament)
-          }
-        }
-        
-        if !viewModel.noMoreTournaments {
-          TournamentRowPlaceholderView()
-            .onAppear {
-              Task {
-                await viewModel.fetchTournaments(getNextPage: true)
-              }
+        if !tournaments.isEmpty {
+          ForEach(tournaments, id: \.id) { tournament in
+            NavigationLink(value: tournament) {
+              TournamentRowView(tournament: tournament)
             }
+          }
+          
+          if !viewModel.noMoreTournaments {
+            TournamentRowPlaceholderView()
+              .onAppear {
+                Task {
+                  await viewModel.fetchTournaments(getNextPage: true)
+                }
+              }
+          }
+        } else {
+          EmptyStateView(
+            systemImageName: "questionmark.app.dashed",
+            title: "No Tournaments",
+            subtitle: "There are no tournaments that this user is an an admin of."
+          )
         }
       case .error:
         ErrorStateView(subtitle: "There was an error loading tournaments") {

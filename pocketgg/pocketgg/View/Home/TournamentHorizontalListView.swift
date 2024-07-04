@@ -25,7 +25,7 @@ struct TournamentHorizontalListView: View {
         
         HeaderButtonView()
       }
-      .padding([.horizontal])
+      .padding(.horizontal)
       
       if !tournamentsGroup.tournaments.isEmpty {
         ScrollView(.horizontal, showsIndicators: true) {

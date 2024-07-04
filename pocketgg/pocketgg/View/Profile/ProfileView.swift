@@ -22,37 +22,45 @@ struct ProfileView: View {
                 profile: profile
               )
               
-              VStack(alignment: .leading) {
-                HStack {
-                  Text("Recent Tournaments")
-                    .font(.title2.bold())
-                  
-                  Spacer()
-                  
-                  NavigationLink(value: 0) {
-                    Text("View all")
-                  }
-                }
-                
-                ForEach(profile.tournaments, id: \.id) { tournament in
-                  NavigationLink(value: tournament) {
-                    ZStack {
-                      Color(UIColor.systemBackground)
-                      
-                      HStack {
-                        TournamentRowView(tournament: tournament)
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.right")
-                          .foregroundColor(.gray)
-                      }
+              if !profile.tournaments.isEmpty {
+                VStack(alignment: .leading) {
+                  HStack {
+                    Text("Recent Tournaments")
+                      .font(.title2.bold())
+                    
+                    Spacer()
+                    
+                    NavigationLink(value: 0) {
+                      Text("View all")
                     }
                   }
-                  .buttonStyle(.plain)
+                  
+                  ForEach(profile.tournaments, id: \.id) { tournament in
+                    NavigationLink(value: tournament) {
+                      ZStack {
+                        Color(UIColor.systemBackground)
+                        
+                        HStack {
+                          TournamentRowView(tournament: tournament)
+                          
+                          Spacer()
+                          
+                          Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
+                        }
+                      }
+                    }
+                    .buttonStyle(.plain)
+                  }
                 }
+                .padding(.horizontal)
+              } else {
+                EmptyStateView(
+                  systemImageName: "trophy.fill",
+                  title: "No Recent Tournaments",
+                  subtitle: "Your recent tournaments will show up here."
+                )
               }
-              .padding(.horizontal)
             } else {
               EmptyStateView(
                 systemImageName: "person.crop.circle",
