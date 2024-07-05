@@ -88,19 +88,29 @@ final class PhaseGroupViewModel: ObservableObject {
   // MARK: Private Helpers
   
   private func getAdditionalInformation(id: Int, phaseGroupDetails: inout PhaseGroupDetails?) async {
+    guard var sets = phaseGroupDetails?.matches else { return }
+    
     // Fetch additional PhaseGroupSets
     // If 90 sets were returned, there may be more sets in total, so load the next page of sets
-    var sets = phaseGroupDetails?.matches
-    if sets?.count == 90 {
+    if sets.count == 90 {
       let additionalSets = await fetchAdditionalPhaseGroupSets(id: id, pageNum: 2)
-      sets?.append(contentsOf: additionalSets)
+      sets.append(contentsOf: additionalSets)
     }
     
-    // Sort the sets by identifier and increment the grand final reset's roundNum (if it exists)
-    // TODO: Maybe move this logic to right before the EliminationBracketView is created, as the 'Matches' section prefers the old ordering
-    if let normalizedSets = PhaseGroupSetService.normalizeSets(sets: sets, bracketType: phaseGroupDetails?.bracketType) {
-      phaseGroupDetails?.matches = normalizedSets
+    // In the case of a grand finals reset, the 2nd grand finals may have the same roundNum as the 1st grand finals set
+    // Therefore, if a set is detected with identical previous round IDs (meaning that the set is a grand finals reset), increment the roundNum
+    switch phaseGroupDetails?.bracketType {
+    case .singleElimination, .doubleElimination:
+      for (i, set) in sets.enumerated() {
+        guard set.prevRoundIDs.count == 2 else { continue }
+        if set.prevRoundIDs[0] == set.prevRoundIDs[1] {
+          sets[i].roundNum += 1
+        }
+      }
+    default:
+      break
     }
+    phaseGroupDetails?.matches = sets
     
     // Generate round labels for all of the sets
     let roundLabels = PhaseGroupSetService.generateRoundLabels(sets: phaseGroupDetails?.matches, bracketType: phaseGroupDetails?.bracketType)

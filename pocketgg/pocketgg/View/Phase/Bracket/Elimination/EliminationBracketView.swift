@@ -14,9 +14,18 @@ struct EliminationBracketView: View {
     phaseGroupSetRounds: [Int : Int]
   ) {
     self._selectedSet = selectedSet
-    self.phaseGroupSets = phaseGroupSets
     self.roundLabels = roundLabels
     self.phaseGroupSetRounds = phaseGroupSetRounds
+    
+    // First sort the sets by the number of characters in their identifier
+    // Then sort the the sets by their identifier's alphabetical order
+    self.phaseGroupSets = phaseGroupSets.sorted {
+      if $0.identifier.count != $1.identifier.count {
+        return $0.identifier.count < $1.identifier.count
+      } else {
+        return $0.identifier < $1.identifier
+      }
+    }
   }
   
   var body: some View {
