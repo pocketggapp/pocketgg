@@ -83,11 +83,11 @@ struct VideoGameSearchView: View {
       }
     }
     .listStyle(.insetGrouped)
-    .task {
-      viewModel.getEnabledVideoGames()
-    }
     .onAppear {
       viewModel.resetHomeViewRefreshNotification()
+    }
+    .task {
+      viewModel.getEnabledVideoGames()
     }
     .scrollDismissesKeyboard(.immediately)
   }

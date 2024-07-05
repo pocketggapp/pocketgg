@@ -53,11 +53,17 @@ struct TournamentView: View {
         }
       }
     }
+    .onAppear {
+      viewModel.resetHomeViewRefreshNotification()
+    }
     .task {
       await viewModel.fetchTournament()
     }
     .refreshable {
       await viewModel.fetchTournament(refreshed: true)
+    }
+    .sheet(isPresented: $viewModel.showingAddToCalendarView) {
+      AddToCalendarView(eventStore: viewModel.eventStore, event: viewModel.event)
     }
     .toolbar {
       ToolbarItemGroup(placement: .topBarTrailing) {
@@ -69,6 +75,12 @@ struct TournamentView: View {
               viewModel.isPinned ? "Unpin" : "Pin",
               systemImage: viewModel.isPinned ? "pin.slash.fill" : "pin.fill"
             )
+          }
+          
+          Button {
+            viewModel.addTournamentToCalendar()
+          } label: {
+            Label("Add to calendar", systemImage: "calendar.badge.plus")
           }
           
           if let tournamentURL = viewModel.tournamentURL {

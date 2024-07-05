@@ -66,6 +66,8 @@ query TournamentDetails($id: ID) {
         prefix
       }
     }
+    startAt
+    endAt
     slug
   }
 }

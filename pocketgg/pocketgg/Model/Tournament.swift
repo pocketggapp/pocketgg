@@ -29,6 +29,8 @@ struct TournamentDetails {
   let location: Location?
   let contact: (info: String?, type: String?)
   let organizer: Entrant?
+  let startDate: Date?
+  let endDate: Date?
   let slug: String?
   let registrationOpen: Bool
   let registrationCloseDate: String

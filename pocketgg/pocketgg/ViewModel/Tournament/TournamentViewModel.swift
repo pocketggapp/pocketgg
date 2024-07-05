@@ -1,4 +1,5 @@
 import SwiftUI
+import EventKit
 
 enum TournamentViewState {
   case uninitialized
@@ -9,13 +10,20 @@ enum TournamentViewState {
 
 final class TournamentViewModel: ObservableObject {
   @Published var state: TournamentViewState
+  
   @Published var isPinned: Bool
+  @Published var showingAddToCalendarView = false
+  @Published var eventStore: EKEventStore?
+  @Published var event: EKEvent?
   @Published var tournamentURL: URL?
   
   private let tournament: Tournament
   private let service: StartggServiceType
   
   private var sentHomeViewRefreshNotification: Bool
+  private var startDate: Date?
+  private var endDate: Date?
+  private var locationString: String?
   
   init(
     tournament: Tournament,
@@ -42,7 +50,8 @@ final class TournamentViewModel: ObservableObject {
     state = .loading
     do {
       let tournamentDetails = try await service.getTournamentDetails(id: tournament.id)
-      getTournamentURL(slug: tournamentDetails?.slug)
+      setCalendarEventDetails(tournamentDetails)
+      setTournamentURL(tournamentDetails?.slug)
       state = .loaded(tournamentDetails)
     } catch {
       state = .error
@@ -51,6 +60,8 @@ final class TournamentViewModel: ObservableObject {
       #endif
     }
   }
+  
+  // MARK: Pin / Unpin
   
   func toggleTournamentPinStatus() {
     PinnedTournamentService.toggleTournamentPinStatus(tournamentID: tournament.id)
@@ -65,7 +76,42 @@ final class TournamentViewModel: ObservableObject {
     sentHomeViewRefreshNotification = false
   }
   
-  private func getTournamentURL(slug: String?) {
+  // MARK: Add to Calendar
+  
+  func addTournamentToCalendar() {
+    guard let startDate, let endDate else { return }
+    
+    if eventStore == nil {
+      self.eventStore = EKEventStore()
+    }
+    if let eventStore {
+      let event = EKEvent(eventStore: eventStore)
+      event.title = tournament.name
+      event.location = locationString
+      event.startDate = startDate
+      event.endDate = endDate
+      event.isAllDay = true
+      event.calendar = eventStore.defaultCalendarForNewEvents
+      self.event = event
+    }
+    
+    showingAddToCalendarView = true
+  }
+  
+  private func setCalendarEventDetails(_ tournamentDetails: TournamentDetails?) {
+    startDate = tournamentDetails?.startDate
+    endDate = tournamentDetails?.endDate
+    
+    guard let address = tournamentDetails?.location?.address, !address.isEmpty else {
+      locationString = "Online"
+      return
+    }
+    locationString = address
+  }
+  
+  // MARK: Share
+  
+  private func setTournamentURL(_ slug: String?) {
     guard let slug, let url = URL(string: "https://www.start.gg/\(slug)/details") else { return }
     tournamentURL = url
   }

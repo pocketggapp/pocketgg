@@ -44,14 +44,14 @@ struct HomeView: View {
       .onReceive(NotificationCenter.default.publisher(for: Notification.Name(Constants.refreshHomeView))) { _ in
         viewModel.needsRefresh = true
       }
+      .onAppear {
+        viewModel.presentOnboardingViewIfNeeded()
+      }
       .task {
         await viewModel.fetchTournaments()
       }
       .refreshable {
         await viewModel.fetchTournaments(refreshed: true)
-      }
-      .onAppear {
-        viewModel.presentOnboardingViewIfNeeded()
       }
       .sheet(isPresented: $viewModel.showingOnboardingView) {
         OnboardingView(

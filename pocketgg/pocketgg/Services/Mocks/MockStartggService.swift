@@ -99,6 +99,8 @@ final class MockStartggService: StartggServiceType {
       location: MockStartggService.createLocation(),
       contact: MockStartggService.createContactInfo(),
       organizer: MockStartggService.createEntrant(id: 0),
+      startDate: nil,
+      endDate: nil,
       slug: "tournament/the-big-house-6",
       registrationOpen: false,
       registrationCloseDate: "January 1, 1970"

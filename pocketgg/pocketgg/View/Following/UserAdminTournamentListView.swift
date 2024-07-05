@@ -58,11 +58,11 @@ struct UserAdminTournamentListView: View {
       }
     }
     .listStyle(.grouped)
-    .task {
-      await viewModel.fetchTournaments()
-    }
     .onAppear {
       viewModel.resetFollowingViewRefreshNotification()
+    }
+    .task {
+      await viewModel.fetchTournaments()
     }
     .refreshable {
       await viewModel.fetchTournaments(refreshed: true)

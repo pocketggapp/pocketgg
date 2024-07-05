@@ -7,7 +7,7 @@ public class TournamentDetailsQuery: GraphQLQuery {
   public static let operationName: String = "TournamentDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename id name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType owner { __typename id player { __typename gamerTag prefix } } slug } }"#
+      #"query TournamentDetails($id: ID) { tournament(id: $id) { __typename events { __typename id name state standings(query: {perPage: 1}) { __typename nodes { __typename entrant { __typename id name participants { __typename gamerTag } } } } startAt type videogame { __typename name images { __typename url ratio } } } streams { __typename streamName streamLogo streamSource streamId } lat lng venueName venueAddress isRegistrationOpen registrationClosesAt primaryContact primaryContactType owner { __typename id player { __typename gamerTag prefix } } startAt endAt slug } }"#
     ))
 
   public var id: GraphQLNullable<ID>
@@ -51,6 +51,8 @@ public class TournamentDetailsQuery: GraphQLQuery {
         .field("primaryContact", String?.self),
         .field("primaryContactType", String?.self),
         .field("owner", Owner?.self),
+        .field("startAt", StartggAPI.Timestamp?.self),
+        .field("endAt", StartggAPI.Timestamp?.self),
         .field("slug", String?.self),
       ] }
 
@@ -68,6 +70,10 @@ public class TournamentDetailsQuery: GraphQLQuery {
       public var primaryContactType: String? { __data["primaryContactType"] }
       /// The user who created the tournament
       public var owner: Owner? { __data["owner"] }
+      /// When the tournament Starts
+      public var startAt: StartggAPI.Timestamp? { __data["startAt"] }
+      /// When the tournament ends
+      public var endAt: StartggAPI.Timestamp? { __data["endAt"] }
       /// The slug used to form the url
       public var slug: String? { __data["slug"] }
 

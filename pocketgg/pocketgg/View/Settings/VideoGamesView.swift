@@ -55,11 +55,11 @@ struct VideoGamesView: View {
       }
     }
     .listStyle(.insetGrouped)
-    .task {
-      viewModel.getSavedVideoGames()
-    }
     .onAppear {
       viewModel.resetHomeViewRefreshNotification()
+    }
+    .task {
+      viewModel.getSavedVideoGames()
     }
     .toolbar { EditButton() }
     .navigationTitle("Video Game Selection")

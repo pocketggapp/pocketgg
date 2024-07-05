@@ -117,6 +117,7 @@
 		DAC4E94E2B4B96B700B356A0 /* Entrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94D2B4B96B700B356A0 /* Entrant.swift */; };
 		DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */; };
 		DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */; };
+		DAC61DFB2C383EF000FC0617 /* AddToCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61DFA2C383EF000FC0617 /* AddToCalendarView.swift */; };
 		DAD09A6D2BEE7AE700506F75 /* TipJarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */; };
 		DAD09A6F2BEE85DD00506F75 /* Purchases.storekit in Resources */ = {isa = PBXBuildFile; fileRef = DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */; };
 		DAD1251B2B80250E005CECB6 /* MatchRowPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */; };
@@ -302,6 +303,7 @@
 		DAC4E94D2B4B96B700B356A0 /* Entrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entrant.swift; sourceTree = "<group>"; };
 		DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantService.swift; sourceTree = "<group>"; };
 		DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
+		DAC61DFA2C383EF000FC0617 /* AddToCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCalendarView.swift; sourceTree = "<group>"; };
 		DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewModel.swift; sourceTree = "<group>"; };
 		DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Purchases.storekit; sourceTree = "<group>"; };
 		DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowPlaceholderView.swift; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 			children = (
 				DADD99AD2AE1C33300ED35FC /* TournamentView.swift */,
 				DADD99A62AE0BA9D00ED35FC /* TournamentHeaderView.swift */,
+				DAC61DFA2C383EF000FC0617 /* AddToCalendarView.swift */,
 				DA4DDBC72B65638D00F3131E /* Events */,
 				DAF117B42B50E2DA00D39F65 /* Streams */,
 				DA15EC582B5A28BC003FD258 /* Location */,
@@ -1246,6 +1249,7 @@
 				DA15EC5E2B5A2DD8003FD258 /* MockOAuthService.swift in Sources */,
 				DABD24A82BDE9FD00087122E /* CurrentUserTournamentsView.swift in Sources */,
 				DA58E81E2B954E2400AD446A /* VideoGamePreferenceService.swift in Sources */,
+				DAC61DFB2C383EF000FC0617 /* AddToCalendarView.swift in Sources */,
 				DA4DDBCD2B65662F00F3131E /* InfoView.swift in Sources */,
 				DADD99B02AE1C34400ED35FC /* TournamentViewModel.swift in Sources */,
 				DA8D00B22ACA362E0093FC49 /* Constants.swift in Sources */,

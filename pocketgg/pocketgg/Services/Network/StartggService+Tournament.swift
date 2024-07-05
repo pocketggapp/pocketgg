@@ -9,50 +9,32 @@ extension StartggService {
       ) { result in
         switch result {
         case .success(let graphQLResult):
-          guard let tournament = graphQLResult.data?.tournament,
-                let id = Int(tournament.id ?? "nil") else {
+          guard let tournamentData = graphQLResult.data?.tournament,
+                let id = Int(tournamentData.id ?? "nil") else {
             continuation.resume(returning: nil)
             return
           }
           
-          let start = DateFormatter.shared.dateFromTimestamp(tournament.startAt)
-          let end = DateFormatter.shared.dateFromTimestamp(tournament.endAt)
-          let date = start == end ? start : "\(start) - \(end)"
-          
-          let logoURL = tournament.images?.first(where: { $0?.type == "profile" })??.url
-          let bannerImageURL = tournament.images?.first { $0?.type == "banner" }??.url
-          let bannerImageRatio = tournament.images?.first { $0?.type == "banner" }??.ratio
-          
-          var location = ""
-          var components = [String]()
-          if let city = tournament.city {
-            components.append(city)
-          }
-          if let addrState = tournament.addrState {
-            components.append(addrState)
-          }
-          if let countryCode = tournament.countryCode {
-            components.append(countryCode)
-          }
-          for component in components {
-            if !location.isEmpty {
-              location += ", "
+          let tournamentNode = TournamentNode(
+            id: String(id),
+            name: tournamentData.name,
+            startAt: tournamentData.startAt,
+            endAt: tournamentData.endAt,
+            isOnline: tournamentData.isOnline,
+            city: tournamentData.city,
+            addrState: tournamentData.addrState,
+            countryCode: tournamentData.countryCode,
+            images: tournamentData.images?.map { image in
+              TournamentNode.Image(
+                url: image?.url,
+                type: image?.type,
+                ratio: image?.ratio
+              )
             }
-            location += component
-          }
-          if location.isEmpty, let isOnline = tournament.isOnline, isOnline {
-            location = "Online"
-          }
+          )
+          let tournament = StartggService.convertTournamentNodes([tournamentNode]).first
           
-          continuation.resume(returning: Tournament(
-            id: id,
-            name: tournament.name,
-            date: date,
-            location: location,
-            logoImageURL: logoURL,
-            bannerImageURL: bannerImageURL,
-            bannerImageRatio: bannerImageRatio
-          ))
+          continuation.resume(returning: tournament)
         case .failure(let error):
           continuation.resume(throwing: error)
         }
@@ -77,7 +59,7 @@ extension StartggService {
             events = tournamentEvents.compactMap {
               guard let id = Int($0?.id ?? "nil") else { return nil }
               
-              let date = DateFormatter.shared.dateFromTimestamp($0?.startAt)
+              let date = DateFormatter.shared.dateStringFromTimestamp($0?.startAt)
               var eventType: String?
               if let eventTypeID = $0?.type {
                 switch eventTypeID {
@@ -133,7 +115,10 @@ extension StartggService {
             )
           }
           
-          let registrationCloseDate = DateFormatter.shared.dateFromTimestamp(tournament.registrationClosesAt)
+          let startDate = DateFormatter.dateFromTimestamp(tournament.startAt)
+          let endDate = DateFormatter.dateFromTimestamp(tournament.endAt)
+          
+          let registrationCloseDate = DateFormatter.shared.dateStringFromTimestamp(tournament.registrationClosesAt)
           
           continuation.resume(returning: TournamentDetails(
             events: events,
@@ -141,6 +126,8 @@ extension StartggService {
             location: location,
             contact: contactInfo,
             organizer: organizer,
+            startDate: startDate,
+            endDate: endDate,
             slug: tournament.slug,
             registrationOpen: tournament.isRegistrationOpen ?? false,
             registrationCloseDate: registrationCloseDate
