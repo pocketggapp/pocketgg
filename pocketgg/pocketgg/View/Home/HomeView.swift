@@ -53,7 +53,11 @@ struct HomeView: View {
       .refreshable {
         await viewModel.fetchTournaments(refreshed: true)
       }
-      .sheet(isPresented: $viewModel.showingOnboardingView) {
+      .sheet(isPresented: $viewModel.showingOnboardingView, onDismiss: {
+        Task {
+          await viewModel.fetchTournaments()
+        }
+      }, content: {
         OnboardingView(
           content: viewModel.getOnboardingFlowType() == .newUser
             ? OnboardingContentService.createNewUserContent()
@@ -61,7 +65,7 @@ struct HomeView: View {
           ,
           flowType: viewModel.getOnboardingFlowType() ?? .appUpdate
         )
-      }
+      })
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentsGroup.self) {
         TournamentListView(

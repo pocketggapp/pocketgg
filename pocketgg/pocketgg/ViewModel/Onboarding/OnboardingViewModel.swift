@@ -4,15 +4,10 @@ final class OnboardingViewModel: ObservableObject {
   @Published var currentSlideIndex: Int
   
   let content: [OnboardingContent]
-  private let userDefaults: UserDefaults
   
-  init(
-    content: [OnboardingContent],
-    userDefaults: UserDefaults = .standard
-  ) {
+  init(content: [OnboardingContent]) {
     self.currentSlideIndex = 0
     self.content = content
-    self.userDefaults = userDefaults
   }
   
   var onFirstSlide: Bool {
