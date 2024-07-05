@@ -1,31 +1,43 @@
 import SwiftUI
 
 struct AsyncBannerImageView: View {
+  @ScaledMetric private var scale: CGFloat = 1
   @StateObject private var viewModel: AsyncImageViewModel
   
   private let imageURL: String?
   private let imageRatio: Double?
+  private let placeholderImageName: String?
   
   init(
     imageURL: String?,
-    imageRatio: Double?
+    imageRatio: Double?,
+    placeholderImageName: String? = nil
   ) {
     self._viewModel = StateObject(wrappedValue: {
       AsyncImageViewModel(imageURL: imageURL)
     }())
     self.imageURL = imageURL
     self.imageRatio = imageRatio
+    self.placeholderImageName = placeholderImageName
   }
   
   var body: some View {
     switch viewModel.state {
-    case .uninitialized, .loading, .error:
+    case .uninitialized, .loading:
       Rectangle()
         .fill(Color(.placeholder))
     case .loaded(let image):
       Image(uiImage: image)
         .resizable()
         .aspectRatio(imageRatio ?? 4, contentMode: .fill)
+    case .error:
+      Rectangle()
+        .fill(Color(.placeholder))
+        .overlay {
+          Image(systemName: placeholderImageName ?? "")
+            .resizable()
+            .frame(width: 50 * scale, height: 50 * scale)
+        }
     }
   }
 }

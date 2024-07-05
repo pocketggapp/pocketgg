@@ -14,7 +14,8 @@ struct TournamentHeaderView: View {
       GeometryReader { proxy in
         AsyncBannerImageView(
           imageURL: tournament.bannerImageURL,
-          imageRatio: tournament.bannerImageRatio
+          imageRatio: tournament.bannerImageRatio,
+          placeholderImageName: "trophy.fill"
         )
         .frame(width: proxy.size.width, height: 150 * scale)
         .clipped()
@@ -29,6 +30,7 @@ struct TournamentHeaderView: View {
           AsyncImageView(
             imageURL: tournament.logoImageURL,
             cornerRadius: 10,
+            placeholderImageName: "trophy",
             newSize: .init(width: 100, height: 100)
           )
           .frame(width: 100 * scale, height: 100 * scale)

@@ -13,7 +13,8 @@ struct TournamentTileView: View {
     VStack(alignment: .leading) {
       AsyncBannerImageView(
         imageURL: tournament.bannerImageURL,
-        imageRatio: tournament.bannerImageRatio
+        imageRatio: tournament.bannerImageRatio,
+        placeholderImageName: "trophy.fill"
       )
       .frame(width: 250 * scale, height: 125 * scale)
       .clipShape(RoundedRectangle(cornerRadius: 10))
