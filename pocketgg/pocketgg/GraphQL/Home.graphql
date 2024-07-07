@@ -85,3 +85,32 @@ query UpcomingTournamentsNearLocation($pageNum: Int, $perPage: Int, $gameIDs: [I
     }
   }
 }
+
+query OnlineTournaments($pageNum: Int, $perPage: Int, $gameIDs: [ID]) {
+  tournaments(query: {
+    perPage: $perPage
+    page: $pageNum
+    sortBy: "startAt asc"
+    filter: {
+      upcoming: true
+      hasOnlineEvents: true
+      videogameIds: $gameIDs
+    }
+  }) {
+    nodes {
+      id
+      name
+      startAt
+      endAt
+      isOnline
+      city
+      addrState
+      countryCode
+      images {
+        url
+        type
+        ratio
+      }
+    }
+  }
+}

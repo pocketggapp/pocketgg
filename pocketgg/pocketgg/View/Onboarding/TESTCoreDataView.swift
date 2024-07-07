@@ -70,7 +70,7 @@ struct TESTCoreDataView: View {
       
       Button {
         let games = viewModel.games.map { Int($0.id) }
-        UserDefaults.standard.set([-1, -2, -3] + games, forKey: Constants.homeViewSections)
+        UserDefaults.standard.set([-1, -2, -3, -4] + games, forKey: Constants.homeViewSections)
       } label: {
         Text("SET LAYOUT TO DEFAULT + VIDEO GAMES")
       }

@@ -53,6 +53,8 @@ final class RearrangeSectionsViewModel: ObservableObject {
         return HomeViewSection(id: -2, name: "Featured", imageName: "star.fill", enabled: true)
       case -3:
         return HomeViewSection(id: -3, name: "Upcoming", imageName: "hourglass", enabled: true)
+      case -4:
+        return HomeViewSection(id: -4, name: "Online", imageName: "wifi", enabled: true)
       default:
         let name = enabledVideoGames.first(where: { $0.id == id })?.name ?? "" // TODO: Change to compact map, return nil after confirming there are no bugs
         return HomeViewSection(id: id, name: name, imageName: nil, enabled: true)
@@ -67,6 +69,9 @@ final class RearrangeSectionsViewModel: ObservableObject {
     }
     if !homeViewLayout.contains(-3) {
       disabledSections.append(HomeViewSection(id: -3, name: "Upcoming", imageName: "hourglass", enabled: false))
+    }
+    if !homeViewLayout.contains(-4) {
+      disabledSections.append(HomeViewSection(id: -4, name: "Online", imageName: "wifi", enabled: false))
     }
     
     state = .loaded

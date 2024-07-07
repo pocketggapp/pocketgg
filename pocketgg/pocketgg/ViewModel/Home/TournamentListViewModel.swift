@@ -71,6 +71,12 @@ final class TournamentListViewModel: ObservableObject {
         )
       case -3:
         tournaments = try await fetchUpcomingTournaments(gameIDs: videoGameIDs)
+      case -4:
+        tournaments = try await service.getOnlineTournaments(
+          pageNum: currentTournamentsPage,
+          perPage: numTournamentsToLoad,
+          gameIDs: videoGameIDs
+        )
       default:
         tournaments = try await fetchUpcomingTournaments(gameIDs: [sectionID])
       }

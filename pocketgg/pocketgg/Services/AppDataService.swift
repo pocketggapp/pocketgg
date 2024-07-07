@@ -10,8 +10,8 @@ final class AppDataService {
     // Only perform new user onboarding if no previous app version exists
     guard userDefaults.string(forKey: Constants.appVersion) == nil else { return }
     
-    // Set the home view sections (pinned, featured, upcoming + whatever games the user chose during onboarding)
-    userDefaults.set([-1, -2, -3] + homeViewSections, forKey: Constants.homeViewSections)
+    // Set the home view sections (pinned, featured, upcoming, online + whatever games the user chose during onboarding)
+    userDefaults.set([-1, -2, -3, -4] + homeViewSections, forKey: Constants.homeViewSections)
     
     // Set the current app version
     userDefaults.set(Constants.currentAppVersion, forKey: Constants.appVersion)
@@ -29,7 +29,7 @@ final class AppDataService {
     }
     
     // Migrate from mainVCSections to homeViewSections
-    let mainVCSections = userDefaults.array(forKey: "mainVCSections") as? [Int] ?? [-1, -2, -3]
+    let mainVCSections = userDefaults.array(forKey: "mainVCSections") as? [Int] ?? [-1, -2, -3, -4]
     userDefaults.set(mainVCSections, forKey: Constants.homeViewSections)
     
     // Migrate saved video games from saved objects to Core Data

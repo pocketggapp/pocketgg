@@ -89,6 +89,12 @@ final class HomeViewModel: ObservableObject {
                 name: "Upcoming",
                 tournaments: self.fetchUpcomingTournaments(gameIDs: videoGames.map { $0.id })
               )
+            case -4:
+              return try await TournamentsGroup(
+                id: -4,
+                name: "Online",
+                tournaments: self.service.getOnlineTournaments(pageNum: 1, perPage: 10, gameIDs: videoGames.map { $0.id })
+              )
             default:
               return try await TournamentsGroup(
                 id: sectionID,
