@@ -40,6 +40,7 @@ struct LocationView: View {
         }
       }
     }
+    .padding(.bottom)
   }
 }
 

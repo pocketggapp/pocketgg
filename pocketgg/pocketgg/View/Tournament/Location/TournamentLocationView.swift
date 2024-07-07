@@ -132,7 +132,7 @@ final class TournamentLocationViewModel: ObservableObject {
     
     do {
       let snapshotter = MKMapSnapshotter(options: options)
-      let snapshot = try await snapshotter.start()
+      let snapshot = try await snapshotter.start(with: DispatchQueue.global(qos: .userInitiated))
       let image = addPinToImage(size: options.size, snapshot: snapshot, coordinates: coordinates)
       ImageService.saveImageToCache(image: image, with: imageKey)
       state = .loaded(image)

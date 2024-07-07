@@ -40,6 +40,7 @@ struct HomeView: View {
             }
           }
         }
+        .padding(.bottom)
       }
       .onReceive(NotificationCenter.default.publisher(for: Notification.Name(Constants.refreshHomeView))) { _ in
         viewModel.needsRefresh = true
