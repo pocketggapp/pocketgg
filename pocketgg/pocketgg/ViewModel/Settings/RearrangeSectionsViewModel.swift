@@ -18,6 +18,8 @@ final class RearrangeSectionsViewModel: ObservableObject {
   
   private var sentHomeViewRefreshNotification: Bool
   
+  private let feedbackGenerator = UISelectionFeedbackGenerator()
+  
   init(
     userDefaults: UserDefaults = .standard,
     coreDataService: CoreDataService = .shared
@@ -108,6 +110,7 @@ final class RearrangeSectionsViewModel: ObservableObject {
   func rearrangeSection(currentlyDragging: HomeViewSection?, droppingSection: HomeViewSection, enabled: Bool) {
     guard let currentlyDragging else { return }
     
+    feedbackGenerator.selectionChanged()
     if enabled {
       if let sourceindex = enabledSections.firstIndex(where: { $0.id == currentlyDragging.id }),
          let destinationIndex = enabledSections.firstIndex(where: { $0.id == droppingSection.id }) {
@@ -123,14 +126,13 @@ final class RearrangeSectionsViewModel: ObservableObject {
         disabledSections.insert(sourceItem, at: destinationIndex)
       }
     }
-    
-    // TODO: Haptic feedback
   }
   
   /// Appending and removing a section from one list to another
   func appendSection(currentlyDragging: HomeViewSection?, enabled: Bool) {
     guard let currentlyDragging else { return }
     
+    feedbackGenerator.selectionChanged()
     if enabled {
       guard !enabledSections.contains(where: { $0.id == currentlyDragging.id }) else { return }
       var updatedSection = currentlyDragging
