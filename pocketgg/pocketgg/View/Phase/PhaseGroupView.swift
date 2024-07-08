@@ -16,7 +16,7 @@ struct PhaseGroupView: View {
   ) {
     self._viewModel = StateObject(wrappedValue: {
       PhaseGroupViewModel(
-        phaseGroup: phaseGroup,
+        phaseGroupID: phaseGroup?.id,
         phaseID: phaseID,
         service: service
       )
@@ -35,7 +35,7 @@ struct PhaseGroupView: View {
       
       switch selected {
       case "Standings":
-        StandingsView(state: $viewModel.state) {
+        StandingsView(phaseGroupViewModel: viewModel) {
           reloadPhaseGroup()
         }
       case "Matches":

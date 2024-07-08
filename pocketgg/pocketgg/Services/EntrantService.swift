@@ -80,6 +80,24 @@ final class EntrantService {
     )
   }
   
+  /// Used by **getPhaseGroupStandings / PhaseGroupView**
+  static func getEntrantAndStanding4(_ standing: PhaseGroupStandingsPageQuery.Data.PhaseGroup.Standings.Node?) -> Standing? {
+    guard let standing else { return nil }
+    guard let id = Int(standing.entrant?.id ?? "nil") else { return nil }
+    
+    if let participants = standing.entrant?.participants, participants.count == 1 {
+      let entrantName = standing.entrant?.participants?[0]?.gamerTag
+      let teamName = getTeamName(combined: standing.entrant?.name, entrantName: entrantName)
+      let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
+      return Standing(entrant: entrant, placement: standing.placement)
+    }
+    
+    return Standing(
+      entrant: Entrant(id: id, name: standing.entrant?.name, teamName: nil),
+      placement: standing.placement
+    )
+  }
+  
   /// Used by **getPhaseGroupDetails / PhaseGroupView**
   static func getEntrantsForSet(
     displayScore: String?,

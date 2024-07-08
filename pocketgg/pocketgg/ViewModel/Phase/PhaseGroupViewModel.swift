@@ -9,40 +9,55 @@ enum PhaseGroupViewState {
 
 final class PhaseGroupViewModel: ObservableObject {
   @Published var state: PhaseGroupViewState
+  @Published var additionalStandings: [Standing]
   
-  private let phaseGroup: PhaseGroup?
+  private var phaseGroupID: Int?
   private let phaseID: Int?
   private let service: StartggServiceType
   
+  private var currentStandingsPage: Int
+  var noMoreStandings: Bool
+  
   init(
-    phaseGroup: PhaseGroup?,
+    phaseGroupID: Int?,
     phaseID: Int?,
     service: StartggServiceType = StartggService.shared
   ) {
     self.state = .uninitialized
-    self.phaseGroup = phaseGroup
+    self.phaseGroupID = phaseGroupID
     self.phaseID = phaseID
     self.service = service
+    
+    self.additionalStandings = []
+    self.currentStandingsPage = 1
+    self.noMoreStandings = false
   }
   
   // MARK: Fetch Phase Group
   
   @MainActor
   func fetchPhaseGroup(refreshed: Bool = false) async {
-    guard let id = phaseGroup?.id else { return }
+    guard let phaseGroupID else { return }
     
     if !refreshed {
       switch state {
       case .uninitialized: break
       default: return
       }
+    } else {
+      additionalStandings.removeAll(keepingCapacity: true)
+      currentStandingsPage = 1
+      noMoreStandings = false
     }
     
     state = .loading
     do {
-      var phaseGroupDetails = try await service.getPhaseGroupDetails(id: id)
-      await getAdditionalInformation(id: id, phaseGroupDetails: &phaseGroupDetails)
+      var phaseGroupDetails = try await service.getPhaseGroupDetails(id: phaseGroupID)
+      await getAdditionalInformation(id: phaseGroupID, phaseGroupDetails: &phaseGroupDetails)
       
+      if phaseGroupDetails?.standings.count ?? 0 <= 65 {
+        noMoreStandings = true
+      }
       state = .loaded(phaseGroupDetails)
     } catch {
       state = .error
@@ -63,6 +78,10 @@ final class PhaseGroupViewModel: ObservableObject {
       case .uninitialized: break
       default: return
       }
+    } else {
+      additionalStandings.removeAll(keepingCapacity: true)
+      currentStandingsPage = 1
+      noMoreStandings = false
     }
     
     state = .loading
@@ -72,10 +91,14 @@ final class PhaseGroupViewModel: ObservableObject {
         state = .loaded(nil)
         return
       }
+      self.phaseGroupID = id
       
       var phaseGroupDetails = try await service.getPhaseGroupDetails(id: id)
       await getAdditionalInformation(id: id, phaseGroupDetails: &phaseGroupDetails)
       
+      if phaseGroupDetails?.standings.count ?? 0 <= 65 {
+        noMoreStandings = true
+      }
       state = .loaded(phaseGroupDetails)
     } catch {
       state = .error
@@ -85,7 +108,7 @@ final class PhaseGroupViewModel: ObservableObject {
     }
   }
   
-  // MARK: Private Helpers
+  // MARK: Additional Information
   
   private func getAdditionalInformation(id: Int, phaseGroupDetails: inout PhaseGroupDetails?) async {
     guard var sets = phaseGroupDetails?.matches else { return }
@@ -150,5 +173,33 @@ final class PhaseGroupViewModel: ObservableObject {
       }
     }
     return []
+  }
+  
+  @MainActor
+  func fetchAdditionalPhaseGroupStandings() async {
+    guard let phaseGroupID else { return }
+    
+    if noMoreStandings { return }
+    
+    currentStandingsPage += 1
+    
+    do {
+      let standings = try await service.getPhaseGroupStandings(id: phaseGroupID, page: currentStandingsPage)
+      guard let standings else {
+        noMoreStandings = true
+        return
+      }
+      
+      if !standings.isEmpty {
+        additionalStandings.append(contentsOf: standings)
+      }
+      if standings.count < 65 {
+        noMoreStandings = true
+      }
+    } catch {
+      #if DEBUG
+      print(error.localizedDescription)
+      #endif
+    }
   }
 }

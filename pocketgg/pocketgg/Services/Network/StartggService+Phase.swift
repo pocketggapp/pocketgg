@@ -95,6 +95,28 @@ extension StartggService {
     }
   }
   
+  func getPhaseGroupStandings(id: Int, page: Int) async throws -> [Standing]? {
+    return try await withCheckedThrowingContinuation { continuation in
+      apollo.fetch(
+        query: PhaseGroupStandingsPageQuery(id: .some(String(id)), page: .some(page))
+      ) { result in
+        switch result {
+        case .success(let graphQLResult):
+          guard let nodes = graphQLResult.data?.phaseGroup?.standings?.nodes else {
+            continuation.resume(returning: nil)
+            return
+          }
+          
+          let standings = nodes.compactMap { EntrantService.getEntrantAndStanding4($0) }
+          
+          continuation.resume(returning: standings)
+        case .failure(let error):
+          continuation.resume(throwing: error)
+        }
+      }
+    }
+  }
+  
   func getRemainingPhaseGroupSets(id: Int, pageNum: Int) async throws -> [PhaseGroupSet] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(

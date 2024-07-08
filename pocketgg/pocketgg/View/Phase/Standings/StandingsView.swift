@@ -1,25 +1,24 @@
 import SwiftUI
 
 struct StandingsView: View {
-  @Binding private var state: PhaseGroupViewState
+  @ObservedObject private var phaseGroupViewModel: PhaseGroupViewModel
   
   private let reloadPhaseGroup: (() -> Void)
   
-  init(state: Binding<PhaseGroupViewState>, reloadPhaseGroup: @escaping () -> Void) {
-    self._state = state
+  init(phaseGroupViewModel: PhaseGroupViewModel, reloadPhaseGroup: @escaping () -> Void) {
+    self.phaseGroupViewModel = phaseGroupViewModel
     self.reloadPhaseGroup = reloadPhaseGroup
   }
   
   var body: some View {
     List {
-      switch state {
+      switch phaseGroupViewModel.state {
       case .uninitialized, .loading:
         ForEach(0..<20) { _ in
           Text("Standing Placeholder")
             .redacted(reason: .placeholder)
         }
       case .loaded(let phaseGroupDetails):
-        // TODO: Add ability to get more standings, similar to AllStandingsView
         if let standings = phaseGroupDetails?.standings, !standings.isEmpty {
           ForEach(standings, id: \.id) {
             StandingRowView(
@@ -29,6 +28,26 @@ struct StandingsView: View {
                 progressionsOut: phaseGroupDetails?.progressionsOut
               )
             )
+          }
+          
+          ForEach(phaseGroupViewModel.additionalStandings, id: \.id) {
+            StandingRowView(
+              standing: $0,
+              progressed: entrantProgressed(
+                placement: $0.placement,
+                progressionsOut: phaseGroupDetails?.progressionsOut
+              )
+            )
+          }
+          
+          if !phaseGroupViewModel.noMoreStandings {
+            Text("Standing Placeholder")
+              .redacted(reason: .placeholder)
+              .onAppear {
+                Task {
+                  await phaseGroupViewModel.fetchAdditionalPhaseGroupStandings()
+                }
+              }
           }
         } else {
           EmptyStateView(
@@ -54,7 +73,11 @@ struct StandingsView: View {
 
 #Preview {
   StandingsView(
-    state: .constant(.loaded(MockStartggService.createPhaseGroupDetails())),
+    phaseGroupViewModel: PhaseGroupViewModel(
+      phaseGroupID: 1,
+      phaseID: 1,
+      service: MockStartggService()
+    ),
     reloadPhaseGroup: { }
   )
 }

@@ -57,6 +57,27 @@ query PhaseGroup($id: ID) {
   }
 }
 
+query PhaseGroupStandingsPage($id: ID, $page: Int) {
+  phaseGroup(id: $id) {
+    standings(query: {
+      page: $page
+      perPage: 65
+    }) {
+      nodes {
+        placement
+        entrant {
+          id
+          name
+          participants {
+            gamerTag
+          }
+        }
+      }
+    }
+  }
+}
+
+
 query PhaseGroupSetsPage($id: ID, $page: Int) {
   phaseGroup(id: $id) {
     sets(page: $page, perPage: 90) {
