@@ -19,6 +19,7 @@ struct TournamentRowView: View {
       AsyncImageView(
         imageURL: tournament.logoImageURL,
         cornerRadius: 10,
+        placeholderImageName: "trophy",
         newSize: .init(width: 100, height: 100)
       )
       .frame(width: 100 * scale, height: 100 * scale)

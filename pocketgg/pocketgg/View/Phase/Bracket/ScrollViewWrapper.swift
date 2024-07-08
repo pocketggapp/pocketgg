@@ -13,7 +13,7 @@ struct ScrollViewWrapper<Content: View>: UIViewRepresentable {
     let scrollView = UIScrollView()
     scrollView.delegate = context.coordinator
     scrollView.maximumZoomScale = 2
-    scrollView.minimumZoomScale = 0.5
+    scrollView.minimumZoomScale = 0.25
     
     hostingController.view.sizeToFit()
     

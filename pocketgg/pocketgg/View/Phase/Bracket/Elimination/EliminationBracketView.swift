@@ -57,25 +57,25 @@ struct EliminationBracketView: View {
     
     // 2 preceding sets
     if let round1Num, let round2Num {
-      // SetPathView branches only if:
-      // 1. 2 preceding sets exist
-      // 2. The 2 preceding sets are in the same section of the bracket
-      // 3. The 2 preceding sets are not the same set
-      if round1Num * round2Num > 0, set.prevRoundIDs[0] != set.prevRoundIDs[1] {
-        EliminationSetPathView(numPrecedingSets: 2)
+      // No SetPathView if both preceding sets are in a different section than the current set
+      if round1Num * round2Num > 0, set.roundNum * round1Num < 0 {
+        EmptyView()
+      }
+      // Single line SetPathView if 1 of the 2 preceding sets is in a different section than the current set,
+      // or if both preceding sets are the same set
+      else if set.roundNum * round1Num < 0 || set.roundNum * round2Num < 0 || set.prevRoundIDs[0] == set.prevRoundIDs[1]{
+        EliminationSetPathView(numPrecedingSets: 1)
           .stroke(style: .init(lineWidth: 3, lineCap: .round))
           .fill(Color(uiColor: UIColor.systemGray3))
-      // If 2 preceding sets exist, there is no SetPathView if the 2 preceding sets are in a different section than the current set
-      } else if round1Num * round2Num > 0, set.roundNum * round1Num < 0 {
-        EmptyView()
       } else {
-        EliminationSetPathView(numPrecedingSets: 1)
+        EliminationSetPathView(numPrecedingSets: 2)
           .stroke(style: .init(lineWidth: 3, lineCap: .round))
           .fill(Color(uiColor: UIColor.systemGray3))
       }
     }
     // 1 or 0 preceding sets
     else {
+      // Single line SetPathView, but only if the preceding set is in the same section as the current set
       if let round1Num, round1Num * set.roundNum > 0 {
         EliminationSetPathView(numPrecedingSets: 1)
           .stroke(style: .init(lineWidth: 3, lineCap: .round))
