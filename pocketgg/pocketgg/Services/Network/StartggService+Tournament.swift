@@ -5,7 +5,8 @@ extension StartggService {
   func getTournament(id: Int) async throws -> Tournament? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: TournamentQuery(id: .some(String(id)))
+        query: TournamentQuery(id: .some(String(id))),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -45,7 +46,8 @@ extension StartggService {
   func getTournamentBySlug(slug: String) async throws -> Tournament? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: TournamentBySlugQuery(slug: .some(slug))
+        query: TournamentBySlugQuery(slug: .some(slug)),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -85,7 +87,8 @@ extension StartggService {
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: TournamentDetailsQuery(id: .some(String(id)))
+        query: TournamentDetailsQuery(id: .some(String(id))),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

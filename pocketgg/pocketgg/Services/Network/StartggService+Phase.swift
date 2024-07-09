@@ -4,7 +4,8 @@ extension StartggService {
   func getPhaseGroups(id: Int, numPhaseGroups: Int) async throws -> [PhaseGroup]? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: PhaseGroupsQuery(id: .some(String(id)), perPage: .some(numPhaseGroups))
+        query: PhaseGroupsQuery(id: .some(String(id)), perPage: .some(numPhaseGroups)),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -34,7 +35,8 @@ extension StartggService {
   func getPhaseGroupDetails(id: Int) async throws -> PhaseGroupDetails? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: PhaseGroupQuery(id: .some(String(id)))
+        query: PhaseGroupQuery(id: .some(String(id))),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -98,7 +100,8 @@ extension StartggService {
   func getPhaseGroupStandings(id: Int, page: Int) async throws -> [Standing]? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: PhaseGroupStandingsPageQuery(id: .some(String(id)), page: .some(page))
+        query: PhaseGroupStandingsPageQuery(id: .some(String(id)), page: .some(page)),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -120,7 +123,8 @@ extension StartggService {
   func getRemainingPhaseGroupSets(id: Int, pageNum: Int) async throws -> [PhaseGroupSet] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: PhaseGroupSetsPageQuery(id: .some(String(id)), page: .some(pageNum))
+        query: PhaseGroupSetsPageQuery(id: .some(String(id)), page: .some(pageNum)),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

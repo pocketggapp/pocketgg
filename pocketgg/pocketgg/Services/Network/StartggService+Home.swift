@@ -9,7 +9,8 @@ extension StartggService {
           pageNum: .some(pageNum),
           perPage: .some(perPage),
           gameIDs: .some(gameIDs.map { String($0) })
-        )
+        ),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -84,7 +85,8 @@ extension StartggService {
           pageNum: .some(pageNum),
           perPage: .some(perPage),
           gameIDs: .some(gameIDs.map { String($0) })
-        )
+        ),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -131,7 +133,8 @@ extension StartggService {
           gameIDs: .some(gameIDs.map { String($0) }),
           coordinates: .some(coordinates),
           radius: .some(radius)
-        )
+        ),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -176,7 +179,8 @@ extension StartggService {
           pageNum: .some(pageNum),
           perPage: .some(perPage),
           gameIDs: .some(gameIDs.map { String($0) })
-        )
+        ),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

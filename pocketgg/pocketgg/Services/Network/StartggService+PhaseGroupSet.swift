@@ -4,7 +4,8 @@ extension StartggService {
   func getPhaseGroupSetGames(id: Int) async throws -> [PhaseGroupSetGame] {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: PhaseGroupSetGamesQuery(id: "\(id)")
+        query: PhaseGroupSetGamesQuery(id: "\(id)"),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

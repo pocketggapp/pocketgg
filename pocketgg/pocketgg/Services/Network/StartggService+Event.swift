@@ -4,7 +4,8 @@ extension StartggService {
   func getEventDetails(id: Int) async throws -> EventDetails? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: EventDetailsQuery(id: .some(String(id)))
+        query: EventDetailsQuery(id: .some(String(id))),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -48,7 +49,8 @@ extension StartggService {
   func getEventStandings(id: Int, page: Int) async throws -> [Standing]? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: EventStandingsQuery(id: .some(String(id)), page: .some(page))
+        query: EventStandingsQuery(id: .some(String(id)), page: .some(page)),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

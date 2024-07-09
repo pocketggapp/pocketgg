@@ -8,7 +8,8 @@ extension StartggService {
           id: .some(String(userID)),
           pageNum: .some(pageNum),
           perPage: .some(perPage)
-        )
+        ),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

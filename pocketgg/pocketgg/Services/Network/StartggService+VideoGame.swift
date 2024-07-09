@@ -4,7 +4,8 @@ extension StartggService {
   func getVideoGames(name: String, page: Int, accumulatedVideoGameIDs: Set<Int>) async throws -> [VideoGame]? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: VideoGamesQuery(name: .some(name), pageNum: .some(page))
+        query: VideoGamesQuery(name: .some(name), pageNum: .some(page)),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

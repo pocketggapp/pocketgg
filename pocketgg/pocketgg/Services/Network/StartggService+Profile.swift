@@ -4,7 +4,8 @@ extension StartggService {
   func getCurrentUserProfile() async throws -> Profile? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
-        query: CurrentUserQuery()
+        query: CurrentUserQuery(),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):
@@ -64,7 +65,8 @@ extension StartggService {
         query: CurrentUserTournamentsQuery(
           pageNum: .some(pageNum),
           perPage: .some(perPage)
-        )
+        ),
+        queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
         case .success(let graphQLResult):

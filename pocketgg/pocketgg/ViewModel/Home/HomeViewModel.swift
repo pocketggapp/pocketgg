@@ -64,7 +64,6 @@ final class HomeViewModel: ObservableObject {
     do {
       try await withThrowingTaskGroup(of: TournamentsGroup.self) { [weak self] taskGroup in
         guard let self else {
-          self?.state = .error
           #if DEBUG
           print("HomeViewModel: self is nil while fetching tournaments")
           #endif
