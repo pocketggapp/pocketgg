@@ -8,6 +8,7 @@ protocol StartggServiceType {
   func getUpcomingTournamentsNearLocation(pageNum: Int, perPage: Int, gameIDs: [Int], coordinates: String, radius: String) async throws -> [Tournament]
   func getOnlineTournaments(pageNum: Int, perPage: Int, gameIDs: [Int]) async throws -> [Tournament]
   func getTournament(id: Int) async throws -> Tournament?
+  func getTournamentBySlug(slug: String) async throws -> Tournament?
   func getTournamentDetails(id: Int) async throws -> TournamentDetails?
   func getEventDetails(id: Int) async throws -> EventDetails?
   func getEventStandings(id: Int, page: Int) async throws -> [Standing]?

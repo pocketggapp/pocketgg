@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.gabrielsiu.startgg-auth</string>
+			<string>com.gabrielsiu.startgg-deeplink</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>pocketgg</string>

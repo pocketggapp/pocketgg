@@ -19,6 +19,10 @@ final class MockStartggService: StartggServiceType {
     MockStartggService.createTournament(id: 0)
   }
   
+  func getTournamentBySlug(slug: String) async throws -> Tournament? {
+    MockStartggService.createTournament(id: 0)
+  }
+  
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
     MockStartggService.createTournamentDetails()
   }

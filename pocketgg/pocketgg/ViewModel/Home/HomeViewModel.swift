@@ -13,6 +13,8 @@ final class HomeViewModel: ObservableObject {
   @Published var state: HomeViewState
   @Published var showingOnboardingView: Bool
   
+  @Published var navigationPath: NavigationPath
+  
   private let service: StartggServiceType
   private let userDefaults: UserDefaults
   
@@ -25,6 +27,7 @@ final class HomeViewModel: ObservableObject {
   ) {
     self.state = .uninitialized
     self.showingOnboardingView = false
+    self.navigationPath = NavigationPath()
     self.service = service
     self.userDefaults = userDefaults
   }
@@ -165,6 +168,23 @@ final class HomeViewModel: ObservableObject {
         perPage: 10,
         gameIDs: gameIDs
       )
+    }
+  }
+  
+  // MARK: Fetch Deeplinked Tournament
+  
+  @MainActor
+  func getDeeplinkedTournament(url: URL) async {
+    guard let range = url.absoluteString.range(of: "pocketgg://") else { return }
+    let slug = String(url.absoluteString[url.absoluteString.index(range.upperBound, offsetBy: 0)...])
+    
+    do {
+      guard let tournament = try await service.getTournamentBySlug(slug: slug) else { return }
+      navigationPath.append(tournament)
+    } catch {
+      #if DEBUG
+      print(error.localizedDescription)
+      #endif
     }
   }
   

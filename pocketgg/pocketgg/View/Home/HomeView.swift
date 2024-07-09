@@ -10,7 +10,7 @@ struct HomeView: View {
   }
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $viewModel.navigationPath) {
       ScrollView {
         LazyVStack(spacing: 32) {
           switch viewModel.state {
@@ -82,6 +82,11 @@ struct HomeView: View {
       }
       .navigationDestination(for: Entrant.self) {
         UserAdminTournamentListView(user: $0)
+      }
+      .onOpenURL { url in
+        Task.detached(priority: .userInitiated) {
+          await viewModel.getDeeplinkedTournament(url: url)
+        }
       }
     }
   }

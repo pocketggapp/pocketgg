@@ -42,6 +42,46 @@ extension StartggService {
     }
   }
   
+  func getTournamentBySlug(slug: String) async throws -> Tournament? {
+    return try await withCheckedThrowingContinuation { continuation in
+      apollo.fetch(
+        query: TournamentBySlugQuery(slug: .some(slug))
+      ) { result in
+        switch result {
+        case .success(let graphQLResult):
+          guard let tournamentData = graphQLResult.data?.tournament,
+                let id = Int(tournamentData.id ?? "nil") else {
+            continuation.resume(returning: nil)
+            return
+          }
+          
+          let tournamentNode = TournamentNode(
+            id: String(id),
+            name: tournamentData.name,
+            startAt: tournamentData.startAt,
+            endAt: tournamentData.endAt,
+            isOnline: tournamentData.isOnline,
+            city: tournamentData.city,
+            addrState: tournamentData.addrState,
+            countryCode: tournamentData.countryCode,
+            images: tournamentData.images?.map { image in
+              TournamentNode.Image(
+                url: image?.url,
+                type: image?.type,
+                ratio: image?.ratio
+              )
+            }
+          )
+          let tournament = StartggService.convertTournamentNodes([tournamentNode]).first
+          
+          continuation.resume(returning: tournament)
+        case .failure(let error):
+          continuation.resume(throwing: error)
+        }
+      }
+    }
+  }
+  
   func getTournamentDetails(id: Int) async throws -> TournamentDetails? {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(

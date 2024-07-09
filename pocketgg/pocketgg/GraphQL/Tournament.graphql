@@ -16,6 +16,24 @@ query Tournament($id: ID) {
   }
 }
 
+query TournamentBySlug($slug: String) {
+  tournament(slug: $slug) {
+    id
+    name
+    startAt
+    endAt
+    isOnline
+    city
+    addrState
+    countryCode
+    images {
+      url
+      type
+      ratio
+    }
+  }
+}
+
 query TournamentDetails($id: ID) {
   tournament(id: $id) {
     events {

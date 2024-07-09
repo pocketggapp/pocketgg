@@ -118,6 +118,12 @@
 		DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */; };
 		DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */; };
 		DAC61DFB2C383EF000FC0617 /* AddToCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61DFA2C383EF000FC0617 /* AddToCalendarView.swift */; };
+		DAC61E052C3C61C400FC0617 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC61E042C3C61C400FC0617 /* UniformTypeIdentifiers.framework */; };
+		DAC61E082C3C61C400FC0617 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC61E072C3C61C400FC0617 /* Media.xcassets */; };
+		DAC61E112C3C61C500FC0617 /* StartggDeeplink.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DAC61E032C3C61C400FC0617 /* StartggDeeplink.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DAC61E182C3C62C700FC0617 /* StartggDeeplinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61E172C3C62C700FC0617 /* StartggDeeplinkView.swift */; };
+		DAC61E1A2C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61E192C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift */; };
+		DAC61E1C2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61E1B2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift */; };
 		DAD09A6D2BEE7AE700506F75 /* TipJarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */; };
 		DAD09A6F2BEE85DD00506F75 /* Purchases.storekit in Resources */ = {isa = PBXBuildFile; fileRef = DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */; };
 		DAD1251B2B80250E005CECB6 /* MatchRowPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */; };
@@ -188,7 +194,28 @@
 			remoteGlobalIDString = DA46B18F2A5E564B00814252;
 			remoteInfo = pocketgg;
 		};
+		DAC61E0F2C3C61C500FC0617 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA46B1882A5E564B00814252 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAC61E022C3C61C400FC0617;
+			remoteInfo = StartggDeeplink;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DAC61E132C3C61C500FC0617 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DAC61E112C3C61C500FC0617 /* StartggDeeplink.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DA053A422B7AF32900A6803A /* RoundRobinBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRobinBracketView.swift; sourceTree = "<group>"; };
@@ -304,6 +331,14 @@
 		DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantService.swift; sourceTree = "<group>"; };
 		DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Safe.swift"; sourceTree = "<group>"; };
 		DAC61DFA2C383EF000FC0617 /* AddToCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCalendarView.swift; sourceTree = "<group>"; };
+		DAC61E032C3C61C400FC0617 /* StartggDeeplink.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StartggDeeplink.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC61E042C3C61C400FC0617 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
+		DAC61E072C3C61C400FC0617 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		DAC61E0E2C3C61C500FC0617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAC61E122C3C61C500FC0617 /* StartggDeeplink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StartggDeeplink.entitlements; sourceTree = "<group>"; };
+		DAC61E172C3C62C700FC0617 /* StartggDeeplinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartggDeeplinkView.swift; sourceTree = "<group>"; };
+		DAC61E192C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartggDeeplinkHostingController.swift; sourceTree = "<group>"; };
+		DAC61E1B2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartggDeeplinkViewModel.swift; sourceTree = "<group>"; };
 		DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewModel.swift; sourceTree = "<group>"; };
 		DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Purchases.storekit; sourceTree = "<group>"; };
 		DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowPlaceholderView.swift; sourceTree = "<group>"; };
@@ -383,6 +418,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC61E002C3C61C400FC0617 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC61E052C3C61C400FC0617 /* UniformTypeIdentifiers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +512,7 @@
 				DA46B1922A5E564B00814252 /* pocketgg */,
 				DA46B1A82A5E564C00814252 /* pocketggTests */,
 				DA65D6782AB6744400EF18E0 /* Packages */,
+				DAC61E062C3C61C400FC0617 /* StartggDeeplink */,
 				DA46B1912A5E564B00814252 /* Products */,
 				DA65D67A2AB6746F00EF18E0 /* Frameworks */,
 			);
@@ -479,6 +523,7 @@
 			children = (
 				DA46B1902A5E564B00814252 /* pocketgg.app */,
 				DA46B1A52A5E564C00814252 /* pocketggTests.xctest */,
+				DAC61E032C3C61C400FC0617 /* StartggDeeplink.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -635,6 +680,7 @@
 			isa = PBXGroup;
 			children = (
 				DA96063D2BE9985A0021CA68 /* StoreKit.framework */,
+				DAC61E042C3C61C400FC0617 /* UniformTypeIdentifiers.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -794,6 +840,19 @@
 				DA15EC5C2B5A2DC8003FD258 /* Mocks */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DAC61E062C3C61C400FC0617 /* StartggDeeplink */ = {
+			isa = PBXGroup;
+			children = (
+				DAC61E122C3C61C500FC0617 /* StartggDeeplink.entitlements */,
+				DAC61E072C3C61C400FC0617 /* Media.xcassets */,
+				DAC61E172C3C62C700FC0617 /* StartggDeeplinkView.swift */,
+				DAC61E1B2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift */,
+				DAC61E192C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift */,
+				DAC61E0E2C3C61C500FC0617 /* Info.plist */,
+			);
+			path = StartggDeeplink;
 			sourceTree = "<group>";
 		};
 		DAD1251C2B802ABA005CECB6 /* Profile */ = {
@@ -994,10 +1053,12 @@
 				DA46B18C2A5E564B00814252 /* Sources */,
 				DA46B18D2A5E564B00814252 /* Frameworks */,
 				DA46B18E2A5E564B00814252 /* Resources */,
+				DAC61E132C3C61C500FC0617 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DAC61E102C3C61C500FC0617 /* PBXTargetDependency */,
 			);
 			name = pocketgg;
 			packageProductDependencies = (
@@ -1028,6 +1089,23 @@
 			productReference = DA46B1A52A5E564C00814252 /* pocketggTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DAC61E022C3C61C400FC0617 /* StartggDeeplink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC61E162C3C61C500FC0617 /* Build configuration list for PBXNativeTarget "StartggDeeplink" */;
+			buildPhases = (
+				DAC61DFF2C3C61C400FC0617 /* Sources */,
+				DAC61E002C3C61C400FC0617 /* Frameworks */,
+				DAC61E012C3C61C400FC0617 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StartggDeeplink;
+			productName = StartggDeeplink;
+			productReference = DAC61E032C3C61C400FC0617 /* StartggDeeplink.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1038,7 +1116,7 @@
 				KnownAssetTags = (
 					StartggAPI,
 				);
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					DA46B18F2A5E564B00814252 = {
@@ -1048,6 +1126,9 @@
 						CreatedOnToolsVersion = 14.2;
 						LastSwiftMigration = 1500;
 						TestTargetID = DA46B18F2A5E564B00814252;
+					};
+					DAC61E022C3C61C400FC0617 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -1069,6 +1150,7 @@
 			targets = (
 				DA46B18F2A5E564B00814252 /* pocketgg */,
 				DA46B1A42A5E564C00814252 /* pocketggTests */,
+				DAC61E022C3C61C400FC0617 /* StartggDeeplink */,
 			);
 		};
 /* End PBXProject section */
@@ -1097,6 +1179,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAC61E012C3C61C400FC0617 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC61E082C3C61C400FC0617 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1361,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DAC61DFF2C3C61C400FC0617 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC61E1A2C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift in Sources */,
+				DAC61E1C2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift in Sources */,
+				DAC61E182C3C62C700FC0617 /* StartggDeeplinkView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1278,6 +1378,11 @@
 			isa = PBXTargetDependency;
 			target = DA46B18F2A5E564B00814252 /* pocketgg */;
 			targetProxy = DA46B1A62A5E564C00814252 /* PBXContainerItemProxy */;
+		};
+		DAC61E102C3C61C500FC0617 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAC61E022C3C61C400FC0617 /* StartggDeeplink */;
+			targetProxy = DAC61E0F2C3C61C500FC0617 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1401,6 +1506,7 @@
 		DA46B1BA2A5E564D00814252 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = pocketgg/pocketgg.entitlements;
@@ -1418,6 +1524,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1438,6 +1545,7 @@
 		DA46B1BB2A5E564D00814252 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = pocketgg/pocketgg.entitlements;
@@ -1455,6 +1563,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1515,6 +1624,69 @@
 			};
 			name = Release;
 		};
+		DAC61E142C3C61C500FC0617 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_ENTITLEMENTS = StartggDeeplink/StartggDeeplink.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H5HY9QQ8RU;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StartggDeeplink/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Open in pocketgg";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.StartggDeeplink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DAC61E152C3C61C500FC0617 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_ENTITLEMENTS = StartggDeeplink/StartggDeeplink.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H5HY9QQ8RU;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StartggDeeplink/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Open in pocketgg";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.StartggDeeplink;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1541,6 +1713,15 @@
 			buildConfigurations = (
 				DA46B1BD2A5E564D00814252 /* Debug */,
 				DA46B1BE2A5E564D00814252 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC61E162C3C61C500FC0617 /* Build configuration list for PBXNativeTarget "StartggDeeplink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC61E142C3C61C500FC0617 /* Debug */,
+				DAC61E152C3C61C500FC0617 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
