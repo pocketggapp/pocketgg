@@ -6,11 +6,11 @@ struct TournamentsPlaceholderView: View {
     VStack(alignment: .leading) {
       HStack {
         Text("Super Smash Bros. Melee")
-          .font(.title2)
+          .font(.title2.bold())
         
         Spacer()
       }
-      .padding([.horizontal])
+      .padding(.horizontal)
       
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(alignment: .top) {
