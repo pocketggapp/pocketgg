@@ -102,7 +102,7 @@ extension StartggService {
             events = tournamentEvents.compactMap {
               guard let id = Int($0?.id ?? "nil") else { return nil }
               
-              let date = DateFormatter.shared.dateStringFromTimestamp($0?.startAt)
+              let date = DateFormatter.dateFromTimestamp($0?.startAt)?.formatted(date: .abbreviated, time: .omitted)
               var eventType: String?
               if let eventTypeID = $0?.type {
                 switch eventTypeID {
@@ -161,7 +161,7 @@ extension StartggService {
           let startDate = DateFormatter.dateFromTimestamp(tournament.startAt)
           let endDate = DateFormatter.dateFromTimestamp(tournament.endAt)
           
-          let registrationCloseDate = DateFormatter.shared.dateStringFromTimestamp(tournament.registrationClosesAt)
+          let registrationCloseDate = DateFormatter.dateFromTimestamp(tournament.registrationClosesAt)?.formatted(date: .abbreviated, time: .omitted) ?? ""
           
           continuation.resume(returning: TournamentDetails(
             events: events,

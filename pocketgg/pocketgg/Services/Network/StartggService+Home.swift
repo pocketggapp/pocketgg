@@ -224,8 +224,8 @@ extension StartggService {
     return nodes.compactMap {
       guard let id = Int($0.id ?? "nil") else { return nil }
       
-      let start = DateFormatter.shared.dateStringFromTimestamp($0.startAt)
-      let end = DateFormatter.shared.dateStringFromTimestamp($0.endAt)
+      let start = DateFormatter.dateFromTimestamp($0.startAt)?.formatted(date: .abbreviated, time: .omitted) ?? ""
+      let end = DateFormatter.dateFromTimestamp($0.endAt)?.formatted(date: .abbreviated, time: .omitted) ?? ""
       let date = start == end ? start : "\(start) - \(end)"
       
       let logoURL = $0.images?.first(where: { $0?.type == "profile" })??.url
