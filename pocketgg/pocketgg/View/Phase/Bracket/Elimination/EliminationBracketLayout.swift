@@ -1,6 +1,5 @@
 import SwiftUI
 
-// TODO: Potentially improve performance by utilizing background threads or cache parameter
 struct EliminationBracketLayout: Layout {
   func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
     guard !subviews.isEmpty else { return .zero }

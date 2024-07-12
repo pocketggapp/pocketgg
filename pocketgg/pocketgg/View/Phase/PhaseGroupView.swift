@@ -33,24 +33,20 @@ struct PhaseGroupView: View {
         sections: ["Standings", "Matches", "Bracket"]
       )
       
-      switch selected {
-      case "Standings":
+      ZStack {
         StandingsView(phaseGroupViewModel: viewModel) {
           reloadPhaseGroup()
         }
-      case "Matches":
+        .opacity(selected == "Standings" ? 1 : 0)
         MatchesView(state: $viewModel.state, selectedMatch: $selectedPhaseGroupSet) {
           reloadPhaseGroup()
         }
-      case "Bracket":
+        .opacity(selected == "Matches" ? 1 : 0)
         BracketView(state: $viewModel.state, selectedSet: $selectedPhaseGroupSet) {
           reloadPhaseGroup()
         }
-      default:
-        EmptyView()
+        .opacity(selected == "Bracket" ? 1 : 0)
       }
-      
-      Spacer()
     }
     .task {
       if phaseGroup == nil {
