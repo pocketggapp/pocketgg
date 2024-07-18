@@ -36,6 +36,11 @@ struct BracketView: View {
             phaseGroupSets: sets,
             entrants: phaseGroupDetails?.standings.compactMap { $0.entrant } ?? []
           )
+        case .swiss:
+          SwissBracketView(
+            selectedSet: $selectedSet,
+            phaseGroupSets: sets
+          )
         default:
           EmptyStateView(
             systemImageName: "questionmark.app.dashed",

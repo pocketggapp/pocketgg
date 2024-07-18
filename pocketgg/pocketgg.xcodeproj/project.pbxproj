@@ -165,6 +165,7 @@
 		DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE36C322B6204440037B45D /* ContactInfoRowView.swift */; };
 		DAEADFC62B86F23600369C16 /* AppStartupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */; };
 		DAEADFC82B86F29900369C16 /* AppStartupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */; };
+		DAED906B2C458C33008B02D9 /* SwissBracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED906A2C458C33008B02D9 /* SwissBracketView.swift */; };
 		DAF117AB2B4F879000D39F65 /* EventPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */; };
 		DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */; };
 		DAF117B32B50CE5500D39F65 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */; };
@@ -380,6 +381,7 @@
 		DAE36C322B6204440037B45D /* ContactInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRowView.swift; sourceTree = "<group>"; };
 		DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupViewModel.swift; sourceTree = "<group>"; };
 		DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupViewModelTests.swift; sourceTree = "<group>"; };
+		DAED906A2C458C33008B02D9 /* SwissBracketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwissBracketView.swift; sourceTree = "<group>"; };
 		DAF117AA2B4F879000D39F65 /* EventPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B02B4FA22100D39F65 /* TournamentsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentsPlaceholderView.swift; sourceTree = "<group>"; };
 		DAF117B22B50CE5500D39F65 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
@@ -956,6 +958,14 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		DAED90672C458BEF008B02D9 /* Swiss */ = {
+			isa = PBXGroup;
+			children = (
+				DAED906A2C458C33008B02D9 /* SwissBracketView.swift */,
+			);
+			path = Swiss;
+			sourceTree = "<group>";
+		};
 		DAF117A92B4F875000D39F65 /* Placeholder */ = {
 			isa = PBXGroup;
 			children = (
@@ -992,6 +1002,7 @@
 				DA475EE92B798A9C007100A6 /* ScrollViewWrapper.swift */,
 				DAF340752B72A03900379688 /* Elimination */,
 				DA475EEB2B7AA851007100A6 /* Round Robin */,
+				DAED90672C458BEF008B02D9 /* Swiss */,
 			);
 			path = Bracket;
 			sourceTree = "<group>";
@@ -1276,6 +1287,7 @@
 				DAB992282B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift in Sources */,
 				DA65D6612AB61EC900EF18E0 /* HomeViewModel.swift in Sources */,
 				DAC4E9522B4BA04400B356A0 /* Collection+Safe.swift in Sources */,
+				DAED906B2C458C33008B02D9 /* SwissBracketView.swift in Sources */,
 				DADCB9DD2B7C51F00093023D /* PhaseGroupSetView.swift in Sources */,
 				DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */,
 				DABD24A62BDE9F800087122E /* CurrentUserTournamentsViewModel.swift in Sources */,
