@@ -2,6 +2,7 @@ import SwiftUI
 
 enum UserTournamentListViewState {
   case uninitialized
+  case loading
   case loaded([Tournament])
   case error
 }
@@ -101,6 +102,7 @@ final class UserTournamentListViewModel: ObservableObject {
       accumulatedTournaments.removeAll(keepingCapacity: true)
       currentTournamentsPage = 1
       noMoreTournaments = false
+      state = .loading
     }
     if getNextPage {
       currentTournamentsPage += 1

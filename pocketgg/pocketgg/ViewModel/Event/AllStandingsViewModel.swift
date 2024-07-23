@@ -2,6 +2,7 @@ import SwiftUI
 
 enum AllStandingsViewState {
   case uninitialized
+  case loading
   case loaded([Standing])
   case error
 }
@@ -43,6 +44,7 @@ final class AllStandingsViewModel: ObservableObject {
       accumulatedStandings.removeAll(keepingCapacity: true)
       currentStandingsPage = 1
       noMoreStandings = false
+      state = .loading
     }
     if getNextPage {
       currentStandingsPage += 1

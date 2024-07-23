@@ -12,7 +12,7 @@ struct CurrentUserTournamentsView: View {
   var body: some View {
     List {
       switch viewModel.state {
-      case .uninitialized:
+      case .uninitialized, .loading:
         ForEach(0..<20) { _ in
           TournamentRowPlaceholderView()
         }
