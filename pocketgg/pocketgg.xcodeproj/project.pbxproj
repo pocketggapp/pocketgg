@@ -107,9 +107,9 @@
 		DABD24A62BDE9F800087122E /* CurrentUserTournamentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */; };
 		DABD24A82BDE9FD00087122E /* CurrentUserTournamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */; };
 		DABD24AA2BDEB9460087122E /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A92BDEB9460087122E /* TipJarView.swift */; };
-		DABEC6682BCAC34100A3991E /* UserAdminTournamentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6672BCAC34100A3991E /* UserAdminTournamentListView.swift */; };
+		DABEC6682BCAC34100A3991E /* UserTournamentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6672BCAC34100A3991E /* UserTournamentListView.swift */; };
 		DABEC66A2BCAC50500A3991E /* StartggService+Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6692BCAC50500A3991E /* StartggService+Following.swift */; };
-		DABEC66D2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC66C2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift */; };
+		DABEC66D2BCADB3300A3991E /* UserTournamentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC66C2BCADB3300A3991E /* UserTournamentListViewModel.swift */; };
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
 		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
@@ -320,9 +320,9 @@
 		DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserTournamentsViewModel.swift; sourceTree = "<group>"; };
 		DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserTournamentsView.swift; sourceTree = "<group>"; };
 		DABD24A92BDEB9460087122E /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
-		DABEC6672BCAC34100A3991E /* UserAdminTournamentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdminTournamentListView.swift; sourceTree = "<group>"; };
+		DABEC6672BCAC34100A3991E /* UserTournamentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTournamentListView.swift; sourceTree = "<group>"; };
 		DABEC6692BCAC50500A3991E /* StartggService+Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Following.swift"; sourceTree = "<group>"; };
-		DABEC66C2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAdminTournamentListViewModel.swift; sourceTree = "<group>"; };
+		DABEC66C2BCADB3300A3991E /* UserTournamentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTournamentListViewModel.swift; sourceTree = "<group>"; };
 		DABFF26A2AB794E20053614D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -801,7 +801,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD3EE262BD44DCB000F92F2 /* FollowingViewModel.swift */,
-				DABEC66C2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift */,
+				DABEC66C2BCADB3300A3991E /* UserTournamentListViewModel.swift */,
 			);
 			path = Following;
 			sourceTree = "<group>";
@@ -880,7 +880,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD1252F2B828F54005CECB6 /* FollowingView.swift */,
-				DABEC6672BCAC34100A3991E /* UserAdminTournamentListView.swift */,
+				DABEC6672BCAC34100A3991E /* UserTournamentListView.swift */,
 			);
 			path = Following;
 			sourceTree = "<group>";
@@ -1232,7 +1232,7 @@
 				DAB992322B8C1BE100F99BD6 /* CoreDataService.swift in Sources */,
 				DA9178612B6ED69F00579360 /* TopStandingsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
-				DABEC66D2BCADB3300A3991E /* UserAdminTournamentListViewModel.swift in Sources */,
+				DABEC66D2BCADB3300A3991E /* UserTournamentListViewModel.swift in Sources */,
 				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */,
@@ -1297,7 +1297,7 @@
 				DABFF26B2AB794E20053614D /* LoginView.swift in Sources */,
 				DAFB42DA2B7DBED000F84E42 /* StartggService+PhaseGroupSet.swift in Sources */,
 				DADA2ADF2BBD80EB00C98929 /* TournamentListView.swift in Sources */,
-				DABEC6682BCAC34100A3991E /* UserAdminTournamentListView.swift in Sources */,
+				DABEC6682BCAC34100A3991E /* UserTournamentListView.swift in Sources */,
 				DA475EE82B794A8E007100A6 /* EliminationBracketLayout.swift in Sources */,
 				DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */,
 				DAFB42DE2B7DC84200F84E42 /* PhaseGroupSetGameRowView.swift in Sources */,

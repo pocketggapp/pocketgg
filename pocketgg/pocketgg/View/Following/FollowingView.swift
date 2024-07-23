@@ -56,7 +56,7 @@ struct FollowingView: View {
       .toolbar { EditButton() }
       .navigationTitle("Following")
       .navigationDestination(for: TournamentOrganizer.self) {
-        UserAdminTournamentListView(
+        UserTournamentListView(
           user: Entrant(id: $0.id, name: $0.name, teamName: $0.prefix)
         )
       }
@@ -67,7 +67,7 @@ struct FollowingView: View {
         EventView(event: $0)
       }
       .navigationDestination(for: Entrant.self) {
-        UserAdminTournamentListView(user: $0)
+        UserTournamentListView(user: $0)
       }
     }
   }

@@ -81,7 +81,7 @@ struct HomeView: View {
         EventView(event: $0)
       }
       .navigationDestination(for: Entrant.self) {
-        UserAdminTournamentListView(user: $0)
+        UserTournamentListView(user: $0)
       }
       .onOpenURL { url in
         Task.detached(priority: .userInitiated) {

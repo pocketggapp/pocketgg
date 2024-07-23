@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct UserAdminTournamentListView: View {
-  @StateObject private var viewModel: UserAdminTournamentListViewModel
+struct UserTournamentListView: View {
+  @StateObject private var viewModel: UserTournamentListViewModel
   @State private var selected: String
   @State private var isRenaming = false
   
@@ -12,7 +12,7 @@ struct UserAdminTournamentListView: View {
     service: StartggServiceType = StartggService.shared
   ) {
     self._viewModel = StateObject(wrappedValue: {
-      UserAdminTournamentListViewModel(
+      UserTournamentListViewModel(
         user: user,
         service: service
       )
@@ -131,7 +131,7 @@ struct UserAdminTournamentListView: View {
 }
 
 #Preview {
-  UserAdminTournamentListView(
+  UserTournamentListView(
     user: MockStartggService.createEntrant(id: 0),
     service: MockStartggService()
   )

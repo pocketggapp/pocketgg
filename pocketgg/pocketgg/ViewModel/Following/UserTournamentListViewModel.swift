@@ -1,13 +1,13 @@
 import SwiftUI
 
-enum UserAdminTournamentListViewState {
+enum UserTournamentListViewState {
   case uninitialized
   case loaded([Tournament])
   case error
 }
 
-final class UserAdminTournamentListViewModel: ObservableObject {
-  @Published var state: UserAdminTournamentListViewState
+final class UserTournamentListViewModel: ObservableObject {
+  @Published var state: UserTournamentListViewState
   @Published var isFollowed: Bool
   
   @Published var customName: String
@@ -72,7 +72,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
       }
     } catch {
       #if DEBUG
-      print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
+      print("UserTournamentListViewModel: Error getting tournament organizers from Core Data")
       #endif
       self.isFollowed = false
       self.customName = ""
@@ -88,7 +88,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   
   @MainActor
   func fetchTournaments(refreshed: Bool = false, getNextPage: Bool = false, role: String) async {
-    // Ensure the .task modifier in UserAdminTournamentListView only gets called once
+    // Ensure the .task modifier in UserTournamentListView only gets called once
     if !refreshed, !getNextPage {
       switch state {
       case .uninitialized:
@@ -167,7 +167,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
       sendFollowingViewRefreshNotification()
     } catch {
       #if DEBUG
-      print("UserAdminTournamentListViewModel: Error getting tournament organizers from Core Data")
+      print("UserTournamentListViewModel: Error getting tournament organizers from Core Data")
       #endif
       self.isFollowed = false
     }
@@ -189,7 +189,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
       oldPrefix = customPrefix
     } catch {
       #if DEBUG
-      print("UserAdminTournamentListViewModel: Rename TO failed")
+      print("UserTournamentListViewModel: Rename TO failed")
       #endif
     }
   }

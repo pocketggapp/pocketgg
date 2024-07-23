@@ -93,7 +93,7 @@ struct ProfileView: View {
         EventView(event: $0)
       }
       .navigationDestination(for: Entrant.self) {
-        UserAdminTournamentListView(user: $0)
+        UserTournamentListView(user: $0)
       }
       .navigationTitle("Profile")
     }
