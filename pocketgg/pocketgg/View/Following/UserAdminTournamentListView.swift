@@ -2,6 +2,7 @@ import SwiftUI
 
 struct UserAdminTournamentListView: View {
   @StateObject private var viewModel: UserAdminTournamentListViewModel
+  @State private var selected: String
   @State private var isRenaming = false
   
   private let user: Entrant
@@ -16,56 +17,69 @@ struct UserAdminTournamentListView: View {
         service: service
       )
     }())
+    self._selected = State(initialValue: "Organizer")
     self.user = user
   }
   
   var body: some View {
-    List {
-      switch viewModel.state {
-      case .uninitialized:
-        ForEach(0..<20) { _ in
-          TournamentRowPlaceholderView()
-        }
-      case .loaded(let tournaments):
-        if !tournaments.isEmpty {
-          ForEach(tournaments, id: \.id) { tournament in
-            NavigationLink(value: tournament) {
-              TournamentRowView(tournament: tournament)
-            }
-          }
-          
-          if !viewModel.noMoreTournaments {
+    VStack {
+      SegmentedControlView(
+        selected: $selected,
+        sections: ["Organizer", "Admin", "Competitor"]
+      )
+      
+      List {
+        switch viewModel.state {
+        case .uninitialized:
+          ForEach(0..<20) { _ in
             TournamentRowPlaceholderView()
-              .onAppear {
-                Task {
-                  await viewModel.fetchTournaments(getNextPage: true)
-                }
-              }
           }
-        } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Tournaments",
-            subtitle: "There are no tournaments that this user is an an admin of."
-          )
-        }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading tournaments") {
-          Task {
-            await viewModel.fetchTournaments(refreshed: true)
+        case .loaded(let tournaments):
+          if !tournaments.isEmpty {
+            ForEach(tournaments, id: \.id) { tournament in
+              NavigationLink(value: tournament) {
+                TournamentRowView(tournament: tournament)
+              }
+            }
+            
+            if !viewModel.noMoreTournaments {
+              TournamentRowPlaceholderView()
+                .onAppear {
+                  Task {
+                    await viewModel.fetchTournaments(getNextPage: true, role: selected)
+                  }
+                }
+            }
+          } else {
+            EmptyStateView(
+              systemImageName: "questionmark.app.dashed",
+              title: "No Tournaments",
+              subtitle: "There are no tournaments that match the selected filter for this user."
+            )
+          }
+        case .error:
+          ErrorStateView(subtitle: "There was an error loading tournaments") {
+            Task {
+              await viewModel.fetchTournaments(refreshed: true, role: selected)
+            }
           }
         }
       }
+      .listStyle(.grouped)
     }
-    .listStyle(.grouped)
     .onAppear {
       viewModel.resetFollowingViewRefreshNotification()
     }
     .task {
-      await viewModel.fetchTournaments()
+      await viewModel.fetchTournaments(role: selected)
     }
     .refreshable {
-      await viewModel.fetchTournaments(refreshed: true)
+      await viewModel.fetchTournaments(refreshed: true, role: selected)
+    }
+    .onChange(of: selected) { role in
+      Task {
+        await viewModel.fetchTournaments(refreshed: true, role: role)
+      }
     }
     .toolbar {
       ToolbarItemGroup(placement: .topBarTrailing) {

@@ -1,3 +1,31 @@
+query UserOrganizingTournaments($id: ID, $pageNum: Int, $perPage: Int) {
+  user(id: $id) {
+    tournaments(
+      query: {
+        perPage: $perPage
+        page: $pageNum
+        filter: { tournamentView: "organizing" }
+      }
+    ) {
+      nodes {
+        id
+        name
+        startAt
+        endAt
+        isOnline
+        city
+        addrState
+        countryCode
+        images {
+          url
+          type
+          ratio
+        }
+      }
+    }
+  }
+}
+
 query UserAdminTournaments($id: ID, $pageNum: Int, $perPage: Int) {
   user(id: $id) {
     tournaments(
@@ -5,6 +33,34 @@ query UserAdminTournaments($id: ID, $pageNum: Int, $perPage: Int) {
         perPage: $perPage
         page: $pageNum
         filter: { tournamentView: "admin" }
+      }
+    ) {
+      nodes {
+        id
+        name
+        startAt
+        endAt
+        isOnline
+        city
+        addrState
+        countryCode
+        images {
+          url
+          type
+          ratio
+        }
+      }
+    }
+  }
+}
+
+query UserCompetingTournaments($id: ID, $pageNum: Int, $perPage: Int) {
+  user(id: $id) {
+    tournaments(
+      query: {
+        perPage: $perPage
+        page: $pageNum
+        filter: { tournamentView: "competing" }
       }
     ) {
       nodes {

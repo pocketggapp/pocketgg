@@ -87,7 +87,7 @@ final class UserAdminTournamentListViewModel: ObservableObject {
   // MARK: Fetch Tournaments
   
   @MainActor
-  func fetchTournaments(refreshed: Bool = false, getNextPage: Bool = false) async {
+  func fetchTournaments(refreshed: Bool = false, getNextPage: Bool = false, role: String) async {
     // Ensure the .task modifier in UserAdminTournamentListView only gets called once
     if !refreshed, !getNextPage {
       switch state {
@@ -108,11 +108,17 @@ final class UserAdminTournamentListViewModel: ObservableObject {
     if noMoreTournaments { return }
     
     do {
-      let tournaments = try await service.getUserAdminTournaments(
-        userID: user.id,
-        pageNum: currentTournamentsPage,
-        perPage: numTournamentsToLoad
-      )
+      var tournaments = [Tournament]()
+      switch role {
+      case "Organizer":
+        tournaments = try await fetchUserOrganizingTournaments()
+      case "Admin":
+        tournaments = try await fetchUserAdminTournaments()
+      case "Competitor":
+        tournaments = try await fetchUserCompetingTournaments()
+      default:
+        break
+      }
       
       if !tournaments.isEmpty {
         accumulatedTournaments.append(contentsOf: tournaments)
@@ -127,6 +133,30 @@ final class UserAdminTournamentListViewModel: ObservableObject {
       print(error.localizedDescription)
       #endif
     }
+  }
+  
+  private func fetchUserOrganizingTournaments() async throws -> [Tournament] {
+    return try await service.getUserOrganizingTournaments(
+      userID: user.id,
+      pageNum: currentTournamentsPage,
+      perPage: numTournamentsToLoad
+    )
+  }
+  
+  private func fetchUserAdminTournaments() async throws -> [Tournament] {
+    return try await service.getUserAdminTournaments(
+      userID: user.id,
+      pageNum: currentTournamentsPage,
+      perPage: numTournamentsToLoad
+    )
+  }
+  
+  private func fetchUserCompetingTournaments() async throws -> [Tournament] {
+    return try await service.getUserCompetingTournaments(
+      userID: user.id,
+      pageNum: currentTournamentsPage,
+      perPage: numTournamentsToLoad
+    )
   }
   
   // MARK: Toggle Followed Status

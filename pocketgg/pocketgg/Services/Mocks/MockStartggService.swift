@@ -62,7 +62,15 @@ final class MockStartggService: StartggServiceType {
     ]
   }
   
+  func getUserOrganizingTournaments(userID: Int, pageNum: Int, perPage: Int) async throws -> [Tournament] {
+    [MockStartggService.createTournament(id: 0)]
+  }
+  
   func getUserAdminTournaments(userID: Int, pageNum: Int, perPage: Int) async throws -> [Tournament] {
+    [MockStartggService.createTournament(id: 0)]
+  }
+  
+  func getUserCompetingTournaments(userID: Int, pageNum: Int, perPage: Int) async throws -> [Tournament] {
     [MockStartggService.createTournament(id: 0)]
   }
   
