@@ -6,7 +6,7 @@ enum HomeViewState {
   case loading
   case loaded([TournamentsGroup])
   case noSections
-  case error
+  case error(is503: Bool)
 }
 
 final class HomeViewModel: ObservableObject {
@@ -119,7 +119,7 @@ final class HomeViewModel: ObservableObject {
         state = .loaded(sortedTournamentGroups)
       }
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print("HomeViewModel: \(error)")
       #endif

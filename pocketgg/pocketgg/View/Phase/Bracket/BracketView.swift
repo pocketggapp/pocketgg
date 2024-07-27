@@ -55,8 +55,8 @@ struct BracketView: View {
           subtitle: "There are currently no sets in this phase group."
         )
       }
-    case .error:
-      ErrorStateView(subtitle: "There was an error loading this bracket.") {
+    case .error(let is503):
+      ErrorStateView(is503: is503, subtitle: "There was an error loading this bracket.") {
         reloadPhaseGroup()
       }
     }

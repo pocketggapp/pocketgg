@@ -12,11 +12,11 @@ enum LoginError: Error {
   case noCallbackURL
   case noAuthCode
   case selfNil
+  case serverUnavailable
 }
 
 enum OAuthError: Error {
   case dataTaskError(String)
-  case noData
   case invalidData
   case invalidClientSecret
 }
@@ -181,7 +181,9 @@ final class OAuthService: NSObject, ASWebAuthenticationPresentationContextProvid
         print("Data Task error in OAuthService.requestTokens():")
         print(error.localizedDescription)
         #endif
-        throw OAuthError.dataTaskError(error.localizedDescription)
+        throw error.is503Error
+          ? LoginError.serverUnavailable
+          : OAuthError.dataTaskError(error.localizedDescription)
       }
     }
   }

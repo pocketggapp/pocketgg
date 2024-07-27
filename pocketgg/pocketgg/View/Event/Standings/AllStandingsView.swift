@@ -39,8 +39,8 @@ struct AllStandingsView: View {
               }
             }
         }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading this event.") {
+      case .error(let is503):
+        ErrorStateView(is503: is503, subtitle: "There was an error loading this event.") {
           Task {
             await viewModel.fetchStandings(refreshed: true)
           }

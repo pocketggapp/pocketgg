@@ -4,7 +4,7 @@ enum TournamentListViewState {
   case uninitialized
   case loading
   case loaded([Tournament])
-  case error
+  case error(is503: Bool)
 }
 
 final class TournamentListViewModel: ObservableObject {
@@ -91,7 +91,7 @@ final class TournamentListViewModel: ObservableObject {
       }
       state = .loaded(accumulatedTournaments)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

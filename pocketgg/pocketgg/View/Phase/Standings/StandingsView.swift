@@ -56,8 +56,8 @@ struct StandingsView: View {
             subtitle: "There are currently no standings for this phase group."
           )
         }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading this phase group.") {
+      case .error(let is503):
+        ErrorStateView(is503: is503, subtitle: "There was an error loading this phase group.") {
           reloadPhaseGroup()
         }
       }

@@ -29,8 +29,8 @@ struct StreamsView: View {
             subtitle: "There are currently no streams for this tournament."
           )
         }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading this tournament.") {
+      case .error(let is503):
+        ErrorStateView(is503: is503, subtitle: "There was an error loading this tournament.") {
           reloadTournament()
         }
       }

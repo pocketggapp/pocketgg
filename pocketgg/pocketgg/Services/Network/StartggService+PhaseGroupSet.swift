@@ -15,8 +15,6 @@ extension StartggService {
             return
           }
           
-          // TODO: See if it's possible to get the score without using displayScore;
-          // When a set is active and the score is updated, displayScore is still null
           let entrants = EntrantService.getEntrantsForSet3(
             displayScore: setData.displayScore,
             winnerID: setData.winnerId,

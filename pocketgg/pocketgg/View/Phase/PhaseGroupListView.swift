@@ -58,8 +58,8 @@ struct PhaseGroupListView: View {
             subtitle: "There are currently no pools for this phase."
           )
         }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading this phase.") {
+      case .error(let is503):
+        ErrorStateView(is503: is503, subtitle: "There was an error loading this phase.") {
           Task {
             await viewModel.fetchPhaseGroups(refreshed: true)
           }

@@ -41,8 +41,8 @@ struct TournamentListView: View {
               }
             }
         }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading tournaments.") {
+      case .error(let is503):
+        ErrorStateView(is503: is503, subtitle: "There was an error loading tournaments.") {
           Task {
             await viewModel.fetchTournaments(refreshed: true)
           }

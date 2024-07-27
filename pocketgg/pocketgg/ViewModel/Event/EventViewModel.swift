@@ -4,7 +4,7 @@ enum EventViewState {
   case uninitialized
   case loading
   case loaded(EventDetails?)
-  case error
+  case error(is503: Bool)
 }
 
 final class EventViewModel: ObservableObject {
@@ -46,7 +46,7 @@ final class EventViewModel: ObservableObject {
       let eventDetails = try await service.getEventDetails(id: event.id)
       state = .loaded(eventDetails)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

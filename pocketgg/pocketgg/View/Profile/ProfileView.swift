@@ -68,8 +68,8 @@ struct ProfileView: View {
                 subtitle: "Log in to view your profile and recent tournaments."
               )
             }
-          case .error:
-            ErrorStateView(subtitle: "There was an error loading your profile.") {
+          case .error(let is503):
+            ErrorStateView(is503: is503, subtitle: "There was an error loading your profile.") {
               Task {
                 await viewModel.fetchProfile(refreshed: true)
               }

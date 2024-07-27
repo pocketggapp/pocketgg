@@ -114,6 +114,7 @@
 		DABFF26B2AB794E20053614D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26A2AB794E20053614D /* LoginView.swift */; };
 		DABFF26F2AB906DC0053614D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF26E2AB906DC0053614D /* LoginViewModel.swift */; };
 		DABFF2722AB90FA90053614D /* OAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABFF2712AB90FA90053614D /* OAuthService.swift */; };
+		DAC0DC2C2C5541D900D6F2B8 /* Error+503.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0DC2B2C5541D900D6F2B8 /* Error+503.swift */; };
 		DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94B2B4B95FB00B356A0 /* Event.swift */; };
 		DAC4E94E2B4B96B700B356A0 /* Entrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94D2B4B96B700B356A0 /* Entrant.swift */; };
 		DAC4E9502B4BA00900B356A0 /* EntrantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */; };
@@ -329,6 +330,7 @@
 		DABFF26C2AB906580053614D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DABFF26E2AB906DC0053614D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		DABFF2712AB90FA90053614D /* OAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthService.swift; sourceTree = "<group>"; };
+		DAC0DC2B2C5541D900D6F2B8 /* Error+503.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+503.swift"; sourceTree = "<group>"; };
 		DAC4E94B2B4B95FB00B356A0 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DAC4E94D2B4B96B700B356A0 /* Entrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entrant.swift; sourceTree = "<group>"; };
 		DAC4E94F2B4BA00900B356A0 /* EntrantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrantService.swift; sourceTree = "<group>"; };
@@ -894,6 +896,7 @@
 				DAD2BCDA2ADB2D5D0088BA96 /* DateFormatter+FromTimestamp.swift */,
 				DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */,
 				DAC4E9512B4BA04400B356A0 /* Collection+Safe.swift */,
+				DAC0DC2B2C5541D900D6F2B8 /* Error+503.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1236,6 +1239,7 @@
 				DA9178612B6ED69F00579360 /* TopStandingsView.swift in Sources */,
 				DAF117B12B4FA22100D39F65 /* TournamentsPlaceholderView.swift in Sources */,
 				DABEC66D2BCADB3300A3991E /* UserTournamentListViewModel.swift in Sources */,
+				DAC0DC2C2C5541D900D6F2B8 /* Error+503.swift in Sources */,
 				DA0E597F2B6D586A0031A5A1 /* PhaseGroup.swift in Sources */,
 				DADD99A72AE0BA9D00ED35FC /* TournamentHeaderView.swift in Sources */,
 				DA9178672B6EF42F00579360 /* AllStandingsViewModel.swift in Sources */,

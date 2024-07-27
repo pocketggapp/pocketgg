@@ -4,7 +4,7 @@ enum UserTournamentListViewState {
   case uninitialized
   case loading
   case loaded([Tournament])
-  case error
+  case error(is503: Bool)
 }
 
 final class UserTournamentListViewModel: ObservableObject {
@@ -16,8 +16,10 @@ final class UserTournamentListViewModel: ObservableObject {
   @Published var navigationTitle: String
   
   private let coreDataService: CoreDataService
-  private var oldName: String /// The name of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
-  private var oldPrefix: String /// The prefix of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
+  /// The name of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
+  private var oldName: String
+  /// The prefix of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
+  private var oldPrefix: String
   
   private let user: Entrant
   
@@ -130,7 +132,7 @@ final class UserTournamentListViewModel: ObservableObject {
       }
       state = .loaded(accumulatedTournaments)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

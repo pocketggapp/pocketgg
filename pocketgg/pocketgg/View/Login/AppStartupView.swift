@@ -5,6 +5,7 @@ struct AppStartupView: View {
   @StateObject private var viewModel: AppStartupViewModel
   
   @State private var showingExpiredTokenAlert = false
+  @State private var showingServerUnavailableAlert = false
   @State private var showingNoInternetAlert = false
   
   init(oAuthService: OAuthServiceType = OAuthService.shared) {
@@ -38,6 +39,12 @@ struct AppStartupView: View {
       }, message: {
         Text("Please log in via start.gg again.")
       })
+      .alert("Error", isPresented: $showingServerUnavailableAlert, actions: {
+        Button("Retry", role: .cancel) { refreshAccessToken() }
+        Button("Log out") { logOut() }
+      }, message: {
+        Text("The start.gg servers are currently unavailable, please try again soon.")
+      })
       .alert("Error", isPresented: $showingNoInternetAlert, actions: {
         Button("Retry", role: .cancel) { refreshAccessToken() }
         Button("Log out") { logOut() }
@@ -60,6 +67,8 @@ struct AppStartupView: View {
         switch error {
         case OAuthError.dataTaskError(_):
           showingNoInternetAlert = true
+        case LoginError.serverUnavailable:
+          showingServerUnavailableAlert = true
         default:
           showingExpiredTokenAlert = true
         }

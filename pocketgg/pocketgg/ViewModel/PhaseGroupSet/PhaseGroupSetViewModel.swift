@@ -4,7 +4,7 @@ enum PhaseGroupSetViewState {
   case uninitialized
   case loading
   case loaded(PhaseGroupSetDetails?)
-  case error
+  case error(is503: Bool)
 }
 
 final class PhaseGroupSetViewModel: ObservableObject {
@@ -38,7 +38,7 @@ final class PhaseGroupSetViewModel: ObservableObject {
       let phaseGroupSetDetails = try await service.getPhaseGroupSetDetails(id: id)
       state = .loaded(phaseGroupSetDetails)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

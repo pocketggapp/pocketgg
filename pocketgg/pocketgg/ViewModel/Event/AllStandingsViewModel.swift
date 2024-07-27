@@ -4,7 +4,7 @@ enum AllStandingsViewState {
   case uninitialized
   case loading
   case loaded([Standing])
-  case error
+  case error(is503: Bool)
 }
 
 final class AllStandingsViewModel: ObservableObject {
@@ -67,7 +67,7 @@ final class AllStandingsViewModel: ObservableObject {
       }
       state = .loaded(accumulatedStandings)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

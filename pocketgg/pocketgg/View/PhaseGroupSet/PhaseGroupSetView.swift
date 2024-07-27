@@ -57,8 +57,8 @@ struct PhaseGroupSetView: View {
               subtitle: "Once games are reported, the results will display here."
             )
           }
-        case .error:
-          ErrorStateView(subtitle: "There was an error loading this set.") {
+        case .error(let is503):
+          ErrorStateView(is503: is503, subtitle: "There was an error loading this set.") {
             Task {
               await viewModel.fetchPhaseGroupSet(refreshed: true)
             }

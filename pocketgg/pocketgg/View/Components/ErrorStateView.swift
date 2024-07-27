@@ -3,11 +3,13 @@ import SwiftUI
 struct ErrorStateView: View {
   @ScaledMetric private var scale: CGFloat = 1
   
+  private let is503: Bool
   private let subtitle: String
   private let reload: (() -> Void)
   
-  init(subtitle: String, reload: @escaping () -> Void) {
-    self.subtitle = subtitle
+  init(is503: Bool, subtitle: String, reload: @escaping () -> Void) {
+    self.is503 = is503
+    self.subtitle = is503 ? "The start.gg servers are currently unavailable, please try again soon." : subtitle
     self.reload = reload
   }
   
@@ -15,7 +17,7 @@ struct ErrorStateView: View {
     HStack {
       Spacer()
       VStack(spacing: 16) {
-        Image(systemName: "exclamationmark.circle")
+        Image(systemName: is503 ? "server.rack" : "exclamationmark.circle")
           .resizable()
           .scaledToFit()
           .frame(width: 75 * scale, height: 75 * scale)
@@ -48,5 +50,5 @@ struct ErrorStateView: View {
 }
 
 #Preview {
-  ErrorStateView(subtitle: "There was an error loading this tournament.", reload: {})
+  ErrorStateView(is503: false, subtitle: "There was an error loading this tournament.", reload: {})
 }

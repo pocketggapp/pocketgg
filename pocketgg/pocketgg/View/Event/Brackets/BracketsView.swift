@@ -31,8 +31,8 @@ struct BracketsView: View {
             subtitle: "There are currently no brackets for this event."
           )
         }
-      case .error:
-        ErrorStateView(subtitle: "There was an error loading this event.") {
+      case .error(let is503):
+        ErrorStateView(is503: is503, subtitle: "There was an error loading this event.") {
           reloadEvent()
         }
       }

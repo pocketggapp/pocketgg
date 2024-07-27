@@ -63,8 +63,8 @@ struct TournamentSearchView: View {
               subtitle: "Check the spelling or try a new search."
             )
           }
-        case .error:
-          ErrorStateView(subtitle: "There was an error loading search results.") {
+        case .error(let is503):
+          ErrorStateView(is503: is503, subtitle: "There was an error loading search results.") {
             Task {
               await viewModel.fetchTournaments(newSearch: true)
             }

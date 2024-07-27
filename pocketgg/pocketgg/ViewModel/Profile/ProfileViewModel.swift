@@ -4,7 +4,7 @@ enum ProfileViewState {
   case uninitialized
   case loading
   case loaded(Profile?)
-  case error
+  case error(is503: Bool)
 }
 
 final class ProfileViewModel: ObservableObject {
@@ -33,7 +33,7 @@ final class ProfileViewModel: ObservableObject {
       let profile = try await service.getCurrentUserProfile()
       state = .loaded(profile)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

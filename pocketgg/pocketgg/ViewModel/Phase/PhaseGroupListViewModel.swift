@@ -4,7 +4,7 @@ enum PhaseGroupListViewState {
   case uninitialized
   case loading
   case loaded([PhaseGroup]?)
-  case error
+  case error(is503: Bool)
 }
 
 final class PhaseGroupListViewModel: ObservableObject {
@@ -59,7 +59,7 @@ final class PhaseGroupListViewModel: ObservableObject {
       let phaseGroups = try await service.getPhaseGroups(id: phase.id, numPhaseGroups: phase.numPhaseGroups ?? 90)
       state = .loaded(phaseGroups)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

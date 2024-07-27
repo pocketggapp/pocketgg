@@ -5,7 +5,7 @@ enum TournamentLocationViewState {
   case uninitialized
   case loading
   case loaded(UIImage?)
-  case error
+  case error(is503: Bool)
 }
 
 struct TournamentLocationView: View {
@@ -137,7 +137,7 @@ final class TournamentLocationViewModel: ObservableObject {
       ImageService.saveImageToCache(image: image, with: imageKey)
       state = .loaded(image)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
     }
   }
   

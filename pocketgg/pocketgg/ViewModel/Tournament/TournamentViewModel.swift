@@ -5,7 +5,7 @@ enum TournamentViewState {
   case uninitialized
   case loading
   case loaded(TournamentDetails?)
-  case error
+  case error(is503: Bool)
 }
 
 final class TournamentViewModel: ObservableObject {
@@ -54,7 +54,7 @@ final class TournamentViewModel: ObservableObject {
       setTournamentURL(tournamentDetails?.slug)
       state = .loaded(tournamentDetails)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif

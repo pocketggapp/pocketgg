@@ -32,7 +32,7 @@ struct VideoGamesView: View {
             )
           }
         case .error:
-          ErrorStateView(subtitle: "There was an error loading your saved video games.") {
+          ErrorStateView(is503: false, subtitle: "There was an error loading your saved video games.") {
             Task {
               viewModel.getSavedVideoGames()
             }

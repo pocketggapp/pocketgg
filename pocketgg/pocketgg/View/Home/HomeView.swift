@@ -32,8 +32,8 @@ struct HomeView: View {
               title: "No Video Games Enabled",
               subtitle: "Select video games in the app settings to see tournaments that feature those games."
             )
-          case .error:
-            ErrorStateView(subtitle: "There was an error loading your tournaments.") {
+          case .error(let is503):
+            ErrorStateView(is503: is503, subtitle: "There was an error loading your tournaments.") {
               Task {
                 await viewModel.fetchTournaments(refreshed: true)
               }

@@ -4,7 +4,7 @@ enum PhaseGroupViewState {
   case uninitialized
   case loading
   case loaded(PhaseGroupDetails?)
-  case error
+  case error(is503: Bool)
 }
 
 final class PhaseGroupViewModel: ObservableObject {
@@ -60,7 +60,7 @@ final class PhaseGroupViewModel: ObservableObject {
       }
       state = .loaded(phaseGroupDetails)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif
@@ -101,7 +101,7 @@ final class PhaseGroupViewModel: ObservableObject {
       }
       state = .loaded(phaseGroupDetails)
     } catch {
-      state = .error
+      state = .error(is503: error.is503Error)
       #if DEBUG
       print(error.localizedDescription)
       #endif
@@ -165,7 +165,7 @@ final class PhaseGroupViewModel: ObservableObject {
         return newSets
       } catch {
         await MainActor.run {
-          state = .error
+          state = .error(is503: error.is503Error)
         }
         #if DEBUG
         print(error.localizedDescription)
