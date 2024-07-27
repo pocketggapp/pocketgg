@@ -7,16 +7,16 @@ struct EliminationSetView: View {
   
   private var identifierBackgroundColor: Color {
     switch phaseGroupSet.state {
-    case "Active": .green
-    case "Called": .yellow
+    case .active: .green
+    case .called: .yellow
     default: Color(uiColor: UIColor.systemGray3)
     }
   }
   
   private var setScoreBackgroundColor: Color {
     switch phaseGroupSet.state {
-    case "Active": .green
-    case "Called": .yellow
+    case .active: .green
+    case .called: .yellow
     default: .gray
     }
   }

@@ -1,10 +1,12 @@
+import StartggAPI
+
 /// Preview of Event data
 ///
 /// Used by **TournamentView**
 struct Event: Hashable {
   let id: Int
   let name: String?
-  let state: String?
+  let state: ActivityState
   let winner: Entrant?
   
   let startDate: String?

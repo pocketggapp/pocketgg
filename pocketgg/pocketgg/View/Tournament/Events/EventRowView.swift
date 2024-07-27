@@ -40,9 +40,9 @@ struct EventRowView: View {
   
   private var subtitleTextView: some View {
     switch event.state {
-    case "ACTIVE":
+    case .active:
       return Text("● ").foregroundColor(.green) + Text("In Progress")
-    case "COMPLETED":
+    case .completed:
       guard let winnerName = event.winner?.name else { fallthrough }
       
       if let teamName = event.winner?.teamName {

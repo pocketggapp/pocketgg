@@ -6,7 +6,7 @@ import StartggAPI
 struct Phase: Hashable {
   let id: Int
   let name: String?
-  let state: String?
+  let state: ActivityState
   
   let numPhaseGroups: Int?
   let numEntrants: Int?

@@ -15,8 +15,8 @@ final class EventViewModel: ObservableObject {
   
   var headerDotColor: Color {
     switch event.state {
-    case "ACTIVE": .green
-    case "COMPLETED": .gray
+    case .active: .green
+    case .completed: .gray
     default: .blue
     }
   }

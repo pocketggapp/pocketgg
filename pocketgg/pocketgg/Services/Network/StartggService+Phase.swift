@@ -20,7 +20,7 @@ extension StartggService {
             return PhaseGroup(
               id: id,
               name: $0?.displayIdentifier,
-              state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue.localizedCapitalized
+              state: ActivityState.allCases[($0?.state ?? 5) - 1]
             )
           }
           
@@ -71,7 +71,7 @@ extension StartggService {
               )
               return PhaseGroupSet(
                 id: id,
-                state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue.localizedCapitalized,
+                state: ActivityState.allCases[($0?.state ?? 5) - 1],
                 roundNum: $0?.round ?? 0,
                 identifier: $0?.identifier ?? "",
                 outcome: outcome,
@@ -149,7 +149,7 @@ extension StartggService {
             )
             return PhaseGroupSet(
               id: id,
-              state: ActivityState.allCases[($0?.state ?? 5) - 1].rawValue.localizedCapitalized,
+              state: ActivityState.allCases[($0?.state ?? 5) - 1],
               roundNum: $0?.round ?? 0,
               identifier: $0?.identifier ?? "",
               outcome: outcome,

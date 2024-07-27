@@ -28,7 +28,7 @@ extension StartggService {
           )
           let phaseGroupSet = PhaseGroupSet(
             id: id,
-            state: ActivityState.allCases[(setData.state ?? 5) - 1].rawValue.localizedCapitalized,
+            state: ActivityState.allCases[(setData.state ?? 5) - 1],
             roundNum: setData.round ?? 0,
             identifier: setData.identifier ?? "",
             outcome: outcome,

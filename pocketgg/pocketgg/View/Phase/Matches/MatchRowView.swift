@@ -64,16 +64,17 @@ struct MatchRowView: View {
   }
   
   private var SubtitleTextView: some View {
-    // TODO: Store all ActivityState as the actual enum case rather than their string representation
     switch phaseGroupSet.state {
-    case "Active":
-      return Text("● ").foregroundColor(.green) + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
+    case .active:
+      return Text("● ").foregroundColor(.green)
+        + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state.rawValue.localizedCapitalized)")
         .font(.subheadline)
-    case "Called":
-      return Text("● ").foregroundColor(.yellow) + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
+    case .called:
+      return Text("● ").foregroundColor(.yellow)
+        + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state.rawValue.localizedCapitalized)")
         .font(.subheadline)
     default:
-      return Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
+      return Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state.rawValue.localizedCapitalized)")
         .font(.subheadline)
     }
   }

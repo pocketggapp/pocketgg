@@ -131,7 +131,7 @@ final class MockStartggService: StartggServiceType {
     Event(
       id: 1,
       name: "Smash Bros. Melee Singles",
-      state: "COMPLETED",
+      state: .completed,
       winner: createEntrant(id: 1),
       startDate: "Oct 9, 2016",
       eventType: "Singles",
@@ -166,7 +166,7 @@ final class MockStartggService: StartggServiceType {
     Phase(
       id: 1,
       name: "Top 8",
-      state: "COMPLETED",
+      state: .completed,
       numPhaseGroups: 1,
       numEntrants: 8,
       bracketType: .singleElimination
@@ -174,7 +174,7 @@ final class MockStartggService: StartggServiceType {
   }
   
   static func createPhaseGroup() -> PhaseGroup {
-    PhaseGroup(id: 1, name: "Top 8", state: "COMPLETED")
+    PhaseGroup(id: 1, name: "Top 8", state: .completed)
   }
   
   static func createPhaseGroupDetails() -> PhaseGroupDetails {
@@ -198,7 +198,7 @@ final class MockStartggService: StartggServiceType {
   static func createPhaseGroupSet() -> PhaseGroupSet {
     PhaseGroupSet(
       id: 0,
-      state: "Completed",
+      state: .completed,
       roundNum: 3,
       identifier: "A",
       outcome: .entrant0Won,

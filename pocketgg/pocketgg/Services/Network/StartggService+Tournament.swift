@@ -115,7 +115,7 @@ extension StartggService {
               return Event(
                 id: id,
                 name: $0?.name,
-                state: $0?.state?.rawValue,
+                state: .init(rawValue: $0?.state?.rawValue ?? "INVALID") ?? .invalid,
                 winner: EntrantService.getEventWinner($0),
                 startDate: date,
                 eventType: eventType,

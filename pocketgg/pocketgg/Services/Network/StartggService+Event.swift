@@ -22,7 +22,7 @@ extension StartggService {
               return Phase(
                 id: id,
                 name: $0?.name,
-                state: $0?.state?.rawValue,
+                state: .init(rawValue: $0?.state?.rawValue ?? "INVALID") ?? .invalid,
                 numPhaseGroups: $0?.groupCount,
                 numEntrants: $0?.numSeeds,
                 bracketType: $0?.bracketType?.value

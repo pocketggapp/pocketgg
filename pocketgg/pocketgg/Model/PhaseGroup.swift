@@ -7,7 +7,7 @@ import StartggAPI
 struct PhaseGroup: Hashable {
   let id: Int
   let name: String?
-  let state: String?
+  let state: ActivityState
 }
 
 /// Complete Phase Group data

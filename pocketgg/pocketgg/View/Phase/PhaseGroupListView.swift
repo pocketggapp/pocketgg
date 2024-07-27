@@ -45,7 +45,7 @@ struct PhaseGroupListView: View {
                 
                 Spacer()
                 
-                Text(phaseGroup.state ?? "")
+                Text(phaseGroup.state.rawValue.localizedCapitalized)
                   .foregroundColor(.gray)
               }
             }
