@@ -1,5 +1,30 @@
-query PhaseGroupSetGames($id: ID!) {
+query PhaseGroupSetDetails($id: ID!) {
   set(id: $id) {
+    state
+    round
+    identifier
+    fullRoundText
+    displayScore
+    winnerId
+    slots {
+      prereqId
+      entrant {
+        id
+        name
+        participants {
+          gamerTag
+        }
+      }
+    }
+    station {
+      number
+    }
+    stream {
+      streamName
+      streamLogo
+      streamSource
+      streamId
+    }
     games {
       id
       orderNum

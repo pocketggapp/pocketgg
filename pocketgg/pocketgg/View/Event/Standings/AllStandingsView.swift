@@ -40,7 +40,7 @@ struct AllStandingsView: View {
             }
         }
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this event") {
+        ErrorStateView(subtitle: "There was an error loading this event.") {
           Task {
             await viewModel.fetchStandings(refreshed: true)
           }

@@ -36,6 +36,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: PhaseGroupQuery(id: .some(String(id))),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
@@ -101,6 +102,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: PhaseGroupStandingsPageQuery(id: .some(String(id)), page: .some(page)),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
@@ -124,6 +126,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: PhaseGroupSetsPageQuery(id: .some(String(id)), page: .some(pageNum)),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {

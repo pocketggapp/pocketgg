@@ -70,7 +70,7 @@ struct PhaseGroupView: View {
           Text("Done")
             .font(.headline)
         }
-        PhaseGroupSetView(phaseGroupSet: set)
+        PhaseGroupSetView(id: set.id)
       }
       .padding()
       .presentationDetents([.medium, .large])

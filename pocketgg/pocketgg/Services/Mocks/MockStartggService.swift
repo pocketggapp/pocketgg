@@ -54,12 +54,8 @@ final class MockStartggService: StartggServiceType {
     [MockStartggService.createPhaseGroupSet()]
   }
   
-  func getPhaseGroupSetGames(id: Int) async throws -> [PhaseGroupSetGame] {
-    [
-      MockStartggService.createPhaseGroupGame(id: 0),
-      MockStartggService.createPhaseGroupGame(id: 1),
-      MockStartggService.createPhaseGroupGame(id: 2)
-    ]
+  func getPhaseGroupSetDetails(id: Int) async throws -> PhaseGroupSetDetails? {
+    MockStartggService.createPhaseGroupSetDetails()
   }
   
   func getUserOrganizingTournaments(userID: Int, pageNum: Int, perPage: Int) async throws -> [Tournament] {
@@ -212,6 +208,15 @@ final class MockStartggService: StartggServiceType {
         PhaseGroupSetEntrant(entrant: createEntrant(id: 0), score: "3"),
         PhaseGroupSetEntrant(entrant: createEntrant(id: 1), score: "2")
       ]
+    )
+  }
+  
+  static func createPhaseGroupSetDetails() -> PhaseGroupSetDetails {
+    PhaseGroupSetDetails(
+      phaseGroupSet: createPhaseGroupSet(),
+      games: [createPhaseGroupGame(id: 0)],
+      stationNum: 1,
+      stream: createStream()
     )
   }
   

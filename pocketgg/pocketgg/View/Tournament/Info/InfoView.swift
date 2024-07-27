@@ -31,7 +31,7 @@ struct InfoView: View {
           registrationCloseDate: tournamentDetails?.registrationCloseDate ?? ""
         )
       case .error:
-        ErrorStateView(subtitle: "There was an error loading this tournament") {
+        ErrorStateView(subtitle: "There was an error loading this tournament.") {
           reloadTournament()
         }
       }

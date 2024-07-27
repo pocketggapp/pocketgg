@@ -48,5 +48,5 @@ struct ErrorStateView: View {
 }
 
 #Preview {
-  ErrorStateView(subtitle: "There was an error loading this tournament", reload: {})
+  ErrorStateView(subtitle: "There was an error loading this tournament.", reload: {})
 }

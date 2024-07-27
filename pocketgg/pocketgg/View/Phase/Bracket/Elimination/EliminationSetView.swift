@@ -5,6 +5,22 @@ struct EliminationSetView: View {
   
   private let phaseGroupSet: PhaseGroupSet
   
+  private var identifierBackgroundColor: Color {
+    switch phaseGroupSet.state {
+    case "Active": .green
+    case "Called": .yellow
+    default: Color(uiColor: UIColor.systemGray3)
+    }
+  }
+  
+  private var setScoreBackgroundColor: Color {
+    switch phaseGroupSet.state {
+    case "Active": .green
+    case "Called": .yellow
+    default: .gray
+    }
+  }
+  
   init(phaseGroupSet: PhaseGroupSet) {
     self.phaseGroupSet = phaseGroupSet
   }
@@ -19,7 +35,7 @@ struct EliminationSetView: View {
           Spacer()
           
           ScoreTextView(0)
-            .background(phaseGroupSet.outcome == .entrant0Won ? .green : .gray)
+            .background(phaseGroupSet.outcome == .entrant0Won ? .green : setScoreBackgroundColor)
         }
         
         HStack {
@@ -29,7 +45,7 @@ struct EliminationSetView: View {
           Spacer()
           
           ScoreTextView(1)
-            .background(phaseGroupSet.outcome == .entrant1Won ? .green : .gray)
+            .background(phaseGroupSet.outcome == .entrant1Won ? .green : setScoreBackgroundColor)
         }
       }
       .padding(.leading, 15 * scale)
@@ -39,7 +55,7 @@ struct EliminationSetView: View {
       .frame(width: 225 * scale)
       
       ZStack {
-        Color(uiColor: UIColor.systemGray3)
+        identifierBackgroundColor
         
         Text(phaseGroupSet.identifier)
           .foregroundColor(.white)

@@ -14,8 +14,7 @@ struct MatchRowView: View {
           Text(phaseGroupSet.fullRoundText ?? "")
             .font(.headline)
           
-          Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
-            .font(.subheadline)
+          SubtitleTextView
         }
         Spacer()
       }
@@ -62,6 +61,21 @@ struct MatchRowView: View {
   
   private func getScoreTextView(_ num: Int) -> some View {
     Text(phaseGroupSet.entrants?[safe: num]?.score ?? "_")
+  }
+  
+  private var SubtitleTextView: some View {
+    // TODO: Store all ActivityState as the actual enum case rather than their string representation
+    switch phaseGroupSet.state {
+    case "Active":
+      return Text("● ").foregroundColor(.green) + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
+        .font(.subheadline)
+    case "Called":
+      return Text("● ").foregroundColor(.yellow) + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
+        .font(.subheadline)
+    default:
+      return Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state)")
+        .font(.subheadline)
+    }
   }
 }
 

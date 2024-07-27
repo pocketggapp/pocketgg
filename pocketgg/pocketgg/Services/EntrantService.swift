@@ -196,6 +196,55 @@ final class EntrantService {
     }
   }
   
+  /// Used by **getPhaseGroupSetDetails / PhaseGroupSetView**
+  static func getEntrantsForSet3(
+    displayScore: String?,
+    winnerID: Int?,
+    slots: [PhaseGroupSetDetailsQuery.Data.Set.Slot?]?
+  ) -> [PhaseGroupSetEntrant]? {
+    guard let slots = slots else { return nil }
+    
+    let entrantsInfo = slots.compactMap { slot -> (entrant: Entrant, fullName: String)? in
+      guard let id = Int(slot?.entrant?.id ?? "nil") else { return nil }
+      
+      if let participants = slot?.entrant?.participants, participants.count == 1 {
+        let entrantName = participants[0]?.gamerTag
+        let teamName = getTeamName(combined: slot?.entrant?.name, entrantName: entrantName)
+        let entrant = Entrant(id: id, name: entrantName, teamName: teamName)
+        return (entrant: entrant, fullName: slot?.entrant?.name ?? "")
+      }
+      
+      return (entrant: Entrant(id: id, name: slot?.entrant?.name, teamName: nil), fullName: slot?.entrant?.name ?? "")
+    }
+    
+    guard let displayScore = displayScore else {
+      return entrantsInfo.map { PhaseGroupSetEntrant(entrant: $0.entrant, score: nil) }
+    }
+    
+    if displayScore == "DQ" {
+      guard let winnerID else {
+        return entrantsInfo.map { PhaseGroupSetEntrant(entrant: $0.entrant, score: nil) }
+      }
+      return entrantsInfo.map {
+        PhaseGroupSetEntrant(entrant: $0.entrant, score: $0.entrant.id == winnerID ? "✓" : "DQ")
+      }
+    }
+    
+    let entrantStrings = displayScore.components(separatedBy: " - ")
+    return entrantsInfo.map {
+      for entrantString in entrantStrings where entrantString.contains($0.fullName) {
+        guard let index = entrantString.lastIndex(of: " ") else {
+          return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
+        }
+        return PhaseGroupSetEntrant(
+          entrant: $0.entrant,
+          score: String(entrantString[index...]).trimmingCharacters(in: .whitespacesAndNewlines)
+        )
+      }
+      return PhaseGroupSetEntrant(entrant: $0.entrant, score: nil)
+    }
+  }
+  
   // MARK: Private Helpers
   
   private static func getTeamName(combined: String?, entrantName: String?) -> String? {

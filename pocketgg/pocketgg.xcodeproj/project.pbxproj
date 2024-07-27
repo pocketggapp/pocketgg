@@ -69,6 +69,7 @@
 		DA7949D32B705C9B00D68EA4 /* StandingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D22B705C9B00D68EA4 /* StandingsView.swift */; };
 		DA7949D52B707CE400D68EA4 /* StandingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D42B707CE400D68EA4 /* StandingRowView.swift */; };
 		DA7949D82B70B1B900D68EA4 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7949D72B70B1B900D68EA4 /* MatchesView.swift */; };
+		DA7BA4912C541A12006983DE /* PhaseGroupSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BA4902C541A12006983DE /* PhaseGroupSet.swift */; };
 		DA88FA6F2B891A00006892BD /* Home.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DA88FA6E2B891A00006892BD /* Home.graphql */; };
 		DA8D00A52AC9D3AC0093FC49 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */; };
 		DA8D00A72AC9D8740093FC49 /* AuthorizationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */; };
@@ -281,6 +282,7 @@
 		DA7949D22B705C9B00D68EA4 /* StandingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsView.swift; sourceTree = "<group>"; };
 		DA7949D42B707CE400D68EA4 /* StandingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingRowView.swift; sourceTree = "<group>"; };
 		DA7949D72B70B1B900D68EA4 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
+		DA7BA4902C541A12006983DE /* PhaseGroupSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseGroupSet.swift; sourceTree = "<group>"; };
 		DA88FA6E2B891A00006892BD /* Home.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Home.graphql; sourceTree = "<group>"; };
 		DA8D00A42AC9D3AC0093FC49 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DA8D00A62AC9D8740093FC49 /* AuthorizationInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInterceptor.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 				DAC4E94B2B4B95FB00B356A0 /* Event.swift */,
 				DA0E597C2B6D58520031A5A1 /* Phase.swift */,
 				DA0E597E2B6D586A0031A5A1 /* PhaseGroup.swift */,
+				DA7BA4902C541A12006983DE /* PhaseGroupSet.swift */,
 				DAC4E94D2B4B96B700B356A0 /* Entrant.swift */,
 				DA2723A02B5B451C002FF875 /* Stream.swift */,
 				DA2723A82B5C5509002FF875 /* Location.swift */,
@@ -1327,6 +1330,7 @@
 				DA58E8272B965F8F00AD446A /* VideoGamesViewModel.swift in Sources */,
 				DAB992242B8AA35300F99BD6 /* VideoGamesView.swift in Sources */,
 				DA789DA12B66C4AB009B9799 /* EventViewModel.swift in Sources */,
+				DA7BA4912C541A12006983DE /* PhaseGroupSet.swift in Sources */,
 				DA65D65E2AB61AE300EF18E0 /* HomeView.swift in Sources */,
 				DA91785D2B6EBFC500579360 /* BracketRowView.swift in Sources */,
 				DA65D66A2AB625E100EF18E0 /* TournamentHorizontalListView.swift in Sources */,

@@ -3,22 +3,22 @@ import SwiftUI
 enum PhaseGroupSetViewState {
   case uninitialized
   case loading
-  case loaded([PhaseGroupSetGame])
+  case loaded(PhaseGroupSetDetails?)
   case error
 }
 
 final class PhaseGroupSetViewModel: ObservableObject {
   @Published var state: PhaseGroupSetViewState
   
-  private let phaseGroupSet: PhaseGroupSet?
+  private let id: Int
   private let service: StartggServiceType
   
   init(
-    phaseGroupSet: PhaseGroupSet?,
+    id: Int,
     service: StartggServiceType = StartggService.shared
   ) {
     self.state = .uninitialized
-    self.phaseGroupSet = phaseGroupSet
+    self.id = id
     self.service = service
   }
   
@@ -26,8 +26,6 @@ final class PhaseGroupSetViewModel: ObservableObject {
   
   @MainActor
   func fetchPhaseGroupSet(refreshed: Bool = false) async {
-    guard let id = phaseGroupSet?.id else { return }
-    
     if !refreshed {
       switch state {
       case .uninitialized: break
@@ -37,8 +35,8 @@ final class PhaseGroupSetViewModel: ObservableObject {
     
     state = .loading
     do {
-      let phaseGroupSetGames = try await service.getPhaseGroupSetGames(id: id)
-      state = .loaded(phaseGroupSetGames)
+      let phaseGroupSetDetails = try await service.getPhaseGroupSetDetails(id: id)
+      state = .loaded(phaseGroupSetDetails)
     } catch {
       state = .error
       #if DEBUG
