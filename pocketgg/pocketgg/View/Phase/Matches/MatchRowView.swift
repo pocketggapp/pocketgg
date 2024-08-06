@@ -52,10 +52,14 @@ struct MatchRowView: View {
     guard let name = phaseGroupSet.entrants?[safe: num]?.entrant?.name else {
       return Text("_")
     }
+    var nameAndSeed = name
+    if let seedNum = phaseGroupSet.entrants?[safe: num]?.seedNum {
+      nameAndSeed += " (\(seedNum))"
+    }
     if let teamName = phaseGroupSet.entrants?[safe: num]?.entrant?.teamName {
-      return Text("\(teamName) ").foregroundColor(.gray) + Text(name)
+      return Text("\(teamName) ").foregroundColor(.gray) + Text(nameAndSeed)
     } else {
-      return Text(name)
+      return Text(nameAndSeed)
     }
   }
   

@@ -7,7 +7,7 @@ public class PhaseGroupSetDetailsQuery: GraphQLQuery {
   public static let operationName: String = "PhaseGroupSetDetails"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query PhaseGroupSetDetails($id: ID!) { set(id: $id) { __typename state round identifier fullRoundText displayScore winnerId slots { __typename prereqId entrant { __typename id name participants { __typename gamerTag } } } station { __typename number } stream { __typename streamName streamLogo streamSource streamId } games { __typename id orderNum winnerId stage { __typename name } } } }"#
+      #"query PhaseGroupSetDetails($id: ID!) { set(id: $id) { __typename state round identifier fullRoundText displayScore winnerId slots { __typename prereqId entrant { __typename id name participants { __typename gamerTag } initialSeedNum } } station { __typename number } stream { __typename streamName streamLogo streamSource streamId } games { __typename id orderNum winnerId stage { __typename name } } } }"#
     ))
 
   public var id: ID
@@ -100,12 +100,15 @@ public class PhaseGroupSetDetailsQuery: GraphQLQuery {
             .field("id", StartggAPI.ID?.self),
             .field("name", String?.self),
             .field("participants", [Participant?]?.self),
+            .field("initialSeedNum", Int?.self),
           ] }
 
           public var id: StartggAPI.ID? { __data["id"] }
           /// The entrant name as it appears in bracket: gamerTag of the participant or team name
           public var name: String? { __data["name"] }
           public var participants: [Participant?]? { __data["participants"] }
+          /// Entrant's seed number in the first phase of the event.
+          public var initialSeedNum: Int? { __data["initialSeedNum"] }
 
           /// Set.Slot.Entrant.Participant
           ///

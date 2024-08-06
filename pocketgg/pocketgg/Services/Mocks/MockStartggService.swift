@@ -205,8 +205,8 @@ final class MockStartggService: StartggServiceType {
       fullRoundText: "Grand Final",
       prevRoundIDs: [1, 2],
       entrants: [
-        PhaseGroupSetEntrant(entrant: createEntrant(id: 0), score: "3"),
-        PhaseGroupSetEntrant(entrant: createEntrant(id: 1), score: "2")
+        PhaseGroupSetEntrant(entrant: createEntrant(id: 0), score: "3", seedNum: 1),
+        PhaseGroupSetEntrant(entrant: createEntrant(id: 1), score: "2", seedNum: 2)
       ]
     )
   }

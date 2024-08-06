@@ -15,10 +15,23 @@ extension StartggService {
             return
           }
           
-          let entrants = EntrantService.getEntrantsForSet3(
+          let setNodeSlots = setData.slots?.map { slot -> PhaseGroupSetNodeSlot in
+            let participants = slot?.entrant?.participants?.map { participant -> PhaseGroupSetNodeSlot.Entrant.Participant in
+              PhaseGroupSetNodeSlot.Entrant.Participant(gamerTag: participant?.gamerTag)
+            }
+            return PhaseGroupSetNodeSlot(
+              entrant: PhaseGroupSetNodeSlot.Entrant(
+                id: Int(slot?.entrant?.id ?? "nil"),
+                name: slot?.entrant?.name,
+                participants: participants ?? [],
+                initialSeedNum: slot?.entrant?.initialSeedNum
+              )
+            )
+          }
+          let entrants = EntrantService.getEntrantsForSet(
             displayScore: setData.displayScore,
             winnerID: setData.winnerId,
-            slots: setData.slots
+            slots: setNodeSlots
           )
           let outcome = PhaseGroupSetService.getSetOutcome(
             score0: entrants?[safe: 0]?.score,

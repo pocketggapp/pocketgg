@@ -60,10 +60,24 @@ extension StartggService {
           if let nodes = phaseGroup.sets?.nodes {
             matches = nodes.compactMap {
               guard let id = Int($0?.id ?? "nil") else { return nil }
+              
+              let setNodeSlots = $0?.slots?.map { slot -> PhaseGroupSetNodeSlot in
+                let participants = slot?.entrant?.participants?.map { participant -> PhaseGroupSetNodeSlot.Entrant.Participant in
+                  PhaseGroupSetNodeSlot.Entrant.Participant(gamerTag: participant?.gamerTag)
+                }
+                return PhaseGroupSetNodeSlot(
+                  entrant: PhaseGroupSetNodeSlot.Entrant(
+                    id: Int(slot?.entrant?.id ?? "nil"),
+                    name: slot?.entrant?.name,
+                    participants: participants ?? [],
+                    initialSeedNum: nil
+                  )
+                )
+              }
               let entrants = EntrantService.getEntrantsForSet(
                 displayScore: $0?.displayScore,
                 winnerID: $0?.winnerId,
-                slots: $0?.slots
+                slots: setNodeSlots
               )
               let outcome = PhaseGroupSetService.getSetOutcome(
                 score0: entrants?[safe: 0]?.score,
@@ -138,10 +152,24 @@ extension StartggService {
           
           let sets: [PhaseGroupSet] = nodes.compactMap {
             guard let id = Int($0?.id ?? "nil") else { return nil }
-            let entrants = EntrantService.getEntrantsForSet2(
+            
+            let setNodeSlots = $0?.slots?.map { slot -> PhaseGroupSetNodeSlot in
+              let participants = slot?.entrant?.participants?.map { participant -> PhaseGroupSetNodeSlot.Entrant.Participant in
+                PhaseGroupSetNodeSlot.Entrant.Participant(gamerTag: participant?.gamerTag)
+              }
+              return PhaseGroupSetNodeSlot(
+                entrant: PhaseGroupSetNodeSlot.Entrant(
+                  id: Int(slot?.entrant?.id ?? "nil"),
+                  name: slot?.entrant?.name,
+                  participants: participants ?? [],
+                  initialSeedNum: nil
+                )
+              )
+            }
+            let entrants = EntrantService.getEntrantsForSet(
               displayScore: $0?.displayScore,
               winnerID: $0?.winnerId,
-              slots: $0?.slots
+              slots: setNodeSlots
             )
             let outcome = PhaseGroupSetService.getSetOutcome(
               score0: entrants?[safe: 0]?.score,

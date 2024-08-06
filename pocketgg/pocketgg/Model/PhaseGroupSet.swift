@@ -20,6 +20,7 @@ struct PhaseGroupSet: Identifiable, Hashable {
 struct PhaseGroupSetEntrant: Hashable {
   let entrant: Entrant?
   let score: String?
+  let seedNum: Int?
 }
 
 /// Complete Phase Group Set data
@@ -37,4 +38,19 @@ struct PhaseGroupSetGame {
   let gameNum: Int?
   let winnerID: Int?
   let stageName: String?
+}
+
+struct PhaseGroupSetNodeSlot {
+  let entrant: Entrant?
+  
+  struct Entrant {
+    let id: Int?
+    let name: String?
+    let participants: [Participant]
+    let initialSeedNum: Int?
+    
+    struct Participant {
+      let gamerTag: String?
+    }
+  }
 }
