@@ -56,10 +56,17 @@ struct PhaseGroupView: View {
       }
     }
     .refreshable {
-      if phaseGroup == nil {
-        await viewModel.fetchSinglePhaseGroup(refreshed: true)
-      } else {
-        await viewModel.fetchPhaseGroup(refreshed: true)
+      reloadPhaseGroup()
+    }
+    .toolbar {
+      if selected == "Bracket" {
+        ToolbarItemGroup(placement: .topBarTrailing) {
+          Button {
+            reloadPhaseGroup()
+          } label: {
+            Text("Refresh")
+          }
+        }
       }
     }
     .sheet(item: $selectedPhaseGroupSet) { set in
