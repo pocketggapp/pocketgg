@@ -23,6 +23,22 @@ struct PhaseGroupSetEntrant: Hashable {
   let seedNum: Int?
 }
 
+/// A model that contains all the information needed to create a **[PhaseGroupSetEntrant]** for a set, and that any StartGG set node can map to
+struct PhaseGroupSetNodeSlot {
+  let entrant: Entrant?
+  
+  struct Entrant {
+    let id: Int?
+    let name: String?
+    let participants: [Participant]
+    let initialSeedNum: Int?
+    
+    struct Participant {
+      let gamerTag: String?
+    }
+  }
+}
+
 /// Complete Phase Group Set data
 ///
 /// Used by **PhaseGroupSetView**
@@ -38,19 +54,4 @@ struct PhaseGroupSetGame {
   let gameNum: Int?
   let winnerID: Int?
   let stageName: String?
-}
-
-struct PhaseGroupSetNodeSlot {
-  let entrant: Entrant?
-  
-  struct Entrant {
-    let id: Int?
-    let name: String?
-    let participants: [Participant]
-    let initialSeedNum: Int?
-    
-    struct Participant {
-      let gamerTag: String?
-    }
-  }
 }

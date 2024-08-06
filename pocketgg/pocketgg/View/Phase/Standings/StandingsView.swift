@@ -20,7 +20,7 @@ struct StandingsView: View {
         }
       case .loaded(let phaseGroupDetails):
         if let standings = phaseGroupDetails?.standings, !standings.isEmpty {
-          ForEach(standings, id: \.id) {
+          ForEach(standings, id: \.self) {
             StandingRowView(
               standing: $0,
               progressed: entrantProgressed(
@@ -30,7 +30,7 @@ struct StandingsView: View {
             )
           }
           
-          ForEach(phaseGroupViewModel.additionalStandings, id: \.id) {
+          ForEach(phaseGroupViewModel.additionalStandings, id: \.self) {
             StandingRowView(
               standing: $0,
               progressed: entrantProgressed(

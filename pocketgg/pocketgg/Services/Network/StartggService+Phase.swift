@@ -53,7 +53,20 @@ extension StartggService {
           
           var standings = [Standing]()
           if let nodes = phaseGroup.standings?.nodes {
-            standings = nodes.compactMap { EntrantService.getEntrantAndStanding3($0) }
+            let standingNodes = nodes.map {
+              let participants = $0?.entrant?.participants?.map {
+                StandingNode.Entrant.Participant(gamerTag: $0?.gamerTag)
+              }
+              return StandingNode(
+                entrant: StandingNode.Entrant(
+                  id: Int($0?.entrant?.id ?? "nil"),
+                  name: $0?.entrant?.name,
+                  participants: participants ?? []
+                ),
+                placement: $0?.placement
+              )
+            }
+            standings = standingNodes.compactMap { EntrantService.getEntrantAndStanding($0) }
           }
           
           var matches = [PhaseGroupSet]()
@@ -126,7 +139,20 @@ extension StartggService {
             return
           }
           
-          let standings = nodes.compactMap { EntrantService.getEntrantAndStanding4($0) }
+          let standingNodes = nodes.map {
+            let participants = $0?.entrant?.participants?.map {
+              StandingNode.Entrant.Participant(gamerTag: $0?.gamerTag)
+            }
+            return StandingNode(
+              entrant: StandingNode.Entrant(
+                id: Int($0?.entrant?.id ?? "nil"),
+                name: $0?.entrant?.name,
+                participants: participants ?? []
+              ),
+              placement: $0?.placement
+            )
+          }
+          let standings = standingNodes.compactMap { EntrantService.getEntrantAndStanding($0) }
           
           continuation.resume(returning: standings)
         case .failure(let error):

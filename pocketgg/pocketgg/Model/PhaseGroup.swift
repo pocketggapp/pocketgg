@@ -30,7 +30,22 @@ struct PhaseGroupDetails {
 }
 
 struct Standing: Hashable {
-  let id = UUID()
   let entrant: Entrant?
   let placement: Int?
+}
+
+/// A model that contains all the information needed to create a **Standing**, and that any StartGG standing node can map to
+struct StandingNode {
+  let entrant: Entrant?
+  let placement: Int?
+  
+  struct Entrant {
+    let id: Int?
+    let name: String?
+    let participants: [Participant]
+    
+    struct Participant {
+      let gamerTag: String?
+    }
+  }
 }
