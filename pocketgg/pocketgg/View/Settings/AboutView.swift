@@ -46,7 +46,7 @@ struct AboutView: View {
       Section {
         aboutRowView(
           text: "Website",
-          url: "https://gabrielsiu.com/pocketgg",
+          url: "https://pocketggapp.github.io",
           imageName: "safari"
         )
         aboutRowView(
@@ -56,7 +56,7 @@ struct AboutView: View {
         )
         aboutRowView(
           text: "Privacy Policy",
-          url: "https://gabrielsiu.com/pocketgg",
+          url: "https://pocketggapp.github.io/privacy",
           imageName: "hand.raised"
         )
       }

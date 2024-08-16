@@ -78,7 +78,9 @@ struct TournamentView: View {
           }
           
           Button {
-            viewModel.addTournamentToCalendar()
+            Task {
+              await viewModel.addTournamentToCalendar()
+            }
           } label: {
             Label("Add to calendar", systemImage: "calendar.badge.plus")
           }
@@ -92,6 +94,11 @@ struct TournamentView: View {
       }
     }
     .navigationTitle(tournament.name ?? "")
+    .alert("Error", isPresented: $viewModel.showingCalendarErrorAlert, actions: {
+      Button("OK", role: .cancel) {}
+    }, message: {
+      Text("There was an error requesting access to your calendar. To add this tournament to your calendar, please go to Privacy Settings and grant pocketgg access to your calendar.")
+    })
   }
   
   // MARK: Reload Tournament

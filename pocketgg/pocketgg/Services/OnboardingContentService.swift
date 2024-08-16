@@ -59,14 +59,6 @@ final class OnboardingContentService {
       ),
       OnboardingContent(
         id: 1,
-        title: "Improved location settings",
-        subtitle: "You can now enable location services to find tournaments in your area. You can adjust the exact radius later in the app settings.",
-        type: .location,
-        imageName: nil,
-        videoGames: nil
-      ),
-      OnboardingContent(
-        id: 2,
         title: "APP UPDATED 2",
         subtitle: "A video game tournament companion app, powered by start.gg",
         type: .image,

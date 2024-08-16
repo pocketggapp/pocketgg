@@ -1539,6 +1539,7 @@
 				INFOPLIST_FILE = pocketgg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pocketgg;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Add tournaments to your calendar";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use your location to find tournaments near your area";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1579,6 +1580,7 @@
 				INFOPLIST_FILE = pocketgg/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = pocketgg;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Add tournaments to your calendar";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use your location to find tournaments near your area";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

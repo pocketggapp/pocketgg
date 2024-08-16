@@ -28,6 +28,8 @@ struct PhaseGroupView: View {
   
   var body: some View {
     VStack(alignment: .leading) {
+      Divider()
+      
       SegmentedControlView(
         selected: $selected,
         sections: ["Standings", "Matches", "Bracket"]
@@ -47,6 +49,9 @@ struct PhaseGroupView: View {
         }
         .opacity(selected == "Bracket" ? 1 : 0)
       }
+      .refreshable {
+        reloadPhaseGroup()
+      }
     }
     .task {
       if phaseGroup == nil {
@@ -54,9 +59,6 @@ struct PhaseGroupView: View {
       } else {
         await viewModel.fetchPhaseGroup()
       }
-    }
-    .refreshable {
-      reloadPhaseGroup()
     }
     .toolbar {
       if selected == "Bracket" {

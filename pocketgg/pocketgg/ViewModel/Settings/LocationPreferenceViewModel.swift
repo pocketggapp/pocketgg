@@ -109,5 +109,6 @@ extension LocationPreferenceViewModel {
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     self.error = error
     showingAlert = true
+    gettingLocation = false
   }
 }

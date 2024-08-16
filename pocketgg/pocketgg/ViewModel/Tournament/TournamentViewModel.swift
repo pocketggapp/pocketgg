@@ -12,6 +12,7 @@ final class TournamentViewModel: ObservableObject {
   @Published var state: TournamentViewState
   
   @Published var isPinned: Bool
+  @Published var showingCalendarErrorAlert = false
   @Published var showingAddToCalendarView = false
   @Published var eventStore: EKEventStore?
   @Published var event: EKEvent?
@@ -78,12 +79,33 @@ final class TournamentViewModel: ObservableObject {
   
   // MARK: Add to Calendar
   
-  func addTournamentToCalendar() {
+  @MainActor
+  func addTournamentToCalendar() async {
     guard let startDate, let endDate else { return }
     
     if eventStore == nil {
       self.eventStore = EKEventStore()
     }
+    
+    switch EKEventStore.authorizationStatus(for: .event) {
+    case .fullAccess, .writeOnly:
+      break
+    case .notDetermined:
+      do {
+        if #available(iOS 17.0, *) {
+          try await self.eventStore?.requestWriteOnlyAccessToEvents()
+        } else {
+          try await self.eventStore?.requestAccess(to: .event)
+        }
+      } catch {
+        showingCalendarErrorAlert = true
+        return
+      }
+    default:
+      showingCalendarErrorAlert = true
+      return
+    }
+    
     if let eventStore {
       let event = EKEvent(eventStore: eventStore)
       event.title = tournament.name
