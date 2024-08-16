@@ -24,20 +24,24 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
   @Published var showingLocationPermissionAlert = false
   @Published var error: Error?
   
+  private var sentHomeViewRefreshNotification: Bool
+  
   private let manager = CLLocationManager()
   private var coordinatesString = ""
   let distanceUnits = ["mi", "km"]
 
   override init() {
+    self.sentHomeViewRefreshNotification = false
+    
     super.init()
     manager.delegate = self
     
     // Initialize published variables
-    usingLocation = locationEnabled
-    coordinatesString = locationCoordinates
-    cityCountryString = locationString
-    distanceString = locationDistance
-    selectedDistanceUnit = locationDistanceUnit
+    self.usingLocation = locationEnabled
+    self.coordinatesString = locationCoordinates
+    self.cityCountryString = locationString
+    self.distanceString = locationDistance
+    self.selectedDistanceUnit = locationDistanceUnit
   }
   
   func onViewDisappear() {
@@ -50,6 +54,10 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
     } else {
       locationEnabled = false
     }
+  }
+  
+  func resetHomeViewRefreshNotification() {
+    sentHomeViewRefreshNotification = false
   }
   
   func getCurrentLocation() {
@@ -81,6 +89,12 @@ final class LocationPreferenceViewModel: NSObject, ObservableObject, CLLocationM
     
     return city + ", " + country
   }
+  
+  func sendHomeViewRefreshNotification() {
+    guard !sentHomeViewRefreshNotification else { return }
+    NotificationCenter.default.post(name: Notification.Name(Constants.refreshHomeView), object: nil)
+    sentHomeViewRefreshNotification = true
+  }
 }
 
 // MARK: CLLocationManagerDelegate
@@ -91,6 +105,8 @@ extension LocationPreferenceViewModel {
     Task { @MainActor in
       cityCountryString = try await getLocationString(locations.first?.coordinate)
       gettingLocation = false
+      
+      sendHomeViewRefreshNotification()
     }
   }
   

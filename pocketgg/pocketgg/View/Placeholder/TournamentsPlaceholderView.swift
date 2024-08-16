@@ -15,9 +15,9 @@ struct TournamentsPlaceholderView: View {
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(alignment: .top) {
           Spacer()
-          TournamentTilePlaceholderView()
-          TournamentTilePlaceholderView()
-          TournamentTilePlaceholderView()
+          ForEach(0..<5) { _ in
+            TournamentTilePlaceholderView()
+          }
           Spacer()
         }
       }

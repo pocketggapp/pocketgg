@@ -47,6 +47,9 @@ struct LocationPreferenceView: View {
       }
     }
     .navigationTitle("Location")
+    .onAppear {
+      viewModel.resetHomeViewRefreshNotification()
+    }
     .onDisappear {
       viewModel.onViewDisappear()
     }
@@ -54,6 +57,9 @@ struct LocationPreferenceView: View {
       if viewModel.gettingLocation {
         LoadingView()
       }
+    }
+    .onChange(of: viewModel.usingLocation) { _ in
+      viewModel.sendHomeViewRefreshNotification()
     }
     .alert("Allow Location Access", isPresented: $viewModel.showingLocationPermissionAlert, actions: {
       Button("OK", role: .cancel) {}

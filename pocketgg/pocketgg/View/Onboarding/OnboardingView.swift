@@ -18,7 +18,6 @@ struct OnboardingView: View {
     self.flowType = flowType
   }
   
-  // TODO: iPad layout
   var body: some View {
     VStack {
       HStack {
@@ -83,8 +82,6 @@ struct OnboardingView: View {
   private func finishOnboardingFlow(saveGames: Bool = true) {
     switch flowType {
     case .newUser:
-      NotificationCenter.default.post(name: Notification.Name(Constants.refreshHomeView), object: nil)
-      
       var savedGameIDs = [Int]()
       if saveGames {
         VideoGamePreferenceService.saveVideoGames(gameIDs: selectedGameIDs)

@@ -81,6 +81,24 @@ final class AppDataService {
     userDefaults.removeObject(forKey: "tournamentOrganizersFollowed")
     userDefaults.removeObject(forKey: "firebaseEnabled")
     
+    userDefaults.removeObject(forKey: "useSpecificCountry")
+    userDefaults.removeObject(forKey: "useSpecificState")
+    userDefaults.removeObject(forKey: "selectedCountry")
+    userDefaults.removeObject(forKey: "selectedState")
+    
+    
+    userDefaults.removeObject(forKey: "onlySearchFeatured")
+    userDefaults.removeObject(forKey: "showOlderTournamentsFirst")
+    userDefaults.removeObject(forKey: "searchUsingEnabledGames")
+    userDefaults.removeObject(forKey: "recentSearches")
+    
+    userDefaults.removeObject(forKey: "returningUser")
+    userDefaults.removeObject(forKey: "authToken")
+    userDefaults.removeObject(forKey: "authTokenDate")
+    userDefaults.removeObject(forKey: "accessTokenLifetime")
+    
+    userDefaults.removeObject(forKey: "alternateAppIconUsed")
+    
     // Set the current app version
     userDefaults.set(Constants.currentAppVersion, forKey: Constants.appVersion)
   }

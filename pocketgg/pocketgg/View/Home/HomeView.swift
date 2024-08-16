@@ -15,7 +15,7 @@ struct HomeView: View {
         LazyVStack(spacing: 32) {
           switch viewModel.state {
           case .uninitialized, .loading:
-            ForEach(0..<3) { _ in
+            ForEach(0..<5) { _ in
               TournamentsPlaceholderView()
             }
           case .loaded(let tournamentGroups):
@@ -56,7 +56,7 @@ struct HomeView: View {
       }
       .sheet(isPresented: $viewModel.showingOnboardingView, onDismiss: {
         Task {
-          await viewModel.fetchTournaments()
+          await viewModel.fetchTournaments(refreshed: true)
         }
       }, content: {
         OnboardingView(
@@ -66,6 +66,7 @@ struct HomeView: View {
           ,
           flowType: viewModel.getOnboardingFlowType() ?? .appUpdate
         )
+        .interactiveDismissDisabled()
       })
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentsGroup.self) {
