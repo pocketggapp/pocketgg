@@ -30,8 +30,10 @@ struct FollowingView: View {
               .onDelete(perform: viewModel.deleteTournamentOrganizer)
             } footer: {
               Text("""
-                To change a tournament organizer's display name, tap the tournament organizer you want to rename, \
+                To set a custom name or prefix for a tournament organizer, tap the tournament organizer, \
                 tap the \(Image(systemName: "ellipsis.circle")) at the top right, then tap Rename.
+                
+                Any custom names or prefixes you set are only visible to you. 
                 """)
             }
           } else {
