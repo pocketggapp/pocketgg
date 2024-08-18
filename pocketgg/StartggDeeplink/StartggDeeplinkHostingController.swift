@@ -36,11 +36,11 @@ class StartggDeeplinkHostingController: UIViewController {
 }
 
 extension UIViewController {
-  @objc func openURL(_ url: URL) {
+  func openURL(_ url: URL) {
     var responder: UIResponder? = self
     while responder != nil {
       if let application = responder as? UIApplication {
-        application.perform(#selector(openURL(_:)), with: url)
+        application.open(url)
       }
       responder = responder?.next
     }

@@ -54,20 +54,6 @@ struct HomeView: View {
       .refreshable {
         await viewModel.fetchTournaments(refreshed: true)
       }
-      .sheet(isPresented: $viewModel.showingOnboardingView, onDismiss: {
-        Task {
-          await viewModel.fetchTournaments(refreshed: true)
-        }
-      }, content: {
-        OnboardingView(
-          content: viewModel.getOnboardingFlowType() == .newUser
-            ? OnboardingContentService.createNewUserContent()
-            : OnboardingContentService.createWhatsNewContent()
-          ,
-          flowType: viewModel.getOnboardingFlowType() ?? .appUpdate
-        )
-        .interactiveDismissDisabled()
-      })
       .navigationTitle("Tournaments")
       .navigationDestination(for: TournamentsGroup.self) {
         TournamentListView(
@@ -84,6 +70,20 @@ struct HomeView: View {
       .navigationDestination(for: Entrant.self) {
         UserTournamentListView(user: $0)
       }
+      .sheet(isPresented: $viewModel.showingOnboardingView, onDismiss: {
+        Task {
+          await viewModel.fetchTournaments(refreshed: true)
+        }
+      }, content: {
+        OnboardingView(
+          content: viewModel.getOnboardingFlowType() == .newUser
+            ? OnboardingContentService.createNewUserContent()
+            : OnboardingContentService.createWhatsNewContent()
+          ,
+          flowType: viewModel.getOnboardingFlowType() ?? .appUpdate
+        )
+        .interactiveDismissDisabled()
+      })
       .onOpenURL { url in
         Task.detached(priority: .userInitiated) {
           await viewModel.getDeeplinkedTournament(url: url)

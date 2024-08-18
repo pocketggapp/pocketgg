@@ -226,6 +226,9 @@ private extension EliminationBracketLayout {
       
       // Determine how to layout the sets for sets past the first round
       if (firstRoundHasMostSets && roundIndex > 0) || (!firstRoundHasMostSets && roundIndex > maxIndex) {
+        // TODO: Fix the below line from crashing when a bracket has 1 or more "bye" rounds that don't have an identifier
+        // ie. https://www.start.gg/tournament/the-big-house-6/event/melee-singles/brackets/76015/241623
+        
         // If the current round has a different number of sets than the previous round
         if setDistribution[roundIndex] != setDistribution[roundIndex - 1] {
           // Get the y positions of the prerequisite sets for the current set
