@@ -14,19 +14,44 @@ struct OnboardingLocationView: View {
   
   var body: some View {
     VStack(spacing: 10) {
+      Spacer()
+      Image(systemName: "location.fill.viewfinder")
+        .resizable()
+        .frame(width: 100, height: 100)
+        .fontWeight(.light)
+        .foregroundColor(.gray)
+      Spacer()
+      
       Toggle(isOn: $viewModel.usingLocation) {
         Text("Use Location")
           .font(.headline)
       }
+      .padding(.horizontal, 5)
       
       if viewModel.usingLocation {
-        Button("Get Current Location", systemImage: "location.fill") {
+        Button {
           viewModel.getCurrentLocation()
+        } label: {
+          HStack {
+            Image(systemName: "location.fill")
+              .padding(.leading)
+            Text("Get Current Location")
+              .padding(.vertical)
+            Spacer()
+          }
+          .frame(maxWidth: .infinity)
+          .background(Color(uiColor: .secondarySystemBackground))
+          .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .buttonStyle(.bordered)
         
         if !viewModel.cityCountryString.isEmpty {
-          Text("Location: " + viewModel.cityCountryString)
+          HStack {
+            Text("Location:")
+              .font(.headline)
+            Spacer()
+            Text(viewModel.cityCountryString)
+          }
+          .padding(.horizontal, 5)
         }
       }
       
