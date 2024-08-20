@@ -40,6 +40,17 @@ struct VideoGamesView: View {
         }
       } header: {
         Text("Enabled Games")
+      } footer: {
+        switch viewModel.state {
+        case .loaded(let videoGames):
+          if !videoGames.isEmpty {
+            Text("To adjust the order of the video games on the main screen, go to the Rearrange Sections settings page")
+          } else {
+            EmptyView()
+          }
+        default:
+            EmptyView()
+        }
       }
       
       Section {
