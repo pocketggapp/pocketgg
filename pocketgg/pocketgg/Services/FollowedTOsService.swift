@@ -70,20 +70,4 @@ final class FollowedTOsService {
     let request = NSFetchRequest<TournamentOrganizerEntity>(entityName: "TournamentOrganizerEntity")
     return try coreDataService.context.fetch(request)
   }
-  
-  // TODO: Delete along with TESTCoreDataView
-  static func deleteAllTournamentOrganizers(coreDataService: CoreDataService = .shared) {
-    let request = NSFetchRequest<TournamentOrganizerEntity>(entityName: "TournamentOrganizerEntity")
-    
-    do {
-      let entities = try coreDataService.context.fetch(request)
-      for entity in entities {
-        coreDataService.context.delete(entity)
-      }
-      coreDataService.save()
-      
-    } catch let error {
-      print("Error getting tournament organizer entities: \(error)")
-    }
-  }
 }

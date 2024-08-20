@@ -18,22 +18,6 @@ final class VideoGamePreferenceService {
     return try coreDataService.context.fetch(request)
   }
   
-  // TODO: Delete along with TESTCoreDataView
-  static func deleteAllVideoGames(coreDataService: CoreDataService = .shared) {
-    let request = NSFetchRequest<VideoGameEntity>(entityName: "VideoGameEntity")
-    
-    do {
-      let entities = try coreDataService.context.fetch(request)
-      for entity in entities {
-        coreDataService.context.delete(entity)
-      }
-      coreDataService.save()
-      
-    } catch let error {
-      print("Error getting video game entities: \(error)")
-    }
-  }
-  
   static func getRecommendedGames() -> [VideoGame] {
     // TODO: Periodically check list of recommended video games
     [

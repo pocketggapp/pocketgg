@@ -47,7 +47,6 @@
 		DA58E8182B93AFB000AD446A /* SelectionSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */; };
 		DA58E81A2B93B22100AD446A /* MockOnboardingContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8192B93B22100AD446A /* MockOnboardingContentService.swift */; };
 		DA58E81E2B954E2400AD446A /* VideoGamePreferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */; };
-		DA58E8202B9550C300AD446A /* TESTCoreDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */; };
 		DA58E8252B9644DD00AD446A /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */; };
 		DA58E8272B965F8F00AD446A /* VideoGamesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58E8262B965F8F00AD446A /* VideoGamesViewModel.swift */; };
 		DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA65D65B2AB618B100EF18E0 /* SettingsView.swift */; };
@@ -263,7 +262,6 @@
 		DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSlideView.swift; sourceTree = "<group>"; };
 		DA58E8192B93B22100AD446A /* MockOnboardingContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOnboardingContentService.swift; sourceTree = "<group>"; };
 		DA58E81D2B954E2400AD446A /* VideoGamePreferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamePreferenceService.swift; sourceTree = "<group>"; };
-		DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTCoreDataView.swift; sourceTree = "<group>"; };
 		DA58E8242B9644DD00AD446A /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DA58E8262B965F8F00AD446A /* VideoGamesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGamesViewModel.swift; sourceTree = "<group>"; };
 		DA65D65B2AB618B100EF18E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -789,7 +787,6 @@
 				DA58E8152B93AF9E00AD446A /* ImageSlideView.swift */,
 				DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */,
 				DAAE31282BC2F92D00F9AD1D /* OnboardingLocationView.swift */,
-				DA58E81F2B9550C300AD446A /* TESTCoreDataView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1249,7 +1246,6 @@
 				DA1D911C2BBF91A800491F40 /* TournamentRowPlaceholderView.swift in Sources */,
 				DABD24AA2BDEB9460087122E /* TipJarView.swift in Sources */,
 				DA328EDF2C09682200F46433 /* TipOptionPlaceholderView.swift in Sources */,
-				DA58E8202B9550C300AD446A /* TESTCoreDataView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA475EEA2B798A9C007100A6 /* ScrollViewWrapper.swift in Sources */,
 				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
