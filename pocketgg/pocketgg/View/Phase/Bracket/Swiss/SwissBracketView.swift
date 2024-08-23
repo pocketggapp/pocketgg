@@ -41,10 +41,17 @@ struct SwissBracketView: View {
   
   var body: some View {
     VStack {
-      SegmentedControlView(
-        selected: $selected,
-        sections: rounds
-      )
+      HStack {
+        Text("Round:")
+          .font(.headline)
+        Spacer()
+        Picker("Round Number", selection: $selected) {
+          ForEach(rounds, id: \.self) {
+            Text($0)
+          }
+        }
+      }
+      .padding(.horizontal)
       
       List(selectedRoundSets, id: \.id) { phaseGroupSet in
         Button {

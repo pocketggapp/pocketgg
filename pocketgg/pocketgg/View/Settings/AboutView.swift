@@ -21,6 +21,10 @@ struct AboutView: View {
               Text("pocketgg")
                 .font(.title.bold())
               Text(getAppVersionText())
+              Text("by Gabriel Siu")
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .padding(.top, 5)
             }
           }
         }
@@ -85,7 +89,7 @@ struct AboutView: View {
   
   private func getAppVersionText() -> String {
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? Constants.currentAppVersion
-    return "Version " + appVersion
+    return "version " + appVersion
   }
   
   private func aboutRowView(

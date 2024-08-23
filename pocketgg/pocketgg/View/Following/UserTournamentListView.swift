@@ -23,6 +23,8 @@ struct UserTournamentListView: View {
   
   var body: some View {
     VStack {
+      Divider()
+      
       SegmentedControlView(
         selected: $selected,
         sections: ["Organizer", "Admin", "Competitor"]
@@ -66,15 +68,15 @@ struct UserTournamentListView: View {
         }
       }
       .listStyle(.grouped)
+      .refreshable {
+        await viewModel.fetchTournaments(refreshed: true, role: selected)
+      }
     }
     .onAppear {
       viewModel.resetFollowingViewRefreshNotification()
     }
     .task {
       await viewModel.fetchTournaments(role: selected)
-    }
-    .refreshable {
-      await viewModel.fetchTournaments(refreshed: true, role: selected)
     }
     .onChange(of: selected) { role in
       Task {
