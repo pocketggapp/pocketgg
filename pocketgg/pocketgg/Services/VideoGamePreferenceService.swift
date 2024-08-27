@@ -19,18 +19,18 @@ final class VideoGamePreferenceService {
   }
   
   static func getRecommendedGames() -> [VideoGame] {
-    // TODO: Periodically check list of recommended video games
+    // Periodically check list of recommended video games
     [
       VideoGame(id: 1, name: "Super Smash Bros. Melee"),
       VideoGame(id: 1386, name: "Super Smash Bros. Ultimate"),
       VideoGame(id: 14, name: "Rocket League"),
-      VideoGame(id: 49783, name: "Tekken 8"),
+      VideoGame(id: 49783, name: "TEKKEN 8"),
       VideoGame(id: 43868, name: "Street Fighter 6"),
       VideoGame(id: 33945, name: "Guilty Gear: Strive"),
       VideoGame(id: 15, name: "Brawlhalla"),
       VideoGame(id: 48548, name: "Granblue Fantasy Versus: Rising"),
-      VideoGame(id: 50203, name: "Under Night In-Birth II Sys:Celes"),
-      VideoGame(id: 38949, name: "Pokémon Unite")
+      VideoGame(id: 40849, name: "MultiVersus"),
+      VideoGame(id: 48599, name: "Mortal Kombat 1")
     ]
   }
   

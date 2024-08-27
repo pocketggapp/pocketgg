@@ -29,8 +29,6 @@ struct TournamentSearchView: View {
           }
         }
         
-        // TODO: Add toggle to sort search results by date
-        
         switch viewModel.state {
         case .uninitialized:
           EmptyStateView(

@@ -19,7 +19,7 @@ struct BracketView: View {
   var body: some View {
     switch state {
     case .uninitialized, .loading:
-      EmptyView() // TODO: Bracket loading placeholder view
+      ProgressView()
     case .loaded(let phaseGroupDetails):
       if let sets = phaseGroupDetails?.matches, !sets.isEmpty {
         switch phaseGroupDetails?.bracketType {

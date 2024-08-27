@@ -47,7 +47,7 @@ final class RearrangeSectionsViewModel: ObservableObject {
     getEnabledVideoGames()
     getHomeViewSectionLayout()
     
-    enabledSections = homeViewLayout.map { id in
+    enabledSections = homeViewLayout.compactMap { id in
       switch id {
       case -1:
         return HomeViewSection(id: -1, name: "Pinned", imageName: "pin.fill", enabled: true)
@@ -58,7 +58,7 @@ final class RearrangeSectionsViewModel: ObservableObject {
       case -4:
         return HomeViewSection(id: -4, name: "Online", imageName: "wifi", enabled: true)
       default:
-        let name = enabledVideoGames.first(where: { $0.id == id })?.name ?? "" // TODO: Change to compact map, return nil after confirming there are no bugs
+        guard let name = enabledVideoGames.first(where: { $0.id == id })?.name else { return nil }
         return HomeViewSection(id: id, name: name, imageName: nil, enabled: true)
       }
     }

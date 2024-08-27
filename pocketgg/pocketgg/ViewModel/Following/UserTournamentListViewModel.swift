@@ -15,7 +15,6 @@ final class UserTournamentListViewModel: ObservableObject {
   @Published var customPrefix: String
   @Published var navigationTitle: String
   
-  private let coreDataService: CoreDataService
   /// The name of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
   private var oldName: String
   /// The prefix of the tournament organizer before the start of the rename, so any changes can be reverted if the rename is cancelled
@@ -33,13 +32,11 @@ final class UserTournamentListViewModel: ObservableObject {
   
   init(
     user: Entrant,
-    service: StartggServiceType = StartggService.shared,
-    coreDataService: CoreDataService = .shared
+    service: StartggServiceType = StartggService.shared
   ) {
     self.state = .uninitialized
     self.user = user
     self.service = service
-    self.coreDataService = coreDataService
     self.numTournamentsToLoad = max(20, 2 * Int(max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / 100))
     self.accumulatedTournaments = []
     self.currentTournamentsPage = 1
