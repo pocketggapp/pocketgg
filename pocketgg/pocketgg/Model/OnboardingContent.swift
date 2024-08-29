@@ -6,6 +6,7 @@ enum OnboardingFlowType {
 }
 
 enum OnboardingContentType {
+  case welcome
   case image
   case selection
   case location

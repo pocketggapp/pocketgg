@@ -5,8 +5,8 @@ final class OnboardingContentService {
         id: 0,
         title: "Welcome to pocketgg!",
         subtitle: "A video game tournament companion app, powered by start.gg",
-        type: .image,
-        imageName: "TODO", // TODO: Make images
+        type: .welcome,
+        imageName: "onboarding-0", // TODO: Make images
         videoGames: nil
       ),
       OnboardingContent(
@@ -53,8 +53,8 @@ final class OnboardingContentService {
         id: 0,
         title: "pocketgg updated to version 2.0",
         subtitle: "Here's whats new in this update:",
-        type: .image,
-        imageName: "TODO",
+        type: .welcome,
+        imageName: "onboarding-0",
         videoGames: nil
       ),
       OnboardingContent(

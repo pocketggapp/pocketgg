@@ -23,6 +23,7 @@
 		DA15EC682B5A3BDC003FD258 /* StartggService+Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC672B5A3BDC003FD258 /* StartggService+Apollo.swift */; };
 		DA15EC6A2B5A3C86003FD258 /* StartggService+Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC692B5A3C86003FD258 /* StartggService+Home.swift */; };
 		DA15EC6C2B5A3CAE003FD258 /* StartggService+Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */; };
+		DA1D133C2C8001FC000E228D /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D133B2C8001FC000E228D /* OnboardingWelcomeView.swift */; };
 		DA1D911C2BBF91A800491F40 /* TournamentRowPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D911B2BBF91A800491F40 /* TournamentRowPlaceholderView.swift */; };
 		DA1D911E2BBF952C00491F40 /* TournamentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D911D2BBF952C00491F40 /* TournamentListViewModel.swift */; };
 		DA2723A12B5B451C002FF875 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2723A02B5B451C002FF875 /* Stream.swift */; };
@@ -236,6 +237,7 @@
 		DA15EC672B5A3BDC003FD258 /* StartggService+Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Apollo.swift"; sourceTree = "<group>"; };
 		DA15EC692B5A3C86003FD258 /* StartggService+Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Home.swift"; sourceTree = "<group>"; };
 		DA15EC6B2B5A3CAE003FD258 /* StartggService+Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Tournament.swift"; sourceTree = "<group>"; };
+		DA1D133B2C8001FC000E228D /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
 		DA1D911B2BBF91A800491F40 /* TournamentRowPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentRowPlaceholderView.swift; sourceTree = "<group>"; };
 		DA1D911D2BBF952C00491F40 /* TournamentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentListViewModel.swift; sourceTree = "<group>"; };
 		DA2723A02B5B451C002FF875 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
@@ -784,6 +786,7 @@
 			isa = PBXGroup;
 			children = (
 				DAA3BE612B928B990088804C /* OnboardingView.swift */,
+				DA1D133B2C8001FC000E228D /* OnboardingWelcomeView.swift */,
 				DA58E8152B93AF9E00AD446A /* ImageSlideView.swift */,
 				DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */,
 				DAAE31282BC2F92D00F9AD1D /* OnboardingLocationView.swift */,
@@ -1247,6 +1250,7 @@
 				DABD24AA2BDEB9460087122E /* TipJarView.swift in Sources */,
 				DA328EDF2C09682200F46433 /* TipOptionPlaceholderView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
+				DA1D133C2C8001FC000E228D /* OnboardingWelcomeView.swift in Sources */,
 				DA475EEA2B798A9C007100A6 /* ScrollViewWrapper.swift in Sources */,
 				DA0A43202B5784A800622BF1 /* TournamentTilePlaceholderView.swift in Sources */,
 				DAC4E94C2B4B95FB00B356A0 /* Event.swift in Sources */,

@@ -46,6 +46,8 @@ struct OnboardingView: View {
       TabView(selection: $viewModel.currentSlideIndex) {
         ForEach(viewModel.content, id: \.id) {
           switch $0.type {
+          case .welcome:
+            OnboardingWelcomeView(content: $0)
           case .image:
             ImageSlideView(content: $0)
           case .selection:

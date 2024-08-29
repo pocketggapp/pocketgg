@@ -141,6 +141,7 @@ struct SettingsView: View {
       #endif
     }
     
+    ImageService.clearCache()
     UserDefaults.standard.removeObject(forKey: Constants.accessTokenLastRefreshed)
     appRootManager.currentRoot = .login
   }
