@@ -79,8 +79,8 @@ struct RoundRobinBracketView: View {
       guard let id0 = set.entrants?[safe: 0]?.entrant?.id else { return ("-", "-") }
       guard let id1 = set.entrants?[safe: 1]?.entrant?.id else { return ("-", "-") }
       
-      guard let score0 = set.entrants?[safe: 0]?.score else { return ("-", "-") }
-      guard let score1 = set.entrants?[safe: 1]?.score else { return ("-", "-") }
+      guard let score0 = set.entrants?[safe: 0]?.score else { continue }
+      guard let score1 = set.entrants?[safe: 1]?.score else { continue }
       
       if entrant.id == id0 || entrant.id == id1 {
         if let score0Num = Int(score0), let score1Num = Int(score1) {

@@ -6,6 +6,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: TournamentQuery(id: .some(String(id))),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
@@ -47,6 +48,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: TournamentBySlugQuery(slug: .some(slug)),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
@@ -88,6 +90,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: TournamentDetailsQuery(id: .some(String(id))),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {

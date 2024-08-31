@@ -5,6 +5,7 @@ extension StartggService {
     return try await withCheckedThrowingContinuation { continuation in
       apollo.fetch(
         query: PhaseGroupsQuery(id: .some(String(id)), perPage: .some(numPhaseGroups)),
+        cachePolicy: .fetchIgnoringCacheCompletely,
         queue: .global(qos: .userInitiated)
       ) { result in
         switch result {
