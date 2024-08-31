@@ -41,6 +41,10 @@ struct LocationPreferenceView: View {
               } label: {}
             }
           }
+        } footer: {
+          if !viewModel.cityCountryString.isEmpty {
+            Text("Your location is manually set and doesn't update automatically. To refresh your location, please fetch it again if you move to a new area.")
+          }
         }
       }
     }
