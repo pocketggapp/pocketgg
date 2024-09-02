@@ -48,6 +48,8 @@ struct OnboardingView: View {
           switch $0.type {
           case .welcome:
             OnboardingWelcomeView(content: $0)
+          case .text:
+            TextSlideView(content: $0)
           case .image:
             ImageSlideView(content: $0)
           case .selection:

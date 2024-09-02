@@ -14,7 +14,7 @@ final class OnboardingContentService {
         title: "Discover current & upcoming tournaments",
         subtitle: "Keep up with tournament results and view entire brackets",
         type: .image,
-        imageName: "TODO",
+        imageName: "onboarding-1",
         videoGames: nil
       ),
       OnboardingContent(
@@ -41,7 +41,7 @@ final class OnboardingContentService {
         title: "All Done!",
         subtitle: "You can change your chosen video games or rearrange the main screen sections at any time in the app settings",
         type: .image,
-        imageName: "TODO",
+        imageName: "onboarding-2",
         videoGames: nil
       )
     ]
@@ -62,7 +62,7 @@ final class OnboardingContentService {
         title: "OAuth Login Support",
         subtitle: "You can now log in to pocketgg using your start.gg account, instead of having to manually create and copy an access token.",
         type: .image,
-        imageName: "TODO",
+        imageName: "whatsnew-1",
         videoGames: nil
       ),
       OnboardingContent(
@@ -73,7 +73,7 @@ final class OnboardingContentService {
         This feature requires Location Services to be enabled for pocketgg.
         """,
         type: .image,
-        imageName: "TODO",
+        imageName: "whatsnew-2",
         videoGames: nil
       ),
       OnboardingContent(
@@ -84,7 +84,7 @@ final class OnboardingContentService {
         Also, you no longer have to send Video Game Update Requests; all video games on start.gg are now available on pocketgg.
         """,
         type: .image,
-        imageName: "TODO",
+        imageName: "whatsnew-3",
         videoGames: nil
       ),
       OnboardingContent(
@@ -99,8 +99,8 @@ final class OnboardingContentService {
         • Added an 'Online' section to the main screen for all online tournaments
         • Many other bug fixes and improvements
         """,
-        type: .image,
-        imageName: "TODO",
+        type: .text,
+        imageName: nil,
         videoGames: nil
       )
     ]

@@ -10,6 +10,17 @@ final class MockOnboardingContentService {
     )
   }
   
+  static func createTextSlideContent() -> OnboardingContent {
+    OnboardingContent(
+      id: 1,
+      title: "Discover current & upcoming tournaments",
+      subtitle: "Keep up with tournament results and view entire brackets",
+      type: .text,
+      imageName: nil,
+      videoGames: nil
+    )
+  }
+  
   static func createImageSlideContent() -> OnboardingContent {
     OnboardingContent(
       id: 1,
