@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PhaseGroupView: View {
   @StateObject private var viewModel: PhaseGroupViewModel
-  @State private var selected: String
+  @State private var selected = 0
   @State private var selectedPhaseGroupSet: PhaseGroupSet?
   
   private let phaseGroup: PhaseGroup?
@@ -21,33 +21,36 @@ struct PhaseGroupView: View {
         service: service
       )
     }())
-    self._selected = State(initialValue: "Standings")
     self.phaseGroup = phaseGroup
     self.title = title
   }
   
   var body: some View {
-    VStack(alignment: .leading) {
+    VStack(alignment: .leading, spacing: 0) {
       Divider()
       
-      SegmentedControlView(
-        selected: $selected,
-        sections: ["Standings", "Matches", "Bracket"]
+      InlineTabsView(
+        tabIndex: $selected,
+        models: [
+          .init(title: "Standings"),
+          .init(title: "Matches"),
+          .init(title: "Bracket")
+        ]
       )
       
       ZStack {
         StandingsView(phaseGroupViewModel: viewModel) {
           reloadPhaseGroup()
         }
-        .opacity(selected == "Standings" ? 1 : 0)
+        .opacity(selected == 0 ? 1 : 0)
         MatchesView(state: $viewModel.state, selectedMatch: $selectedPhaseGroupSet) {
           reloadPhaseGroup()
         }
-        .opacity(selected == "Matches" ? 1 : 0)
+        .opacity(selected == 1 ? 1 : 0)
         BracketView(state: $viewModel.state, selectedSet: $selectedPhaseGroupSet) {
           reloadPhaseGroup()
         }
-        .opacity(selected == "Bracket" ? 1 : 0)
+        .opacity(selected == 2 ? 1 : 0)
       }
       .refreshable {
         reloadPhaseGroup()
@@ -61,7 +64,7 @@ struct PhaseGroupView: View {
       }
     }
     .toolbar {
-      if selected == "Bracket" {
+      if selected == 2 {
         ToolbarItemGroup(placement: .topBarTrailing) {
           Button {
             reloadPhaseGroup()

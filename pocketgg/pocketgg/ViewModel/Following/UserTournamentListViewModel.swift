@@ -87,7 +87,7 @@ final class UserTournamentListViewModel: ObservableObject {
   // MARK: Fetch Tournaments
   
   @MainActor
-  func fetchTournaments(refreshed: Bool = false, getNextPage: Bool = false, role: String) async {
+  func fetchTournaments(refreshed: Bool = false, getNextPage: Bool = false, index: Int) async {
     // Ensure the .task modifier in UserTournamentListView only gets called once
     if !refreshed, !getNextPage {
       switch state {
@@ -110,12 +110,12 @@ final class UserTournamentListViewModel: ObservableObject {
     
     do {
       var tournaments = [Tournament]()
-      switch role {
-      case "Organizer":
+      switch index {
+      case 0:
         tournaments = try await fetchUserOrganizingTournaments()
-      case "Admin":
+      case 1:
         tournaments = try await fetchUserAdminTournaments()
-      case "Competitor":
+      case 2:
         tournaments = try await fetchUserCompetingTournaments()
       default:
         break

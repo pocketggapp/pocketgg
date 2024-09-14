@@ -40,6 +40,7 @@ struct TournamentHorizontalListView: View {
             Spacer()
           }
         }
+        .scrollIndicators(.hidden)
       } else {
         EmptyStateView(
           systemImageName: "questionmark.app.dashed",

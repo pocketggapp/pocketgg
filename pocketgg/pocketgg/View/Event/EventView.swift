@@ -3,7 +3,7 @@ import SwiftUI
 struct EventView: View {
   @ScaledMetric private var scale: CGFloat = 1
   @StateObject private var viewModel: EventViewModel
-  @State private var selected: String
+  @State private var selected = 0
   
   private let event: Event
   
@@ -17,7 +17,6 @@ struct EventView: View {
         service: service
       )
     }())
-    self._selected = State(initialValue: "Brackets")
     self.event = event
   }
   
@@ -34,17 +33,20 @@ struct EventView: View {
         )
         .padding()
         
-        SegmentedControlView(
-          selected: $selected,
-          sections: ["Brackets", "Standings"]
+        InlineTabsView(
+          tabIndex: $selected,
+          models: [
+            .init(title: "Brackets"),
+            .init(title: "Standings")
+          ]
         )
         
         switch selected {
-        case "Brackets":
+        case 0:
           BracketsView(state: $viewModel.state) {
             reloadEvent()
           }
-        case "Standings":
+        case 1:
           TopStandingsView(state: $viewModel.state) {
             reloadEvent()
           }

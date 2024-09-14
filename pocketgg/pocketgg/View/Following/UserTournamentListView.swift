@@ -2,7 +2,7 @@ import SwiftUI
 
 struct UserTournamentListView: View {
   @StateObject private var viewModel: UserTournamentListViewModel
-  @State private var selected: String
+  @State private var selected = 0
   @State private var isRenaming = false
   
   private let user: Entrant
@@ -17,17 +17,20 @@ struct UserTournamentListView: View {
         service: service
       )
     }())
-    self._selected = State(initialValue: "Organizer")
     self.user = user
   }
   
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       Divider()
       
-      SegmentedControlView(
-        selected: $selected,
-        sections: ["Organizer", "Admin", "Competitor"]
+      InlineTabsView(
+        tabIndex: $selected,
+        models: [
+          .init(title: "Organizer"),
+          .init(title: "Admin"),
+          .init(title: "Competitor")
+        ]
       )
       
       List {
@@ -48,7 +51,7 @@ struct UserTournamentListView: View {
               TournamentRowPlaceholderView()
                 .onAppear {
                   Task {
-                    await viewModel.fetchTournaments(getNextPage: true, role: selected)
+                    await viewModel.fetchTournaments(getNextPage: true, index: selected)
                   }
                 }
             }
@@ -62,25 +65,25 @@ struct UserTournamentListView: View {
         case .error(let is503):
           ErrorStateView(is503: is503, subtitle: "There was an error loading tournaments.") {
             Task {
-              await viewModel.fetchTournaments(refreshed: true, role: selected)
+              await viewModel.fetchTournaments(refreshed: true, index: selected)
             }
           }
         }
       }
       .listStyle(.grouped)
       .refreshable {
-        await viewModel.fetchTournaments(refreshed: true, role: selected)
+        await viewModel.fetchTournaments(refreshed: true, index: selected)
       }
     }
     .onAppear {
       viewModel.resetFollowingViewRefreshNotification()
     }
     .task {
-      await viewModel.fetchTournaments(role: selected)
+      await viewModel.fetchTournaments(index: selected)
     }
     .onChange(of: selected) { role in
       Task {
-        await viewModel.fetchTournaments(refreshed: true, role: role)
+        await viewModel.fetchTournaments(refreshed: true, index: role)
       }
     }
     .toolbar {

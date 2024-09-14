@@ -3,7 +3,7 @@ import MapKit
 
 struct TournamentView: View {
   @StateObject private var viewModel: TournamentViewModel
-  @State private var selected: String
+  @State private var selected = 0
   
   private let tournament: Tournament
   
@@ -17,7 +17,6 @@ struct TournamentView: View {
         service: service
       )
     }())
-    self._selected = State(initialValue: "Events")
     self.tournament = tournament
   }
   
@@ -26,25 +25,30 @@ struct TournamentView: View {
       VStack(alignment: .leading) {
         TournamentHeaderView(tournament: tournament)
         
-        SegmentedControlView(
-          selected: $selected,
-          sections: ["Events", "Streams", "Location", "Info"]
+        InlineTabsView(
+          tabIndex: $selected,
+          models: [
+            .init(title: "Events"),
+            .init(title: "Streams"),
+            .init(title: "Location"),
+            .init(title: "Info")
+          ]
         )
         
         switch selected {
-        case "Events":
+        case 0:
           EventsView(state: $viewModel.state) {
             reloadTournament()
           }
-        case "Streams":
+        case 1:
           StreamsView(state: $viewModel.state) {
             reloadTournament()
           }
-        case "Location":
+        case 2:
           LocationView(state: $viewModel.state, tournamentID: tournament.id) {
             reloadTournament()
           }
-        case "Info":
+        case 3:
           InfoView(state: $viewModel.state) {
             reloadTournament()
           }
