@@ -64,6 +64,21 @@ struct AboutView: View {
           imageName: "hand.raised"
         )
       }
+      
+      Section {
+        contactRowView(
+          text: "Support",
+          url: "mailto:pocketggapp@gmail.com?subject=pocketgg%20Support%20Request",
+          imageName: "envelope.fill"
+        )
+        contactRowView(
+          text: "@gabrielsiu_dev",
+          url: "https://x.com/gabrielsiu_dev",
+          imageName: "newspaper"
+        )
+      } header: {
+        Text("Contact")
+      }
     }
     .listStyle(.insetGrouped)
   }
@@ -99,6 +114,25 @@ struct AboutView: View {
   ) -> some View {
     Button {
       openSFSafariVC(urlString: url)
+    } label: {
+      HStack {
+        Image(systemName: imageName)
+          .foregroundColor(.red)
+          .frame(width: 30 * scale, height: 30 * scale)
+        Text(text)
+          .foregroundColor(Color(uiColor: .label))
+      }
+    }
+  }
+  
+  private func contactRowView(
+    text: String,
+    url: String,
+    imageName: String
+  ) -> some View {
+    Button {
+      guard let url = URL(string: url) else { return }
+      UIApplication.shared.open(url)
     } label: {
       HStack {
         Image(systemName: imageName)
