@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 enum OnboardingFlowType {
   case newUser
@@ -9,6 +9,7 @@ enum OnboardingContentType {
   case welcome
   case text
   case image
+  case sfSymbol
   case selection
   case location
 }
@@ -20,5 +21,6 @@ struct OnboardingContent: Hashable {
   let type: OnboardingContentType
   
   let imageName: String?
+  let sfSymbolColor: Color?
   let videoGames: [VideoGame]?
 }

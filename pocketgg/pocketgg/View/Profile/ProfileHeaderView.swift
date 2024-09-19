@@ -26,6 +26,7 @@ struct ProfileHeaderView: View {
             .fill(Color(uiColor: .systemBackground))
             .frame(width: 104 * scale, height: 104 * scale)
           
+          // TODO: Test account image should be scaled to fit
           AsyncImageView(
             imageURL: profile.profileImageURL,
             cornerRadius: 10,

@@ -166,6 +166,7 @@
 		DADF343F2B54CB960020C29D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF343E2B54CB960020C29D /* ImageService.swift */; };
 		DADF34412B54D9FC0020C29D /* UIImage+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */; };
 		DAE36C332B6204440037B45D /* ContactInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE36C322B6204440037B45D /* ContactInfoRowView.swift */; };
+		DAE4CE0D2C9BC1FA0015688A /* SFSymbolSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE4CE0C2C9BC1FA0015688A /* SFSymbolSlideView.swift */; };
 		DAE577132C83B1B0009D5B64 /* TextSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE577122C83B1B0009D5B64 /* TextSlideView.swift */; };
 		DAEADFC62B86F23600369C16 /* AppStartupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */; };
 		DAEADFC82B86F29900369C16 /* AppStartupViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */; };
@@ -385,6 +386,7 @@
 		DADF343E2B54CB960020C29D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		DADF34402B54D9FC0020C29D /* UIImage+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helpers.swift"; sourceTree = "<group>"; };
 		DAE36C322B6204440037B45D /* ContactInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRowView.swift; sourceTree = "<group>"; };
+		DAE4CE0C2C9BC1FA0015688A /* SFSymbolSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolSlideView.swift; sourceTree = "<group>"; };
 		DAE577122C83B1B0009D5B64 /* TextSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSlideView.swift; sourceTree = "<group>"; };
 		DAEADFC52B86F23600369C16 /* AppStartupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupViewModel.swift; sourceTree = "<group>"; };
 		DAEADFC72B86F29900369C16 /* AppStartupViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupViewModelTests.swift; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 				DA1D133B2C8001FC000E228D /* OnboardingWelcomeView.swift */,
 				DAE577122C83B1B0009D5B64 /* TextSlideView.swift */,
 				DA58E8152B93AF9E00AD446A /* ImageSlideView.swift */,
+				DAE4CE0C2C9BC1FA0015688A /* SFSymbolSlideView.swift */,
 				DA58E8172B93AFB000AD446A /* SelectionSlideView.swift */,
 				DAAE31282BC2F92D00F9AD1D /* OnboardingLocationView.swift */,
 			);
@@ -1137,7 +1140,7 @@
 					StartggAPI,
 				);
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					DA46B18F2A5E564B00814252 = {
 						CreatedOnToolsVersion = 14.2;
@@ -1330,6 +1333,7 @@
 				DA7949D02B70199E00D68EA4 /* PhaseGroupViewModel.swift in Sources */,
 				DA9178632B6ED7F600579360 /* TopStandingRowView.swift in Sources */,
 				DAFB42D82B7DBA2200F84E42 /* TextWithCaptionPlaceholderView.swift in Sources */,
+				DAE4CE0D2C9BC1FA0015688A /* SFSymbolSlideView.swift in Sources */,
 				DABEC66A2BCAC50500A3991E /* StartggService+Following.swift in Sources */,
 				DA2723A32B5B469A002FF875 /* StreamPlaceholderView.swift in Sources */,
 				DA2723A12B5B451C002FF875 /* Stream.swift in Sources */,
@@ -1415,6 +1419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1476,6 +1481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1530,7 +1536,6 @@
 		DA46B1BA2A5E564D00814252 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = pocketgg/pocketgg.entitlements;
@@ -1571,7 +1576,6 @@
 		DA46B1BB2A5E564D00814252 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = pocketgg/pocketgg.entitlements;
@@ -1612,7 +1616,6 @@
 		DA46B1BD2A5E564D00814252 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1637,7 +1640,6 @@
 		DA46B1BE2A5E564D00814252 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -6,7 +6,8 @@ final class OnboardingContentService {
         title: "Welcome to pocketgg!",
         subtitle: "A video game tournament companion app, powered by start.gg",
         type: .welcome,
-        imageName: "onboarding-0", // TODO: Make images
+        imageName: "onboarding-0",
+        sfSymbolColor: nil,
         videoGames: nil
       ),
       OnboardingContent(
@@ -15,6 +16,7 @@ final class OnboardingContentService {
         subtitle: "Keep up with tournament results and view entire brackets",
         type: .image,
         imageName: "onboarding-1",
+        sfSymbolColor: nil,
         videoGames: nil
       ),
       OnboardingContent(
@@ -26,6 +28,7 @@ final class OnboardingContentService {
         """,
         type: .selection,
         imageName: nil,
+        sfSymbolColor: nil,
         videoGames: VideoGamePreferenceService.getRecommendedGames()
       ),
       OnboardingContent(
@@ -34,14 +37,16 @@ final class OnboardingContentService {
         subtitle: "Enable location services to allow pocketgg to find tournaments in your area. You can adjust the exact radius later in the app settings.",
         type: .location,
         imageName: nil,
+        sfSymbolColor: nil,
         videoGames: nil
       ),
       OnboardingContent(
         id: 4,
         title: "All Done!",
-        subtitle: "You can change your chosen video games or rearrange the main screen sections at any time in the app settings",
-        type: .image,
-        imageName: "onboarding-2",
+        subtitle: "You can change your selected video games or rearrange the main screen sections at any time in the app settings.",
+        type: .sfSymbol,
+        imageName: "checkmark.circle",
+        sfSymbolColor: .green,
         videoGames: nil
       )
     ]
@@ -55,14 +60,16 @@ final class OnboardingContentService {
         subtitle: "Here's whats new in this update:",
         type: .welcome,
         imageName: "onboarding-0",
+        sfSymbolColor: nil,
         videoGames: nil
       ),
       OnboardingContent(
         id: 1,
         title: "OAuth Login Support",
         subtitle: "You can now log in to pocketgg using your start.gg account, instead of having to manually create and copy an access token.",
-        type: .image,
-        imageName: "whatsnew-1",
+        type: .sfSymbol,
+        imageName: "key.viewfinder",
+        sfSymbolColor: .gray,
         videoGames: nil
       ),
       OnboardingContent(
@@ -72,8 +79,9 @@ final class OnboardingContentService {
         You can now set a more precise location in pocketgg, to find tournaments close to your area. \
         This feature requires Location Services to be enabled for pocketgg.
         """,
-        type: .image,
-        imageName: "whatsnew-2",
+        type: .sfSymbol,
+        imageName: "location.fill.viewfinder",
+        sfSymbolColor: .gray,
         videoGames: nil
       ),
       OnboardingContent(
@@ -83,8 +91,9 @@ final class OnboardingContentService {
         Searching for tournaments now delivers much more accurate results. \
         Also, you no longer have to send Video Game Update Requests; all video games on start.gg are now available on pocketgg.
         """,
-        type: .image,
-        imageName: "whatsnew-3",
+        type: .sfSymbol,
+        imageName: "magnifyingglass",
+        sfSymbolColor: .gray,
         videoGames: nil
       ),
       OnboardingContent(
@@ -101,6 +110,7 @@ final class OnboardingContentService {
         """,
         type: .text,
         imageName: nil,
+        sfSymbolColor: nil,
         videoGames: nil
       )
     ]

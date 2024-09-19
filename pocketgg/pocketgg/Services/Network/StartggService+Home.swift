@@ -38,37 +38,7 @@ extension StartggService {
               }
             )
           }
-          // TODO: Change back to const
-          var tournaments = StartggService.convertTournamentNodes(nodes)
-          
-          // TODO: Mock Data, remove later
-          tournaments.append(Tournament(
-            id: 548572,
-            name: "Big House 11",
-            date: "Never",
-            location: "Somewhere",
-            logoImageURL: nil,
-            bannerImageURL: nil,
-            bannerImageRatio: nil
-          ))
-          tournaments.append(Tournament(
-            id: 628538,
-            name: "Test tournament",
-            date: "Never",
-            location: "Somewhere",
-            logoImageURL: nil,
-            bannerImageURL: nil,
-            bannerImageRatio: nil
-          ))
-          tournaments.append(Tournament(
-            id: 109112,
-            name: "UWaterloo Arcadian 6",
-            date: "Never",
-            location: "Somewhere",
-            logoImageURL: nil,
-            bannerImageURL: nil,
-            bannerImageRatio: nil
-          ))
+          let tournaments = StartggService.convertTournamentNodes(nodes)
           
           continuation.resume(returning: tournaments)
         case .failure(let error):

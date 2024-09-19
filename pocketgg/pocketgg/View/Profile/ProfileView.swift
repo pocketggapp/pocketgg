@@ -18,9 +18,7 @@ struct ProfileView: View {
             ProfilePlaceholderView()
           case .loaded(let profile):
             if let profile {
-              ProfileHeaderView(
-                profile: profile
-              )
+              ProfileHeaderView(profile: profile)
               
               if !profile.tournaments.isEmpty {
                 VStack(alignment: .leading) {

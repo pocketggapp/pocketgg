@@ -52,6 +52,8 @@ struct OnboardingView: View {
             TextSlideView(content: $0)
           case .image:
             ImageSlideView(content: $0)
+          case .sfSymbol:
+            SFSymbolSlideView(content: $0)
           case .selection:
             SelectionSlideView(
               content: $0,
