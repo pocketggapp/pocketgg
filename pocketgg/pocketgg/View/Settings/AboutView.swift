@@ -68,7 +68,7 @@ struct AboutView: View {
       Section {
         contactRowView(
           text: "Support",
-          url: "mailto:pocketggapp@gmail.com?subject=pocketgg%20Support%20Request",
+          url: "mailto:pocketggapp@gmail.com?subject=pocketgg%20App%20Support",
           imageName: "envelope.fill"
         )
         contactRowView(
