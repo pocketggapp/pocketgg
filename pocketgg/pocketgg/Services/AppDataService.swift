@@ -26,6 +26,8 @@ final class AppDataService {
     guard let lastAppVersion = userDefaults.string(forKey: Constants.appVersion),
           lastAppVersion != Constants.currentAppVersion,
           lastAppVersion.first == "1" else {
+      // Set the current app version
+      userDefaults.set(Constants.currentAppVersion, forKey: Constants.appVersion)
       return
     }
     
