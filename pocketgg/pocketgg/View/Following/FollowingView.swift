@@ -39,10 +39,10 @@ struct FollowingView: View {
           } else {
             EmptyStateView(
               systemImageName: "person.fill.questionmark",
-              title: "No tournament organizers followed",
+              title: "No Tournament Organizers followed",
               subtitle: """
               To follow a tournament organizer, tap the Info section on any tournament page, tap the tournament organizer's name, \
-              tap the ellipsis at the top right, then tap Follow.
+              tap the ellipsis at the top right, then choose Follow.
               """
             )
           }

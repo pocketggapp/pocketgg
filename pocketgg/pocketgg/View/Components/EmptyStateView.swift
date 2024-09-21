@@ -27,7 +27,7 @@ struct EmptyStateView: View {
         Image(systemName: systemImageName)
           .resizable()
           .scaledToFit()
-          .frame(width: 75 * scale, height: 75 * scale)
+          .frame(width: 60 * scale, height: 60 * scale)
           .fontWeight(.light)
           .foregroundColor(Color(.emptyState))
         

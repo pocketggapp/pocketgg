@@ -16,5 +16,5 @@ enum Constants {
   static let refreshFollowingView = "refreshFollowingView"
   
   /// Hardcoded backup in case the call to Bundle.main.infoDictionary?["CFBundleShortVersionString"] somehow fails
-  static let currentAppVersion = "2.0"
+  static let currentAppVersion = "2.0.1"
 }

@@ -56,7 +56,7 @@ final class OnboardingContentService {
     [
       OnboardingContent(
         id: 0,
-        title: "pocketgg updated to version 2.0",
+        title: "pocketgg updated to version 2.0.1",
         subtitle: "Here's whats new in this update:",
         type: .welcome,
         imageName: "onboarding-0",

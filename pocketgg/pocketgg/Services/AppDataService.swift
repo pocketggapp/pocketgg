@@ -24,7 +24,8 @@ final class AppDataService {
   ) {
     // Only perform the v2 migration if a previous app version exists, but it's not 2.0
     guard let lastAppVersion = userDefaults.string(forKey: Constants.appVersion),
-          lastAppVersion != Constants.currentAppVersion else {
+          lastAppVersion != Constants.currentAppVersion,
+          lastAppVersion.first == "1" else {
       return
     }
     
