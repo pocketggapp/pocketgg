@@ -61,13 +61,6 @@ struct SettingsView: View {
           
           NavigationLink(value: 5) {
             HStack {
-              settingsRowView(imageName: "heart")
-              Text("Tip Jar")
-            }
-          }
-          
-          NavigationLink(value: 6) {
-            HStack {
               settingsRowView(imageName: "info.circle")
               Text("About")
             }
@@ -97,8 +90,6 @@ struct SettingsView: View {
         case 2:
           RearrangeSectionsView()
         case 5:
-          TipJarView()
-        case 6:
           AboutView()
         default:
           EmptyView()

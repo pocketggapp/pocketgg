@@ -108,7 +108,6 @@
 		DABD24A42BDDDD4E0087122E /* ProfilePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A32BDDDD4E0087122E /* ProfilePlaceholderView.swift */; };
 		DABD24A62BDE9F800087122E /* CurrentUserTournamentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */; };
 		DABD24A82BDE9FD00087122E /* CurrentUserTournamentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */; };
-		DABD24AA2BDEB9460087122E /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABD24A92BDEB9460087122E /* TipJarView.swift */; };
 		DABEC6682BCAC34100A3991E /* UserTournamentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6672BCAC34100A3991E /* UserTournamentListView.swift */; };
 		DABEC66A2BCAC50500A3991E /* StartggService+Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC6692BCAC50500A3991E /* StartggService+Following.swift */; };
 		DABEC66D2BCADB3300A3991E /* UserTournamentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEC66C2BCADB3300A3991E /* UserTournamentListViewModel.swift */; };
@@ -127,7 +126,6 @@
 		DAC61E182C3C62C700FC0617 /* StartggDeeplinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61E172C3C62C700FC0617 /* StartggDeeplinkView.swift */; };
 		DAC61E1A2C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61E192C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift */; };
 		DAC61E1C2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC61E1B2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift */; };
-		DAD09A6D2BEE7AE700506F75 /* TipJarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */; };
 		DAD09A6F2BEE85DD00506F75 /* Purchases.storekit in Resources */ = {isa = PBXBuildFile; fileRef = DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */; };
 		DAD1251B2B80250E005CECB6 /* MatchRowPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */; };
 		DAD1251E2B802ACE005CECB6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1251D2B802ACE005CECB6 /* ProfileView.swift */; };
@@ -325,7 +323,6 @@
 		DABD24A32BDDDD4E0087122E /* ProfilePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePlaceholderView.swift; sourceTree = "<group>"; };
 		DABD24A52BDE9F800087122E /* CurrentUserTournamentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserTournamentsViewModel.swift; sourceTree = "<group>"; };
 		DABD24A72BDE9FD00087122E /* CurrentUserTournamentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserTournamentsView.swift; sourceTree = "<group>"; };
-		DABD24A92BDEB9460087122E /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		DABEC6672BCAC34100A3991E /* UserTournamentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTournamentListView.swift; sourceTree = "<group>"; };
 		DABEC6692BCAC50500A3991E /* StartggService+Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartggService+Following.swift"; sourceTree = "<group>"; };
 		DABEC66C2BCADB3300A3991E /* UserTournamentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTournamentListViewModel.swift; sourceTree = "<group>"; };
@@ -347,7 +344,6 @@
 		DAC61E172C3C62C700FC0617 /* StartggDeeplinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartggDeeplinkView.swift; sourceTree = "<group>"; };
 		DAC61E192C3C6F1C00FC0617 /* StartggDeeplinkHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartggDeeplinkHostingController.swift; sourceTree = "<group>"; };
 		DAC61E1B2C3C755D00FC0617 /* StartggDeeplinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartggDeeplinkViewModel.swift; sourceTree = "<group>"; };
-		DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarViewModel.swift; sourceTree = "<group>"; };
 		DAD09A6E2BEE85DD00506F75 /* Purchases.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Purchases.storekit; sourceTree = "<group>"; };
 		DAD1251A2B80250E005CECB6 /* MatchRowPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRowPlaceholderView.swift; sourceTree = "<group>"; };
 		DAD1251D2B802ACE005CECB6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -663,7 +659,6 @@
 				DAB992252B8AADFB00F99BD6 /* VideoGameSearchView.swift */,
 				DA6926662AD1E2AB0086B92A /* LocationPreferenceView.swift */,
 				DA8E8BEA2B9B6A9E003DBB3F /* RearrangeSectionsView.swift */,
-				DABD24A92BDEB9460087122E /* TipJarView.swift */,
 				DAD125372B852D74005CECB6 /* AboutView.swift */,
 			);
 			path = Settings;
@@ -965,7 +960,6 @@
 				DAB992272B8AEDE700F99BD6 /* VideoGameSearchViewModel.swift */,
 				DA6926682AD1F5850086B92A /* LocationPreferenceViewModel.swift */,
 				DADA22022B9CEEB100442E0C /* RearrangeSectionsViewModel.swift */,
-				DAD09A6C2BEE7AE700506F75 /* TipJarViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1252,7 +1246,6 @@
 				DADB2F632BC9792700B35C9A /* FollowedTOsService.swift in Sources */,
 				DA7949CE2B70198700D68EA4 /* PhaseGroupView.swift in Sources */,
 				DA1D911C2BBF91A800491F40 /* TournamentRowPlaceholderView.swift in Sources */,
-				DABD24AA2BDEB9460087122E /* TipJarView.swift in Sources */,
 				DA328EDF2C09682200F46433 /* TipOptionPlaceholderView.swift in Sources */,
 				DA65D65C2AB618B100EF18E0 /* SettingsView.swift in Sources */,
 				DA1D133C2C8001FC000E228D /* OnboardingWelcomeView.swift in Sources */,
@@ -1288,7 +1281,6 @@
 				DA053A452B7AF3B100A6803A /* RoundRobinSetView.swift in Sources */,
 				DA4DDBC92B65639D00F3131E /* EventsView.swift in Sources */,
 				DAF340732B71976B00379688 /* PhaseGroupSetService.swift in Sources */,
-				DAD09A6D2BEE7AE700506F75 /* TipJarViewModel.swift in Sources */,
 				DAD125272B815906005CECB6 /* StartggService+Profile.swift in Sources */,
 				DA6926692AD1F5850086B92A /* LocationPreferenceViewModel.swift in Sources */,
 				DAD125362B82BD39005CECB6 /* RegistrationRowView.swift in Sources */,
