@@ -1560,7 +1560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = StartggAPI;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1600,7 +1600,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = StartggAPI;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1681,7 +1681,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.StartggDeeplink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1716,7 +1716,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gabrielsiu.pocketgg.StartggDeeplink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

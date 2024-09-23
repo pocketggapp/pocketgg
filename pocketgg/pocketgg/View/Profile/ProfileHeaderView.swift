@@ -26,11 +26,12 @@ struct ProfileHeaderView: View {
             .fill(Color(uiColor: .systemBackground))
             .frame(width: 104 * scale, height: 104 * scale)
           
-          // TODO: Test account image should be scaled to fit
+          // TODO: Figure out proper solution to crop image when newSize is passed in
+          // Currently if a size with both width and height is passed in, the image loses its original aspect ratio and distorts
           AsyncImageView(
             imageURL: profile.profileImageURL,
             cornerRadius: 10,
-            newSize: .init(width: 100, height: 100)
+            newSize: .init(width: 100, height: 0)
           )
           .frame(width: 100 * scale, height: 100 * scale)
           .clipped()
