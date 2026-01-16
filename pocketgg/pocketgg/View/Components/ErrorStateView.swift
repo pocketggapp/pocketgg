@@ -30,7 +30,7 @@ struct ErrorStateView: View {
           
           Text(subtitle)
             .multilineTextAlignment(.center)
-            .foregroundColor(.gray)
+            .foregroundStyle(.gray)
           
           Button {
             reload()

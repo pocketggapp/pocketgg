@@ -43,7 +43,7 @@ struct EventHeaderView: View {
   
   private var subtitleTextView: some View {
     return Text(eventType ?? "") + Text(" • ") + Text(videogameName ?? "")
-    + Text("\n") + Text("● ").foregroundColor(dotColor) + Text(startDate ?? "")
+    + Text("\n") + Text("● ").foregroundStyle(dotColor) + Text(startDate ?? "")
   }
 }
 

@@ -17,7 +17,7 @@ struct TournamentSearchView: View {
         Section {
           HStack {
             Image(systemName: "magnifyingglass")
-              .foregroundColor(.gray)
+              .foregroundStyle(.gray)
             
             TextField("Search", text: $viewModel.searchText)
               .onSubmit {

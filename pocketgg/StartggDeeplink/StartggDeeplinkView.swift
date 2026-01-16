@@ -20,7 +20,7 @@ struct StartggDeeplinkView: View {
         
         Text(viewModel.messageText)
           .multilineTextAlignment(.center)
-          .foregroundColor(.gray)
+          .foregroundStyle(.gray)
       }
     }
     .onAppear {

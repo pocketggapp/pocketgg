@@ -30,7 +30,7 @@ struct PhaseGroupSetGameRowView: View {
        let winner = setEntrants.first(where: { $0.id == winnerID }),
        let name = winner.name {
       if let teamName = winner.teamName {
-        Text("Winner: ") + Text(teamName).foregroundColor(.gray) + Text(" ") + Text(name)
+        Text("Winner: ") + Text(teamName).foregroundStyle(.gray) + Text(" ") + Text(name)
       } else {
         Text("Winner: ") + Text(name)
       }

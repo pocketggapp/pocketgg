@@ -14,7 +14,7 @@ struct SFSymbolSlideView: View {
         .resizable()
         .frame(width: 100, height: 100)
         .fontWeight(.light)
-        .foregroundColor(content.sfSymbolColor ?? .gray)
+        .foregroundStyle(content.sfSymbolColor ?? .gray)
       Spacer()
       
       VStack(spacing: 10) {

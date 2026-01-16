@@ -53,7 +53,7 @@ struct ProfileHeaderView: View {
   private func UserTextView() -> some View {
     if let name = profile.name {
       if let teamName = profile.teamName, !teamName.isEmpty {
-        Text(teamName).foregroundColor(.gray) + Text(" ") + Text(name)
+        Text(teamName).foregroundStyle(.gray) + Text(" ") + Text(name)
       } else {
         Text(name)
       }

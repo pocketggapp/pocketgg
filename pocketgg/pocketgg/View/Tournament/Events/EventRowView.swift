@@ -33,7 +33,7 @@ struct EventRowView: View {
         Spacer()
         
         Image(systemName: "chevron.right")
-          .foregroundColor(.gray)
+          .foregroundStyle(.gray)
       }
     }
   }
@@ -41,17 +41,17 @@ struct EventRowView: View {
   private var subtitleTextView: some View {
     switch event.state {
     case .active:
-      return Text("● ").foregroundColor(.green) + Text("In Progress")
+      return Text("● ").foregroundStyle(.green) + Text("In Progress")
     case .completed:
       guard let winnerName = event.winner?.name else { fallthrough }
       
       if let teamName = event.winner?.teamName {
-        return Text("● ").foregroundColor(.gray) + Text("1st place: ") + Text("\(teamName) ").foregroundColor(.gray) + Text(winnerName)
+        return Text("● ").foregroundStyle(.gray) + Text("1st place: ") + Text("\(teamName) ").foregroundStyle(.gray) + Text(winnerName)
       } else {
-        return Text("● ").foregroundColor(.gray) + Text("1st place: \(winnerName)")
+        return Text("● ").foregroundStyle(.gray) + Text("1st place: \(winnerName)")
       }
     default:
-      return Text("● ").foregroundColor(.blue) + Text(event.startDate ?? "")
+      return Text("● ").foregroundStyle(.blue) + Text(event.startDate ?? "")
     }
   }
 }

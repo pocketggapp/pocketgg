@@ -76,7 +76,7 @@ struct FollowingView: View {
   
   private func OrganizerTextView(_ tournamentOrganizer: TournamentOrganizer) -> some View {
     let formattedName = tournamentOrganizer.formattedName()
-    return Text("\(formattedName.prefix) ").foregroundColor(.gray) + Text(formattedName.name)
+    return Text("\(formattedName.prefix) ").foregroundStyle(.gray) + Text(formattedName.name)
   }
 }
 

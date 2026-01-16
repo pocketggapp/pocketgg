@@ -29,7 +29,7 @@ struct EmptyStateView: View {
           .scaledToFit()
           .frame(width: 60 * scale, height: 60 * scale)
           .fontWeight(.light)
-          .foregroundColor(Color(.emptyState))
+          .foregroundStyle(Color(.emptyState))
         
         VStack(spacing: 5) {
           Text(title)
@@ -38,7 +38,7 @@ struct EmptyStateView: View {
           
           Text(subtitle)
             .multilineTextAlignment(.center)
-            .foregroundColor(.gray)
+            .foregroundStyle(.gray)
         }
       }
       Spacer()

@@ -58,7 +58,7 @@ struct EliminationSetView: View {
         identifierBackgroundColor
         
         Text(phaseGroupSet.identifier)
-          .foregroundColor(.white)
+          .foregroundStyle(.white)
           .fixedSize()
       }
       .frame(width: 25 * scale, height: 25 * scale)
@@ -75,7 +75,7 @@ struct EliminationSetView: View {
         HStack(spacing: 5) {
           Text(teamName)
             .lineLimit(1)
-            .foregroundColor(.gray)
+            .foregroundStyle(.gray)
             .frame(minWidth: 30 * scale)
           
           Text(name)
@@ -97,7 +97,7 @@ struct EliminationSetView: View {
       .frame(minWidth: 30 * scale)
       .padding(.vertical, 5)
       .padding(.horizontal, 10)
-      .foregroundColor(.white)
+      .foregroundStyle(.white)
   }
 }
 

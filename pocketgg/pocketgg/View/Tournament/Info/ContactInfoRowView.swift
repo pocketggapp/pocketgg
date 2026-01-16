@@ -45,7 +45,7 @@ struct ContactInfoRowView: View {
             Spacer()
             
             Image(systemName: "chevron.right")
-              .foregroundColor(.gray)
+              .foregroundStyle(.gray)
           }
         }
       }

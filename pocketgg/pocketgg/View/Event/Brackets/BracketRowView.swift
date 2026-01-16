@@ -19,7 +19,7 @@ struct BracketRowView: View {
         Spacer()
         
         Image(systemName: "chevron.right")
-          .foregroundColor(.gray)
+          .foregroundStyle(.gray)
       }
       .frame(height: 44 * scale)
     }

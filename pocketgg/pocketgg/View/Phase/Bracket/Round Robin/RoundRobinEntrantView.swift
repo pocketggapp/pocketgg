@@ -20,7 +20,7 @@ struct RoundRobinEntrantView: View {
   private func getEntrantTextView() -> some View {
     if let name = entrant.name {
       if let teamName = entrant.teamName {
-        return Text(teamName).foregroundColor(.gray) + Text(" ") + Text(name)
+        return Text(teamName).foregroundStyle(.gray) + Text(" ") + Text(name)
       } else {
         return Text(name)
       }

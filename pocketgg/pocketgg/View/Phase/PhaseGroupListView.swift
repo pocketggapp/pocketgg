@@ -46,7 +46,7 @@ struct PhaseGroupListView: View {
                 Spacer()
                 
                 Text(phaseGroup.state.rawValue.localizedCapitalized)
-                  .foregroundColor(.gray)
+                  .foregroundStyle(.gray)
               }
             }
             .buttonStyle(.plain)

@@ -44,7 +44,7 @@ struct RoundRobinSetView: View {
   
   var body: some View {
     Text(scoreText)
-      .foregroundColor(color)
+      .foregroundStyle(color)
       .font(.headline)
       .lineLimit(1)
       .padding()

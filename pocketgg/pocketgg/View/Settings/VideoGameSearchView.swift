@@ -16,7 +16,7 @@ struct VideoGameSearchView: View {
       Section {
         HStack {
           Image(systemName: "magnifyingglass")
-            .foregroundColor(.gray)
+            .foregroundStyle(.gray)
           
           TextField("Search", text: $viewModel.searchText)
             .onSubmit {
@@ -48,11 +48,11 @@ struct VideoGameSearchView: View {
             } label: {
               HStack {
                 Text(videoGame.name)
-                  .foregroundColor(Color(uiColor: .label))
+                  .foregroundStyle(Color(uiColor: .label))
                 Spacer()
                 if viewModel.videoGameEnabled(videoGame.id) {
                   Image(systemName: "checkmark")
-                    .foregroundColor(.red)
+                    .foregroundStyle(.red)
                 }
               }
             }

@@ -27,7 +27,7 @@ struct OnboardingView: View {
           } label: {
             Image(systemName: "chevron.left")
               .font(.title3)
-              .foregroundColor(.red)
+              .foregroundStyle(.red)
               .padding(10)
           }
         }
@@ -38,7 +38,7 @@ struct OnboardingView: View {
           finishOnboardingFlow(saveGames: false)
         } label: {
           Text("Skip")
-            .foregroundColor(.red)
+            .foregroundStyle(.red)
             .padding(10)
         }
       }

@@ -123,7 +123,7 @@ struct RearrangeSectionsView: View {
     HStack {
       if let imageName = section.imageName {
         Image(systemName: imageName)
-          .foregroundColor(.red)
+          .foregroundStyle(.red)
           .frame(width: 30 * scale, height: 30 * scale)
       }
       Text(section.name)
@@ -148,7 +148,7 @@ struct RearrangeSectionsView: View {
       }
       .padding()
     }
-    .foregroundColor(.gray)
+    .foregroundStyle(.gray)
   }
 }
 

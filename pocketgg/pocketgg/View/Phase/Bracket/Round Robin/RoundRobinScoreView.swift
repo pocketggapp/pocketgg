@@ -16,7 +16,7 @@ struct RoundRobinScoreView: View {
       
       Text(score.1)
         .font(.headline)
-        .foregroundColor(.gray)
+        .foregroundStyle(.gray)
     }
     .frame(width: RoundRobinBracketView.setWidth * scale)
   }

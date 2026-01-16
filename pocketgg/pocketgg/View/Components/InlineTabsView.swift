@@ -56,7 +56,7 @@ struct InlineTabsView: View {
     Text(text)
       .lineLimit(1)
       .font(.subheadline.weight(.semibold))
-      .foregroundColor(isSelected ? .blue : Color(uiColor: .label))
+      .foregroundStyle(isSelected ? .blue : Color(uiColor: .label))
       .padding(.horizontal, 16)
       .padding(.top, 12)
       .padding(.bottom, isSelected ? 15 : 16)
@@ -68,7 +68,7 @@ struct InlineTabsView: View {
     Rectangle()
       .frame(width: width, height: height, alignment: .leading)
       .padding(.leading, 0)
-      .foregroundColor(color)
+      .foregroundStyle(color)
   }
 }
 
@@ -104,7 +104,7 @@ struct InlineTabsEdgeBorder: Shape {
 
 extension View {
   func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
-    overlay(InlineTabsEdgeBorder(width: width, edges: edges).foregroundColor(color))
+    overlay(InlineTabsEdgeBorder(width: width, edges: edges).foregroundStyle(color))
   }
 }
 

@@ -23,7 +23,7 @@ struct AboutView: View {
               Text(getAppVersionText())
               Text("by Gabriel Siu")
                 .font(.subheadline)
-                .foregroundColor(.gray)
+                .foregroundStyle(.gray)
                 .padding(.top, 5)
             }
           }
@@ -117,10 +117,10 @@ struct AboutView: View {
     } label: {
       HStack {
         Image(systemName: imageName)
-          .foregroundColor(.red)
+          .foregroundStyle(.red)
           .frame(width: 30 * scale, height: 30 * scale)
         Text(text)
-          .foregroundColor(Color(uiColor: .label))
+          .foregroundStyle(Color(uiColor: .label))
       }
     }
   }
@@ -136,10 +136,10 @@ struct AboutView: View {
     } label: {
       HStack {
         Image(systemName: imageName)
-          .foregroundColor(.red)
+          .foregroundStyle(.red)
           .frame(width: 30 * scale, height: 30 * scale)
         Text(text)
-          .foregroundColor(Color(uiColor: .label))
+          .foregroundStyle(Color(uiColor: .label))
       }
     }
   }

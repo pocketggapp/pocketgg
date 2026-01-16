@@ -19,7 +19,7 @@ struct OnboardingLocationView: View {
         .resizable()
         .frame(width: 100, height: 100)
         .fontWeight(.light)
-        .foregroundColor(.gray)
+        .foregroundStyle(.gray)
       Spacer()
       
       Toggle(isOn: $viewModel.usingLocation) {

@@ -38,10 +38,10 @@ struct SettingsView: View {
           } label: {
             HStack {
               Image(systemName: "sparkles")
-                .foregroundColor(.red)
+                .foregroundStyle(.red)
                 .frame(width: 30 * scale, height: 30 * scale)
               Text("What's New")
-                .foregroundColor(Color(uiColor: .label))
+                .foregroundStyle(Color(uiColor: .label))
             }
           }
         }
@@ -52,10 +52,10 @@ struct SettingsView: View {
           } label: {
             HStack {
               Image(systemName: "star")
-                .foregroundColor(.red)
+                .foregroundStyle(.red)
                 .frame(width: 30 * scale, height: 30 * scale)
               Text("Write a Review")
-                .foregroundColor(Color(uiColor: .label))
+                .foregroundStyle(Color(uiColor: .label))
             }
           }
           
@@ -73,7 +73,7 @@ struct SettingsView: View {
           } label: {
             HStack {
               Spacer()
-              Text("Log out").foregroundColor(.red)
+              Text("Log out").foregroundStyle(.red)
               Spacer()
             }
           }
@@ -112,7 +112,7 @@ struct SettingsView: View {
   
   private func settingsRowView(imageName: String) -> some View {
     Image(systemName: imageName)
-      .foregroundColor(.red)
+      .foregroundStyle(.red)
       .frame(width: 30 * scale, height: 30 * scale)
   }
   

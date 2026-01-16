@@ -61,7 +61,7 @@ struct VideoGamesView: View {
             Image(systemName: "plus")
             Text("Add more games")
           }
-          .foregroundColor(.blue)
+          .foregroundStyle(.blue)
         }
       }
     }

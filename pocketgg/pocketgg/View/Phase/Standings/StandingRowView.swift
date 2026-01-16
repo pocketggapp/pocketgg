@@ -17,14 +17,14 @@ struct StandingRowView: View {
       
       if progressed {
         Text("Progressed")
-          .foregroundColor(.gray)
+          .foregroundStyle(.gray)
       }
     }
   }
   
   private var standingTextView: some View {
     if let teamName = standing.entrant?.teamName {
-      return Text(placementText) + Text("\(teamName) ").foregroundColor(.gray) + Text(standing.entrant?.name ?? "")
+      return Text(placementText) + Text("\(teamName) ").foregroundStyle(.gray) + Text(standing.entrant?.name ?? "")
     } else {
       return Text(placementText) + Text(standing.entrant?.name ?? "")
     }

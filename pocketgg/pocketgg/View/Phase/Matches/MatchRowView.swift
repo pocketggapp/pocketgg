@@ -35,13 +35,13 @@ struct MatchRowView: View {
       HStack {
         getScoreTextView(0)
           .font(phaseGroupSet.outcome == .entrant0Won ? .headline : . body)
-          .foregroundColor(phaseGroupSet.outcome == .entrant0Won ? .green : .primary)
+          .foregroundStyle(phaseGroupSet.outcome == .entrant0Won ? .green : .primary)
         
         Text("-")
         
         getScoreTextView(1)
           .font(phaseGroupSet.outcome == .entrant1Won ? .headline : .body)
-          .foregroundColor(phaseGroupSet.outcome == .entrant1Won ? .green : .primary)
+          .foregroundStyle(phaseGroupSet.outcome == .entrant1Won ? .green : .primary)
       }
     }
   }
@@ -57,7 +57,7 @@ struct MatchRowView: View {
       nameAndSeed += " (\(seedNum))"
     }
     if let teamName = phaseGroupSet.entrants?[safe: num]?.entrant?.teamName {
-      return Text("\(teamName) ").foregroundColor(.gray) + Text(nameAndSeed)
+      return Text("\(teamName) ").foregroundStyle(.gray) + Text(nameAndSeed)
     } else {
       return Text(nameAndSeed)
     }
@@ -70,11 +70,11 @@ struct MatchRowView: View {
   private var SubtitleTextView: some View {
     switch phaseGroupSet.state {
     case .active:
-      return Text("● ").foregroundColor(.green)
+      return Text("● ").foregroundStyle(.green)
         + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state.rawValue.localizedCapitalized)")
         .font(.subheadline)
     case .called:
-      return Text("● ").foregroundColor(.yellow)
+      return Text("● ").foregroundStyle(.yellow)
         + Text("Match \(phaseGroupSet.identifier) • \(phaseGroupSet.state.rawValue.localizedCapitalized)")
         .font(.subheadline)
     default:

@@ -30,7 +30,7 @@ struct TournamentOrganizerRowView: View {
             Spacer()
             
             Image(systemName: "chevron.right")
-              .foregroundColor(.gray)
+              .foregroundStyle(.gray)
           }
         }
       }
@@ -40,7 +40,7 @@ struct TournamentOrganizerRowView: View {
   
   private var organizerTextView: some View {
     if let teamName = tournamentOrganizer.teamName {
-      return Text("\(teamName) ").foregroundColor(.gray) + Text(tournamentOrganizer.name ?? "")
+      return Text("\(teamName) ").foregroundStyle(.gray) + Text(tournamentOrganizer.name ?? "")
     } else {
       return Text(tournamentOrganizer.name ?? "")
     }

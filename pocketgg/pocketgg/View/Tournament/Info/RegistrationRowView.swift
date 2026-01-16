@@ -40,7 +40,7 @@ struct RegistrationRowView: View {
             Spacer()
             
             Image(systemName: "chevron.right")
-              .foregroundColor(.gray)
+              .foregroundStyle(.gray)
           }
         }
       }
@@ -52,7 +52,7 @@ struct RegistrationRowView: View {
   private var registrationTextView: some View {
     VStack(alignment: .leading) {
       registrationOpen
-        ? Text("Register").foregroundColor(.blue)
+        ? Text("Register").foregroundStyle(.blue)
         : Text("Registration not available")
       
       Text("Close\(registrationOpen ? "s" : "d") on " + registrationCloseDate)
