@@ -81,11 +81,11 @@ struct UserTournamentListView: View {
     .task {
       await viewModel.fetchTournaments(index: selected)
     }
-    .onChange(of: selected) { role in
+    .onChange(of: selected, { _, role in
       Task {
         await viewModel.fetchTournaments(refreshed: true, index: role)
       }
-    }
+    })
     .toolbar {
       ToolbarItemGroup(placement: .topBarTrailing) {
         Menu {

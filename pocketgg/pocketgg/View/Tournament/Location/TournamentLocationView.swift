@@ -111,6 +111,7 @@ final class TournamentLocationViewModel: ObservableObject {
   
   // MARK: Get Tournament Location Snapshot
   
+  // TODO: Replace with Map view
   @MainActor
   func getTournamentLocationSnapshot() async {
     state = .loading

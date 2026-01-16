@@ -60,9 +60,9 @@ struct LocationPreferenceView: View {
         LoadingView()
       }
     }
-    .onChange(of: viewModel.usingLocation) { _ in
+    .onChange(of: viewModel.usingLocation, { _, _ in
       viewModel.sendHomeViewRefreshNotification()
-    }
+    })
     .alert("Allow Location Access", isPresented: $viewModel.showingLocationPermissionAlert, actions: {
       Button("OK", role: .cancel) {}
     }, message: {

@@ -39,7 +39,7 @@ struct InlineTabsView: View {
           }
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .fixedSize(horizontal: false, vertical: false)
-          .border(width: 1, edges: [.bottom], color: Color(.separator))
+          .border(width: 1, edges: [.bottom], color: Color(uiColor: UIColor.separator))
           .animation(.easeInOut(duration: 0.2), value: tabIndex)
           .frame(maxWidth: .infinity)
           .contentShape(Rectangle())
