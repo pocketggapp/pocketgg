@@ -25,10 +25,10 @@ struct VideoGamesView: View {
             }
             .onDelete(perform: viewModel.deleteVideoGame)
           } else {
-            EmptyStateView(
-              systemImageName: "gamecontroller",
-              title: "No Video Games",
-              subtitle: "Select your favorite video games to see tournaments that feature those games."
+            ContentUnavailableView(
+              "No Video Games",
+              systemImage: "gamecontroller",
+              description: Text("Select your favorite video games to see tournaments that feature those games.")
             )
           }
         case .error:

@@ -50,10 +50,10 @@ struct StandingsView: View {
               }
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Standings",
-            subtitle: "There are currently no standings for this phase group."
+          ContentUnavailableView(
+            "No Standings",
+            systemImage: "questionmark.app.dashed",
+            description: Text("There are currently no standings for this phase group.")
           )
         }
       case .error(let is503):

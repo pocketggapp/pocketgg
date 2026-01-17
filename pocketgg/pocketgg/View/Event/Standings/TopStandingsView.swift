@@ -37,10 +37,10 @@ struct TopStandingsView: View {
             .padding(.top)
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Standings",
-            subtitle: "There are currently no standings for this event."
+          ContentUnavailableView(
+            "No Standings",
+            systemImage: "questionmark.app.dashed",
+            description: Text("There are currently no standings for this event.")
           )
         }
       case .error(let is503):

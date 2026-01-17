@@ -23,10 +23,10 @@ struct StreamsView: View {
             StreamRowView(stream: stream)
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.video",
-            title: "No Streams",
-            subtitle: "There are currently no streams for this tournament."
+          ContentUnavailableView(
+            "No Streams",
+            systemImage: "questionmark.video",
+            description: Text("There are currently no streams for this tournament.")
           )
         }
       case .error(let is503):

@@ -26,10 +26,10 @@ struct EventsView: View {
             .buttonStyle(.plain)
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Events",
-            subtitle: "There are currently no events for this tournament."
+          ContentUnavailableView(
+            "No Events",
+            systemImage: "questionmark.app.dashed",
+            description: Text("There are currently no events for this tournament.")
           )
         }
       case .error(let is503):

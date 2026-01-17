@@ -27,10 +27,10 @@ struct HomeView: View {
               }
             }
           case .noSections:
-            EmptyStateView(
-              systemImageName: "questionmark.app.dashed",
-              title: "No Video Games Enabled",
-              subtitle: "Select video games in the app settings to see tournaments that feature those games."
+            ContentUnavailableView(
+              "No Video Games Enabled",
+              systemImage: "questionmark.app.dashed",
+              description: Text("Select video games in the app settings to see tournaments that feature those games.")
             )
           case .error(let is503):
             ErrorStateView(is503: is503, subtitle: "There was an error loading your tournaments.") {

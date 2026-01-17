@@ -30,10 +30,10 @@ struct VideoGameSearchView: View {
       
       switch viewModel.state {
       case .uninitialized:
-        EmptyStateView(
-          systemImageName: "magnifyingglass",
-          title: "Search for Video Games",
-          subtitle: "Find video games by typing the name of a video game and tapping search."
+        ContentUnavailableView(
+          "Search for Video Games",
+          systemImage: "magnifyingglass",
+          description: Text("Find video games by typing the name of a video game and tapping search.")
         )
       case .loading:
         ForEach(0..<20) { _ in
@@ -68,11 +68,7 @@ struct VideoGameSearchView: View {
               }
           }
         } else {
-          EmptyStateView(
-            systemImageName: "magnifyingglass",
-            title: "No Search Results",
-            subtitle: "Check the spelling or try a new search."
-          )
+          ContentUnavailableView.search
         }
       case .error(let is503):
         ErrorStateView(is503: is503, subtitle: "There was an error loading search results.") {

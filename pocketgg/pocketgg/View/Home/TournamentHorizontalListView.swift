@@ -42,11 +42,14 @@ struct TournamentHorizontalListView: View {
         }
         .scrollIndicators(.hidden)
       } else {
-        EmptyStateView(
-          systemImageName: tournamentsGroup.id == -1 ? "pin.fill" : "questionmark.app.dashed",
-          title: tournamentsGroup.id == -1 ? "No Pinned Tournaments" : "No Tournaments",
-          subtitle: tournamentsGroup.id == -1 ? "You can pin a tournament by tapping the ellipsis on any tournament page and choosing Pin." : "No tournaments found for this category.",
-          showVerticalPadding: false
+        ContentUnavailableView(
+          tournamentsGroup.id == -1 ? "No Pinned Tournaments" : "No Tournaments",
+          systemImage: tournamentsGroup.id == -1 ? "pin.fill" : "questionmark.app.dashed",
+          description: Text(
+            tournamentsGroup.id == -1
+              ? "You can pin a tournament by tapping the ellipsis on any tournament page and choosing Pin."
+              : "No tournaments found for this category."
+          )
         )
       }
     }

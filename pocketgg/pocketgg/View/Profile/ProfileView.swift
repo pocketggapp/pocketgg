@@ -53,17 +53,17 @@ struct ProfileView: View {
                 }
                 .padding(.horizontal)
               } else {
-                EmptyStateView(
-                  systemImageName: "trophy.fill",
-                  title: "No Recent Tournaments",
-                  subtitle: "Your recent tournaments will show up here."
+                ContentUnavailableView(
+                  "No Recent Tournaments",
+                  systemImage: "trophy.fill",
+                  description: Text("Your recent tournaments will show up here.")
                 )
               }
             } else {
-              EmptyStateView(
-                systemImageName: "person.crop.circle",
-                title: "Guest Mode",
-                subtitle: "Log in to view your profile and recent tournaments."
+              ContentUnavailableView(
+                "Guest Mode",
+                systemImage: "person.crop.circle",
+                description: Text("Log in to view your profile and recent tournaments.")
               )
             }
           case .error(let is503):

@@ -42,17 +42,17 @@ struct BracketView: View {
             phaseGroupSets: sets
           )
         default:
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "Unsupported Bracket Type (\(phaseGroupDetails?.bracketType?.rawValue ?? ""))",
-            subtitle: "This type of bracket is currently not supported."
+          ContentUnavailableView(
+            "Unsupported Bracket Type (\(phaseGroupDetails?.bracketType?.rawValue ?? ""))",
+            systemImage: "questionmark.app.dashed",
+            description: Text("This type of bracket is currently not supported.")
           )
         }
       } else {
-        EmptyStateView(
-          systemImageName: "questionmark.app.dashed",
-          title: "No Sets",
-          subtitle: "There are currently no sets in this phase group."
+        ContentUnavailableView(
+          "No Sets",
+          systemImage: "questionmark.app.dashed",
+          description: Text("There are currently no sets in this phase group.")
         )
       }
     case .error(let is503):

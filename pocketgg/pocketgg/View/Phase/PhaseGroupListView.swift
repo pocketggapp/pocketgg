@@ -52,10 +52,10 @@ struct PhaseGroupListView: View {
             .buttonStyle(.plain)
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Pools",
-            subtitle: "There are currently no pools for this phase."
+          ContentUnavailableView(
+            "No Pools",
+            systemImage: "questionmark.app.dashed",
+            description: Text("There are currently no pools for this phase.")
           )
         }
       case .error(let is503):

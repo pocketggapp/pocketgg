@@ -34,10 +34,10 @@ struct MatchesView: View {
             .buttonStyle(.plain)
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Matches",
-            subtitle: "There are currently no matches in this phase group."
+          ContentUnavailableView(
+            "No Matches",
+            systemImage: "questionmark.app.dashed",
+            description: Text("There are currently no matches in this phase group.")
           )
         }
       case .error(let is503):

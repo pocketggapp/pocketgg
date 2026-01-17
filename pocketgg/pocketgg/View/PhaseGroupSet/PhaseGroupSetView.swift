@@ -51,10 +51,10 @@ struct PhaseGroupSetView: View {
               entrants: setDetails?.phaseGroupSet.entrants
             )
           } else {
-            EmptyStateView(
-              systemImageName: "questionmark.app.dashed",
-              title: "No Games Reported",
-              subtitle: "Once games are reported, the results will display here."
+            ContentUnavailableView(
+              "No Games Reported",
+              systemImage: "questionmark.app.dashed",
+              description: Text("Once games are reported, the results will display here.")
             )
           }
         case .error(let is503):

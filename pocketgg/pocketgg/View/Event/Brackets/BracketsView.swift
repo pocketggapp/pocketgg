@@ -25,10 +25,10 @@ struct BracketsView: View {
             .buttonStyle(.plain)
           }
         } else {
-          EmptyStateView(
-            systemImageName: "questionmark.app.dashed",
-            title: "No Brackets",
-            subtitle: "There are currently no brackets for this event."
+          ContentUnavailableView(
+            "No Brackets",
+            systemImage: "questionmark.app.dashed",
+            description: Text("There are currently no brackets for this event.")
           )
         }
       case .error(let is503):

@@ -57,17 +57,17 @@ struct TournamentLocationView: View {
           .padding([.top, .leading])
         }
       } else {
-        EmptyStateView(
-          systemImageName: "wifi",
-          title: "Online",
-          subtitle: "This tournament is being held online."
+        ContentUnavailableView(
+          "Online",
+          systemImage: "wifi.router",
+          description: Text("This tournament is being held online.")
         )
       }
     case .error:
-      EmptyStateView(
-        systemImageName: "wifi",
-        title: "Online",
-        subtitle: "This tournament is being held online."
+      ContentUnavailableView(
+        "Online",
+        systemImage: "wifi.router",
+        description: Text("This tournament is being held online.")
       )
     }
   }

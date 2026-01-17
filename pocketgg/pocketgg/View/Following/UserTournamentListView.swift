@@ -56,10 +56,10 @@ struct UserTournamentListView: View {
                 }
             }
           } else {
-            EmptyStateView(
-              systemImageName: "questionmark.app.dashed",
-              title: "No Tournaments",
-              subtitle: "There are no tournaments that match the selected filter for this user."
+            ContentUnavailableView(
+              "No Tournaments",
+              systemImage: "questionmark.app.dashed",
+              description: Text("There are no tournaments that match the selected filter for this user.")
             )
           }
         case .error(let is503):
