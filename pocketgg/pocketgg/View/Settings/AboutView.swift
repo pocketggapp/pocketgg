@@ -88,11 +88,13 @@ struct AboutView: View {
     
     withAnimation {
       imageFlipped = true
-    }
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+    } completion: {
       withAnimation {
-        imageFlipped = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+          withAnimation {
+            imageFlipped = false
+          }
+        }
       }
     }
   }
