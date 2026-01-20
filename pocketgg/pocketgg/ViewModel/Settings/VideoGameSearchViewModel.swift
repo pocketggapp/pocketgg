@@ -154,4 +154,19 @@ final class VideoGameSearchViewModel: ObservableObject {
     
     userDefaults.set(homeViewSections, forKey: Constants.homeViewSections)
   }
+  
+  // MARK: Text Field
+  
+  func onKeyPressed() {
+    switch state {
+    case .uninitialized, .loading:
+      return
+    case .loaded, .error:
+      if accumulatedVideoGames.isEmpty {
+        Task { @MainActor in
+          state = .uninitialized
+        }
+      }
+    }
+  }
 }

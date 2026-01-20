@@ -62,4 +62,19 @@ final class TournamentSearchViewModel: ObservableObject {
       #endif
     }
   }
+  
+  // MARK: Text Field
+  
+  func onKeyPressed() {
+    switch state {
+    case .uninitialized, .loading:
+      return
+    case .loaded, .error:
+      if accumulatedTournaments.isEmpty {
+        Task { @MainActor in
+          state = .uninitialized
+        }
+      }
+    }
+  }
 }

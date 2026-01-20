@@ -19,6 +19,9 @@ struct VideoGameSearchView: View {
             .foregroundStyle(.gray)
           
           TextField("Search", text: $viewModel.searchText)
+            .onChange(of: viewModel.searchText, { _, _ in
+              viewModel.onKeyPressed()
+            })
             .onSubmit {
               Task {
                 await viewModel.fetchVideoGames(newSearch: true)
@@ -68,7 +71,7 @@ struct VideoGameSearchView: View {
               }
           }
         } else {
-          ContentUnavailableView.search
+          ContentUnavailableView.search(text: viewModel.searchText)
         }
       case .error(let is503):
         ErrorStateView(is503: is503, subtitle: "There was an error loading search results.") {
