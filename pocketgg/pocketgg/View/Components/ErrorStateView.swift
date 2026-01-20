@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct ErrorStateView: View {
-  @ScaledMetric private var scale: CGFloat = 1
-  
   private let is503: Bool
   private let subtitle: String
   private let reload: (() -> Void)
@@ -14,36 +12,19 @@ struct ErrorStateView: View {
   }
   
   var body: some View {
-    HStack {
-      Spacer()
-      VStack(spacing: 16) {
-        Image(systemName: is503 ? "server.rack" : "exclamationmark.circle")
-          .resizable()
-          .scaledToFit()
-          .frame(width: 75 * scale, height: 75 * scale)
-          .fontWeight(.light)
-        
-        VStack(spacing: 5) {
-          Text("Error")
-            .font(.title2.bold())
-            .multilineTextAlignment(.center)
-          
-          Text(subtitle)
-            .multilineTextAlignment(.center)
-            .foregroundStyle(.gray)
-          
-          Button {
-            reload()
-          } label: {
-            Text("Reload")
-              .padding(5)
-          }
-          .buttonStyle(.borderedProminent)
-          .tint(.red)
-          .padding(.top)
-        }
+    ContentUnavailableView {
+      Label("Error", systemImage: is503 ? "server.rack" : "exclamationmark.circle")
+    } description: {
+      Text(subtitle)
+    } actions: {
+      Button {
+        reload()
+      } label: {
+        Text("Reload")
+          .padding(5)
       }
-      Spacer()
+      .buttonStyle(.borderedProminent)
+      .tint(.red)
     }
     .padding(.vertical, 64)
   }
