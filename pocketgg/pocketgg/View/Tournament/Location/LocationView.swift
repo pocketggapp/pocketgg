@@ -22,10 +22,11 @@ struct LocationView: View {
       case .uninitialized, .loading:
         LocationPlaceholderView()
       case .loaded(let tournamentDetails):
-        if let location = tournamentDetails?.location {
+        if let location = tournamentDetails?.location, let latitude = location.latitude, let longitude = location.longitude {
           TournamentLocationView(
-            tournamentID: tournamentID,
-            location: location
+            location: location,
+            latitude: latitude,
+            longitude: longitude
           )
         } else {
           ContentUnavailableView(

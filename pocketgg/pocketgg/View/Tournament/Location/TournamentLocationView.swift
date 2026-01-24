@@ -1,172 +1,67 @@
 import SwiftUI
 import MapKit
 
-enum TournamentLocationViewState {
-  case uninitialized
-  case loading
-  case loaded(UIImage?)
-  case error(is503: Bool)
-}
-
 struct TournamentLocationView: View {
-  @StateObject private var viewModel: TournamentLocationViewModel
-  @State private var image: UIImage? = nil
-  
   private let location: Location
+  private let coordinate: CLLocationCoordinate2D
   
-  init(tournamentID: Int, location: Location) {
-    self._viewModel = StateObject(wrappedValue: {
-      TournamentLocationViewModel(
-        tournamentID: tournamentID,
-        location: location
-      )
-    }())
+  init(location: Location, latitude: Double, longitude: Double) {
     self.location = location
+    self.coordinate = .init(latitude: latitude, longitude: longitude)
   }
   
   var body: some View {
-    switch viewModel.state {
-    case .uninitialized, .loading:
-      LocationPlaceholderView()
-    case .loaded(let image):
-      if let image {
-        VStack(alignment: .leading) {
-          Image(uiImage: image)
-            .frame(height: 300)
-          
-          Text(location.venueName ?? "")
-            .font(.body)
-            .padding(.leading)
-          
-          Text(location.address ?? "")
-            .font(.caption)
-            .padding(.leading)
-          
-          Button {
-            viewModel.openInMaps(location.address)
-          } label: {
-            HStack {
-              Image(systemName: "location.fill")
-              
-              Text("Get Directions")
-                .font(.body)
-              
-              Spacer()
-            }
-          }
-          .padding([.top, .leading])
-        }
-      } else {
-        ContentUnavailableView(
-          "Online",
-          systemImage: "wifi.router",
-          description: Text("This tournament is being held online.")
-        )
+    VStack(alignment: .leading) {
+      Map(
+        initialPosition: .camera(.init(centerCoordinate: coordinate, distance: 5000)),
+        bounds: .init(centerCoordinateBounds: .init(center: coordinate, span: .init(latitudeDelta: 0.1, longitudeDelta: 0.1)), maximumDistance: 20000)
+      ) {
+        Marker(location.venueName ?? "", coordinate: coordinate)
       }
-    case .error:
-      ContentUnavailableView(
-        "Online",
-        systemImage: "wifi.router",
-        description: Text("This tournament is being held online.")
-      )
-    }
-  }
-}
-
-#Preview {
-  TournamentLocationView(
-    tournamentID: 1906,
-    location: Location(
-      address: "600 Town Center Dr, Dearborn, MI 48126, USA",
-      venueName: "Edward Hotel & Conference Center",
-      latitude: 42.3122619,
-      longitude: -83.2178603
-    )
-  )
-}
-
-final class TournamentLocationViewModel: ObservableObject {
-  private let tournamentID: Int
-  private let latitude: Double?
-  private let longitude: Double?
-  private var isPortrait: Bool {
-    UIScreen.main.bounds.width < UIScreen.main.bounds.height
-  }
-  
-  @Published var state: TournamentLocationViewState
-  
-  init(
-    tournamentID: Int,
-    location: Location
-  ) {
-    self.state = .uninitialized
-    self.tournamentID = tournamentID
-    self.latitude = location.latitude
-    self.longitude = location.longitude
-    
-    Task {
-      await getTournamentLocationSnapshot()
-    }
-  }
-  
-  // MARK: Get Tournament Location Snapshot
-  
-  // TODO: Replace with Map view
-  @MainActor
-  func getTournamentLocationSnapshot() async {
-    state = .loading
-    let imageKey = "mapPreview-\(tournamentID)-\(isPortrait ? "portrait" : "landscape")"
-    if let image = ImageService.getCachedImage(with: imageKey) {
-      state = .loaded(image)
-      return
-    }
-    
-    guard let latitude = latitude, let longitude = longitude else {
-      state = .loaded(nil)
-      return
-    }
-    
-    let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    let options = MKMapSnapshotter.Options()
-    options.region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
-    options.size = CGSize(width: UIScreen.main.bounds.width, height: 300)
-    
-    do {
-      let snapshotter = MKMapSnapshotter(options: options)
-      let snapshot = try await snapshotter.start(with: DispatchQueue.global(qos: .userInitiated))
-      let image = addPinToImage(size: options.size, snapshot: snapshot, coordinates: coordinates)
-      ImageService.saveImageToCache(image: image, with: imageKey)
-      state = .loaded(image)
-    } catch {
-      state = .error(is503: error.is503Error)
-    }
-  }
-  
-  private func addPinToImage(size: CGSize, snapshot: MKMapSnapshotter.Snapshot?, coordinates: CLLocationCoordinate2D) -> UIImage {
-    return UIGraphicsImageRenderer(size: size).image { _ in
-      snapshot?.image.draw(at: .zero)
-      let pinView = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
-      let pinImage = pinView.image
+      .frame(height: 300)
       
-      if let point = snapshot?.point(for: coordinates) {
-        let finalPoint = CGPoint(
-          x: point.x + pinView.centerOffset.x - pinView.bounds.width / 2,
-          y: point.y + pinView.centerOffset.y - pinView.bounds.height / 2
-        )
-        pinImage?.draw(at: finalPoint)
+      Text(location.venueName ?? "")
+        .font(.body)
+        .padding(.leading)
+      
+      Text(location.address ?? "")
+        .font(.caption)
+        .padding(.leading)
+      
+      Button {
+        openInMaps()
+      } label: {
+        HStack {
+          Image(systemName: "location.fill")
+          
+          Text("Get Directions")
+            .font(.body)
+          
+          Spacer()
+        }
       }
+      .padding([.top, .leading])
     }
   }
   
   // MARK: Open in Maps
   
-  func openInMaps(_ address: String?) {
-    guard let latitude, let longitude else { return }
-    
-    let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    let placemark = MKPlacemark(coordinate: coordinate)
-    let mapItem = MKMapItem(placemark: placemark)
-    mapItem.name = address
+  private func openInMaps() {
+    let mapItem: MKMapItem = .init(placemark: .init(coordinate: coordinate))
+    mapItem.name = location.address
     mapItem.openInMaps()
   }
+}
+
+#Preview {
+  TournamentLocationView(
+    location: Location(
+      address: "600 Town Center Dr, Dearborn, MI 48126, USA",
+      venueName: "Edward Hotel & Conference Center",
+      latitude: 42.3122619,
+      longitude: -83.2178603
+    ),
+    latitude: 42.3122619,
+    longitude: -83.2178603
+  )
 }
