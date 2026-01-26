@@ -92,12 +92,7 @@ final class TournamentViewModel: ObservableObject {
       break
     case .notDetermined:
       do {
-        var accessGranted: Bool?
-        if #available(iOS 17.0, *) {
-          accessGranted = try await self.eventStore?.requestWriteOnlyAccessToEvents()
-        } else {
-          accessGranted = try await self.eventStore?.requestAccess(to: .event)
-        }
+        let accessGranted: Bool? = try await self.eventStore?.requestWriteOnlyAccessToEvents()
         guard accessGranted ?? false else {
           showingCalendarErrorAlert = true
           return
